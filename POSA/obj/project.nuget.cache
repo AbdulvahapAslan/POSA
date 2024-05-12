@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gMQVtrBf61zXlrjzmHol9T/DIqymHk61WC2GEXI7ki++8TydKct/QGll6BZjgJkYwk7cbLZfrs/8ww9rOm3YoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\POSA.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aaslan.BASBUG\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
