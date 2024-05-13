@@ -22,3 +22,5 @@ C:\Users\aaslan.BASBUG\source\repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.cspr
 C:\Users\aaslan.BASBUG\source\repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.Forms.Sales.resources
 C:\Users\aaslan.BASBUG\source\repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.csproj.CopyComplete
 C:\Users\aaslan.BASBUG\source\repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.Forms.Loading.resources
+C:\Users\aaslan.BASBUG\Source\Repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.sourcelink.json
+C:\Users\aaslan.BASBUG\Source\Repos\POSA\POSA\obj\Debug\net8.0-windows\POSA.CustomObjects.RoundTextBox.resources

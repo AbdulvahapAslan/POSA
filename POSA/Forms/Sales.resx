@@ -136,18 +136,6 @@
         /Py/PsDqnCuoxZiLAMxZD7E6lW/O4f2f/q8umuCVrz2Ew2dwgK57AtJCKV8okeFeAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnClose.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEwSURBVEhLndY7
-        SkRBEIXhCnyiJu7BxC0aGaiZuZloIj7ANygIvjJBMHIdrkD/A1PSjN1ldR/4kr4z58DMvcMYWcUBPrCF
-        GYxmHup4xQ4WYIf4LpxgFr1R+S3KLo3ZZ3HgTtEzUiuXB9hucVA6Q2akVS4bsDlcTA6mXUMFrei9l6i9
-        9xi/32c0coPaSLrcE43oIyhHuss9/43othsu90Qjd9D3UruWKvdEIzVd5Z7syFC5RyNXqBWLnpXhckUD
-        rc9c7rGIoai8dbeUhkay5e4RS0glKtePYOvaE5YRJir3u0Wvad1d4Uim3BONPOPPSE+5Jz0yUu6JRl6w
-        AtubHEw7QuYh0q9s61nZh30VBy5b7mmNqNveigPpLffURvTvwtahC+/YxEi5RyPbUNe5ma39ALQDAf9t
-        qViKAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btnAddCustomer.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -166,9 +154,6 @@
     <value>True</value>
   </metadata>
   <metadata name="Total.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Delete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="btnAddGroup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

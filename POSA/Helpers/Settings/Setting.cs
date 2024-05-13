@@ -12,7 +12,7 @@ public class Setting
         try
         {
             if (!File.Exists(Yol))
-                Kaydet(new SettingType());
+                Save(new SettingType());
             lock (LockObj)
             {
                 var jsn = File.ReadAllText(Yol, Encoding.UTF8).ReverseString().Base64Decrypt();
@@ -25,7 +25,25 @@ public class Setting
             throw;
         }
     }
-    public static bool Kaydet(SettingType a)
+    public static SettingTypeGroups GetGroupSettings()
+    {
+        try
+        {
+            if (!File.Exists(YolGroups))
+                Save(new SettingTypeGroups());
+            lock (LockObj)
+            {
+                var jsn = File.ReadAllText(YolGroups, Encoding.UTF8);
+                return JsonConvert.DeserializeObject<SettingTypeGroups>(jsn);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    public static bool Save(SettingType a)
     {
         try
         {
@@ -42,6 +60,24 @@ public class Setting
             throw;
         }
     }
+    public static bool Save(SettingTypeGroups a)
+    {
+        try
+        {
+            lock (LockObj)
+            {
+                var jsn = JsonConvert.SerializeObject(a);
+                File.WriteAllText(YolGroups, jsn, Encoding.UTF8);
+                return true;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     private static readonly string Yol = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Ayar.avp");
+    private static readonly string YolGroups = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Groups.avp");
     private static object LockObj = new object();
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\POSA.csproj": {}
+    "C:\\Users\\aaslan.BASBUG\\Source\\Repos\\POSA\\POSA\\POSA.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\POSA.csproj": {
+    "C:\\Users\\aaslan.BASBUG\\Source\\Repos\\POSA\\POSA\\POSA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\POSA.csproj",
+        "projectUniqueName": "C:\\Users\\aaslan.BASBUG\\Source\\Repos\\POSA\\POSA\\POSA.csproj",
         "projectName": "POSA",
-        "projectPath": "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\POSA.csproj",
+        "projectPath": "C:\\Users\\aaslan.BASBUG\\Source\\Repos\\POSA\\POSA\\POSA.csproj",
         "packagesPath": "C:\\Users\\aaslan.BASBUG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aaslan.BASBUG\\source\\repos\\POSA\\POSA\\obj\\",
+        "outputPath": "C:\\Users\\aaslan.BASBUG\\Source\\Repos\\POSA\\POSA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

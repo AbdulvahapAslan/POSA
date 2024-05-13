@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("POSA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd46708a1809e69542160b830b9f319c50858a0")]
 [assembly: System.Reflection.AssemblyProductAttribute("POSA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("POSA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
