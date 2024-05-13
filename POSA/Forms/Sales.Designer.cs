@@ -59,6 +59,11 @@ namespace POSA.Forms
             pictureBox1 = new PictureBox();
             roundTextBox1 = new CustomObjects.RoundTextBox();
             dgvMain = new DataGridView();
+            Barcode = new DataGridViewTextBoxColumn();
+            ProductName = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             flpMiddleButtons = new FlowLayoutPanel();
             btnDiscount = new Button();
             btnCustomer = new Button();
@@ -126,11 +131,6 @@ namespace POSA.Forms
             flowLayoutPanel1 = new FlowLayoutPanel();
             pnlAddNewGroupsButton = new Panel();
             tbAddNewGroupsButton = new TextBox();
-            Barcode = new DataGridViewTextBoxColumn();
-            ProductName = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             SaleMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MainSplitContainer).BeginInit();
             MainSplitContainer.Panel1.SuspendLayout();
@@ -319,9 +319,9 @@ namespace POSA.Forms
             cbFree.Font = new Font("Segoe UI", 15F);
             cbFree.Location = new Point(3, 34);
             cbFree.Name = "cbFree";
-            cbFree.Size = new Size(100, 32);
+            cbFree.Size = new Size(116, 32);
             cbFree.TabIndex = 3;
-            cbFree.Text = "Ücretsiz";
+            cbFree.Text = "ÜCRETSİZ";
             cbFree.UseVisualStyleBackColor = true;
             // 
             // cbReturn
@@ -572,6 +572,45 @@ namespace POSA.Forms
             dgvMain.Size = new Size(733, 440);
             dgvMain.TabIndex = 0;
             dgvMain.CellClick += dgvMain_CellClick;
+            // 
+            // Barcode
+            // 
+            Barcode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Barcode.FillWeight = 18F;
+            Barcode.HeaderText = "BARKOD";
+            Barcode.Name = "Barcode";
+            // 
+            // ProductName
+            // 
+            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProductName.FillWeight = 24F;
+            ProductName.HeaderText = "ÜRÜN ADI";
+            ProductName.Name = "ProductName";
+            // 
+            // Price
+            // 
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Price.FillWeight = 14F;
+            Price.HeaderText = "FİYAT";
+            Price.Name = "Price";
+            // 
+            // Quantity
+            // 
+            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            Quantity.FillWeight = 11F;
+            Quantity.HeaderText = "ADET";
+            Quantity.Name = "Quantity";
+            // 
+            // Total
+            // 
+            Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Total.DefaultCellStyle = dataGridViewCellStyle3;
+            Total.FillWeight = 20F;
+            Total.HeaderText = "TOPLAM";
+            Total.Name = "Total";
             // 
             // flpMiddleButtons
             // 
@@ -1478,45 +1517,6 @@ namespace POSA.Forms
             tbAddNewGroupsButton.Size = new Size(271, 27);
             tbAddNewGroupsButton.TabIndex = 4;
             tbAddNewGroupsButton.KeyDown += tbAddNewGroupsButton_KeyDown;
-            // 
-            // Barcode
-            // 
-            Barcode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Barcode.FillWeight = 18F;
-            Barcode.HeaderText = "BARKOD";
-            Barcode.Name = "Barcode";
-            // 
-            // ProductName
-            // 
-            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ProductName.FillWeight = 24F;
-            ProductName.HeaderText = "ÜRÜN ADI";
-            ProductName.Name = "ProductName";
-            // 
-            // Price
-            // 
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Price.FillWeight = 14F;
-            Price.HeaderText = "FİYAT";
-            Price.Name = "Price";
-            // 
-            // Quantity
-            // 
-            Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Quantity.DefaultCellStyle = dataGridViewCellStyle2;
-            Quantity.FillWeight = 11F;
-            Quantity.HeaderText = "ADET";
-            Quantity.Name = "Quantity";
-            // 
-            // Total
-            // 
-            Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Total.DefaultCellStyle = dataGridViewCellStyle3;
-            Total.FillWeight = 20F;
-            Total.HeaderText = "TOPLAM";
-            Total.Name = "Total";
             // 
             // Sales
             // 
