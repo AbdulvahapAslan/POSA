@@ -337,7 +337,6 @@ namespace POSA.Forms
             // 
             // pnlAddCustomer
             // 
-            pnlAddCustomer.BorderStyle = BorderStyle.FixedSingle;
             pnlAddCustomer.Controls.Add(scAddCustomerContainer);
             pnlAddCustomer.Dock = DockStyle.Fill;
             pnlAddCustomer.Location = new Point(0, 0);
@@ -359,7 +358,7 @@ namespace POSA.Forms
             // scAddCustomerContainer.Panel2
             // 
             scAddCustomerContainer.Panel2.Controls.Add(flpCustomers);
-            scAddCustomerContainer.Size = new Size(602, 65);
+            scAddCustomerContainer.Size = new Size(604, 67);
             scAddCustomerContainer.SplitterDistance = 55;
             scAddCustomerContainer.TabIndex = 1;
             // 
@@ -373,7 +372,7 @@ namespace POSA.Forms
             btnAddCustomer.FlatStyle = FlatStyle.Flat;
             btnAddCustomer.Location = new Point(3, 2);
             btnAddCustomer.Name = "btnAddCustomer";
-            btnAddCustomer.Size = new Size(49, 61);
+            btnAddCustomer.Size = new Size(49, 47);
             btnAddCustomer.TabIndex = 6;
             btnAddCustomer.UseVisualStyleBackColor = false;
             btnAddCustomer.Click += btnAddCustomer_Click;
@@ -385,12 +384,13 @@ namespace POSA.Forms
             flpCustomers.Dock = DockStyle.Fill;
             flpCustomers.Location = new Point(0, 0);
             flpCustomers.Name = "flpCustomers";
-            flpCustomers.Size = new Size(543, 65);
+            flpCustomers.Size = new Size(545, 67);
             flpCustomers.TabIndex = 2;
             flpCustomers.WrapContents = false;
             // 
             // btnRootCustomer
             // 
+            btnRootCustomer.BackColor = Color.Gainsboro;
             btnRootCustomer.BackgroundImage = Properties.Resources.user__1_;
             btnRootCustomer.BackgroundImageLayout = ImageLayout.Center;
             btnRootCustomer.FlatStyle = FlatStyle.Flat;
@@ -398,7 +398,7 @@ namespace POSA.Forms
             btnRootCustomer.Name = "btnRootCustomer";
             btnRootCustomer.Size = new Size(46, 46);
             btnRootCustomer.TabIndex = 0;
-            btnRootCustomer.UseVisualStyleBackColor = true;
+            btnRootCustomer.UseVisualStyleBackColor = false;
             btnRootCustomer.Click += btnRootCustomer_Click;
             // 
             // scLeftBottomMain
@@ -1292,7 +1292,6 @@ namespace POSA.Forms
             // 
             // pnlGroups
             // 
-            pnlGroups.BorderStyle = BorderStyle.FixedSingle;
             pnlGroups.Controls.Add(scRightContainer);
             pnlGroups.Dock = DockStyle.Top;
             pnlGroups.Location = new Point(0, 0);
@@ -1315,7 +1314,7 @@ namespace POSA.Forms
             // scRightContainer.Panel2
             // 
             scRightContainer.Panel2.Controls.Add(flpGroups);
-            scRightContainer.Size = new Size(509, 95);
+            scRightContainer.Size = new Size(511, 95);
             scRightContainer.SplitterDistance = 64;
             scRightContainer.TabIndex = 1;
             // 
@@ -1328,7 +1327,7 @@ namespace POSA.Forms
             btnAddGroup.FlatStyle = FlatStyle.Flat;
             btnAddGroup.Location = new Point(3, 1);
             btnAddGroup.Name = "btnAddGroup";
-            btnAddGroup.Size = new Size(60, 95);
+            btnAddGroup.Size = new Size(60, 81);
             btnAddGroup.TabIndex = 5;
             btnAddGroup.UseVisualStyleBackColor = false;
             btnAddGroup.Click += btnAddGroup_Click;
@@ -1341,12 +1340,13 @@ namespace POSA.Forms
             flpGroups.Dock = DockStyle.Fill;
             flpGroups.Location = new Point(0, 0);
             flpGroups.Name = "flpGroups";
-            flpGroups.Size = new Size(441, 95);
+            flpGroups.Size = new Size(443, 95);
             flpGroups.TabIndex = 5;
             flpGroups.WrapContents = false;
             // 
             // btnRootGroup
             // 
+            btnRootGroup.BackColor = Color.Gainsboro;
             btnRootGroup.BackgroundImage = Properties.Resources.cosmetic;
             btnRootGroup.BackgroundImageLayout = ImageLayout.Center;
             btnRootGroup.FlatStyle = FlatStyle.Flat;
@@ -1356,7 +1356,7 @@ namespace POSA.Forms
             btnRootGroup.Size = new Size(79, 79);
             btnRootGroup.TabIndex = 1;
             btnRootGroup.TextAlign = ContentAlignment.BottomCenter;
-            btnRootGroup.UseVisualStyleBackColor = true;
+            btnRootGroup.UseVisualStyleBackColor = false;
             btnRootGroup.Click += btnRootGroup_Click;
             // 
             // panel1
@@ -1501,7 +1501,7 @@ namespace POSA.Forms
             pnlAddNewGroupsButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlAddNewGroupsButton.BackColor = Color.Gainsboro;
             pnlAddNewGroupsButton.Controls.Add(tbAddNewGroupsButton);
-            pnlAddNewGroupsButton.Location = new Point(499, 26);
+            pnlAddNewGroupsButton.Location = new Point(559, 166);
             pnlAddNewGroupsButton.Name = "pnlAddNewGroupsButton";
             pnlAddNewGroupsButton.Size = new Size(282, 67);
             pnlAddNewGroupsButton.TabIndex = 1;

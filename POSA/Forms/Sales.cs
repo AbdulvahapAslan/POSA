@@ -186,7 +186,7 @@ namespace POSA.Forms
         {
             foreach (Button btn in flpGroups.Controls)
             {
-                btn.BackColor = Color.White;
+                btn.BackColor = Color.Gainsboro;
             }
         }
         public void ResetAllGroupButtons()
@@ -194,7 +194,7 @@ namespace POSA.Forms
             int i = 1;
             foreach (Button btn in flpGroupButtons.Controls)
             {
-                btn.BackColor = Color.White;
+                btn.BackColor = Color.Gainsboro;
                 btn.BackgroundImage = null;
                 btn.Name = "Button" + i;
                 btn.Text = "";
@@ -299,7 +299,8 @@ namespace POSA.Forms
                     newButton.Size = btnRootGroup.Size;
                     newButton.BackColor = Color.LightGreen;
                     newButton.BackgroundImageLayout = ImageLayout.Zoom;
-                    newButton.ForeColor = Color.White;
+                    newButton.ForeColor = Color.Black;
+                    newButton.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
                     newButton.TextAlign = ContentAlignment.BottomCenter;
                     newButton.FlatStyle = btnRootGroup.FlatStyle;
                     if (!string.IsNullOrWhiteSpace(addGroupLastImagePath))
@@ -492,7 +493,8 @@ namespace POSA.Forms
                     var newButton = new Button();
                     newButton.Size = btnRootGroup.Size;
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.ForeColor = Color.White;
+                    newButton.ForeColor = Color.Black;
+                    newButton.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
                     newButton.TextAlign = ContentAlignment.BottomCenter;
                     newButton.FlatStyle = btnRootGroup.FlatStyle;
                     if (!string.IsNullOrWhiteSpace(btn.PageImageBase64))
