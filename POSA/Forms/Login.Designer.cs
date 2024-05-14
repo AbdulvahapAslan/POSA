@@ -47,6 +47,8 @@
             btnEight = new CustomObjects.RoundButton();
             btnSeven = new CustomObjects.RoundButton();
             btnNine = new CustomObjects.RoundButton();
+            lblWrongPassword = new Label();
+            chkRememberMe = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -377,6 +379,32 @@
             btnNine.UseVisualStyleBackColor = false;
             btnNine.Click += btnNine_Click;
             // 
+            // lblWrongPassword
+            // 
+            lblWrongPassword.AutoSize = true;
+            lblWrongPassword.BackColor = Color.Transparent;
+            lblWrongPassword.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblWrongPassword.ForeColor = Color.White;
+            lblWrongPassword.Location = new Point(732, 530);
+            lblWrongPassword.Name = "lblWrongPassword";
+            lblWrongPassword.Size = new Size(278, 20);
+            lblWrongPassword.TabIndex = 40;
+            lblWrongPassword.Text = "Bilgileri kontrol ederek tekrar deneyin!";
+            lblWrongPassword.Visible = false;
+            // 
+            // chkRememberMe
+            // 
+            chkRememberMe.AutoSize = true;
+            chkRememberMe.BackColor = Color.Transparent;
+            chkRememberMe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            chkRememberMe.ForeColor = Color.White;
+            chkRememberMe.Location = new Point(732, 490);
+            chkRememberMe.Name = "chkRememberMe";
+            chkRememberMe.Size = new Size(119, 25);
+            chkRememberMe.TabIndex = 41;
+            chkRememberMe.Text = "Beni Hatırla";
+            chkRememberMe.UseVisualStyleBackColor = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -385,6 +413,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1131, 636);
+            Controls.Add(chkRememberMe);
+            Controls.Add(lblWrongPassword);
             Controls.Add(btnNine);
             Controls.Add(btnEight);
             Controls.Add(btnSeven);
@@ -411,6 +441,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "POSA Giriş";
+            Load += Login_Load;
             MouseDown += Login_MouseDown;
             ((System.ComponentModel.ISupportInitialize)pboxUser).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -438,5 +469,7 @@
         private CustomObjects.RoundButton btnEight;
         private CustomObjects.RoundButton btnSeven;
         private CustomObjects.RoundButton btnNine;
+        private Label lblWrongPassword;
+        private CheckBox chkRememberMe;
     }
 }

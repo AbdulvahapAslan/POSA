@@ -49,7 +49,7 @@ public class Setting
         {
             lock (LockObj)
             {
-                var jsn = JsonConvert.SerializeObject(a).Base64Decrypt().ReverseString();
+                var jsn = JsonConvert.SerializeObject(a).Base64().ReverseString();
                 File.WriteAllText(Yol, jsn, Encoding.UTF8);
                 return true;
             }

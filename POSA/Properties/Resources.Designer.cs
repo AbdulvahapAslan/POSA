@@ -133,6 +133,16 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _32pxBarcode {
+            get {
+                object obj = ResourceManager.GetObject("32pxBarcode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _32pxClose {
             get {
                 object obj = ResourceManager.GetObject("32pxClose", resourceCulture);
@@ -146,6 +156,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _32pxDiscount {
             get {
                 object obj = ResourceManager.GetObject("32pxDiscount", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _32pxTick {
+            get {
+                object obj = ResourceManager.GetObject("32pxTick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +226,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxScale {
             get {
                 object obj = ResourceManager.GetObject("64pxScale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteBarcode {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteBarcode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
