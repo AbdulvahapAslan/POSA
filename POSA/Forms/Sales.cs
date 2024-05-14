@@ -77,7 +77,12 @@ namespace POSA.Forms
             {
                 foreach (var product in customerProducts)
                 {
-                    dgvMain.Rows.Add(product.Barcode, product.ProductName, product.Price, product.Quantity, product.Total);
+                    dgvMain.Rows.Add();
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = product.Barcode;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = product.ProductName;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = product.Price;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = product.Quantity;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = product.Total;
                 }
             }
         }
@@ -94,7 +99,12 @@ namespace POSA.Forms
             {
                 foreach (var product in products)
                 {
-                    dgvMain.Rows.Add(product.Barcode, product.ProductName, product.Price, product.Quantity, product.Total);
+                    dgvMain.Rows.Add();
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = product.Barcode;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = product.ProductName;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = product.Price;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = product.Quantity;
+                    dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = product.Total;
                 }
             }
         }
@@ -110,7 +120,7 @@ namespace POSA.Forms
                 {
                     willItSaveToRoot = false;
                     Customers = (from x in Customers where x.ButtonNumber != btn.Text select x).ToList();
-                    for (int i = 0; i < dgvMain.Rows.Count - 1; i++)
+                    for (int i = 0; i < dgvMain.Rows.Count; i++)
                     {
                         Customers.Add(new Product()
                         {
@@ -128,7 +138,7 @@ namespace POSA.Forms
             if (willItSaveToRoot)
             {
                 Customers = (from x in Customers where x.ButtonNumber != "ROOT" select x).ToList();
-                for (int i = 0; i < dgvMain.Rows.Count - 1; i++)
+                for (int i = 0; i < dgvMain.Rows.Count; i++)
                 {
                     Customers.Add(new Product()
                     {
@@ -696,5 +706,10 @@ namespace POSA.Forms
         #endregion
 
         #endregion
+
+        private void btnClearGrid_Click(object sender, EventArgs e)
+        {
+            dgvMain.Rows.Clear();
+        }
     }
 }

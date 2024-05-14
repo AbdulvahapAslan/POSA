@@ -472,6 +472,7 @@ namespace POSA.Forms
             btnClearGrid.TabIndex = 4;
             btnClearGrid.Text = "TEMİZLE";
             btnClearGrid.UseVisualStyleBackColor = false;
+            btnClearGrid.Click += btnClearGrid_Click;
             // 
             // btnSearchProduct
             // 
