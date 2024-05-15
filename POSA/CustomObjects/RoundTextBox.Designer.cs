@@ -50,7 +50,7 @@
             // RoundTextBox
             // 
             AutoScaleMode = AutoScaleMode.None;
-            BackColor = SystemColors.Window;
+            BackColor = Color.White;
             Controls.Add(textBox1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(64, 64, 64);

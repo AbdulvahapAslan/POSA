@@ -79,7 +79,7 @@ namespace POSA
                 }
                 Helpers.Settings.Setting.Save(settings);
                 this.Hide();
-                var load = new Loading();
+                var load = new Loading("Mainpage",1000);
                 load.Show();
                 return;
             }

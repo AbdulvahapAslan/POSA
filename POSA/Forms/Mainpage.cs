@@ -89,12 +89,31 @@ namespace POSA.Forms
             }
             else
             {
-                MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.","UYARI",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         private void btnStocks_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnBuying_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Ürün Giriş");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (lblLicence.Text == "AKTİF")
+            {
+                var load = new Loading("NewProduct",500);
+                load.Show();
+            }
+            else
+            {
+                MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

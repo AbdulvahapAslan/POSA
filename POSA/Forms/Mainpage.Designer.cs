@@ -366,6 +366,7 @@
             btnBuying.Text = "Ürün Girişi";
             btnBuying.TextAlign = ContentAlignment.BottomCenter;
             btnBuying.UseVisualStyleBackColor = false;
+            btnBuying.Click += btnBuying_Click;
             // 
             // btnStocks
             // 
