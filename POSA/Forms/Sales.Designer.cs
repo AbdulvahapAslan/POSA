@@ -396,7 +396,7 @@ namespace POSA.Forms
             btnRootCustomer.FlatStyle = FlatStyle.Flat;
             btnRootCustomer.Location = new Point(3, 3);
             btnRootCustomer.Name = "btnRootCustomer";
-            btnRootCustomer.Size = new Size(46, 46);
+            btnRootCustomer.Size = new Size(44, 44);
             btnRootCustomer.TabIndex = 0;
             btnRootCustomer.UseVisualStyleBackColor = false;
             btnRootCustomer.Click += btnRootCustomer_Click;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             tbUsername = new TextBox();
             tbPassword = new TextBox();
@@ -49,6 +50,7 @@
             btnNine = new CustomObjects.RoundButton();
             lblWrongPassword = new Label();
             chkRememberMe = new CheckBox();
+            ttLoginButton = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pboxUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -63,6 +65,7 @@
             tbUsername.PlaceholderText = "Kullanıcı adı";
             tbUsername.Size = new Size(206, 34);
             tbUsername.TabIndex = 1;
+            ttLoginButton.SetToolTip(tbUsername, "Kullanıcı adı yazma alanı");
             // 
             // tbPassword
             // 
@@ -75,6 +78,7 @@
             tbPassword.PlaceholderText = "Şifre";
             tbPassword.Size = new Size(206, 34);
             tbPassword.TabIndex = 2;
+            ttLoginButton.SetToolTip(tbPassword, "Şifre yazma alanı");
             tbPassword.WordWrap = false;
             // 
             // pboxUser
@@ -194,6 +198,7 @@
             btnLogin.TabIndex = 32;
             btnLogin.TextAlign = ContentAlignment.TopRight;
             btnLogin.TextColor = Color.FromArgb(2, 69, 171);
+            ttLoginButton.SetToolTip(btnLogin, "Kullanıcı adı şifre girildikten sonra giriş yapmak için basınız.");
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
@@ -236,6 +241,7 @@
             btnClearPass.TabIndex = 30;
             btnClearPass.TextAlign = ContentAlignment.TopRight;
             btnClearPass.TextColor = Color.FromArgb(2, 69, 171);
+            ttLoginButton.SetToolTip(btnClearPass, "Şifre temizleme butonudur.");
             btnClearPass.UseVisualStyleBackColor = false;
             btnClearPass.Click += btnClearPass_Click;
             // 
@@ -249,6 +255,8 @@
             btnClose.BorderRadius = 0;
             btnClose.BorderSize = 0;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1091, 12);
@@ -405,6 +413,14 @@
             chkRememberMe.Text = "Beni Hatırla";
             chkRememberMe.UseVisualStyleBackColor = false;
             // 
+            // ttLoginButton
+            // 
+            ttLoginButton.BackColor = Color.Gainsboro;
+            ttLoginButton.ForeColor = Color.Black;
+            ttLoginButton.IsBalloon = true;
+            ttLoginButton.ToolTipIcon = ToolTipIcon.Info;
+            ttLoginButton.ToolTipTitle = "Bilgilendirme";
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -471,5 +487,6 @@
         private CustomObjects.RoundButton btnNine;
         private Label lblWrongPassword;
         private CheckBox chkRememberMe;
+        private ToolTip ttLoginButton;
     }
 }

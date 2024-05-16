@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
@@ -86,10 +86,10 @@
             btnNewVariant = new Button();
             btnGiveNextBarcode = new Button();
             scRightSide = new SplitContainer();
+            btnUpdate = new Button();
             pbClearSearch = new PictureBox();
             pictureBox3 = new PictureBox();
             rtbSearch = new CustomObjects.RoundTextBox();
-            btnUpdate = new Button();
             dgvMain = new DataGridView();
             Barcode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
@@ -321,6 +321,7 @@
             btnAddCategory.Size = new Size(35, 35);
             btnAddCategory.TabIndex = 74;
             btnAddCategory.UseVisualStyleBackColor = true;
+            btnAddCategory.Click += btnAddCategory_Click;
             // 
             // btnSave
             // 
@@ -790,6 +791,22 @@
             scRightSide.SplitterDistance = 49;
             scRightSide.TabIndex = 0;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.FromArgb(83, 98, 123);
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Image = Properties.Resources._24pxWhiteRefresh;
+            btnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUpdate.Location = new Point(778, 4);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(120, 40);
+            btnUpdate.TabIndex = 81;
+            btnUpdate.Text = "Güncelle";
+            btnUpdate.TextAlign = ContentAlignment.MiddleRight;
+            btnUpdate.UseVisualStyleBackColor = false;
+            // 
             // pbClearSearch
             // 
             pbClearSearch.BackColor = Color.White;
@@ -834,22 +851,6 @@
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
             // 
-            // btnUpdate
-            // 
-            btnUpdate.BackColor = Color.FromArgb(83, 98, 123);
-            btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnUpdate.ForeColor = Color.White;
-            btnUpdate.Image = Properties.Resources._24pxWhiteRefresh;
-            btnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdate.Location = new Point(778, 4);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(120, 40);
-            btnUpdate.TabIndex = 81;
-            btnUpdate.Text = "Güncelle";
-            btnUpdate.TextAlign = ContentAlignment.MiddleRight;
-            btnUpdate.UseVisualStyleBackColor = false;
-            // 
             // dgvMain
             // 
             dgvMain.AllowUserToAddRows = false;
@@ -860,24 +861,24 @@
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { Barcode, ProductName, Price, Quantity, Total });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
             dgvMain.Dock = DockStyle.Fill;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.FromArgb(215, 215, 215);
@@ -913,8 +914,8 @@
             // Quantity
             // 
             Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Quantity.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle2;
             Quantity.FillWeight = 11F;
             Quantity.HeaderText = "ADET";
             Quantity.Name = "Quantity";
@@ -922,8 +923,8 @@
             // Total
             // 
             Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Total.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Total.DefaultCellStyle = dataGridViewCellStyle3;
             Total.FillWeight = 20F;
             Total.HeaderText = "TOPLAM";
             Total.Name = "Total";
@@ -945,6 +946,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "NewProduct";
             Opacity = 0D;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "NewProduct";
             pnlMain.ResumeLayout(false);
             scMainContainer.Panel1.ResumeLayout(false);

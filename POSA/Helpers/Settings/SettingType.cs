@@ -9,14 +9,14 @@ namespace POSA.Helpers.Settings
 {
     public class SettingType
     {
-        public string MainCS { get; set; } = "Server=localhost\\SQLEXPRESS;Database=POSA;User Id=sa;Password=Avp*Posa*2024!;";
+        public string MainCS { get; set; } = "Server=.;Database=POSA;User Id=sa;Password=Avp*Posa*2024!;";
         public string LastSuccesfullyLoggedUser { get; set; } = "";
         public bool RememberMe { get; set; } = false;
         public string Password { get; set; } = "";
         public SQL_Type Sql { get; set; } = new SQL_Type();
         public class SQL_Type
         {
-            public string Server { get; set; } = @"localhost\SQLEXPRESS";
+            public string Server { get; set; } = ".";
             public int Port { get; set; } = 1433;
             public string Username { get; set; } = "sa";
             public string Password { get; set; } = "Avp*Posa*2024!";

@@ -82,9 +82,16 @@ namespace POSA.Forms
         }
         private void btnSales_Click(object sender, EventArgs e)
         {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Satış İşlemleri");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (lblLicence.Text == "AKTİF")
             {
                 var sp = new Sales();
+                sp.Name = "Satış İşlemleri";
                 sp.Show();
             }
             else

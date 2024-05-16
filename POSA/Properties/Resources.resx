@@ -187,6 +187,9 @@
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BackgroundSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="64pxPerson" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxPerson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,6 +235,9 @@
   <data name="64pxKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="24pxWhiteRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxWhiteRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -244,7 +250,7 @@
   <data name="24pxMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxWhiteRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxWhiteRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BackgroundSmall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundSmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

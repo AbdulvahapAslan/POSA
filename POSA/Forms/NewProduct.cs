@@ -36,5 +36,12 @@ namespace POSA.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            var ac = new AddCategory();
+            DialogResult dr = ac.ShowDialog();
+
+        }
     }
 }

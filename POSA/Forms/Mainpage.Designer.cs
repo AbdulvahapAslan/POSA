@@ -61,6 +61,8 @@
             btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
             btnClose.BackgroundImageLayout = ImageLayout.Center;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseDownBackColor = Color.Red;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1294, 2);
@@ -77,6 +79,7 @@
             btnMaximize.BackgroundImage = (Image)resources.GetObject("btnMaximize.BackgroundImage");
             btnMaximize.BackgroundImageLayout = ImageLayout.Center;
             btnMaximize.FlatAppearance.BorderSize = 0;
+            btnMaximize.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.ForeColor = Color.White;
             btnMaximize.Location = new Point(1223, 2);
@@ -93,6 +96,7 @@
             btnMinimize.BackgroundImage = (Image)resources.GetObject("btnMinimize.BackgroundImage");
             btnMinimize.BackgroundImageLayout = ImageLayout.Center;
             btnMinimize.FlatAppearance.BorderSize = 0;
+            btnMinimize.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.ForeColor = Color.White;
             btnMinimize.Location = new Point(1152, 2);
