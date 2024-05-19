@@ -133,6 +133,26 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _24pxUpdate {
+            get {
+                object obj = ResourceManager.GetObject("24pxUpdate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxWhiteBarcode {
+            get {
+                object obj = ResourceManager.GetObject("24pxWhiteBarcode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _24pxWhiteRefresh {
             get {
                 object obj = ResourceManager.GetObject("24pxWhiteRefresh", resourceCulture);
@@ -203,6 +223,56 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _32pxWhiteBarcode {
+            get {
+                object obj = ResourceManager.GetObject("32pxWhiteBarcode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _32pxWhiteX {
+            get {
+                object obj = ResourceManager.GetObject("32pxWhiteX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxBluePlus {
+            get {
+                object obj = ResourceManager.GetObject("64pxBluePlus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxBlueReport {
+            get {
+                object obj = ResourceManager.GetObject("64pxBlueReport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxBlueReport1 {
+            get {
+                object obj = ResourceManager.GetObject("64pxBlueReport1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _64pxContract {
             get {
                 object obj = ResourceManager.GetObject("64pxContract", resourceCulture);
@@ -226,6 +296,36 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxDiscount {
             get {
                 object obj = ResourceManager.GetObject("64pxDiscount", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxGreenCheck {
+            get {
+                object obj = ResourceManager.GetObject("64pxGreenCheck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxGreenCheck1 {
+            get {
+                object obj = ResourceManager.GetObject("64pxGreenCheck1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxGreenCheckSmall {
+            get {
+                object obj = ResourceManager.GetObject("64pxGreenCheckSmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +373,29 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _64pxPicture {
+            get {
+                object obj = ResourceManager.GetObject("64pxPicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _64pxScale {
             get {
                 object obj = ResourceManager.GetObject("64pxScale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxSmallWhiteTrash {
+            get {
+                object obj = ResourceManager.GetObject("64pxSmallWhiteTrash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,6 +413,16 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _64pxVariant1 {
+            get {
+                object obj = ResourceManager.GetObject("64pxVariant1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _64pxWhiteBarcode {
             get {
                 object obj = ResourceManager.GetObject("64pxWhiteBarcode", resourceCulture);
@@ -303,9 +433,59 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteBarcode1 {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteBarcode1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteTrash {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteTrash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _64pxWhiteTrashcan {
             get {
                 object obj = ResourceManager.GetObject("64pxWhiteTrashcan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteX {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteX50Scale {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteX50Scale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteX50Scale1 {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteX50Scale1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

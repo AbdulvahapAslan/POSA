@@ -33,11 +33,11 @@
             // 
             // textBox1
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(34, 7);
+            textBox1.Dock = DockStyle.Fill;
+            textBox1.Location = new Point(35, 7);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 18);
+            textBox1.Size = new Size(185, 18);
             textBox1.TabIndex = 0;
             textBox1.Click += textBox1_Click;
             textBox1.TextChanged += textBox1_TextChanged;
@@ -50,20 +50,18 @@
             // RoundTextBox
             // 
             AutoScaleMode = AutoScaleMode.None;
-            BackColor = Color.White;
+            BackColor = SystemColors.Window;
             Controls.Add(textBox1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(64, 64, 64);
             Margin = new Padding(4);
             Name = "RoundTextBox";
-            Padding = new Padding(10, 7, 10, 7);
-            Size = new Size(284, 30);
+            Padding = new Padding(35, 7, 30, 7);
+            Size = new Size(250, 30);
             ResumeLayout(false);
             PerformLayout();
         }
-
         #endregion
-
-        private TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

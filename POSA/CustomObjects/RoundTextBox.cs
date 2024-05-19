@@ -19,6 +19,7 @@ namespace POSA.CustomObjects
         {
             InitializeComponent();
         }
+        #region -> Private methods
         private void SetPlaceholder()
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text) && placeholderText != "")
@@ -53,6 +54,35 @@ namespace POSA.CustomObjects
             path.CloseFigure();
             return path;
         }
+        private void SetTextBoxRoundedRegion()
+        {
+            GraphicsPath pathTxt;
+            if (Multiline)
+            {
+                pathTxt = GetFigurePath(textBox1.ClientRectangle, borderRadius - borderSize);
+                textBox1.Region = new Region(pathTxt);
+            }
+            else
+            {
+                pathTxt = GetFigurePath(textBox1.ClientRectangle, borderSize * 2);
+                textBox1.Region = new Region(pathTxt);
+            }
+            pathTxt.Dispose();
+        }
+        private void UpdateControlHeight()
+        {
+            if (textBox1.Multiline == false)
+            {
+                int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
+                textBox1.Multiline = true;
+                textBox1.MinimumSize = new Size(0, txtHeight);
+                textBox1.Multiline = false;
+                this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
+            }
+        }
+        #endregion
+
+
         [Category("AVP Custom Fields")]
         public Color BorderColor
         {
@@ -190,6 +220,8 @@ namespace POSA.CustomObjects
                 SetPlaceholder();
             }
         }
+        
+        #region -> Overridden methods
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -254,32 +286,7 @@ namespace POSA.CustomObjects
                 }
             }
         }
-        private void SetTextBoxRoundedRegion()
-        {
-            GraphicsPath pathTxt;
-            if (Multiline)
-            {
-                pathTxt = GetFigurePath(textBox1.ClientRectangle, borderRadius - borderSize);
-                textBox1.Region = new Region(pathTxt);
-            }
-            else
-            {
-                pathTxt = GetFigurePath(textBox1.ClientRectangle, borderSize * 2);
-                textBox1.Region = new Region(pathTxt);
-            }
-            pathTxt.Dispose();
-        }
-        private void UpdateControlHeight()
-        {
-            if (textBox1.Multiline == false)
-            {
-                int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
-                textBox1.Multiline = true;
-                textBox1.MinimumSize = new Size(0, txtHeight);
-                textBox1.Multiline = false;
-                this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
-            }
-        }
+        #endregion
         //Fields
         private Color borderColor = Color.MediumSlateBlue;
         private Color borderFocusColor = Color.HotPink;

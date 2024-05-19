@@ -98,12 +98,10 @@ namespace POSA.Forms
             {
                 MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void btnStocks_Click(object sender, EventArgs e)
         {
         }
-
         private void btnBuying_Click(object sender, EventArgs e)
         {
             var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Ürün Giriş");
@@ -114,12 +112,34 @@ namespace POSA.Forms
             }
             if (lblLicence.Text == "AKTİF")
             {
-                var load = new Loading("NewProduct",500);
+                var load = new Loading("NewProduct", 500);
                 load.Show();
             }
             else
             {
                 MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnWholesaler_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Tedarikçi Ekle");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var addS = new AddSupplier();
+                    addS.Name = "Tedarikçi Ekle";
+                    addS.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

@@ -354,6 +354,7 @@
             btnWholesaler.Text = "Toptancı";
             btnWholesaler.TextAlign = ContentAlignment.BottomCenter;
             btnWholesaler.UseVisualStyleBackColor = false;
+            btnWholesaler.Click += btnWholesaler_Click;
             // 
             // btnBuying
             // 

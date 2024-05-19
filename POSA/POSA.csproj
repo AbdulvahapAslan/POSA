@@ -16,6 +16,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\AddBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
