@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
             lblPageHeader = new Label();
             pnlMain = new Panel();
             scMainContainer = new SplitContainer();
-            tbCurrency = new TextBox();
+            cbCurrency = new ComboBox();
             lblCurrency = new Label();
             btnAddBranch = new Button();
             btnAddSupplier = new Button();
@@ -92,25 +93,12 @@
             btnNewVariant = new Button();
             btnGiveNextBarcode = new Button();
             scRightSide = new SplitContainer();
+            lblListingBranch = new Label();
+            cbListingBranch = new ComboBox();
             pbClearSearch = new PictureBox();
             pictureBox3 = new PictureBox();
             rtbSearch = new CustomObjects.RoundTextBox();
             btnSaveVariants = new Button();
-            dgvMain = new DataGridView();
-            BARCODE = new DataGridViewTextBoxColumn();
-            NAME = new DataGridViewTextBoxColumn();
-            CATEGORY = new DataGridViewTextBoxColumn();
-            UNIT = new DataGridViewTextBoxColumn();
-            COLOR = new DataGridViewTextBoxColumn();
-            SIZE = new DataGridViewTextBoxColumn();
-            MATERIAL = new DataGridViewTextBoxColumn();
-            BUYINGPRICE = new DataGridViewTextBoxColumn();
-            SELLPRICE = new DataGridViewTextBoxColumn();
-            SELLPRICE2 = new DataGridViewTextBoxColumn();
-            SELLPRICE3 = new DataGridViewTextBoxColumn();
-            STOCK = new DataGridViewTextBoxColumn();
-            CRITICALSTOCK = new DataGridViewTextBoxColumn();
-            SUPPLIER = new DataGridViewTextBoxColumn();
             dgvVariant = new DataGridView();
             VBARCODE = new DataGridViewTextBoxColumn();
             VNAME = new DataGridViewTextBoxColumn();
@@ -123,12 +111,30 @@
             VSELLPRICE = new DataGridViewTextBoxColumn();
             VSELLPRICE2 = new DataGridViewTextBoxColumn();
             VSELLPRICE3 = new DataGridViewTextBoxColumn();
+            VVATRATE = new DataGridViewTextBoxColumn();
+            VCURRENCY = new DataGridViewTextBoxColumn();
             VSTOCK = new DataGridViewTextBoxColumn();
             VCRITICALSTOCK = new DataGridViewTextBoxColumn();
             VSUPPLIER = new DataGridViewTextBoxColumn();
             VBRANCH = new DataGridViewTextBoxColumn();
-            cbListingBranch = new ComboBox();
-            lblListingBranch = new Label();
+            dgvMain = new DataGridView();
+            BARCODE = new DataGridViewTextBoxColumn();
+            VATRATE = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            CATEGORY = new DataGridViewTextBoxColumn();
+            UNIT = new DataGridViewTextBoxColumn();
+            COLOR = new DataGridViewTextBoxColumn();
+            SIZE = new DataGridViewTextBoxColumn();
+            MATERIAL = new DataGridViewTextBoxColumn();
+            BUYINGPRICE = new DataGridViewTextBoxColumn();
+            SELLPRICE = new DataGridViewTextBoxColumn();
+            SELLPRICE2 = new DataGridViewTextBoxColumn();
+            SELLPRICE3 = new DataGridViewTextBoxColumn();
+            CURRENCY = new DataGridViewTextBoxColumn();
+            STOCK = new DataGridViewTextBoxColumn();
+            CRITICALSTOCK = new DataGridViewTextBoxColumn();
+            SUPPLIER = new DataGridViewTextBoxColumn();
+            tmrNewProduct = new System.Windows.Forms.Timer(components);
             pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMainContainer).BeginInit();
             scMainContainer.Panel1.SuspendLayout();
@@ -141,8 +147,8 @@
             scRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvVariant).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             SuspendLayout();
             // 
             // btnMinimize
@@ -228,7 +234,7 @@
             // scMainContainer.Panel1
             // 
             scMainContainer.Panel1.BackColor = Color.Transparent;
-            scMainContainer.Panel1.Controls.Add(tbCurrency);
+            scMainContainer.Panel1.Controls.Add(cbCurrency);
             scMainContainer.Panel1.Controls.Add(lblCurrency);
             scMainContainer.Panel1.Controls.Add(btnAddBranch);
             scMainContainer.Panel1.Controls.Add(btnAddSupplier);
@@ -284,21 +290,25 @@
             scMainContainer.SplitterDistance = 431;
             scMainContainer.TabIndex = 0;
             // 
-            // tbCurrency
+            // cbCurrency
             // 
-            tbCurrency.BorderStyle = BorderStyle.None;
-            tbCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbCurrency.Location = new Point(127, 539);
-            tbCurrency.Name = "tbCurrency";
-            tbCurrency.Size = new Size(260, 23);
-            tbCurrency.TabIndex = 82;
+            cbCurrency.BackColor = Color.White;
+            cbCurrency.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCurrency.FlatStyle = FlatStyle.Flat;
+            cbCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
+            cbCurrency.FormattingEnabled = true;
+            cbCurrency.Items.AddRange(new object[] { "TL", "USD", "EURO" });
+            cbCurrency.Location = new Point(127, 539);
+            cbCurrency.Name = "cbCurrency";
+            cbCurrency.Size = new Size(260, 31);
+            cbCurrency.TabIndex = 82;
             // 
             // lblCurrency
             // 
             lblCurrency.AutoSize = true;
             lblCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblCurrency.ForeColor = Color.White;
-            lblCurrency.Location = new Point(3, 537);
+            lblCurrency.Location = new Point(3, 542);
             lblCurrency.Name = "lblCurrency";
             lblCurrency.Size = new Size(94, 23);
             lblCurrency.TabIndex = 81;
@@ -309,7 +319,7 @@
             btnAddBranch.FlatAppearance.BorderSize = 0;
             btnAddBranch.FlatStyle = FlatStyle.Flat;
             btnAddBranch.Image = Properties.Resources._32pxAdd;
-            btnAddBranch.Location = new Point(391, 603);
+            btnAddBranch.Location = new Point(391, 611);
             btnAddBranch.Name = "btnAddBranch";
             btnAddBranch.Size = new Size(35, 35);
             btnAddBranch.TabIndex = 80;
@@ -322,7 +332,7 @@
             btnAddSupplier.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddSupplier.FlatStyle = FlatStyle.Flat;
             btnAddSupplier.Image = Properties.Resources._32pxAdd;
-            btnAddSupplier.Location = new Point(391, 566);
+            btnAddSupplier.Location = new Point(391, 574);
             btnAddSupplier.Name = "btnAddSupplier";
             btnAddSupplier.Size = new Size(35, 35);
             btnAddSupplier.TabIndex = 79;
@@ -440,7 +450,7 @@
             cbBranch.FlatStyle = FlatStyle.Flat;
             cbBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbBranch.FormattingEnabled = true;
-            cbBranch.Location = new Point(127, 605);
+            cbBranch.Location = new Point(127, 613);
             cbBranch.Name = "cbBranch";
             cbBranch.Size = new Size(260, 31);
             cbBranch.TabIndex = 70;
@@ -452,7 +462,7 @@
             cbSupplier.FlatStyle = FlatStyle.Flat;
             cbSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbSupplier.FormattingEnabled = true;
-            cbSupplier.Location = new Point(127, 568);
+            cbSupplier.Location = new Point(127, 576);
             cbSupplier.Name = "cbSupplier";
             cbSupplier.Size = new Size(260, 31);
             cbSupplier.TabIndex = 69;
@@ -529,7 +539,7 @@
             lblBranch.AutoSize = true;
             lblBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblBranch.ForeColor = Color.White;
-            lblBranch.Location = new Point(3, 608);
+            lblBranch.Location = new Point(3, 616);
             lblBranch.Name = "lblBranch";
             lblBranch.Size = new Size(48, 23);
             lblBranch.TabIndex = 62;
@@ -550,11 +560,11 @@
             // 
             label15.AutoSize = true;
             label15.BorderStyle = BorderStyle.FixedSingle;
-            label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label15.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             label15.ForeColor = Color.White;
-            label15.Location = new Point(297, 481);
+            label15.Location = new Point(297, 480);
             label15.Name = "label15";
-            label15.Size = new Size(65, 23);
+            label15.Size = new Size(76, 25);
             label15.TabIndex = 60;
             label15.Text = "3           ";
             label15.TextAlign = ContentAlignment.MiddleLeft;
@@ -575,11 +585,11 @@
             // 
             label14.AutoSize = true;
             label14.BorderStyle = BorderStyle.FixedSingle;
-            label14.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label14.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(204, 481);
+            label14.Location = new Point(204, 480);
             label14.Name = "label14";
-            label14.Size = new Size(65, 23);
+            label14.Size = new Size(76, 25);
             label14.TabIndex = 58;
             label14.Text = "2           ";
             label14.Paint += labelBorderPainter_Paint;
@@ -599,11 +609,11 @@
             // 
             lblCriticalStock.AutoSize = true;
             lblCriticalStock.BorderStyle = BorderStyle.FixedSingle;
-            lblCriticalStock.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lblCriticalStock.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             lblCriticalStock.ForeColor = Color.White;
-            lblCriticalStock.Location = new Point(203, 510);
+            lblCriticalStock.Location = new Point(203, 509);
             lblCriticalStock.Name = "lblCriticalStock";
-            lblCriticalStock.Size = new Size(139, 23);
+            lblCriticalStock.Size = new Size(155, 25);
             lblCriticalStock.TabIndex = 56;
             lblCriticalStock.Text = "Kritik Stok             ";
             lblCriticalStock.Paint += labelBorderPainter_Paint;
@@ -613,7 +623,7 @@
             lblSupplier.AutoSize = true;
             lblSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblSupplier.ForeColor = Color.White;
-            lblSupplier.Location = new Point(4, 571);
+            lblSupplier.Location = new Point(4, 579);
             lblSupplier.Name = "lblSupplier";
             lblSupplier.Size = new Size(76, 23);
             lblSupplier.TabIndex = 54;
@@ -847,7 +857,7 @@
             btnNewVariant.Name = "btnNewVariant";
             btnNewVariant.Size = new Size(118, 82);
             btnNewVariant.TabIndex = 30;
-            btnNewVariant.Text = "Yeni Variyant";
+            btnNewVariant.Text = "Varyantlı Ekle";
             btnNewVariant.TextAlign = ContentAlignment.BottomCenter;
             btnNewVariant.UseVisualStyleBackColor = false;
             btnNewVariant.Click += btnNewVariant_Click;
@@ -890,11 +900,35 @@
             // scRightSide.Panel2
             // 
             scRightSide.Panel2.BackColor = Color.White;
-            scRightSide.Panel2.Controls.Add(dgvMain);
             scRightSide.Panel2.Controls.Add(dgvVariant);
+            scRightSide.Panel2.Controls.Add(dgvMain);
             scRightSide.Size = new Size(901, 703);
             scRightSide.SplitterDistance = 49;
             scRightSide.TabIndex = 0;
+            // 
+            // lblListingBranch
+            // 
+            lblListingBranch.AutoSize = true;
+            lblListingBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
+            lblListingBranch.ForeColor = Color.White;
+            lblListingBranch.Location = new Point(329, 13);
+            lblListingBranch.Name = "lblListingBranch";
+            lblListingBranch.Size = new Size(129, 23);
+            lblListingBranch.TabIndex = 83;
+            lblListingBranch.Text = "Listelenen Şube";
+            // 
+            // cbListingBranch
+            // 
+            cbListingBranch.BackColor = Color.White;
+            cbListingBranch.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbListingBranch.FlatStyle = FlatStyle.Flat;
+            cbListingBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
+            cbListingBranch.FormattingEnabled = true;
+            cbListingBranch.Location = new Point(464, 10);
+            cbListingBranch.Name = "cbListingBranch";
+            cbListingBranch.Size = new Size(206, 31);
+            cbListingBranch.TabIndex = 83;
+            cbListingBranch.SelectedIndexChanged += cbListingBranch_SelectedIndexChanged;
             // 
             // pbClearSearch
             // 
@@ -952,10 +986,189 @@
             btnSaveVariants.Name = "btnSaveVariants";
             btnSaveVariants.Size = new Size(157, 34);
             btnSaveVariants.TabIndex = 81;
-            btnSaveVariants.Text = "Variyantları Kaydet";
+            btnSaveVariants.Text = "Varyantları Kaydet";
             btnSaveVariants.TextAlign = ContentAlignment.MiddleRight;
             btnSaveVariants.UseVisualStyleBackColor = false;
             btnSaveVariants.Visible = false;
+            btnSaveVariants.Click += btnSaveVariants_Click;
+            // 
+            // dgvVariant
+            // 
+            dgvVariant.AllowUserToAddRows = false;
+            dgvVariant.AllowUserToDeleteRows = false;
+            dgvVariant.AllowUserToResizeColumns = false;
+            dgvVariant.AllowUserToResizeRows = false;
+            dgvVariant.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvVariant.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dgvVariant.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvVariant.BackgroundColor = Color.White;
+            dgvVariant.BorderStyle = BorderStyle.None;
+            dgvVariant.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvVariant.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvVariant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVariant.Columns.AddRange(new DataGridViewColumn[] { VBARCODE, VNAME, VCATEGORY, VUNIT, VCOLOR, VSIZE, VMATERIAL, VBUYPRICE, VSELLPRICE, VSELLPRICE2, VSELLPRICE3, VVATRATE, VCURRENCY, VSTOCK, VCRITICALSTOCK, VSUPPLIER, VBRANCH });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvVariant.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvVariant.EnableHeadersVisualStyles = false;
+            dgvVariant.GridColor = Color.White;
+            dgvVariant.Location = new Point(7, 7);
+            dgvVariant.Margin = new Padding(7);
+            dgvVariant.Name = "dgvVariant";
+            dgvVariant.RowHeadersVisible = false;
+            dgvVariant.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvVariant.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
+            dgvVariant.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvVariant.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
+            dgvVariant.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
+            dgvVariant.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvVariant.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvVariant.RowTemplate.DividerHeight = 10;
+            dgvVariant.RowTemplate.Height = 40;
+            dgvVariant.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVariant.Size = new Size(887, 636);
+            dgvVariant.TabIndex = 4;
+            dgvVariant.Visible = false;
+            dgvVariant.CellClick += dgvVariant_CellClick;
+            // 
+            // VBARCODE
+            // 
+            VBARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VBARCODE.FillWeight = 50.8869553F;
+            VBARCODE.HeaderText = "BARKOD";
+            VBARCODE.Name = "VBARCODE";
+            // 
+            // VNAME
+            // 
+            VNAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VNAME.FillWeight = 59.36811F;
+            VNAME.HeaderText = "ÜRÜN ADI";
+            VNAME.Name = "VNAME";
+            // 
+            // VCATEGORY
+            // 
+            VCATEGORY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VCATEGORY.FillWeight = 67.84927F;
+            VCATEGORY.HeaderText = "KATEGORİ";
+            VCATEGORY.Name = "VCATEGORY";
+            // 
+            // VUNIT
+            // 
+            VUNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VUNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            VUNIT.FillWeight = 33.9246368F;
+            VUNIT.HeaderText = "BİRİM";
+            VUNIT.Name = "VUNIT";
+            // 
+            // VCOLOR
+            // 
+            VCOLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VCOLOR.DefaultCellStyle = dataGridViewCellStyle3;
+            VCOLOR.FillWeight = 33.9246368F;
+            VCOLOR.HeaderText = "RENK";
+            VCOLOR.Name = "VCOLOR";
+            // 
+            // VSIZE
+            // 
+            VSIZE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VSIZE.FillWeight = 40F;
+            VSIZE.HeaderText = "BEDEN";
+            VSIZE.MinimumWidth = 47;
+            VSIZE.Name = "VSIZE";
+            // 
+            // VMATERIAL
+            // 
+            VMATERIAL.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VMATERIAL.FillWeight = 67.84927F;
+            VMATERIAL.HeaderText = "MATERYAL";
+            VMATERIAL.Name = "VMATERIAL";
+            // 
+            // VBUYPRICE
+            // 
+            VBUYPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VBUYPRICE.FillWeight = 33.9246368F;
+            VBUYPRICE.HeaderText = "ALIŞ";
+            VBUYPRICE.Name = "VBUYPRICE";
+            // 
+            // VSELLPRICE
+            // 
+            VSELLPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VSELLPRICE.FillWeight = 46.6463737F;
+            VSELLPRICE.HeaderText = "SATIŞ";
+            VSELLPRICE.Name = "VSELLPRICE";
+            // 
+            // VSELLPRICE2
+            // 
+            VSELLPRICE2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VSELLPRICE2.FillWeight = 46.6463737F;
+            VSELLPRICE2.HeaderText = "SATIŞ2";
+            VSELLPRICE2.Name = "VSELLPRICE2";
+            // 
+            // VSELLPRICE3
+            // 
+            VSELLPRICE3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VSELLPRICE3.FillWeight = 46.6463737F;
+            VSELLPRICE3.HeaderText = "SATIŞ3";
+            VSELLPRICE3.Name = "VSELLPRICE3";
+            // 
+            // VVATRATE
+            // 
+            VVATRATE.HeaderText = "KDV";
+            VVATRATE.Name = "VVATRATE";
+            VVATRATE.Visible = false;
+            VVATRATE.Width = 60;
+            // 
+            // VCURRENCY
+            // 
+            VCURRENCY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VCURRENCY.FillWeight = 42.4057961F;
+            VCURRENCY.HeaderText = "D.CİNSİ";
+            VCURRENCY.Name = "VCURRENCY";
+            // 
+            // VSTOCK
+            // 
+            VSTOCK.FillWeight = 30F;
+            VSTOCK.HeaderText = "STOK";
+            VSTOCK.Name = "VSTOCK";
+            VSTOCK.Width = 67;
+            // 
+            // VCRITICALSTOCK
+            // 
+            VCRITICALSTOCK.FillWeight = 30F;
+            VCRITICALSTOCK.HeaderText = "K.STOK";
+            VCRITICALSTOCK.Name = "VCRITICALSTOCK";
+            VCRITICALSTOCK.Width = 80;
+            // 
+            // VSUPPLIER
+            // 
+            VSUPPLIER.FillWeight = 60F;
+            VSUPPLIER.HeaderText = "TEDARİKÇİ";
+            VSUPPLIER.Name = "VSUPPLIER";
+            VSUPPLIER.Visible = false;
+            VSUPPLIER.Width = 102;
+            // 
+            // VBRANCH
+            // 
+            VBRANCH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            VBRANCH.FillWeight = 40F;
+            VBRANCH.HeaderText = "ŞUBE";
+            VBRANCH.Name = "VBRANCH";
+            VBRANCH.Visible = false;
             // 
             // dgvMain
             // 
@@ -965,33 +1178,35 @@
             dgvMain.AllowUserToResizeRows = false;
             dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvMain.BackgroundColor = Color.White;
             dgvMain.BorderStyle = BorderStyle.None;
-            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle9.SelectionBackColor = Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, STOCK, CRITICALSTOCK, SUPPLIER });
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle12;
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER });
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle8;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(7, 7);
             dgvMain.Margin = new Padding(7);
             dgvMain.Name = "dgvMain";
+            dgvMain.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvMain.RowHeadersVisible = false;
             dgvMain.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
@@ -1001,7 +1216,7 @@
             dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMain.RowTemplate.DividerHeight = 10;
-            dgvMain.RowTemplate.Height = 40;
+            dgvMain.RowTemplate.Height = 50;
             dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMain.Size = new Size(887, 636);
             dgvMain.TabIndex = 5;
@@ -1014,6 +1229,14 @@
             BARCODE.FillWeight = 60F;
             BARCODE.HeaderText = "BARKOD";
             BARCODE.Name = "BARCODE";
+            // 
+            // VATRATE
+            // 
+            VATRATE.DataPropertyName = "VATRATE";
+            VATRATE.HeaderText = "KDV";
+            VATRATE.Name = "VATRATE";
+            VATRATE.Visible = false;
+            VATRATE.Width = 60;
             // 
             // NAME
             // 
@@ -1035,8 +1258,8 @@
             // 
             UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UNIT.DataPropertyName = "UNIT";
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            UNIT.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            UNIT.DefaultCellStyle = dataGridViewCellStyle6;
             UNIT.FillWeight = 40F;
             UNIT.HeaderText = "BİRİM";
             UNIT.Name = "UNIT";
@@ -1045,8 +1268,8 @@
             // 
             COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             COLOR.DataPropertyName = "COLOR";
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            COLOR.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            COLOR.DefaultCellStyle = dataGridViewCellStyle7;
             COLOR.FillWeight = 40F;
             COLOR.HeaderText = "RENK";
             COLOR.Name = "COLOR";
@@ -1090,6 +1313,7 @@
             SELLPRICE2.FillWeight = 55F;
             SELLPRICE2.HeaderText = "SATIŞ2";
             SELLPRICE2.Name = "SELLPRICE2";
+            SELLPRICE2.Visible = false;
             // 
             // SELLPRICE3
             // 
@@ -1098,6 +1322,15 @@
             SELLPRICE3.FillWeight = 55F;
             SELLPRICE3.HeaderText = "SATIŞ3";
             SELLPRICE3.Name = "SELLPRICE3";
+            SELLPRICE3.Visible = false;
+            // 
+            // CURRENCY
+            // 
+            CURRENCY.DataPropertyName = "CURRENCY";
+            CURRENCY.HeaderText = "D.CİNSİ";
+            CURRENCY.Name = "CURRENCY";
+            CURRENCY.Visible = false;
+            CURRENCY.Width = 81;
             // 
             // STOCK
             // 
@@ -1113,6 +1346,7 @@
             CRITICALSTOCK.FillWeight = 40F;
             CRITICALSTOCK.HeaderText = "K.STOK";
             CRITICALSTOCK.Name = "CRITICALSTOCK";
+            CRITICALSTOCK.Visible = false;
             CRITICALSTOCK.Width = 80;
             // 
             // SUPPLIER
@@ -1124,191 +1358,11 @@
             SUPPLIER.Visible = false;
             SUPPLIER.Width = 102;
             // 
-            // dgvVariant
+            // tmrNewProduct
             // 
-            dgvVariant.AllowUserToAddRows = false;
-            dgvVariant.AllowUserToDeleteRows = false;
-            dgvVariant.AllowUserToResizeColumns = false;
-            dgvVariant.AllowUserToResizeRows = false;
-            dgvVariant.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvVariant.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dgvVariant.BackgroundColor = Color.White;
-            dgvVariant.BorderStyle = BorderStyle.None;
-            dgvVariant.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dgvVariant.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = Color.White;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle13.SelectionBackColor = Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            dgvVariant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVariant.Columns.AddRange(new DataGridViewColumn[] { VBARCODE, VNAME, VCATEGORY, VUNIT, VCOLOR, VSIZE, VMATERIAL, VBUYPRICE, VSELLPRICE, VSELLPRICE2, VSELLPRICE3, VSTOCK, VCRITICALSTOCK, VSUPPLIER, VBRANCH });
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = Color.White;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle16.ForeColor = Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
-            dgvVariant.DefaultCellStyle = dataGridViewCellStyle16;
-            dgvVariant.EnableHeadersVisualStyles = false;
-            dgvVariant.GridColor = Color.White;
-            dgvVariant.Location = new Point(7, 7);
-            dgvVariant.Margin = new Padding(7);
-            dgvVariant.Name = "dgvVariant";
-            dgvVariant.RowHeadersVisible = false;
-            dgvVariant.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvVariant.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
-            dgvVariant.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvVariant.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
-            dgvVariant.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
-            dgvVariant.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvVariant.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvVariant.RowTemplate.DividerHeight = 10;
-            dgvVariant.RowTemplate.Height = 40;
-            dgvVariant.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvVariant.Size = new Size(887, 636);
-            dgvVariant.TabIndex = 4;
-            dgvVariant.Visible = false;
-            dgvVariant.CellClick += dgvVariant_CellClick;
-            // 
-            // VBARCODE
-            // 
-            VBARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VBARCODE.FillWeight = 60F;
-            VBARCODE.HeaderText = "BARKOD";
-            VBARCODE.Name = "VBARCODE";
-            // 
-            // VNAME
-            // 
-            VNAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VNAME.FillWeight = 70F;
-            VNAME.HeaderText = "ÜRÜN ADI";
-            VNAME.Name = "VNAME";
-            // 
-            // VCATEGORY
-            // 
-            VCATEGORY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VCATEGORY.FillWeight = 80F;
-            VCATEGORY.HeaderText = "KATEGORİ";
-            VCATEGORY.Name = "VCATEGORY";
-            // 
-            // VUNIT
-            // 
-            VUNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VUNIT.DefaultCellStyle = dataGridViewCellStyle14;
-            VUNIT.FillWeight = 40F;
-            VUNIT.HeaderText = "BİRİM";
-            VUNIT.Name = "VUNIT";
-            // 
-            // VCOLOR
-            // 
-            VCOLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VCOLOR.DefaultCellStyle = dataGridViewCellStyle15;
-            VCOLOR.FillWeight = 40F;
-            VCOLOR.HeaderText = "RENK";
-            VCOLOR.Name = "VCOLOR";
-            // 
-            // VSIZE
-            // 
-            VSIZE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VSIZE.FillWeight = 40F;
-            VSIZE.HeaderText = "BEDEN";
-            VSIZE.Name = "VSIZE";
-            // 
-            // VMATERIAL
-            // 
-            VMATERIAL.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VMATERIAL.FillWeight = 80F;
-            VMATERIAL.HeaderText = "MATERYAL";
-            VMATERIAL.Name = "VMATERIAL";
-            // 
-            // VBUYPRICE
-            // 
-            VBUYPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VBUYPRICE.FillWeight = 40F;
-            VBUYPRICE.HeaderText = "ALIŞ";
-            VBUYPRICE.Name = "VBUYPRICE";
-            // 
-            // VSELLPRICE
-            // 
-            VSELLPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VSELLPRICE.FillWeight = 55F;
-            VSELLPRICE.HeaderText = "SATIŞ";
-            VSELLPRICE.Name = "VSELLPRICE";
-            // 
-            // VSELLPRICE2
-            // 
-            VSELLPRICE2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VSELLPRICE2.FillWeight = 55F;
-            VSELLPRICE2.HeaderText = "SATIŞ2";
-            VSELLPRICE2.Name = "VSELLPRICE2";
-            // 
-            // VSELLPRICE3
-            // 
-            VSELLPRICE3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VSELLPRICE3.FillWeight = 55F;
-            VSELLPRICE3.HeaderText = "SATIŞ3";
-            VSELLPRICE3.Name = "VSELLPRICE3";
-            // 
-            // VSTOCK
-            // 
-            VSTOCK.FillWeight = 30F;
-            VSTOCK.HeaderText = "STOK";
-            VSTOCK.Name = "VSTOCK";
-            VSTOCK.Width = 67;
-            // 
-            // VCRITICALSTOCK
-            // 
-            VCRITICALSTOCK.FillWeight = 40F;
-            VCRITICALSTOCK.HeaderText = "K.STOK";
-            VCRITICALSTOCK.Name = "VCRITICALSTOCK";
-            VCRITICALSTOCK.Width = 80;
-            // 
-            // VSUPPLIER
-            // 
-            VSUPPLIER.FillWeight = 60F;
-            VSUPPLIER.HeaderText = "TEDARİKÇİ";
-            VSUPPLIER.Name = "VSUPPLIER";
-            VSUPPLIER.Visible = false;
-            VSUPPLIER.Width = 102;
-            // 
-            // VBRANCH
-            // 
-            VBRANCH.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VBRANCH.FillWeight = 40F;
-            VBRANCH.HeaderText = "ŞUBE";
-            VBRANCH.Name = "VBRANCH";
-            VBRANCH.Visible = false;
-            // 
-            // cbListingBranch
-            // 
-            cbListingBranch.BackColor = Color.White;
-            cbListingBranch.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbListingBranch.FlatStyle = FlatStyle.Flat;
-            cbListingBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            cbListingBranch.FormattingEnabled = true;
-            cbListingBranch.Location = new Point(464, 10);
-            cbListingBranch.Name = "cbListingBranch";
-            cbListingBranch.Size = new Size(206, 31);
-            cbListingBranch.TabIndex = 83;
-            cbListingBranch.SelectedIndexChanged += cbListingBranch_SelectedIndexChanged;
-            // 
-            // lblListingBranch
-            // 
-            lblListingBranch.AutoSize = true;
-            lblListingBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            lblListingBranch.ForeColor = Color.White;
-            lblListingBranch.Location = new Point(329, 13);
-            lblListingBranch.Name = "lblListingBranch";
-            lblListingBranch.Size = new Size(129, 23);
-            lblListingBranch.TabIndex = 83;
-            lblListingBranch.Text = "Listelenen Şube";
+            tmrNewProduct.Enabled = true;
+            tmrNewProduct.Interval = 600;
+            tmrNewProduct.Tick += tmrNewProduct_Tick;
             // 
             // NewProduct
             // 
@@ -1345,8 +1399,8 @@
             scRightSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvVariant).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1412,22 +1466,11 @@
         private Button btnSaveVariants;
         private DataGridView dgvVariant;
         private DataGridView dgvMain;
-        private TextBox tbCurrency;
         private Label lblCurrency;
-        private DataGridViewTextBoxColumn BARCODE;
-        private DataGridViewTextBoxColumn NAME;
-        private DataGridViewTextBoxColumn CATEGORY;
-        private DataGridViewTextBoxColumn UNIT;
-        private DataGridViewTextBoxColumn COLOR;
-        private DataGridViewTextBoxColumn SIZE;
-        private DataGridViewTextBoxColumn MATERIAL;
-        private DataGridViewTextBoxColumn BUYINGPRICE;
-        private DataGridViewTextBoxColumn SELLPRICE;
-        private DataGridViewTextBoxColumn SELLPRICE2;
-        private DataGridViewTextBoxColumn SELLPRICE3;
-        private DataGridViewTextBoxColumn STOCK;
-        private DataGridViewTextBoxColumn CRITICALSTOCK;
-        private DataGridViewTextBoxColumn SUPPLIER;
+        private Label lblListingBranch;
+        private ComboBox cbListingBranch;
+        private System.Windows.Forms.Timer tmrNewProduct;
+        private ComboBox cbCurrency;
         private DataGridViewTextBoxColumn VBARCODE;
         private DataGridViewTextBoxColumn VNAME;
         private DataGridViewTextBoxColumn VCATEGORY;
@@ -1439,11 +1482,27 @@
         private DataGridViewTextBoxColumn VSELLPRICE;
         private DataGridViewTextBoxColumn VSELLPRICE2;
         private DataGridViewTextBoxColumn VSELLPRICE3;
+        private DataGridViewTextBoxColumn VVATRATE;
+        private DataGridViewTextBoxColumn VCURRENCY;
         private DataGridViewTextBoxColumn VSTOCK;
         private DataGridViewTextBoxColumn VCRITICALSTOCK;
         private DataGridViewTextBoxColumn VSUPPLIER;
         private DataGridViewTextBoxColumn VBRANCH;
-        private Label lblListingBranch;
-        private ComboBox cbListingBranch;
+        private DataGridViewTextBoxColumn BARCODE;
+        private DataGridViewTextBoxColumn VATRATE;
+        private DataGridViewTextBoxColumn NAME;
+        private DataGridViewTextBoxColumn CATEGORY;
+        private DataGridViewTextBoxColumn UNIT;
+        private DataGridViewTextBoxColumn COLOR;
+        private DataGridViewTextBoxColumn SIZE;
+        private DataGridViewTextBoxColumn MATERIAL;
+        private DataGridViewTextBoxColumn BUYINGPRICE;
+        private DataGridViewTextBoxColumn SELLPRICE;
+        private DataGridViewTextBoxColumn SELLPRICE2;
+        private DataGridViewTextBoxColumn SELLPRICE3;
+        private DataGridViewTextBoxColumn CURRENCY;
+        private DataGridViewTextBoxColumn STOCK;
+        private DataGridViewTextBoxColumn CRITICALSTOCK;
+        private DataGridViewTextBoxColumn SUPPLIER;
     }
 }

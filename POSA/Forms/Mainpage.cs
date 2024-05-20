@@ -112,7 +112,7 @@ namespace POSA.Forms
             }
             if (lblLicence.Text == "AKTİF")
             {
-                var load = new Loading("NewProduct", 500);
+                var load = new Loading("NewProduct", 750);
                 load.Show();
             }
             else

@@ -100,33 +100,7 @@ namespace POSA.Forms
             cbSupplier.ValueMember = "ID";
             cbMaterial.DisplayMember = "NAME";
             cbMaterial.ValueMember = "ID";
-            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxUpdate,
-                Name = "UPDATE",
-                HeaderText = "",
-                FillWeight = 7,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxClose,
-                Name = "DELETE",
-                HeaderText = "",
-                FillWeight = 7,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns["DELETE"].FillWeight = 20;
-            dgvMain.Columns["UPDATE"].FillWeight = 20;
-            dgvVariant.Columns.Insert(dgvVariant.Columns.Count, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxClose,
-                Name = "VDELETE",
-                HeaderText = "",
-                FillWeight = 7,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvVariant.Columns["VDELETE"].FillWeight = 20;
+
             FillCategoryComboBox();
             FillUnitComboBox();
             FillBranchComboBox();
@@ -134,6 +108,7 @@ namespace POSA.Forms
             FillSizeComboBox();
             FillSupplierComboBox();
             FillMaterialComboBox();
+
         }
         public void ClearAfterAddingToDB()
         {
@@ -141,7 +116,7 @@ namespace POSA.Forms
             tbBarcode.Text = "";
             tbBuyPrice.Text = "0";
             tbCriticalStock.Text = "0";
-            tbCurrency.Text = "";
+            cbCurrency.SelectedIndex = 0;
             tbVatRate.Text = "0";
             tbStock.Text = "0";
             tbSalePrice.Text = "0";
@@ -155,6 +130,9 @@ namespace POSA.Forms
             cbMaterial.SelectedIndex = 0;
             cbSupplier.SelectedIndex = 0;
             cbUnit.SelectedIndex = 0;
+            LastAddedImagePath = "";
+            VariantImages.Clear();
+            dgvVariant.Rows.Clear();
         }
         private string ConvertImageToBase64(Image? img)
         {
@@ -182,6 +160,28 @@ namespace POSA.Forms
                 return image;
             }
         }
+        public class VariantImage
+        {
+            public string ImagePath { get; set; } = "";
+            public string Barcode { get; set; }
+        }
+        public List<VariantImage> VariantImages = new List<VariantImage>();
+        public void ClearAfterAddVariant()
+        {
+            LastAddedImagePath = "";
+            pbProduct.BackgroundImage = Properties.Resources._256pxNoImage;
+            cbColor.SelectedIndex = 0;
+            cbMaterial.SelectedIndex = 0;
+            cbSize.SelectedIndex = 0;
+            tbBarcode.Text = "";
+            tbBuyPrice.Text = "0";
+            tbCriticalStock.Text = "0";
+            tbStock.Text = "0";
+            tbSalePrice.Text = "0";
+            tbSalePrice2.Text = "0";
+            tbSalePrice3.Text = "0";
+            tbProductName.Text = "";
+        }
         private async void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbBarcode.Text) || string.IsNullOrWhiteSpace(tbProductName.Text))
@@ -195,6 +195,13 @@ namespace POSA.Forms
             if (btnSave.Text.StartsWith("LİST"))
             {
                 //add to variant grid and picture to string list
+                dgvVariant.Rows.Add(tbBarcode.Text, tbProductName.Text, cbCategory.Text, cbUnit.Text, cbColor.Text, cbSize.Text, cbMaterial.Text, tbBuyPrice.Text, tbSalePrice.Text, tbSalePrice2.Text, tbSalePrice3.Text,tbVatRate.Text, cbCurrency.Text, tbStock.Text, tbCriticalStock.Text, cbSupplier.Text, cbBranch.Text);
+                VariantImages.Add(new VariantImage
+                {
+                    ImagePath = LastAddedImagePath,
+                    Barcode = tbBarcode.Text
+                });
+                ClearAfterAddVariant();
             }
             else
             {
@@ -217,10 +224,10 @@ namespace POSA.Forms
                     SALEPRICE3 = Convert.ToDecimal(tbSalePrice3.Text, new CultureInfo("en-GB")),
                     BUYPRICE = Convert.ToDecimal(tbBuyPrice.Text, new CultureInfo("en-GB")),
                     VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
-                    CURRENCY = string.IsNullOrWhiteSpace(tbCurrency.Text) ? "TL" : tbCurrency.Text,
+                    CURRENCY = cbCurrency.Text,
                     STOCK = Convert.ToDecimal(tbStock.Text, new CultureInfo("en-GB")),
                     CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
-                    B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath)?"":ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
+                    B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath) ? "" : ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
                     CREATEDBY = setting.LastSuccesfullyLoggedUser
                 };
                 var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
@@ -280,8 +287,7 @@ namespace POSA.Forms
             dgvVariant.Visible = false;
             btnSaveVariants.Visible = false;
             btnSave.Text = "KAYDET";
-            //refresh the list
-            //clear all components
+            ClearAfterAddingToDB();
         }
         private void dgvVariant_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -303,7 +309,7 @@ namespace POSA.Forms
             var settings = Setting.Get();
             var sb = new SqlBuilder();
             sb.Select("PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,PROD.SALEPRICE3 AS SELLPRICE3,PROD.BUYPRICE AS BUYINGPRICE,PROD.STOCK,PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR, UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE ");
-            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM PRODUCTS AS PROD LEFT JOIN CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID="+ Convert.ToInt32(cbListingBranch.SelectedValue.ToString()));
+            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM PRODUCTS AS PROD LEFT JOIN CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID=" + Convert.ToInt32(cbListingBranch.SelectedValue.ToString()));
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             var ar = new SqlDataAdapter(builderTemp.RawSql, conn);
@@ -325,7 +331,7 @@ namespace POSA.Forms
             }
             if (e.ColumnIndex == dgvMain.Columns["UPDATE"].Index)
             {
-                var uc = new UpdateCategory(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                var uc = new UpdateCategory(dgvMain.Rows[e.RowIndex].Cells["BARCODE"].Value.ToString());
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK)
                     MessageBox.Show("Güncellendi.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -492,6 +498,75 @@ namespace POSA.Forms
         private void cbListingBranch_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshMainDataGrid();
+        }
+
+        private void tmrNewProduct_Tick(object sender, EventArgs e)
+        {
+            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
+            {
+                Image = Properties.Resources._24pxUpdate,
+                Name = "UPDATE",
+                HeaderText = "",
+                FillWeight = 20,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
+            {
+                Image = Properties.Resources._24pxClose,
+                Name = "DELETE",
+                HeaderText = "",
+                FillWeight = 20,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+            dgvMain.Columns["DELETE"].FillWeight = 20;
+            dgvMain.Columns["UPDATE"].FillWeight = 20;
+            dgvVariant.Columns.Insert(dgvVariant.Columns.Count, new DataGridViewImageColumn()
+            {
+                Image = Properties.Resources._24pxClose,
+                Name = "VDELETE",
+                HeaderText = "",
+                FillWeight = 20,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+            dgvVariant.Columns["VDELETE"].FillWeight = 20;
+            tmrNewProduct.Enabled = false;
+        }
+
+        private async void btnSaveVariants_Click(object sender, EventArgs e)
+        {
+            var setting = Setting.Get();
+            await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+            conn.Open();
+            foreach (DataGridViewRow row in dgvVariant.Rows)
+            {
+                var imagePath = ((from x in VariantImages where x.Barcode == row.Cells["VBARCODE"].Value.ToString() select x).First()??new VariantImage()).ImagePath;
+                var sqlBuilder = new SqlBuilder();
+                var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,CURRENCY,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES((SELECT TOP 1 ID FROM CATEGORIES WHERE NAME=@CATEGORYID),(SELECT TOP 1 ID FROM SUPPLIERS WHERE NAME=@SUPPLIERID),(SELECT TOP 1 ID FROM MATERIALS WHERE NAME=@MATERIALID),(SELECT TOP 1 ID FROM SIZES WHERE NAME=@SIZEID),(SELECT TOP 1 ID FROM UNITS WHERE NAME=@UNITID),(SELECT TOP 1 ID FROM COLORS WHERE NAME=@COLORID),(SELECT TOP 1 ID FROM BRANCHES WHERE NAME=@BRANCHID),@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@CURRENCY,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
+                var param = new
+                {
+                    CATEGORYID = row.Cells["VCATEGORY"].Value.ToString(),
+                    SUPPLIERID = row.Cells["VSUPPLIER"].Value.ToString(),
+                    MATERIALID = row.Cells["VMATERIAL"].Value.ToString(),
+                    SIZEID = row.Cells["VSIZE"].Value.ToString(),
+                    UNITID = row.Cells["VUNIT"].Value.ToString(),
+                    COLORID = row.Cells["VCOLOR"].Value.ToString(),
+                    BRANCHID = row.Cells["VBRANCH"].Value.ToString(),
+                    NAME = row.Cells["VNAME"].Value.ToString(),
+                    BARCODE = row.Cells["VBARCODE"].Value.ToString(),
+                    SALEPRICE = Convert.ToDecimal(row.Cells["VSELLPRICE"].Value.ToString(), new CultureInfo("en-GB")),
+                    SALEPRICE2 = Convert.ToDecimal(row.Cells["VSELLPRICE2"].Value.ToString(), new CultureInfo("en-GB")),
+                    SALEPRICE3 = Convert.ToDecimal(row.Cells["VSELLPRICE3"].Value.ToString(), new CultureInfo("en-GB")),
+                    BUYPRICE = Convert.ToDecimal(row.Cells["VBUYPRICE"].Value.ToString(), new CultureInfo("en-GB")),
+                    VATRATE = Convert.ToDecimal(row.Cells["VVATRATE"].Value.ToString(), new CultureInfo("en-GB")),
+                    CURRENCY = row.Cells["VCURRENCY"].Value.ToString(),
+                    STOCK = Convert.ToDecimal(row.Cells["VSTOCK"].Value.ToString(), new CultureInfo("en-GB")),
+                    CRITICALSTOCK = Convert.ToDecimal(row.Cells["VCRITICALSTOCK"].Value.ToString(), new CultureInfo("en-GB")),
+                    B64IMAGE = string.IsNullOrWhiteSpace(imagePath) ? "" : ConvertImageToBase64(Image.FromFile(imagePath)),
+                    CREATEDBY = setting.LastSuccesfullyLoggedUser
+                };
+                var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
+            }
+            ClearAfterAddingToDB();
         }
     }
 }
