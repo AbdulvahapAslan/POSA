@@ -30,14 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
@@ -99,6 +99,7 @@
             pbMagGlass = new PictureBox();
             rtbSearch = new CustomObjects.RoundTextBox();
             btnSaveVariants = new Button();
+            dgvMain = new DataGridView();
             dgvVariant = new DataGridView();
             VBARCODE = new DataGridViewTextBoxColumn();
             VNAME = new DataGridViewTextBoxColumn();
@@ -117,7 +118,7 @@
             VCRITICALSTOCK = new DataGridViewTextBoxColumn();
             VSUPPLIER = new DataGridViewTextBoxColumn();
             VBRANCH = new DataGridViewTextBoxColumn();
-            dgvMain = new DataGridView();
+            tmrNewProduct = new System.Windows.Forms.Timer(components);
             BARCODE = new DataGridViewTextBoxColumn();
             VATRATE = new DataGridViewTextBoxColumn();
             NAME = new DataGridViewTextBoxColumn();
@@ -134,7 +135,7 @@
             STOCK = new DataGridViewTextBoxColumn();
             CRITICALSTOCK = new DataGridViewTextBoxColumn();
             SUPPLIER = new DataGridViewTextBoxColumn();
-            tmrNewProduct = new System.Windows.Forms.Timer(components);
+            BRANCH = new DataGridViewTextBoxColumn();
             pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMainContainer).BeginInit();
             scMainContainer.Panel1.SuspendLayout();
@@ -147,8 +148,8 @@
             scRightSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMagGlass).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvVariant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVariant).BeginInit();
             SuspendLayout();
             // 
             // btnMinimize
@@ -901,8 +902,8 @@
             // scRightSide.Panel2
             // 
             scRightSide.Panel2.BackColor = Color.White;
-            scRightSide.Panel2.Controls.Add(dgvVariant);
             scRightSide.Panel2.Controls.Add(dgvMain);
+            scRightSide.Panel2.Controls.Add(dgvVariant);
             scRightSide.Size = new Size(901, 703);
             scRightSide.SplitterDistance = 49;
             scRightSide.TabIndex = 0;
@@ -994,6 +995,58 @@
             btnSaveVariants.Visible = false;
             btnSaveVariants.Click += btnSaveVariants_Click;
             // 
+            // dgvMain
+            // 
+            dgvMain.AllowUserToAddRows = false;
+            dgvMain.AllowUserToDeleteRows = false;
+            dgvMain.AllowUserToResizeColumns = false;
+            dgvMain.AllowUserToResizeRows = false;
+            dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvMain.BackgroundColor = Color.White;
+            dgvMain.BorderStyle = BorderStyle.None;
+            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvMain.EnableHeadersVisualStyles = false;
+            dgvMain.GridColor = Color.White;
+            dgvMain.Location = new Point(7, 7);
+            dgvMain.Margin = new Padding(7);
+            dgvMain.Name = "dgvMain";
+            dgvMain.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvMain.RowHeadersVisible = false;
+            dgvMain.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
+            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvMain.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvMain.RowTemplate.DividerHeight = 10;
+            dgvMain.RowTemplate.Height = 50;
+            dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMain.Size = new Size(887, 636);
+            dgvMain.TabIndex = 5;
+            dgvMain.CellClick += dgvMain_CellClick;
+            // 
             // dgvVariant
             // 
             dgvVariant.AllowUserToAddRows = false;
@@ -1007,24 +1060,24 @@
             dgvVariant.BorderStyle = BorderStyle.None;
             dgvVariant.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvVariant.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle9.SelectionBackColor = Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvVariant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVariant.Columns.AddRange(new DataGridViewColumn[] { VBARCODE, VNAME, VCATEGORY, VUNIT, VCOLOR, VSIZE, VMATERIAL, VBUYPRICE, VSELLPRICE, VSELLPRICE2, VSELLPRICE3, VVATRATE, VCURRENCY, VSTOCK, VCRITICALSTOCK, VSUPPLIER, VBRANCH });
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dgvVariant.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvVariant.DefaultCellStyle = dataGridViewCellStyle8;
             dgvVariant.EnableHeadersVisualStyles = false;
             dgvVariant.GridColor = Color.White;
             dgvVariant.Location = new Point(7, 7);
@@ -1070,8 +1123,8 @@
             // VUNIT
             // 
             VUNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VUNIT.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VUNIT.DefaultCellStyle = dataGridViewCellStyle6;
             VUNIT.FillWeight = 33.9246368F;
             VUNIT.HeaderText = "BİRİM";
             VUNIT.Name = "VUNIT";
@@ -1079,8 +1132,8 @@
             // VCOLOR
             // 
             VCOLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VCOLOR.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VCOLOR.DefaultCellStyle = dataGridViewCellStyle7;
             VCOLOR.FillWeight = 33.9246368F;
             VCOLOR.HeaderText = "RENK";
             VCOLOR.Name = "VCOLOR";
@@ -1172,57 +1225,11 @@
             VBRANCH.Name = "VBRANCH";
             VBRANCH.Visible = false;
             // 
-            // dgvMain
+            // tmrNewProduct
             // 
-            dgvMain.AllowUserToAddRows = false;
-            dgvMain.AllowUserToDeleteRows = false;
-            dgvMain.AllowUserToResizeColumns = false;
-            dgvMain.AllowUserToResizeRows = false;
-            dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvMain.BackgroundColor = Color.White;
-            dgvMain.BorderStyle = BorderStyle.None;
-            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = Color.White;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle13.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle13.SelectionBackColor = Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER });
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = Color.White;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle16.ForeColor = Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle16;
-            dgvMain.EnableHeadersVisualStyles = false;
-            dgvMain.GridColor = Color.White;
-            dgvMain.Location = new Point(7, 7);
-            dgvMain.Margin = new Padding(7);
-            dgvMain.Name = "dgvMain";
-            dgvMain.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvMain.RowHeadersVisible = false;
-            dgvMain.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
-            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dgvMain.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
-            dgvMain.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
-            dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvMain.RowTemplate.DividerHeight = 10;
-            dgvMain.RowTemplate.Height = 50;
-            dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMain.Size = new Size(887, 636);
-            dgvMain.TabIndex = 5;
-            dgvMain.CellClick += dgvMain_CellClick;
+            tmrNewProduct.Enabled = true;
+            tmrNewProduct.Interval = 600;
+            tmrNewProduct.Tick += tmrNewProduct_Tick;
             // 
             // BARCODE
             // 
@@ -1260,8 +1267,8 @@
             // 
             UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UNIT.DataPropertyName = "UNIT";
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            UNIT.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            UNIT.DefaultCellStyle = dataGridViewCellStyle2;
             UNIT.FillWeight = 40F;
             UNIT.HeaderText = "BİRİM";
             UNIT.Name = "UNIT";
@@ -1270,8 +1277,8 @@
             // 
             COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             COLOR.DataPropertyName = "COLOR";
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            COLOR.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            COLOR.DefaultCellStyle = dataGridViewCellStyle3;
             COLOR.FillWeight = 40F;
             COLOR.HeaderText = "RENK";
             COLOR.Name = "COLOR";
@@ -1360,11 +1367,13 @@
             SUPPLIER.Visible = false;
             SUPPLIER.Width = 102;
             // 
-            // tmrNewProduct
+            // BRANCH
             // 
-            tmrNewProduct.Enabled = true;
-            tmrNewProduct.Interval = 600;
-            tmrNewProduct.Tick += tmrNewProduct_Tick;
+            BRANCH.DataPropertyName = "BRANCH";
+            BRANCH.HeaderText = "ŞUBE";
+            BRANCH.Name = "BRANCH";
+            BRANCH.Visible = false;
+            BRANCH.Width = 66;
             // 
             // NewProduct
             // 
@@ -1401,8 +1410,8 @@
             scRightSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbMagGlass).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvVariant).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVariant).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1506,5 +1515,6 @@
         private DataGridViewTextBoxColumn STOCK;
         private DataGridViewTextBoxColumn CRITICALSTOCK;
         private DataGridViewTextBoxColumn SUPPLIER;
+        private DataGridViewTextBoxColumn BRANCH;
     }
 }

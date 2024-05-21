@@ -100,7 +100,6 @@ namespace POSA.Forms
             cbSupplier.ValueMember = "ID";
             cbMaterial.DisplayMember = "NAME";
             cbMaterial.ValueMember = "ID";
-
             FillCategoryComboBox();
             FillUnitComboBox();
             FillBranchComboBox();
@@ -108,11 +107,12 @@ namespace POSA.Forms
             FillSizeComboBox();
             FillSupplierComboBox();
             FillMaterialComboBox();
-
         }
         public void ClearAfterAddingToDB()
         {
             pbProduct.BackgroundImage = Properties.Resources._256pxNoImage;
+            if (tbBarcode.Enabled == false)
+                tbBarcode.Enabled = true;
             tbBarcode.Text = "";
             tbBarcode.BackColor = Color.White;
             tbBuyPrice.Text = "0";
@@ -190,12 +190,12 @@ namespace POSA.Forms
                 MessageBox.Show("Barkod veya ürün adı boş olan bir ürün kaydedilemez.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (tbSalePrice.Text=="0" || tbBuyPrice.Text =="0")
+            else if (tbSalePrice.Text == "0" || tbBuyPrice.Text == "0")
             {
                 MessageBox.Show("Satış yada alış fiyatı 0 olan bir ürün kaydedilemez.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (tbStock.Text=="0")
+            else if (tbStock.Text == "0")
             {
                 MessageBox.Show("Stoksuz ürün kaydedilemez.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -204,37 +204,11 @@ namespace POSA.Forms
             var setting = Setting.Get();
             await using var conn = new SqlConnection(setting.Sql.ConnectionString());
             conn.Open();
-            if (btnSave.Text.StartsWith("LİST"))
-            {
-                foreach (DataGridViewRow row in dgvVariant.Rows)
-                {
-                    if (row.Cells["VBARCODE"].Value.ToString() == barcode)
-                    {
-                        MessageBox.Show("Bu barkodla bir ürün listede mevcut.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                //add to variant grid and picture to string list
-                dgvVariant.Rows.Add(tbBarcode.Text, tbProductName.Text, cbCategory.Text, cbUnit.Text, cbColor.Text, cbSize.Text, cbMaterial.Text, tbBuyPrice.Text, tbSalePrice.Text, tbSalePrice2.Text, tbSalePrice3.Text, tbVatRate.Text, cbCurrency.Text, tbStock.Text, tbCriticalStock.Text, cbSupplier.Text, cbBranch.Text);
-                VariantImages.Add(new VariantImage
-                {
-                    ImagePath = LastAddedImagePath,
-                    Barcode = tbBarcode.Text
-                });
-                ClearAfterAddVariant();
-            }
-            else
-            {
-                foreach (DataGridViewRow row in dgvMain.Rows)
-                {
-                    if (row.Cells["BARCODE"].Value.ToString() == barcode)
-                    {
-                        MessageBox.Show("Bu barkodla bir ürün listede mevcut.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
+            if (tbBarcode.Enabled == false)
+            {//update
+
                 var sqlBuilder = new SqlBuilder();
-                var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,CURRENCY,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@CURRENCY,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
+                var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND BUYPRICE=@BUYPRICE AND VATRATE=@VATRATE AND CURRENCY=@CURRENCY AND STOCK=@STOCK AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() WHERE BARCODE = @BARCODE");
                 var param = new
                 {
                     CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
@@ -260,6 +234,66 @@ namespace POSA.Forms
                 var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
                 ClearAfterAddingToDB();
             }
+            else
+            {
+                if (btnSave.Text.StartsWith("LİST"))
+                {
+                    foreach (DataGridViewRow row in dgvVariant.Rows)
+                    {
+                        if (row.Cells["VBARCODE"].Value.ToString() == barcode)
+                        {
+                            MessageBox.Show("Bu barkodla bir ürün listede mevcut.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    //add to variant grid and picture to string list
+                    dgvVariant.Rows.Add(tbBarcode.Text, tbProductName.Text, cbCategory.Text, cbUnit.Text, cbColor.Text, cbSize.Text, cbMaterial.Text, tbBuyPrice.Text, tbSalePrice.Text, tbSalePrice2.Text, tbSalePrice3.Text, tbVatRate.Text, cbCurrency.Text, tbStock.Text, tbCriticalStock.Text, cbSupplier.Text, cbBranch.Text);
+                    VariantImages.Add(new VariantImage
+                    {
+                        ImagePath = LastAddedImagePath,
+                        Barcode = tbBarcode.Text
+                    });
+                    ClearAfterAddVariant();
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dgvMain.Rows)
+                    {
+                        if (row.Cells["BARCODE"].Value.ToString() == barcode)
+                        {
+                            MessageBox.Show("Bu barkodla bir ürün listede mevcut.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    var sqlBuilder = new SqlBuilder();
+                    var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,CURRENCY,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@CURRENCY,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
+                    var param = new
+                    {
+                        CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
+                        SUPPLIERID = Convert.ToInt32(cbSupplier.SelectedValue.ToString()),
+                        MATERIALID = Convert.ToInt32(cbMaterial.SelectedValue.ToString()),
+                        SIZEID = Convert.ToInt32(cbSize.SelectedValue.ToString()),
+                        UNITID = Convert.ToInt32(cbUnit.SelectedValue.ToString()),
+                        COLORID = Convert.ToInt32(cbColor.SelectedValue.ToString()),
+                        BRANCHID = Convert.ToInt32(cbBranch.SelectedValue.ToString()),
+                        NAME = tbProductName.Text,
+                        BARCODE = tbBarcode.Text,
+                        SALEPRICE = Convert.ToDecimal(tbSalePrice.Text, new CultureInfo("en-GB")),
+                        SALEPRICE2 = Convert.ToDecimal(tbSalePrice2.Text, new CultureInfo("en-GB")),
+                        SALEPRICE3 = Convert.ToDecimal(tbSalePrice3.Text, new CultureInfo("en-GB")),
+                        BUYPRICE = Convert.ToDecimal(tbBuyPrice.Text, new CultureInfo("en-GB")),
+                        VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
+                        CURRENCY = cbCurrency.Text,
+                        STOCK = Convert.ToDecimal(tbStock.Text, new CultureInfo("en-GB")),
+                        CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
+                        B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath) ? "" : ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
+                        CREATEDBY = setting.LastSuccesfullyLoggedUser
+                    };
+                    var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
+                    ClearAfterAddingToDB();
+                }
+            }
+            RefreshMainDataGrid();
         }
         private void GeneralOnlyDecimalNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -368,17 +402,30 @@ namespace POSA.Forms
             }
             if (e.ColumnIndex == dgvMain.Columns["UPDATE"].Index)
             {
-                var uc = new UpdateCategory(dgvMain.Rows[e.RowIndex].Cells["BARCODE"].Value.ToString());
-                DialogResult dr = uc.ShowDialog();
-                if (dr == DialogResult.OK)
-                    MessageBox.Show("Güncellendi.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("Güncellenemedi.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                RefreshMainDataGrid();
+                tbBarcode.Text = dgvMain.Rows[e.RowIndex].Cells["BARCODE"].Value.ToString();
+                tbBarcode.Enabled = false;
+                tbProductName.Text = dgvMain.Rows[e.RowIndex].Cells["NAME"].Value.ToString();
+                cbCategory.Text = dgvMain.Rows[e.RowIndex].Cells["CATEGORY"].Value.ToString();
+                cbUnit.Text = dgvMain.Rows[e.RowIndex].Cells["UNIT"].Value.ToString();
+                cbColor.Text = dgvMain.Rows[e.RowIndex].Cells["COLOR"].Value.ToString();
+                cbSize.Text = dgvMain.Rows[e.RowIndex].Cells["SIZE"].Value.ToString();
+                cbMaterial.Text = dgvMain.Rows[e.RowIndex].Cells["MATERIAL"].Value.ToString();
+                tbVatRate.Text = dgvMain.Rows[e.RowIndex].Cells["VATRATE"].Value.ToString();
+                tbBuyPrice.Text = dgvMain.Rows[e.RowIndex].Cells["BUYINGPRICE"].Value.ToString();
+                tbSalePrice.Text = dgvMain.Rows[e.RowIndex].Cells["SELLPRICE"].Value.ToString();
+                tbSalePrice2.Text = dgvMain.Rows[e.RowIndex].Cells["SELLPRICE2"].Value.ToString();
+                tbSalePrice3.Text = dgvMain.Rows[e.RowIndex].Cells["SELLPRICE3"].Value.ToString();
+                tbStock.Text = dgvMain.Rows[e.RowIndex].Cells["STOCK"].Value.ToString();
+                tbCriticalStock.Text = dgvMain.Rows[e.RowIndex].Cells["CRITICALSTOCK"].Value.ToString();
+                cbCurrency.Text = dgvMain.Rows[e.RowIndex].Cells["CURRENCY"].Value.ToString();
+                cbSupplier.Text = dgvMain.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
+                cbBranch.Text = cbListingBranch.SelectedText;
             }
         }
         private async void btnGiveNextBarcode_Click(object sender, EventArgs e)
         {
+            if (tbBarcode.Enabled == false)
+                return;
             var settings = Setting.Get();
             var sb = new SqlBuilder();
             sb.Select("TOP 1 BARCODE");
@@ -531,12 +578,10 @@ namespace POSA.Forms
             LastAddedImagePath = ofd.FileName;
             pbProduct.BackgroundImage = Image.FromFile(LastAddedImagePath);//Properties.Resources._256pxNoImage;
         }
-
         private void cbListingBranch_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshMainDataGrid();
         }
-
         private void tmrNewProduct_Tick(object sender, EventArgs e)
         {
             dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
@@ -568,7 +613,6 @@ namespace POSA.Forms
             dgvVariant.Columns["VDELETE"].FillWeight = 20;
             tmrNewProduct.Enabled = false;
         }
-
         private async void btnSaveVariants_Click(object sender, EventArgs e)
         {
             var setting = Setting.Get();
@@ -605,7 +649,6 @@ namespace POSA.Forms
             }
             ClearAfterAddingToDB();
         }
-
         private async void btnCheckBarcode_Click(object sender, EventArgs e)
         {
             if (tbBarcode.Text.Length < 1)
@@ -627,7 +670,6 @@ namespace POSA.Forms
             else
                 tbBarcode.BackColor = Color.LightGreen;
         }
-
         private void rtbSearch__TextChanged(object sender, EventArgs e)
         {
             (dgvMain.DataSource as DataTable).DefaultView.RowFilter = $"NAME LIKE '{rtbSearch.Texts}%' OR BARCODE LIKE '{rtbSearch.Texts}%'";
