@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCategory));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnClose = new CustomObjects.RoundButton();
             lblPageHeader = new Label();
             btnSave = new Button();
@@ -40,13 +40,13 @@
             NAME = new DataGridViewTextBoxColumn();
             DESCRIPTION = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
+            pbClearSearch = new PictureBox();
+            pictureBox3 = new PictureBox();
+            rtbSearch = new CustomObjects.RoundTextBox();
             tbDescription = new TextBox();
             lblProductName = new Label();
             tbCategory = new TextBox();
             lblBarcode = new Label();
-            pbClearSearch = new PictureBox();
-            pictureBox3 = new PictureBox();
-            rtbSearch = new CustomObjects.RoundTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
@@ -64,6 +64,7 @@
             btnClose.BorderRadius = 0;
             btnClose.BorderSize = 0;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1012, 12);
@@ -113,25 +114,25 @@
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeight = 50;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { ID, NAME, DESCRIPTION });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle3;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(10, 56);
@@ -159,8 +160,8 @@
             // ID
             // 
             ID.DataPropertyName = "ID";
-            dataGridViewCellStyle5.NullValue = "0";
-            ID.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.NullValue = "0";
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
             ID.HeaderText = "ID";
             ID.Name = "ID";
             ID.ReadOnly = true;
@@ -195,49 +196,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(633, 428);
             panel1.TabIndex = 76;
-            // 
-            // tbDescription
-            // 
-            tbDescription.BorderStyle = BorderStyle.None;
-            tbDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbDescription.Location = new Point(136, 85);
-            tbDescription.Multiline = true;
-            tbDescription.Name = "tbDescription";
-            tbDescription.Size = new Size(260, 168);
-            tbDescription.TabIndex = 80;
-            // 
-            // lblProductName
-            // 
-            lblProductName.AutoSize = true;
-            lblProductName.BackColor = Color.Transparent;
-            lblProductName.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            lblProductName.ForeColor = Color.White;
-            lblProductName.Location = new Point(12, 83);
-            lblProductName.Name = "lblProductName";
-            lblProductName.Size = new Size(93, 28);
-            lblProductName.TabIndex = 79;
-            lblProductName.Text = "Açıklama";
-            // 
-            // tbCategory
-            // 
-            tbCategory.BorderStyle = BorderStyle.None;
-            tbCategory.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbCategory.Location = new Point(136, 52);
-            tbCategory.Name = "tbCategory";
-            tbCategory.Size = new Size(260, 27);
-            tbCategory.TabIndex = 78;
-            // 
-            // lblBarcode
-            // 
-            lblBarcode.AutoSize = true;
-            lblBarcode.BackColor = Color.Transparent;
-            lblBarcode.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            lblBarcode.ForeColor = Color.White;
-            lblBarcode.Location = new Point(12, 50);
-            lblBarcode.Name = "lblBarcode";
-            lblBarcode.Size = new Size(88, 28);
-            lblBarcode.TabIndex = 77;
-            lblBarcode.Text = "Kategori";
             // 
             // pbClearSearch
             // 
@@ -283,6 +241,49 @@
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
             rtbSearch._TextChanged += rtbSearch__TextChanged;
+            // 
+            // tbDescription
+            // 
+            tbDescription.BorderStyle = BorderStyle.None;
+            tbDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbDescription.Location = new Point(136, 85);
+            tbDescription.Multiline = true;
+            tbDescription.Name = "tbDescription";
+            tbDescription.Size = new Size(260, 168);
+            tbDescription.TabIndex = 80;
+            // 
+            // lblProductName
+            // 
+            lblProductName.AutoSize = true;
+            lblProductName.BackColor = Color.Transparent;
+            lblProductName.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblProductName.ForeColor = Color.White;
+            lblProductName.Location = new Point(12, 83);
+            lblProductName.Name = "lblProductName";
+            lblProductName.Size = new Size(93, 28);
+            lblProductName.TabIndex = 79;
+            lblProductName.Text = "Açıklama";
+            // 
+            // tbCategory
+            // 
+            tbCategory.BorderStyle = BorderStyle.None;
+            tbCategory.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbCategory.Location = new Point(136, 52);
+            tbCategory.Name = "tbCategory";
+            tbCategory.Size = new Size(260, 27);
+            tbCategory.TabIndex = 78;
+            // 
+            // lblBarcode
+            // 
+            lblBarcode.AutoSize = true;
+            lblBarcode.BackColor = Color.Transparent;
+            lblBarcode.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblBarcode.ForeColor = Color.White;
+            lblBarcode.Location = new Point(12, 50);
+            lblBarcode.Name = "lblBarcode";
+            lblBarcode.Size = new Size(88, 28);
+            lblBarcode.TabIndex = 77;
+            lblBarcode.Text = "Kategori";
             // 
             // AddCategory
             // 

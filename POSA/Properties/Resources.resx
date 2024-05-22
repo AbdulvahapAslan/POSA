@@ -118,95 +118,83 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="64pxBluePlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxBluePlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="24pxWhiteRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxWhiteRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="32pxAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxWhiteX50Scale1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteX50Scale1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="16pxSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\16pxSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="32pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="24pxPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closeblack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closeblack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="24pxMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\statistics.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxGreenCheck1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxGreenCheck1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cosmetic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cosmetic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="32pxBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxWhiteTrash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteTrash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxWhiteTrashcan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteTrashcan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Loading1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Loading1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxCreditCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxCreditCard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxVariant1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxVariant1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxBluePlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxBluePlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="16pxRedClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\16pxRedClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="shopping" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="employees" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\employees.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="32pxTick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxTick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxScale" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxScale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statistics.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxPicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxVariant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxVariant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="24pxClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="24pxWhiteEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxWhiteEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ready-stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ready-stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxBlueReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxBlueReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="32pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="32pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxContract" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxContract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="16pxSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\16pxSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxWhiteX50Scale" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteX50Scale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BackgroundSmall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundSmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cosmetic1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cosmetic1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cosmetic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cosmetic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxGreenCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxGreenCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="32pxBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="99pxButtons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\99pxButtons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="32pxDiscount" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxDiscount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="16pxCloseBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\16pxCloseBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,97 +202,130 @@
   <data name="customer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\customer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxBlueReport1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxBlueReport1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackgroundSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxPerson" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxPerson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxWhiteTrashcan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteTrashcan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxGreenCheckSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxGreenCheckSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxImage1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shopping" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shopping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxSmallWhiteTrash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxSmallWhiteTrash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="32pxDiscount" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxDiscount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxGreenCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxGreenCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxBlueReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxBlueReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxPicture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackgroundGeneral" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundGeneral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="32pxTick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxTick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="32pxClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32pxClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxWhiteBarcode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteBarcode1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="24pxClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="64pxImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackgroundSmall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundSmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="64pxKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxWhiteRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxWhiteRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BackgroundSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ready-stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ready-stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxVariant1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxVariant1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxGreenCheckSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxGreenCheckSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="32pxAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxContract" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxContract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxPerson" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxPerson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxWhiteTrash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteTrash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="24pxUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxSmallWhiteTrash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxSmallWhiteTrash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxScale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxScale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackgroundGeneral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundGeneral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxWhiteBarcode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteBarcode1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxMulti" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxMulti.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="256pxNoImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\256pxNoImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="64pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="32pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="64pxDiscount" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxDiscount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="16pxRedClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\16pxRedClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxWhiteX50Scale1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxWhiteX50Scale1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="closeblack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closeblack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cosmetic1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cosmetic1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxWhiteX50Scale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxWhiteX50Scale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxVariant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxVariant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="24pxEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxBankNotes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxBankNotes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="24pxWhiteBarcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxWhiteBarcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="employees" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employees.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxBlueReport1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxBlueReport1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxGreenCheck1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxGreenCheck1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxImage1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="32pxClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxPuzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxPuzzle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxColorfulCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxColorfulCard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

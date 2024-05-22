@@ -52,18 +52,42 @@ namespace POSA.Forms
             btnRootCustomer = new Button();
             scLeftBottomMain = new SplitContainer();
             scLeftBottomMainsTop = new SplitContainer();
+            pbClearSearch = new PictureBox();
+            pictureBox3 = new PictureBox();
+            rtbSearch = new CustomObjects.RoundTextBox();
             btnCheckPrice = new Button();
             btnClearGrid = new Button();
             btnSearchProduct = new Button();
-            pictureBox2 = new PictureBox();
-            pictureBox1 = new PictureBox();
-            roundTextBox1 = new CustomObjects.RoundTextBox();
+            btnShowPrices = new Button();
+            btnTotalPrice = new Button();
+            btnDolarTotalPrice = new Button();
+            btnEuroTotalPrice = new Button();
             dgvMain = new DataGridView();
             Barcode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
             Price = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            lblChangeMoney = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            btnClearTakenMoney = new Button();
+            tbTakenMoney = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            btn200TL = new Button();
+            btn100TL = new Button();
+            btn50TL = new Button();
+            btn20TL = new Button();
+            btn10TL = new Button();
+            btn5TL = new Button();
+            btnOther = new Button();
+            btnParts = new Button();
+            btnMulti = new Button();
+            btnCard = new Button();
+            btnCash = new Button();
             flpMiddleButtons = new FlowLayoutPanel();
             btnDiscount = new Button();
             btnCustomer = new Button();
@@ -156,14 +180,17 @@ namespace POSA.Forms
             flpCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scLeftBottomMain).BeginInit();
             scLeftBottomMain.Panel1.SuspendLayout();
+            scLeftBottomMain.Panel2.SuspendLayout();
             scLeftBottomMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scLeftBottomMainsTop).BeginInit();
             scLeftBottomMainsTop.Panel1.SuspendLayout();
             scLeftBottomMainsTop.Panel2.SuspendLayout();
             scLeftBottomMainsTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             flpMiddleButtons.SuspendLayout();
             flpGroupButtons.SuspendLayout();
             pnlGroups.SuspendLayout();
@@ -411,6 +438,15 @@ namespace POSA.Forms
             // scLeftBottomMain.Panel1
             // 
             scLeftBottomMain.Panel1.Controls.Add(scLeftBottomMainsTop);
+            // 
+            // scLeftBottomMain.Panel2
+            // 
+            scLeftBottomMain.Panel2.Controls.Add(panel2);
+            scLeftBottomMain.Panel2.Controls.Add(btnOther);
+            scLeftBottomMain.Panel2.Controls.Add(btnParts);
+            scLeftBottomMain.Panel2.Controls.Add(btnMulti);
+            scLeftBottomMain.Panel2.Controls.Add(btnCard);
+            scLeftBottomMain.Panel2.Controls.Add(btnCash);
             scLeftBottomMain.Size = new Size(733, 642);
             scLeftBottomMain.SplitterDistance = 532;
             scLeftBottomMain.TabIndex = 0;
@@ -426,19 +462,67 @@ namespace POSA.Forms
             // scLeftBottomMainsTop.Panel1
             // 
             scLeftBottomMainsTop.Panel1.BackColor = Color.FromArgb(210, 210, 210);
+            scLeftBottomMainsTop.Panel1.Controls.Add(pbClearSearch);
+            scLeftBottomMainsTop.Panel1.Controls.Add(pictureBox3);
+            scLeftBottomMainsTop.Panel1.Controls.Add(rtbSearch);
             scLeftBottomMainsTop.Panel1.Controls.Add(btnCheckPrice);
             scLeftBottomMainsTop.Panel1.Controls.Add(btnClearGrid);
             scLeftBottomMainsTop.Panel1.Controls.Add(btnSearchProduct);
-            scLeftBottomMainsTop.Panel1.Controls.Add(pictureBox2);
-            scLeftBottomMainsTop.Panel1.Controls.Add(pictureBox1);
-            scLeftBottomMainsTop.Panel1.Controls.Add(roundTextBox1);
             // 
             // scLeftBottomMainsTop.Panel2
             // 
+            scLeftBottomMainsTop.Panel2.Controls.Add(btnShowPrices);
+            scLeftBottomMainsTop.Panel2.Controls.Add(btnTotalPrice);
+            scLeftBottomMainsTop.Panel2.Controls.Add(btnDolarTotalPrice);
+            scLeftBottomMainsTop.Panel2.Controls.Add(btnEuroTotalPrice);
             scLeftBottomMainsTop.Panel2.Controls.Add(dgvMain);
             scLeftBottomMainsTop.Size = new Size(733, 532);
-            scLeftBottomMainsTop.SplitterDistance = 88;
+            scLeftBottomMainsTop.SplitterDistance = 53;
             scLeftBottomMainsTop.TabIndex = 0;
+            // 
+            // pbClearSearch
+            // 
+            pbClearSearch.BackColor = Color.White;
+            pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
+            pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
+            pbClearSearch.Location = new Point(275, 12);
+            pbClearSearch.Name = "pbClearSearch";
+            pbClearSearch.Size = new Size(26, 26);
+            pbClearSearch.TabIndex = 87;
+            pbClearSearch.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.White;
+            pictureBox3.BackgroundImage = Properties.Resources._16pxSearch;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox3.Location = new Point(31, 12);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(26, 26);
+            pictureBox3.TabIndex = 86;
+            pictureBox3.TabStop = false;
+            // 
+            // rtbSearch
+            // 
+            rtbSearch.BackColor = SystemColors.Window;
+            rtbSearch.BorderColor = Color.FromArgb(38, 38, 38);
+            rtbSearch.BorderFocusColor = Color.FromArgb(38, 38, 38);
+            rtbSearch.BorderRadius = 5;
+            rtbSearch.BorderSize = 2;
+            rtbSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbSearch.ForeColor = Color.FromArgb(64, 64, 64);
+            rtbSearch.Location = new Point(26, 8);
+            rtbSearch.Margin = new Padding(4);
+            rtbSearch.Multiline = false;
+            rtbSearch.Name = "rtbSearch";
+            rtbSearch.Padding = new Padding(35, 7, 30, 7);
+            rtbSearch.PasswordChar = false;
+            rtbSearch.PlaceholderColor = Color.DarkGray;
+            rtbSearch.PlaceholderText = "Barkod okutunuz...";
+            rtbSearch.Size = new Size(278, 34);
+            rtbSearch.TabIndex = 88;
+            rtbSearch.Texts = "";
+            rtbSearch.UnderlinedStyle = false;
             // 
             // btnCheckPrice
             // 
@@ -449,7 +533,7 @@ namespace POSA.Forms
             btnCheckPrice.ForeColor = Color.FromArgb(95, 95, 95);
             btnCheckPrice.Image = Properties.Resources._24pxEye;
             btnCheckPrice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCheckPrice.Location = new Point(576, 26);
+            btnCheckPrice.Location = new Point(581, 8);
             btnCheckPrice.Name = "btnCheckPrice";
             btnCheckPrice.Size = new Size(127, 34);
             btnCheckPrice.TabIndex = 5;
@@ -466,7 +550,7 @@ namespace POSA.Forms
             btnClearGrid.ForeColor = Color.FromArgb(95, 95, 95);
             btnClearGrid.Image = Properties.Resources._24pxClose;
             btnClearGrid.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClearGrid.Location = new Point(441, 26);
+            btnClearGrid.Location = new Point(446, 8);
             btnClearGrid.Name = "btnClearGrid";
             btnClearGrid.Size = new Size(129, 34);
             btnClearGrid.TabIndex = 4;
@@ -483,56 +567,81 @@ namespace POSA.Forms
             btnSearchProduct.ForeColor = Color.FromArgb(95, 95, 95);
             btnSearchProduct.Image = Properties.Resources._16pxSearch;
             btnSearchProduct.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearchProduct.Location = new Point(306, 26);
+            btnSearchProduct.Location = new Point(311, 8);
             btnSearchProduct.Name = "btnSearchProduct";
             btnSearchProduct.Size = new Size(129, 34);
             btnSearchProduct.TabIndex = 3;
             btnSearchProduct.Text = "ÜRÜN BUL";
             btnSearchProduct.UseVisualStyleBackColor = false;
             // 
-            // pictureBox2
+            // btnShowPrices
             // 
-            pictureBox2.BackColor = Color.White;
-            pictureBox2.BackgroundImage = Properties.Resources._16pxCloseBlack;
-            pictureBox2.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox2.Location = new Point(267, 30);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(26, 26);
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            btnShowPrices.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnShowPrices.BackColor = Color.FromArgb(66, 178, 38);
+            btnShowPrices.BackgroundImage = Properties.Resources._24pxWhiteEye;
+            btnShowPrices.BackgroundImageLayout = ImageLayout.Center;
+            btnShowPrices.FlatAppearance.BorderSize = 0;
+            btnShowPrices.FlatStyle = FlatStyle.Flat;
+            btnShowPrices.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnShowPrices.ForeColor = Color.FromArgb(95, 95, 95);
+            btnShowPrices.Location = new Point(703, 0);
+            btnShowPrices.Name = "btnShowPrices";
+            btnShowPrices.Size = new Size(30, 30);
+            btnShowPrices.TabIndex = 89;
+            btnShowPrices.TextAlign = ContentAlignment.MiddleRight;
+            btnShowPrices.UseVisualStyleBackColor = false;
+            btnShowPrices.Click += btnShowPrices_Click;
             // 
-            // pictureBox1
+            // btnTotalPrice
             // 
-            pictureBox1.BackColor = Color.White;
-            pictureBox1.BackgroundImage = Properties.Resources._16pxSearch;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(22, 30);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(26, 26);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            btnTotalPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTotalPrice.BackColor = Color.FromArgb(66, 178, 38);
+            btnTotalPrice.FlatAppearance.BorderSize = 0;
+            btnTotalPrice.FlatAppearance.MouseDownBackColor = Color.FromArgb(66, 178, 38);
+            btnTotalPrice.FlatAppearance.MouseOverBackColor = Color.FromArgb(66, 178, 38);
+            btnTotalPrice.FlatStyle = FlatStyle.Flat;
+            btnTotalPrice.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnTotalPrice.ForeColor = Color.White;
+            btnTotalPrice.Location = new Point(575, 332);
+            btnTotalPrice.Name = "btnTotalPrice";
+            btnTotalPrice.Size = new Size(155, 58);
+            btnTotalPrice.TabIndex = 3;
+            btnTotalPrice.UseVisualStyleBackColor = false;
+            btnTotalPrice.Visible = false;
             // 
-            // roundTextBox1
+            // btnDolarTotalPrice
             // 
-            roundTextBox1.BackColor = SystemColors.Window;
-            roundTextBox1.BorderColor = Color.FromArgb(64, 64, 64);
-            roundTextBox1.BorderFocusColor = Color.DarkGreen;
-            roundTextBox1.BorderRadius = 5;
-            roundTextBox1.BorderSize = 2;
-            roundTextBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            roundTextBox1.ForeColor = Color.Black;
-            roundTextBox1.Location = new Point(17, 26);
-            roundTextBox1.Margin = new Padding(4);
-            roundTextBox1.Multiline = false;
-            roundTextBox1.Name = "roundTextBox1";
-            roundTextBox1.Padding = new Padding(10, 7, 10, 7);
-            roundTextBox1.PasswordChar = false;
-            roundTextBox1.PlaceholderColor = Color.DarkGray;
-            roundTextBox1.PlaceholderText = "Barkod okutunuz...";
-            roundTextBox1.Size = new Size(282, 34);
-            roundTextBox1.TabIndex = 0;
-            roundTextBox1.Texts = "";
-            roundTextBox1.UnderlinedStyle = false;
+            btnDolarTotalPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDolarTotalPrice.BackColor = Color.FromArgb(10, 89, 44);
+            btnDolarTotalPrice.FlatAppearance.BorderSize = 0;
+            btnDolarTotalPrice.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 89, 44);
+            btnDolarTotalPrice.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 89, 44);
+            btnDolarTotalPrice.FlatStyle = FlatStyle.Flat;
+            btnDolarTotalPrice.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            btnDolarTotalPrice.ForeColor = Color.White;
+            btnDolarTotalPrice.Location = new Point(576, 396);
+            btnDolarTotalPrice.Name = "btnDolarTotalPrice";
+            btnDolarTotalPrice.Size = new Size(155, 35);
+            btnDolarTotalPrice.TabIndex = 2;
+            btnDolarTotalPrice.UseVisualStyleBackColor = false;
+            btnDolarTotalPrice.Visible = false;
+            // 
+            // btnEuroTotalPrice
+            // 
+            btnEuroTotalPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEuroTotalPrice.BackColor = Color.FromArgb(10, 89, 44);
+            btnEuroTotalPrice.FlatAppearance.BorderSize = 0;
+            btnEuroTotalPrice.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 89, 44);
+            btnEuroTotalPrice.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 89, 44);
+            btnEuroTotalPrice.FlatStyle = FlatStyle.Flat;
+            btnEuroTotalPrice.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            btnEuroTotalPrice.ForeColor = Color.White;
+            btnEuroTotalPrice.Location = new Point(576, 437);
+            btnEuroTotalPrice.Name = "btnEuroTotalPrice";
+            btnEuroTotalPrice.Size = new Size(155, 35);
+            btnEuroTotalPrice.TabIndex = 1;
+            btnEuroTotalPrice.UseVisualStyleBackColor = false;
+            btnEuroTotalPrice.Visible = false;
             // 
             // dgvMain
             // 
@@ -542,7 +651,7 @@ namespace POSA.Forms
             dgvMain.AllowUserToResizeRows = false;
             dgvMain.BackgroundColor = Color.FromArgb(215, 215, 215);
             dgvMain.BorderStyle = BorderStyle.None;
-            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(64, 64, 64);
@@ -570,7 +679,7 @@ namespace POSA.Forms
             dgvMain.RowHeadersVisible = false;
             dgvMain.RowTemplate.DividerHeight = 10;
             dgvMain.RowTemplate.Height = 40;
-            dgvMain.Size = new Size(733, 440);
+            dgvMain.Size = new Size(733, 475);
             dgvMain.TabIndex = 0;
             dgvMain.CellClick += dgvMain_CellClick;
             // 
@@ -613,6 +722,281 @@ namespace POSA.Forms
             Total.HeaderText = "TOPLAM";
             Total.Name = "Total";
             // 
+            // panel2
+            // 
+            panel2.BackgroundImage = Properties.Resources._99pxButtons;
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(btnClearTakenMoney);
+            panel2.Controls.Add(tbTakenMoney);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(btn200TL);
+            panel2.Controls.Add(btn100TL);
+            panel2.Controls.Add(btn50TL);
+            panel2.Controls.Add(btn20TL);
+            panel2.Controls.Add(btn10TL);
+            panel2.Controls.Add(btn5TL);
+            panel2.Location = new Point(509, 4);
+            panel2.Margin = new Padding(4);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(220, 99);
+            panel2.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(66, 178, 38);
+            panel3.Controls.Add(lblChangeMoney);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(label6);
+            panel3.Location = new Point(124, 6);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(93, 26);
+            panel3.TabIndex = 10;
+            // 
+            // lblChangeMoney
+            // 
+            lblChangeMoney.AutoSize = true;
+            lblChangeMoney.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            lblChangeMoney.ForeColor = Color.White;
+            lblChangeMoney.Location = new Point(44, 7);
+            lblChangeMoney.Name = "lblChangeMoney";
+            lblChangeMoney.Size = new Size(0, 13);
+            lblChangeMoney.TabIndex = 2;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(39, 5);
+            label7.Name = "label7";
+            label7.Size = new Size(10, 15);
+            label7.TabIndex = 1;
+            label7.Text = "|";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 8F);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(0, 7);
+            label6.Name = "label6";
+            label6.Size = new Size(44, 13);
+            label6.TabIndex = 0;
+            label6.Text = "P.ÜSTÜ";
+            // 
+            // btnClearTakenMoney
+            // 
+            btnClearTakenMoney.FlatAppearance.BorderSize = 0;
+            btnClearTakenMoney.FlatStyle = FlatStyle.Flat;
+            btnClearTakenMoney.Font = new Font("Segoe UI", 6F, FontStyle.Bold);
+            btnClearTakenMoney.Location = new Point(82, 9);
+            btnClearTakenMoney.Margin = new Padding(1);
+            btnClearTakenMoney.Name = "btnClearTakenMoney";
+            btnClearTakenMoney.Size = new Size(41, 20);
+            btnClearTakenMoney.TabIndex = 9;
+            btnClearTakenMoney.Text = "Temizle";
+            btnClearTakenMoney.UseVisualStyleBackColor = true;
+            btnClearTakenMoney.Click += btnClearTakenMoney_Click;
+            // 
+            // tbTakenMoney
+            // 
+            tbTakenMoney.BorderStyle = BorderStyle.None;
+            tbTakenMoney.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            tbTakenMoney.Location = new Point(33, 9);
+            tbTakenMoney.Name = "tbTakenMoney";
+            tbTakenMoney.ReadOnly = true;
+            tbTakenMoney.Size = new Size(48, 20);
+            tbTakenMoney.TabIndex = 8;
+            tbTakenMoney.Text = "0";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 6.75F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(2, 18);
+            label5.Name = "label5";
+            label5.Size = new Size(27, 12);
+            label5.TabIndex = 7;
+            label5.Text = "Tutar";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 6.75F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(-1, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(35, 12);
+            label4.TabIndex = 6;
+            label4.Text = "Verilen";
+            // 
+            // btn200TL
+            // 
+            btn200TL.FlatAppearance.BorderSize = 0;
+            btn200TL.FlatStyle = FlatStyle.Flat;
+            btn200TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn200TL.Location = new Point(150, 69);
+            btn200TL.Name = "btn200TL";
+            btn200TL.Size = new Size(67, 23);
+            btn200TL.TabIndex = 5;
+            btn200TL.Text = "200₺";
+            btn200TL.UseVisualStyleBackColor = true;
+            btn200TL.Click += btnTL_Click;
+            // 
+            // btn100TL
+            // 
+            btn100TL.FlatAppearance.BorderSize = 0;
+            btn100TL.FlatStyle = FlatStyle.Flat;
+            btn100TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn100TL.Location = new Point(76, 69);
+            btn100TL.Name = "btn100TL";
+            btn100TL.Size = new Size(67, 23);
+            btn100TL.TabIndex = 4;
+            btn100TL.Text = "100₺";
+            btn100TL.UseVisualStyleBackColor = true;
+            btn100TL.Click += btnTL_Click;
+            // 
+            // btn50TL
+            // 
+            btn50TL.FlatAppearance.BorderSize = 0;
+            btn50TL.FlatStyle = FlatStyle.Flat;
+            btn50TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn50TL.Location = new Point(3, 69);
+            btn50TL.Name = "btn50TL";
+            btn50TL.Size = new Size(67, 23);
+            btn50TL.TabIndex = 3;
+            btn50TL.Text = "50₺";
+            btn50TL.UseVisualStyleBackColor = true;
+            btn50TL.Click += btnTL_Click;
+            // 
+            // btn20TL
+            // 
+            btn20TL.FlatAppearance.BorderSize = 0;
+            btn20TL.FlatStyle = FlatStyle.Flat;
+            btn20TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn20TL.Location = new Point(150, 40);
+            btn20TL.Name = "btn20TL";
+            btn20TL.Size = new Size(67, 23);
+            btn20TL.TabIndex = 2;
+            btn20TL.Text = "20₺";
+            btn20TL.UseVisualStyleBackColor = true;
+            btn20TL.Click += btnTL_Click;
+            // 
+            // btn10TL
+            // 
+            btn10TL.FlatAppearance.BorderSize = 0;
+            btn10TL.FlatStyle = FlatStyle.Flat;
+            btn10TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn10TL.Location = new Point(77, 40);
+            btn10TL.Name = "btn10TL";
+            btn10TL.Size = new Size(67, 23);
+            btn10TL.TabIndex = 1;
+            btn10TL.Text = "10₺";
+            btn10TL.UseVisualStyleBackColor = true;
+            btn10TL.Click += btnTL_Click;
+            // 
+            // btn5TL
+            // 
+            btn5TL.FlatAppearance.BorderSize = 0;
+            btn5TL.FlatStyle = FlatStyle.Flat;
+            btn5TL.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btn5TL.Location = new Point(3, 40);
+            btn5TL.Name = "btn5TL";
+            btn5TL.Size = new Size(67, 23);
+            btn5TL.TabIndex = 0;
+            btn5TL.Text = "5₺";
+            btn5TL.UseVisualStyleBackColor = true;
+            btn5TL.Click += btnTL_Click;
+            // 
+            // btnOther
+            // 
+            btnOther.BackgroundImage = Properties.Resources._99pxButtons;
+            btnOther.BackgroundImageLayout = ImageLayout.Stretch;
+            btnOther.FlatStyle = FlatStyle.Flat;
+            btnOther.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnOther.ForeColor = Color.White;
+            btnOther.Image = Properties.Resources._64pxColorfulCard;
+            btnOther.ImageAlign = ContentAlignment.TopCenter;
+            btnOther.Location = new Point(407, 5);
+            btnOther.Name = "btnOther";
+            btnOther.Size = new Size(99, 99);
+            btnOther.TabIndex = 4;
+            btnOther.Text = "DİĞER";
+            btnOther.TextAlign = ContentAlignment.BottomCenter;
+            btnOther.UseVisualStyleBackColor = true;
+            // 
+            // btnParts
+            // 
+            btnParts.BackgroundImage = Properties.Resources._99pxButtons;
+            btnParts.BackgroundImageLayout = ImageLayout.Stretch;
+            btnParts.FlatStyle = FlatStyle.Flat;
+            btnParts.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnParts.ForeColor = Color.White;
+            btnParts.Image = Properties.Resources._64pxPuzzle;
+            btnParts.ImageAlign = ContentAlignment.TopCenter;
+            btnParts.Location = new Point(306, 4);
+            btnParts.Name = "btnParts";
+            btnParts.Size = new Size(99, 99);
+            btnParts.TabIndex = 3;
+            btnParts.Text = "PARÇALI(F4)";
+            btnParts.TextAlign = ContentAlignment.BottomCenter;
+            btnParts.UseVisualStyleBackColor = true;
+            // 
+            // btnMulti
+            // 
+            btnMulti.BackgroundImage = Properties.Resources._99pxButtons;
+            btnMulti.BackgroundImageLayout = ImageLayout.Stretch;
+            btnMulti.FlatStyle = FlatStyle.Flat;
+            btnMulti.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnMulti.ForeColor = Color.White;
+            btnMulti.Image = Properties.Resources._64pxMulti;
+            btnMulti.ImageAlign = ContentAlignment.TopCenter;
+            btnMulti.Location = new Point(205, 4);
+            btnMulti.Name = "btnMulti";
+            btnMulti.Size = new Size(99, 99);
+            btnMulti.TabIndex = 2;
+            btnMulti.Text = "ÇOKLU (F3)";
+            btnMulti.TextAlign = ContentAlignment.BottomCenter;
+            btnMulti.UseVisualStyleBackColor = true;
+            // 
+            // btnCard
+            // 
+            btnCard.BackgroundImage = Properties.Resources._99pxButtons;
+            btnCard.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCard.FlatStyle = FlatStyle.Flat;
+            btnCard.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnCard.ForeColor = Color.White;
+            btnCard.Image = Properties.Resources._64pxCreditCard;
+            btnCard.ImageAlign = ContentAlignment.TopCenter;
+            btnCard.Location = new Point(104, 4);
+            btnCard.Name = "btnCard";
+            btnCard.Size = new Size(99, 99);
+            btnCard.TabIndex = 1;
+            btnCard.Text = "KART (F2)";
+            btnCard.TextAlign = ContentAlignment.BottomCenter;
+            btnCard.UseVisualStyleBackColor = true;
+            // 
+            // btnCash
+            // 
+            btnCash.BackgroundImage = Properties.Resources._99pxButtons;
+            btnCash.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCash.FlatStyle = FlatStyle.Flat;
+            btnCash.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnCash.ForeColor = Color.White;
+            btnCash.Image = Properties.Resources._64pxBankNotes;
+            btnCash.ImageAlign = ContentAlignment.TopCenter;
+            btnCash.Location = new Point(3, 3);
+            btnCash.Name = "btnCash";
+            btnCash.Size = new Size(99, 99);
+            btnCash.TabIndex = 0;
+            btnCash.Text = "NAKİT (F1)";
+            btnCash.TextAlign = ContentAlignment.BottomCenter;
+            btnCash.UseVisualStyleBackColor = true;
+            // 
             // flpMiddleButtons
             // 
             flpMiddleButtons.Controls.Add(btnDiscount);
@@ -630,6 +1014,8 @@ namespace POSA.Forms
             // btnDiscount
             // 
             btnDiscount.BackColor = Color.FromArgb(64, 64, 64);
+            btnDiscount.BackgroundImage = Properties.Resources._99pxButtons;
+            btnDiscount.BackgroundImageLayout = ImageLayout.Stretch;
             btnDiscount.FlatStyle = FlatStyle.Flat;
             btnDiscount.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnDiscount.ForeColor = Color.White;
@@ -646,6 +1032,8 @@ namespace POSA.Forms
             // btnCustomer
             // 
             btnCustomer.BackColor = Color.FromArgb(64, 64, 64);
+            btnCustomer.BackgroundImage = Properties.Resources._99pxButtons;
+            btnCustomer.BackgroundImageLayout = ImageLayout.Stretch;
             btnCustomer.FlatStyle = FlatStyle.Flat;
             btnCustomer.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnCustomer.ForeColor = Color.White;
@@ -662,6 +1050,8 @@ namespace POSA.Forms
             // btnScreenButtons
             // 
             btnScreenButtons.BackColor = Color.FromArgb(64, 64, 64);
+            btnScreenButtons.BackgroundImage = Properties.Resources._99pxButtons;
+            btnScreenButtons.BackgroundImageLayout = ImageLayout.Stretch;
             btnScreenButtons.FlatStyle = FlatStyle.Flat;
             btnScreenButtons.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnScreenButtons.ForeColor = Color.White;
@@ -676,6 +1066,8 @@ namespace POSA.Forms
             // btnOffer
             // 
             btnOffer.BackColor = Color.FromArgb(64, 64, 64);
+            btnOffer.BackgroundImage = Properties.Resources._99pxButtons;
+            btnOffer.BackgroundImageLayout = ImageLayout.Stretch;
             btnOffer.FlatStyle = FlatStyle.Flat;
             btnOffer.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnOffer.ForeColor = Color.White;
@@ -692,6 +1084,8 @@ namespace POSA.Forms
             // btnGetWeight
             // 
             btnGetWeight.BackColor = Color.FromArgb(64, 64, 64);
+            btnGetWeight.BackgroundImage = Properties.Resources._99pxButtons;
+            btnGetWeight.BackgroundImageLayout = ImageLayout.Stretch;
             btnGetWeight.FlatStyle = FlatStyle.Flat;
             btnGetWeight.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnGetWeight.ForeColor = Color.White;
@@ -708,6 +1102,8 @@ namespace POSA.Forms
             // btnDrawer
             // 
             btnDrawer.BackColor = Color.FromArgb(64, 64, 64);
+            btnDrawer.BackgroundImage = Properties.Resources._99pxButtons;
+            btnDrawer.BackgroundImageLayout = ImageLayout.Stretch;
             btnDrawer.FlatStyle = FlatStyle.Flat;
             btnDrawer.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             btnDrawer.ForeColor = Color.White;
@@ -1418,7 +1814,7 @@ namespace POSA.Forms
             pnlAddGroup.Controls.Add(btnNewGroupAdd);
             pnlAddGroup.Controls.Add(label3);
             pnlAddGroup.Controls.Add(label2);
-            pnlAddGroup.Location = new Point(559, 45);
+            pnlAddGroup.Location = new Point(558, 44);
             pnlAddGroup.Name = "pnlAddGroup";
             pnlAddGroup.Size = new Size(282, 115);
             pnlAddGroup.TabIndex = 8;
@@ -1502,9 +1898,9 @@ namespace POSA.Forms
             pnlAddNewGroupsButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnlAddNewGroupsButton.BackColor = Color.Gainsboro;
             pnlAddNewGroupsButton.Controls.Add(tbAddNewGroupsButton);
-            pnlAddNewGroupsButton.Location = new Point(559, 166);
+            pnlAddNewGroupsButton.Location = new Point(559, 180);
             pnlAddNewGroupsButton.Name = "pnlAddNewGroupsButton";
-            pnlAddNewGroupsButton.Size = new Size(282, 67);
+            pnlAddNewGroupsButton.Size = new Size(282, 246);
             pnlAddNewGroupsButton.TabIndex = 1;
             pnlAddNewGroupsButton.Visible = false;
             // 
@@ -1562,15 +1958,20 @@ namespace POSA.Forms
             scAddCustomerContainer.ResumeLayout(false);
             flpCustomers.ResumeLayout(false);
             scLeftBottomMain.Panel1.ResumeLayout(false);
+            scLeftBottomMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)scLeftBottomMain).EndInit();
             scLeftBottomMain.ResumeLayout(false);
             scLeftBottomMainsTop.Panel1.ResumeLayout(false);
             scLeftBottomMainsTop.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)scLeftBottomMainsTop).EndInit();
             scLeftBottomMainsTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             flpMiddleButtons.ResumeLayout(false);
             flpGroupButtons.ResumeLayout(false);
             pnlGroups.ResumeLayout(false);
@@ -1669,14 +2070,11 @@ namespace POSA.Forms
         private Button btnGroup38;
         private Button btnGroup39;
         private Button btnGroup40;
-        private CustomObjects.RoundTextBox roundTextBox1;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private Button btnSearchProduct;
         private Button btnCheckPrice;
         private Button btnClearGrid;
         private FlowLayoutPanel flpMiddleButtons;
-        private Button button1;
+        private Button btnCard;
         private Button btnDiscount;
         private Button btnCustomer;
         private Button btnScreenButtons;
@@ -1688,5 +2086,31 @@ namespace POSA.Forms
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Total;
+        private Button btnCash;
+        private Panel panel2;
+        private Button btnOther;
+        private Button btnParts;
+        private Button btnMulti;
+        private Button btn5TL;
+        private Button btnClearTakenMoney;
+        private TextBox tbTakenMoney;
+        private Label label5;
+        private Label label4;
+        private Button btn200TL;
+        private Button btn100TL;
+        private Button btn50TL;
+        private Button btn20TL;
+        private Button btn10TL;
+        private Panel panel3;
+        private Label label6;
+        private Label lblChangeMoney;
+        private Label label7;
+        private Button btnEuroTotalPrice;
+        private Button btnTotalPrice;
+        private Button btnDolarTotalPrice;
+        private PictureBox pbClearSearch;
+        private PictureBox pictureBox3;
+        private CustomObjects.RoundTextBox rtbSearch;
+        private Button btnShowPrices;
     }
 }

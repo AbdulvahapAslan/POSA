@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using Dapper;
 using POSA.CustomObjects;
 using POSA.Dto;
@@ -19,6 +21,7 @@ namespace POSA.Forms
         public Sales()
         {
             InitializeComponent();
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en_GB");
         }
 
         #region GENERAL 
@@ -424,7 +427,7 @@ namespace POSA.Forms
                     {
                         btn.Text = button.Name;
                         btn.Name = button.Barcode;
-                        btn.BackgroundImage = string.IsNullOrWhiteSpace(button.B64Image)?null:Base64ToImage(button.B64Image);
+                        btn.BackgroundImage = string.IsNullOrWhiteSpace(button.B64Image) ? null : Base64ToImage(button.B64Image);
                         break;
                     }
                 }
@@ -489,7 +492,7 @@ namespace POSA.Forms
             {
                 Image = Properties.Resources._24pxClose,
                 Name = "DELETE",
-                HeaderText = "SİL",
+                HeaderText = "",
                 FillWeight = 5,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
@@ -551,14 +554,17 @@ namespace POSA.Forms
             {
                 if (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) > 1)
                 {
+
                     dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) - 1).ToString();
-                    dgvMain.Rows[e.RowIndex].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString())).ToString();
+                    dgvMain.Rows[e.RowIndex].Cells["Total"].Value = decimal.Round(Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()), 2, MidpointRounding.AwayFromZero).ToString();
+                    CalculateAll();
                 }
             }
             else if (e.ColumnIndex == dgvMain.Columns["PLUS"].Index)
             {
                 dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) + 1).ToString();
                 dgvMain.Rows[e.RowIndex].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString())).ToString();
+                CalculateAll();
             }
         }
         #endregion
@@ -604,7 +610,8 @@ namespace POSA.Forms
             if (indexOfExistingRow > -1)
             {
                 dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString()) + 1).ToString();
-                dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())),2,MidpointRounding.AwayFromZero).ToString();
+                dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())), 2, MidpointRounding.AwayFromZero).ToString();
+                CalculateAll();
                 return;
             }
             var setting = Setting.Get();
@@ -612,10 +619,10 @@ namespace POSA.Forms
             var sqlBuilder = new SqlBuilder();
             sqlBuilder.Select("BARCODE,NAME,SALEPRICE");
             sqlBuilder.Where("BARCODE=@BARCODE");
-            var param = new {BARCODE = barcode};
+            var param = new { BARCODE = barcode };
             var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
             conn.Open();
-            var result = conn.QueryAsync<SaleProduct>(builderTemp.RawSql,param).Result.ToList();
+            var result = conn.QueryAsync<SaleProduct>(builderTemp.RawSql, param).Result.ToList();
             if (result.Any())
             {
                 dgvMain.Rows.Add();
@@ -623,10 +630,22 @@ namespace POSA.Forms
                 dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = result[0].NAME;
                 dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = result[0].SALEPRICE;
                 dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = "1";
-                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())),2,MidpointRounding.AwayFromZero).ToString();
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())), 2, MidpointRounding.AwayFromZero).ToString();
             }
+            CalculateAll();
         }
-        
+        public async void CalculateAll()
+        {
+            decimal totalTL = 0;
+            foreach (DataGridViewRow row in dgvMain.Rows)
+            {
+                totalTL += Convert.ToDecimal(row.Cells["Total"].Value.ToString());
+            }
+            var currencies = GetCurrencies();
+            btnTotalPrice.Text = totalTL.ToString() + "₺";
+            btnDolarTotalPrice.Text = decimal.Round((totalTL / currencies.Item1), 2, MidpointRounding.AwayFromZero).ToString() + "$";
+            btnEuroTotalPrice.Text = decimal.Round((totalTL / currencies.Item2), 2, MidpointRounding.AwayFromZero).ToString() + "€";
+        }
         private async Task<GroupButton> GetMaterialAsButton(string barcode, string currentPage)
         {
             //get it from database and fill the object
@@ -666,6 +685,36 @@ namespace POSA.Forms
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
             dgvMain.Rows.Clear();
+        }
+
+        private void btnShowPrices_Click(object sender, EventArgs e)
+        {
+            btnTotalPrice.Visible = !btnTotalPrice.Visible;
+            btnEuroTotalPrice.Visible = !btnEuroTotalPrice.Visible;
+            btnDolarTotalPrice.Visible = !btnDolarTotalPrice.Visible;
+        }
+        public Tuple<decimal, decimal> GetCurrencies()
+        {
+            XmlDocument xmlVerisi = new XmlDocument();
+            xmlVerisi.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
+            decimal dolar = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "USD")).InnerText, new CultureInfo("en-gb"));
+            decimal euro = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
+            return new Tuple<decimal, decimal>(dolar, euro);
+        }
+
+        private void btnClearTakenMoney_Click(object sender, EventArgs e)
+        {
+            tbTakenMoney.Text = "0";
+        }
+        private void btnTL_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            tbTakenMoney.Text = (Convert.ToInt32(tbTakenMoney.Text) + Convert.ToInt32(btn.Text.Replace("₺",""))).ToString();
+            RefreshChange();
+        }
+        private void RefreshChange()
+        {
+            lblChangeMoney.Text = decimal.Round(Convert.ToInt32(tbTakenMoney.Text) - Convert.ToDecimal(btnTotalPrice.Text.Replace("₺","")),2,MidpointRounding.AwayFromZero).ToString();
         }
     }
 }

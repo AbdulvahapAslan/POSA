@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
@@ -85,7 +85,6 @@
             lblCategory = new Label();
             tbProductName = new TextBox();
             lblProductName = new Label();
-            btnCheckBarcode = new Button();
             tbBarcode = new TextBox();
             lblBarcode = new Label();
             pbProduct = new PictureBox();
@@ -100,6 +99,24 @@
             rtbSearch = new CustomObjects.RoundTextBox();
             btnSaveVariants = new Button();
             dgvMain = new DataGridView();
+            BARCODE = new DataGridViewTextBoxColumn();
+            VATRATE = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            CATEGORY = new DataGridViewTextBoxColumn();
+            UNIT = new DataGridViewTextBoxColumn();
+            COLOR = new DataGridViewTextBoxColumn();
+            SIZE = new DataGridViewTextBoxColumn();
+            MATERIAL = new DataGridViewTextBoxColumn();
+            BUYINGPRICE = new DataGridViewTextBoxColumn();
+            SELLPRICE = new DataGridViewTextBoxColumn();
+            SELLPRICE2 = new DataGridViewTextBoxColumn();
+            SELLPRICE3 = new DataGridViewTextBoxColumn();
+            CURRENCY = new DataGridViewTextBoxColumn();
+            STOCK = new DataGridViewTextBoxColumn();
+            CRITICALSTOCK = new DataGridViewTextBoxColumn();
+            SUPPLIER = new DataGridViewTextBoxColumn();
+            BRANCH = new DataGridViewTextBoxColumn();
+            B64IMAGE = new DataGridViewTextBoxColumn();
             dgvVariant = new DataGridView();
             VBARCODE = new DataGridViewTextBoxColumn();
             VNAME = new DataGridViewTextBoxColumn();
@@ -119,24 +136,7 @@
             VSUPPLIER = new DataGridViewTextBoxColumn();
             VBRANCH = new DataGridViewTextBoxColumn();
             tmrNewProduct = new System.Windows.Forms.Timer(components);
-            BARCODE = new DataGridViewTextBoxColumn();
-            VATRATE = new DataGridViewTextBoxColumn();
-            NAME = new DataGridViewTextBoxColumn();
-            CATEGORY = new DataGridViewTextBoxColumn();
-            UNIT = new DataGridViewTextBoxColumn();
-            COLOR = new DataGridViewTextBoxColumn();
-            SIZE = new DataGridViewTextBoxColumn();
-            MATERIAL = new DataGridViewTextBoxColumn();
-            BUYINGPRICE = new DataGridViewTextBoxColumn();
-            SELLPRICE = new DataGridViewTextBoxColumn();
-            SELLPRICE2 = new DataGridViewTextBoxColumn();
-            SELLPRICE3 = new DataGridViewTextBoxColumn();
-            CURRENCY = new DataGridViewTextBoxColumn();
-            STOCK = new DataGridViewTextBoxColumn();
-            CRITICALSTOCK = new DataGridViewTextBoxColumn();
-            SUPPLIER = new DataGridViewTextBoxColumn();
-            BRANCH = new DataGridViewTextBoxColumn();
-            B64IMAGE = new DataGridViewTextBoxColumn();
+            btnCheckBarcode = new Button();
             pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMainContainer).BeginInit();
             scMainContainer.Panel1.SuspendLayout();
@@ -236,6 +236,7 @@
             // scMainContainer.Panel1
             // 
             scMainContainer.Panel1.BackColor = Color.Transparent;
+            scMainContainer.Panel1.Controls.Add(btnCheckBarcode);
             scMainContainer.Panel1.Controls.Add(cbCurrency);
             scMainContainer.Panel1.Controls.Add(lblCurrency);
             scMainContainer.Panel1.Controls.Add(btnAddBranch);
@@ -277,7 +278,6 @@
             scMainContainer.Panel1.Controls.Add(lblCategory);
             scMainContainer.Panel1.Controls.Add(tbProductName);
             scMainContainer.Panel1.Controls.Add(lblProductName);
-            scMainContainer.Panel1.Controls.Add(btnCheckBarcode);
             scMainContainer.Panel1.Controls.Add(tbBarcode);
             scMainContainer.Panel1.Controls.Add(lblBarcode);
             scMainContainer.Panel1.Controls.Add(pbProduct);
@@ -783,19 +783,6 @@
             lblProductName.TabIndex = 36;
             lblProductName.Text = "Ürün Adı";
             // 
-            // btnCheckBarcode
-            // 
-            btnCheckBarcode.BackgroundImage = Properties.Resources._32pxTick;
-            btnCheckBarcode.FlatAppearance.BorderSize = 0;
-            btnCheckBarcode.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            btnCheckBarcode.FlatStyle = FlatStyle.Flat;
-            btnCheckBarcode.Location = new Point(391, 176);
-            btnCheckBarcode.Name = "btnCheckBarcode";
-            btnCheckBarcode.Size = new Size(35, 35);
-            btnCheckBarcode.TabIndex = 35;
-            btnCheckBarcode.UseVisualStyleBackColor = true;
-            btnCheckBarcode.Click += btnCheckBarcode_Click;
-            // 
             // tbBarcode
             // 
             tbBarcode.BorderStyle = BorderStyle.None;
@@ -1048,6 +1035,158 @@
             dgvMain.TabIndex = 5;
             dgvMain.CellClick += dgvMain_CellClick;
             // 
+            // BARCODE
+            // 
+            BARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BARCODE.DataPropertyName = "BARCODE";
+            BARCODE.FillWeight = 60F;
+            BARCODE.HeaderText = "BARKOD";
+            BARCODE.Name = "BARCODE";
+            // 
+            // VATRATE
+            // 
+            VATRATE.DataPropertyName = "VATRATE";
+            VATRATE.HeaderText = "KDV";
+            VATRATE.Name = "VATRATE";
+            VATRATE.Visible = false;
+            VATRATE.Width = 60;
+            // 
+            // NAME
+            // 
+            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NAME.DataPropertyName = "NAME";
+            NAME.FillWeight = 70F;
+            NAME.HeaderText = "ÜRÜN ADI";
+            NAME.Name = "NAME";
+            // 
+            // CATEGORY
+            // 
+            CATEGORY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CATEGORY.DataPropertyName = "CATEGORY";
+            CATEGORY.FillWeight = 80F;
+            CATEGORY.HeaderText = "KATEGORİ";
+            CATEGORY.Name = "CATEGORY";
+            // 
+            // UNIT
+            // 
+            UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UNIT.DataPropertyName = "UNIT";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            UNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            UNIT.FillWeight = 40F;
+            UNIT.HeaderText = "BİRİM";
+            UNIT.Name = "UNIT";
+            // 
+            // COLOR
+            // 
+            COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            COLOR.DataPropertyName = "COLOR";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            COLOR.DefaultCellStyle = dataGridViewCellStyle3;
+            COLOR.FillWeight = 40F;
+            COLOR.HeaderText = "RENK";
+            COLOR.Name = "COLOR";
+            // 
+            // SIZE
+            // 
+            SIZE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SIZE.DataPropertyName = "SIZE";
+            SIZE.FillWeight = 40F;
+            SIZE.HeaderText = "BEDEN";
+            SIZE.Name = "SIZE";
+            // 
+            // MATERIAL
+            // 
+            MATERIAL.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            MATERIAL.DataPropertyName = "MATERIAL";
+            MATERIAL.FillWeight = 80F;
+            MATERIAL.HeaderText = "MATERYAL";
+            MATERIAL.Name = "MATERIAL";
+            // 
+            // BUYINGPRICE
+            // 
+            BUYINGPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BUYINGPRICE.DataPropertyName = "BUYINGPRICE";
+            BUYINGPRICE.FillWeight = 40F;
+            BUYINGPRICE.HeaderText = "ALIŞ";
+            BUYINGPRICE.Name = "BUYINGPRICE";
+            // 
+            // SELLPRICE
+            // 
+            SELLPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SELLPRICE.DataPropertyName = "SELLPRICE";
+            SELLPRICE.FillWeight = 55F;
+            SELLPRICE.HeaderText = "SATIŞ";
+            SELLPRICE.Name = "SELLPRICE";
+            // 
+            // SELLPRICE2
+            // 
+            SELLPRICE2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SELLPRICE2.DataPropertyName = "SELLPRICE2";
+            SELLPRICE2.FillWeight = 55F;
+            SELLPRICE2.HeaderText = "SATIŞ2";
+            SELLPRICE2.Name = "SELLPRICE2";
+            SELLPRICE2.Visible = false;
+            // 
+            // SELLPRICE3
+            // 
+            SELLPRICE3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SELLPRICE3.DataPropertyName = "SELLPRICE3";
+            SELLPRICE3.FillWeight = 55F;
+            SELLPRICE3.HeaderText = "SATIŞ3";
+            SELLPRICE3.Name = "SELLPRICE3";
+            SELLPRICE3.Visible = false;
+            // 
+            // CURRENCY
+            // 
+            CURRENCY.DataPropertyName = "CURRENCY";
+            CURRENCY.HeaderText = "D.CİNSİ";
+            CURRENCY.Name = "CURRENCY";
+            CURRENCY.Visible = false;
+            CURRENCY.Width = 81;
+            // 
+            // STOCK
+            // 
+            STOCK.DataPropertyName = "STOCK";
+            STOCK.FillWeight = 30F;
+            STOCK.HeaderText = "STOK";
+            STOCK.Name = "STOCK";
+            STOCK.Width = 67;
+            // 
+            // CRITICALSTOCK
+            // 
+            CRITICALSTOCK.DataPropertyName = "CRITICALSTOCK";
+            CRITICALSTOCK.FillWeight = 40F;
+            CRITICALSTOCK.HeaderText = "K.STOK";
+            CRITICALSTOCK.Name = "CRITICALSTOCK";
+            CRITICALSTOCK.Visible = false;
+            CRITICALSTOCK.Width = 80;
+            // 
+            // SUPPLIER
+            // 
+            SUPPLIER.DataPropertyName = "SUPPLIER";
+            SUPPLIER.FillWeight = 60F;
+            SUPPLIER.HeaderText = "TEDARİKÇİ";
+            SUPPLIER.Name = "SUPPLIER";
+            SUPPLIER.Visible = false;
+            SUPPLIER.Width = 102;
+            // 
+            // BRANCH
+            // 
+            BRANCH.DataPropertyName = "BRANCH";
+            BRANCH.HeaderText = "ŞUBE";
+            BRANCH.Name = "BRANCH";
+            BRANCH.Visible = false;
+            BRANCH.Width = 66;
+            // 
+            // B64IMAGE
+            // 
+            B64IMAGE.DataPropertyName = "B64IMAGE";
+            B64IMAGE.HeaderText = "B64IMAGE";
+            B64IMAGE.Name = "B64IMAGE";
+            B64IMAGE.Visible = false;
+            B64IMAGE.Width = 101;
+            // 
             // dgvVariant
             // 
             dgvVariant.AllowUserToAddRows = false;
@@ -1232,157 +1371,18 @@
             tmrNewProduct.Interval = 600;
             tmrNewProduct.Tick += tmrNewProduct_Tick;
             // 
-            // BARCODE
+            // btnCheckBarcode
             // 
-            BARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BARCODE.DataPropertyName = "BARCODE";
-            BARCODE.FillWeight = 60F;
-            BARCODE.HeaderText = "BARKOD";
-            BARCODE.Name = "BARCODE";
-            // 
-            // VATRATE
-            // 
-            VATRATE.DataPropertyName = "VATRATE";
-            VATRATE.HeaderText = "KDV";
-            VATRATE.Name = "VATRATE";
-            VATRATE.Visible = false;
-            VATRATE.Width = 60;
-            // 
-            // NAME
-            // 
-            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NAME.DataPropertyName = "NAME";
-            NAME.FillWeight = 70F;
-            NAME.HeaderText = "ÜRÜN ADI";
-            NAME.Name = "NAME";
-            // 
-            // CATEGORY
-            // 
-            CATEGORY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CATEGORY.DataPropertyName = "CATEGORY";
-            CATEGORY.FillWeight = 80F;
-            CATEGORY.HeaderText = "KATEGORİ";
-            CATEGORY.Name = "CATEGORY";
-            // 
-            // UNIT
-            // 
-            UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UNIT.DataPropertyName = "UNIT";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            UNIT.DefaultCellStyle = dataGridViewCellStyle2;
-            UNIT.FillWeight = 40F;
-            UNIT.HeaderText = "BİRİM";
-            UNIT.Name = "UNIT";
-            // 
-            // COLOR
-            // 
-            COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            COLOR.DataPropertyName = "COLOR";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            COLOR.DefaultCellStyle = dataGridViewCellStyle3;
-            COLOR.FillWeight = 40F;
-            COLOR.HeaderText = "RENK";
-            COLOR.Name = "COLOR";
-            // 
-            // SIZE
-            // 
-            SIZE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SIZE.DataPropertyName = "SIZE";
-            SIZE.FillWeight = 40F;
-            SIZE.HeaderText = "BEDEN";
-            SIZE.Name = "SIZE";
-            // 
-            // MATERIAL
-            // 
-            MATERIAL.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            MATERIAL.DataPropertyName = "MATERIAL";
-            MATERIAL.FillWeight = 80F;
-            MATERIAL.HeaderText = "MATERYAL";
-            MATERIAL.Name = "MATERIAL";
-            // 
-            // BUYINGPRICE
-            // 
-            BUYINGPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BUYINGPRICE.DataPropertyName = "BUYINGPRICE";
-            BUYINGPRICE.FillWeight = 40F;
-            BUYINGPRICE.HeaderText = "ALIŞ";
-            BUYINGPRICE.Name = "BUYINGPRICE";
-            // 
-            // SELLPRICE
-            // 
-            SELLPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SELLPRICE.DataPropertyName = "SELLPRICE";
-            SELLPRICE.FillWeight = 55F;
-            SELLPRICE.HeaderText = "SATIŞ";
-            SELLPRICE.Name = "SELLPRICE";
-            // 
-            // SELLPRICE2
-            // 
-            SELLPRICE2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SELLPRICE2.DataPropertyName = "SELLPRICE2";
-            SELLPRICE2.FillWeight = 55F;
-            SELLPRICE2.HeaderText = "SATIŞ2";
-            SELLPRICE2.Name = "SELLPRICE2";
-            SELLPRICE2.Visible = false;
-            // 
-            // SELLPRICE3
-            // 
-            SELLPRICE3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SELLPRICE3.DataPropertyName = "SELLPRICE3";
-            SELLPRICE3.FillWeight = 55F;
-            SELLPRICE3.HeaderText = "SATIŞ3";
-            SELLPRICE3.Name = "SELLPRICE3";
-            SELLPRICE3.Visible = false;
-            // 
-            // CURRENCY
-            // 
-            CURRENCY.DataPropertyName = "CURRENCY";
-            CURRENCY.HeaderText = "D.CİNSİ";
-            CURRENCY.Name = "CURRENCY";
-            CURRENCY.Visible = false;
-            CURRENCY.Width = 81;
-            // 
-            // STOCK
-            // 
-            STOCK.DataPropertyName = "STOCK";
-            STOCK.FillWeight = 30F;
-            STOCK.HeaderText = "STOK";
-            STOCK.Name = "STOCK";
-            STOCK.Width = 67;
-            // 
-            // CRITICALSTOCK
-            // 
-            CRITICALSTOCK.DataPropertyName = "CRITICALSTOCK";
-            CRITICALSTOCK.FillWeight = 40F;
-            CRITICALSTOCK.HeaderText = "K.STOK";
-            CRITICALSTOCK.Name = "CRITICALSTOCK";
-            CRITICALSTOCK.Visible = false;
-            CRITICALSTOCK.Width = 80;
-            // 
-            // SUPPLIER
-            // 
-            SUPPLIER.DataPropertyName = "SUPPLIER";
-            SUPPLIER.FillWeight = 60F;
-            SUPPLIER.HeaderText = "TEDARİKÇİ";
-            SUPPLIER.Name = "SUPPLIER";
-            SUPPLIER.Visible = false;
-            SUPPLIER.Width = 102;
-            // 
-            // BRANCH
-            // 
-            BRANCH.DataPropertyName = "BRANCH";
-            BRANCH.HeaderText = "ŞUBE";
-            BRANCH.Name = "BRANCH";
-            BRANCH.Visible = false;
-            BRANCH.Width = 66;
-            // 
-            // B64IMAGE
-            // 
-            B64IMAGE.DataPropertyName = "B64IMAGE";
-            B64IMAGE.HeaderText = "B64IMAGE";
-            B64IMAGE.Name = "B64IMAGE";
-            B64IMAGE.Visible = false;
-            B64IMAGE.Width = 101;
+            btnCheckBarcode.FlatAppearance.BorderSize = 0;
+            btnCheckBarcode.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnCheckBarcode.FlatStyle = FlatStyle.Flat;
+            btnCheckBarcode.Image = Properties.Resources._32pxTick;
+            btnCheckBarcode.Location = new Point(391, 174);
+            btnCheckBarcode.Name = "btnCheckBarcode";
+            btnCheckBarcode.Size = new Size(35, 35);
+            btnCheckBarcode.TabIndex = 83;
+            btnCheckBarcode.UseVisualStyleBackColor = true;
+            btnCheckBarcode.Click += btnCheckBarcode_Click;
             // 
             // NewProduct
             // 
@@ -1445,7 +1445,6 @@
         private Label lblCategory;
         private TextBox tbProductName;
         private Label lblProductName;
-        private Button btnCheckBarcode;
         private TextBox tbBarcode;
         private Label lblBarcode;
         private PictureBox pbProduct;
@@ -1526,5 +1525,6 @@
         private DataGridViewTextBoxColumn SUPPLIER;
         private DataGridViewTextBoxColumn BRANCH;
         private DataGridViewTextBoxColumn B64IMAGE;
+        private Button btnCheckBarcode;
     }
 }

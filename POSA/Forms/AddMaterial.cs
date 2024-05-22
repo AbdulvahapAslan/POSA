@@ -13,6 +13,7 @@ using Dapper;
 using POSA.Dto;
 using POSA.Helpers.Settings;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 namespace POSA.Forms
 {
     public partial class AddMaterial : Form
@@ -79,6 +80,11 @@ namespace POSA.Forms
             conn.Open();
             var result = await conn.ExecuteAsync(builderTemp.RawSql);
         }
+        private void ClearScreen()
+        {
+            tbMaterial.Text = "";
+            tbDescription.Text = "";
+        }
         private async void btnSave_Click(object sender, EventArgs e)
         {
             var settings = Setting.Get();
@@ -94,6 +100,7 @@ namespace POSA.Forms
             conn.Open();
             var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
             RefreshDataGrid();
+            ClearScreen();
         }
         private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -40,13 +40,13 @@
             NAME = new DataGridViewTextBoxColumn();
             DESCRIPTION = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
+            pbClearSearch = new PictureBox();
+            pictureBox3 = new PictureBox();
+            rtbSearch = new CustomObjects.RoundTextBox();
             tbDescription = new TextBox();
             lblDescription = new Label();
             tbUnit = new TextBox();
             lblUnit = new Label();
-            pbClearSearch = new PictureBox();
-            pictureBox3 = new PictureBox();
-            rtbSearch = new CustomObjects.RoundTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
@@ -64,6 +64,7 @@
             btnClose.BorderRadius = 0;
             btnClose.BorderSize = 0;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1012, 12);
@@ -196,49 +197,6 @@
             panel1.Size = new Size(633, 428);
             panel1.TabIndex = 76;
             // 
-            // tbDescription
-            // 
-            tbDescription.BorderStyle = BorderStyle.None;
-            tbDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbDescription.Location = new Point(136, 85);
-            tbDescription.Multiline = true;
-            tbDescription.Name = "tbDescription";
-            tbDescription.Size = new Size(260, 168);
-            tbDescription.TabIndex = 80;
-            // 
-            // lblDescription
-            // 
-            lblDescription.AutoSize = true;
-            lblDescription.BackColor = Color.Transparent;
-            lblDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            lblDescription.ForeColor = Color.White;
-            lblDescription.Location = new Point(12, 83);
-            lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(93, 28);
-            lblDescription.TabIndex = 79;
-            lblDescription.Text = "Açıklama";
-            // 
-            // tbUnit
-            // 
-            tbUnit.BorderStyle = BorderStyle.None;
-            tbUnit.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbUnit.Location = new Point(136, 52);
-            tbUnit.Name = "tbUnit";
-            tbUnit.Size = new Size(260, 27);
-            tbUnit.TabIndex = 78;
-            // 
-            // lblUnit
-            // 
-            lblUnit.AutoSize = true;
-            lblUnit.BackColor = Color.Transparent;
-            lblUnit.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            lblUnit.ForeColor = Color.White;
-            lblUnit.Location = new Point(12, 50);
-            lblUnit.Name = "lblUnit";
-            lblUnit.Size = new Size(66, 28);
-            lblUnit.TabIndex = 77;
-            lblUnit.Text = "BİRİM";
-            // 
             // pbClearSearch
             // 
             pbClearSearch.BackColor = Color.White;
@@ -283,6 +241,49 @@
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
             rtbSearch._TextChanged += rtbSearch__TextChanged;
+            // 
+            // tbDescription
+            // 
+            tbDescription.BorderStyle = BorderStyle.None;
+            tbDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbDescription.Location = new Point(136, 85);
+            tbDescription.Multiline = true;
+            tbDescription.Name = "tbDescription";
+            tbDescription.Size = new Size(260, 168);
+            tbDescription.TabIndex = 80;
+            // 
+            // lblDescription
+            // 
+            lblDescription.AutoSize = true;
+            lblDescription.BackColor = Color.Transparent;
+            lblDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblDescription.ForeColor = Color.White;
+            lblDescription.Location = new Point(12, 83);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(93, 28);
+            lblDescription.TabIndex = 79;
+            lblDescription.Text = "Açıklama";
+            // 
+            // tbUnit
+            // 
+            tbUnit.BorderStyle = BorderStyle.None;
+            tbUnit.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbUnit.Location = new Point(136, 52);
+            tbUnit.Name = "tbUnit";
+            tbUnit.Size = new Size(260, 27);
+            tbUnit.TabIndex = 78;
+            // 
+            // lblUnit
+            // 
+            lblUnit.AutoSize = true;
+            lblUnit.BackColor = Color.Transparent;
+            lblUnit.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblUnit.ForeColor = Color.White;
+            lblUnit.Location = new Point(12, 50);
+            lblUnit.Name = "lblUnit";
+            lblUnit.Size = new Size(66, 28);
+            lblUnit.TabIndex = 77;
+            lblUnit.Text = "BİRİM";
             // 
             // AddUnit
             // 

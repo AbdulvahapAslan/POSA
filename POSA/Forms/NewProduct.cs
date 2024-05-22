@@ -169,19 +169,16 @@ namespace POSA.Forms
         public List<VariantImage> VariantImages = new List<VariantImage>();
         public void ClearAfterAddVariant()
         {
+            tbBarcode.Text = "";
+            tbBarcode.BackColor = Color.White;
             LastAddedImagePath = "";
             pbProduct.BackgroundImage = Properties.Resources._256pxNoImage;
             cbColor.SelectedIndex = 0;
             cbMaterial.SelectedIndex = 0;
             cbSize.SelectedIndex = 0;
-            tbBarcode.Text = "";
-            tbBuyPrice.Text = "0";
             tbCriticalStock.Text = "0";
             tbStock.Text = "0";
-            tbSalePrice.Text = "0";
-            tbSalePrice2.Text = "0";
-            tbSalePrice3.Text = "0";
-            tbProductName.Text = "";
+            btnGiveNextBarcode.PerformClick();
         }
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -206,7 +203,6 @@ namespace POSA.Forms
             conn.Open();
             if (tbBarcode.Enabled == false)
             {//update
-
                 var sqlBuilder = new SqlBuilder();
                 var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND BUYPRICE=@BUYPRICE AND VATRATE=@VATRATE AND CURRENCY=@CURRENCY AND STOCK=@STOCK AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() WHERE BARCODE = @BARCODE");
                 var param = new
@@ -419,7 +415,7 @@ namespace POSA.Forms
                 tbCriticalStock.Text = dgvMain.Rows[e.RowIndex].Cells["CRITICALSTOCK"].Value.ToString();
                 cbCurrency.Text = dgvMain.Rows[e.RowIndex].Cells["CURRENCY"].Value.ToString();
                 cbSupplier.Text = dgvMain.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
-                pbProduct.BackgroundImage = string.IsNullOrWhiteSpace(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString()) ?Properties.Resources._256pxNoImage: Base64ToImage(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString());
+                pbProduct.BackgroundImage = string.IsNullOrWhiteSpace(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString()) ? Properties.Resources._256pxNoImage : Base64ToImage(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString());
                 cbBranch.Text = cbListingBranch.SelectedText;
             }
         }
@@ -427,30 +423,22 @@ namespace POSA.Forms
         {
             if (tbBarcode.Enabled == false)
                 return;
-            var settings = Setting.Get();
-            var sb = new SqlBuilder();
-            sb.Select("TOP 1 BARCODE");
-            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM BARCODES ORDER BY ID DESC");
-            await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+            tbBarcode.Text = DateTime.Now.ToString("yyMMddHHmmssfff").Substring(0, 13);
+            tbBarcode.BackColor = Color.White;
+            var setting = Setting.Get();
+            await using var conn = new SqlConnection(setting.Sql.ConnectionString());
             conn.Open();
-            var ar = new SqlDataAdapter(builderTemp.RawSql, conn);
-            var dt = new DataTable();
-            ar.Fill(dt);
-            if (dt.Rows.Count > 0)
+            var sqlBuilder = new SqlBuilder();
+            sqlBuilder.Select("*");
+            sqlBuilder.Where("BARCODE=@BARCODE");
+            var buildTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
+            var param = new
             {
-                tbBarcode.Text = (Convert.ToInt32(dt.Rows[0]["BARCODE"].ToString()) + 1).ToString();
-                sb = new SqlBuilder();
-                builderTemp = sb.AddTemplate("INSERT INTO BARCODES(BARCODE) VALUES(@BARCODE)");
-                var param = new { BARCODE = tbBarcode.Text };
-                var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
-            }
-            else
-            {
-                sb = new SqlBuilder();
-                builderTemp = sb.AddTemplate("INSERT INTO BARCODES(BARCODE) VALUES('1')");
-                var result = await conn.ExecuteAsync(builderTemp.RawSql);
-                tbBarcode.Text = "1";
-            }
+                BARCODE = tbBarcode.Text
+            };
+            var result = conn.QueryAsync(buildTemp.RawSql, param).Result;
+            if (result.Any())
+                btnGiveNextBarcode.PerformClick();
         }
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
@@ -650,30 +638,31 @@ namespace POSA.Forms
             }
             ClearAfterAddingToDB();
         }
-        private async void btnCheckBarcode_Click(object sender, EventArgs e)
-        {
-            if (tbBarcode.Text.Length < 1)
-                return;
-            var setting = Setting.Get();
-            await using var conn = new SqlConnection(setting.Sql.ConnectionString());
-            conn.Open();
-            var sqlBuilder = new SqlBuilder();
-            sqlBuilder.Select("*");
-            sqlBuilder.Where("BARCODE=@BARCODE");
-            var buildTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
-            var param = new
-            {
-                BARCODE = tbBarcode.Text
-            };
-            var result = conn.QueryAsync(buildTemp.RawSql, param).Result;
-            if (result.Any())
-                tbBarcode.BackColor = Color.Tomato;
-            else
-                tbBarcode.BackColor = Color.LightGreen;
-        }
         private void rtbSearch__TextChanged(object sender, EventArgs e)
         {
             (dgvMain.DataSource as DataTable).DefaultView.RowFilter = $"NAME LIKE '{rtbSearch.Texts}%' OR BARCODE LIKE '{rtbSearch.Texts}%'";
+        }
+        private async void btnCheckBarcode_Click(object sender, EventArgs e)
+        {
+            if (tbBarcode.Text.Length > 0)
+            {
+                var setting = Setting.Get();
+                await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+                conn.Open();
+                var sqlBuilder = new SqlBuilder();
+                sqlBuilder.Select("*");
+                sqlBuilder.Where("BARCODE=@BARCODE");
+                var buildTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
+                var param = new
+                {
+                    BARCODE = tbBarcode.Text
+                };
+                var result = conn.QueryAsync(buildTemp.RawSql, param).Result;
+                if (result.Any())
+                    tbBarcode.BackColor = Color.Tomato;
+                else
+                    tbBarcode.BackColor = Color.LightGreen;
+            }
         }
     }
 }

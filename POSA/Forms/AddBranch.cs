@@ -86,7 +86,7 @@ namespace POSA.Forms
             var builderTemp = sb.AddTemplate("INSERT INTO BRANCHES(NAME,DESCRIPTION,CREATEDBY,CREATEDATE) VALUES(@NAME,@DESCRIPTION,@CREATEDBY,GETDATE())");
             var param = new
             {
-                NAME = tbCategory.Text,
+                NAME = tbBranch.Text,
                 DESCRIPTION = tbDescription.Text,
                 CREATEDBY = settings.LastSuccesfullyLoggedUser
             };
@@ -94,6 +94,12 @@ namespace POSA.Forms
             conn.Open();
             var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
             RefreshDataGrid();
+            ClearScreen();
+        }
+        private void ClearScreen()
+        {
+            tbBranch.Text = "";
+            tbDescription.Text = "";
         }
         private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {

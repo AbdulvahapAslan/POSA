@@ -36,6 +36,9 @@
             lblPageHeaderAddMaterial = new Label();
             btnSave = new Button();
             dgvMain = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            DESCRIPTION = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             pbClearSearch = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -44,9 +47,6 @@
             lblProductName = new Label();
             tbMaterial = new TextBox();
             lblMaterial = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            NAME = new DataGridViewTextBoxColumn();
-            DESCRIPTION = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
@@ -64,6 +64,7 @@
             btnClose.BorderRadius = 0;
             btnClose.BorderSize = 0;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1012, 12);
@@ -155,6 +156,34 @@
             dgvMain.Size = new Size(613, 362);
             dgvMain.TabIndex = 75;
             dgvMain.CellClick += dgvMain_CellClick;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "ID";
+            dataGridViewCellStyle2.NullValue = "0";
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // NAME
+            // 
+            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NAME.DataPropertyName = "NAME";
+            NAME.FillWeight = 22F;
+            NAME.HeaderText = "MATERYAL";
+            NAME.MaxInputLength = 50;
+            NAME.Name = "NAME";
+            // 
+            // DESCRIPTION
+            // 
+            DESCRIPTION.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DESCRIPTION.DataPropertyName = "DESCRIPTION";
+            DESCRIPTION.FillWeight = 64F;
+            DESCRIPTION.HeaderText = "AÇIKLAMA";
+            DESCRIPTION.MaxInputLength = 100;
+            DESCRIPTION.Name = "DESCRIPTION";
             // 
             // panel1
             // 
@@ -255,34 +284,6 @@
             lblMaterial.Size = new Size(91, 28);
             lblMaterial.TabIndex = 77;
             lblMaterial.Text = "Materyal";
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.NullValue = "0";
-            ID.DefaultCellStyle = dataGridViewCellStyle2;
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            // 
-            // NAME
-            // 
-            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NAME.DataPropertyName = "NAME";
-            NAME.FillWeight = 22F;
-            NAME.HeaderText = "MATERYAL";
-            NAME.MaxInputLength = 50;
-            NAME.Name = "NAME";
-            // 
-            // DESCRIPTION
-            // 
-            DESCRIPTION.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DESCRIPTION.DataPropertyName = "DESCRIPTION";
-            DESCRIPTION.FillWeight = 64F;
-            DESCRIPTION.HeaderText = "AÇIKLAMA";
-            DESCRIPTION.MaxInputLength = 100;
-            DESCRIPTION.Name = "DESCRIPTION";
             // 
             // AddMaterial
             // 

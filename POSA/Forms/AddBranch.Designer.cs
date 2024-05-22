@@ -36,17 +36,17 @@
             lblPageHeaderAddBranch = new Label();
             btnSave = new Button();
             dgvMain = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            DESCRIPTION = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             pbClearSearch = new PictureBox();
             pictureBox3 = new PictureBox();
             rtbSearch = new CustomObjects.RoundTextBox();
             tbDescription = new TextBox();
             lblProductName = new Label();
-            tbCategory = new TextBox();
+            tbBranch = new TextBox();
             lblBranch = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            NAME = new DataGridViewTextBoxColumn();
-            DESCRIPTION = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
@@ -64,6 +64,7 @@
             btnClose.BorderRadius = 0;
             btnClose.BorderSize = 0;
             btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.White;
             btnClose.Location = new Point(1012, 12);
@@ -156,6 +157,34 @@
             dgvMain.TabIndex = 75;
             dgvMain.CellClick += dgvMain_CellClick;
             // 
+            // ID
+            // 
+            ID.DataPropertyName = "ID";
+            dataGridViewCellStyle2.NullValue = "0";
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // NAME
+            // 
+            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NAME.DataPropertyName = "NAME";
+            NAME.FillWeight = 22F;
+            NAME.HeaderText = "ŞUBE";
+            NAME.MaxInputLength = 50;
+            NAME.Name = "NAME";
+            // 
+            // DESCRIPTION
+            // 
+            DESCRIPTION.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DESCRIPTION.DataPropertyName = "DESCRIPTION";
+            DESCRIPTION.FillWeight = 64F;
+            DESCRIPTION.HeaderText = "AÇIKLAMA";
+            DESCRIPTION.MaxInputLength = 100;
+            DESCRIPTION.Name = "DESCRIPTION";
+            // 
             // panel1
             // 
             panel1.BackColor = Color.White;
@@ -235,14 +264,14 @@
             lblProductName.TabIndex = 79;
             lblProductName.Text = "Açıklama";
             // 
-            // tbCategory
+            // tbBranch
             // 
-            tbCategory.BorderStyle = BorderStyle.None;
-            tbCategory.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbCategory.Location = new Point(136, 52);
-            tbCategory.Name = "tbCategory";
-            tbCategory.Size = new Size(260, 27);
-            tbCategory.TabIndex = 78;
+            tbBranch.BorderStyle = BorderStyle.None;
+            tbBranch.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbBranch.Location = new Point(136, 52);
+            tbBranch.Name = "tbBranch";
+            tbBranch.Size = new Size(260, 27);
+            tbBranch.TabIndex = 78;
             // 
             // lblBranch
             // 
@@ -256,34 +285,6 @@
             lblBranch.TabIndex = 77;
             lblBranch.Text = "Şube";
             // 
-            // ID
-            // 
-            ID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.NullValue = "0";
-            ID.DefaultCellStyle = dataGridViewCellStyle2;
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            // 
-            // NAME
-            // 
-            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NAME.DataPropertyName = "NAME";
-            NAME.FillWeight = 22F;
-            NAME.HeaderText = "ŞUBE";
-            NAME.MaxInputLength = 50;
-            NAME.Name = "NAME";
-            // 
-            // DESCRIPTION
-            // 
-            DESCRIPTION.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DESCRIPTION.DataPropertyName = "DESCRIPTION";
-            DESCRIPTION.FillWeight = 64F;
-            DESCRIPTION.HeaderText = "AÇIKLAMA";
-            DESCRIPTION.MaxInputLength = 100;
-            DESCRIPTION.Name = "DESCRIPTION";
-            // 
             // AddBranch
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,7 +294,7 @@
             ClientSize = new Size(1057, 499);
             Controls.Add(tbDescription);
             Controls.Add(lblProductName);
-            Controls.Add(tbCategory);
+            Controls.Add(tbBranch);
             Controls.Add(lblBranch);
             Controls.Add(panel1);
             Controls.Add(btnSave);
@@ -323,7 +324,7 @@
         private Panel panel1;
         private TextBox tbDescription;
         private Label lblProductName;
-        private TextBox tbCategory;
+        private TextBox tbBranch;
         private Label lblBranch;
         private PictureBox pbClearSearch;
         private PictureBox pictureBox3;
