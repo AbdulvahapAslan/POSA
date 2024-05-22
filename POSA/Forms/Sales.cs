@@ -590,85 +590,40 @@ namespace POSA.Forms
                 return image;
             }
         }
-        private void AddToGridWithBarcode(string barcode)
+        private async void AddToGridWithBarcode(string barcode)
         {
             var indexOfExistingRow = -1;
-            switch (barcode)
-            {//01246
-                case "1":
-                    for (int i = 0; i < dgvMain.Rows.Count; i++)
-                    {
-                        if (dgvMain.Rows[i].Cells["Barcode"].Value.ToString() == "1")
-                        {
-                            indexOfExistingRow = i;
-                            break;
-                        }
-                    }
-                    if (indexOfExistingRow > -1)
-                    {
-                        dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString()) + 1).ToString();
-                        dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())).ToString();
-                    }
-                    else
-                    {
-                        dgvMain.Rows.Add();
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())).ToString();
-                    }
+            for (int i = 0; i < dgvMain.Rows.Count; i++)
+            {
+                if (dgvMain.Rows[i].Cells["Barcode"].Value.ToString() == barcode)
+                {
+                    indexOfExistingRow = i;
                     break;
-                case "2":
-                    for (int i = 0; i < dgvMain.Rows.Count; i++)
-                    {
-                        if (dgvMain.Rows[i].Cells["Barcode"].Value.ToString() == "2")
-                        {
-                            indexOfExistingRow = i;
-                            break;
-                        }
-                    }
-                    if (indexOfExistingRow > -1)
-                    {
-                        dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString()) + 1).ToString();
-                        dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())).ToString();
-                    }
-                    else
-                    {
-                        dgvMain.Rows.Add();
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = "2";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = "2";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = "2";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())).ToString();
-                    }
-                    break;
-                case "3":
-                    for (int i = 0; i < dgvMain.Rows.Count; i++)
-                    {
-                        if (dgvMain.Rows[i].Cells["Barcode"].Value.ToString() == "3")
-                        {
-                            indexOfExistingRow = i;
-                            break;
-                        }
-                    }
-                    if (indexOfExistingRow > -1)
-                    {
-                        dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString()) + 1).ToString();
-                        dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())).ToString();
-                    }
-                    else
-                    {
-                        dgvMain.Rows.Add();
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = "3";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = "3";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = "3";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = "1";
-                        dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())).ToString();
-                    }
-                    break;
-                default:
-                    break;
+                }
+            }
+            if (indexOfExistingRow > -1)
+            {
+                dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString()) + 1).ToString();
+                dgvMain.Rows[indexOfExistingRow].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[indexOfExistingRow].Cells["Quantity"].Value.ToString())),2,MidpointRounding.AwayFromZero).ToString();
+                return;
+            }
+            var setting = Setting.Get();
+            await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+            var sqlBuilder = new SqlBuilder();
+            sqlBuilder.Select("BARCODE,NAME,SALEPRICE");
+            sqlBuilder.Where("BARCODE=@BARCODE");
+            var param = new {BARCODE = barcode};
+            var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
+            conn.Open();
+            var result = conn.QueryAsync<SaleProduct>(builderTemp.RawSql,param).Result.ToList();
+            if (result.Any())
+            {
+                dgvMain.Rows.Add();
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Barcode"].Value = result[0].BARCODE;
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["ProductName"].Value = result[0].NAME;
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value = result[0].SALEPRICE;
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value = "1";
+                dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Total"].Value = decimal.Round((Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[dgvMain.Rows.Count - 1].Cells["Quantity"].Value.ToString())),2,MidpointRounding.AwayFromZero).ToString();
             }
         }
         

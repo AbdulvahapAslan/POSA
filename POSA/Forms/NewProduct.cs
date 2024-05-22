@@ -228,7 +228,7 @@ namespace POSA.Forms
                     CURRENCY = cbCurrency.Text,
                     STOCK = Convert.ToDecimal(tbStock.Text, new CultureInfo("en-GB")),
                     CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
-                    B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath) ? "" : ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
+                    B64IMAGE = pbProduct.Image == Properties.Resources._256pxNoImage ? "" : ConvertImageToBase64(pbProduct.Image),
                     CREATEDBY = setting.LastSuccesfullyLoggedUser
                 };
                 var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
@@ -379,7 +379,7 @@ namespace POSA.Forms
             dgvMain.EndEdit();
             var settings = Setting.Get();
             var sb = new SqlBuilder();
-            sb.Select("PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,PROD.SALEPRICE3 AS SELLPRICE3,PROD.BUYPRICE AS BUYINGPRICE,PROD.STOCK,PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR, UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE ");
+            sb.Select("PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,PROD.SALEPRICE3 AS SELLPRICE3,PROD.BUYPRICE AS BUYINGPRICE,PROD.STOCK,PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR, UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE ");
             var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM PRODUCTS AS PROD LEFT JOIN CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID=" + Convert.ToInt32(cbListingBranch.SelectedValue.ToString()));
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
@@ -419,6 +419,7 @@ namespace POSA.Forms
                 tbCriticalStock.Text = dgvMain.Rows[e.RowIndex].Cells["CRITICALSTOCK"].Value.ToString();
                 cbCurrency.Text = dgvMain.Rows[e.RowIndex].Cells["CURRENCY"].Value.ToString();
                 cbSupplier.Text = dgvMain.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
+                pbProduct.BackgroundImage = string.IsNullOrWhiteSpace(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString()) ?Properties.Resources._256pxNoImage: Base64ToImage(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString());
                 cbBranch.Text = cbListingBranch.SelectedText;
             }
         }

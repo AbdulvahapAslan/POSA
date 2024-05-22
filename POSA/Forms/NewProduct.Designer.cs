@@ -136,6 +136,7 @@
             CRITICALSTOCK = new DataGridViewTextBoxColumn();
             SUPPLIER = new DataGridViewTextBoxColumn();
             BRANCH = new DataGridViewTextBoxColumn();
+            B64IMAGE = new DataGridViewTextBoxColumn();
             pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMainContainer).BeginInit();
             scMainContainer.Panel1.SuspendLayout();
@@ -1017,7 +1018,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH });
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH, B64IMAGE });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
@@ -1375,6 +1376,14 @@
             BRANCH.Visible = false;
             BRANCH.Width = 66;
             // 
+            // B64IMAGE
+            // 
+            B64IMAGE.DataPropertyName = "B64IMAGE";
+            B64IMAGE.HeaderText = "B64IMAGE";
+            B64IMAGE.Name = "B64IMAGE";
+            B64IMAGE.Visible = false;
+            B64IMAGE.Width = 101;
+            // 
             // NewProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1516,5 +1525,6 @@
         private DataGridViewTextBoxColumn CRITICALSTOCK;
         private DataGridViewTextBoxColumn SUPPLIER;
         private DataGridViewTextBoxColumn BRANCH;
+        private DataGridViewTextBoxColumn B64IMAGE;
     }
 }
