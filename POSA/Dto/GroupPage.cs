@@ -9,6 +9,5 @@ namespace POSA.Dto
     public class GroupPage
     {
         public string PageName { get; set; }
-        public string PageImageBase64 { get; set; }
     }
 }

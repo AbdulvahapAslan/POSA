@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,7 @@ namespace POSA.Forms
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en_GB");
         }
-
         #region GENERAL 
-        public string addGroupLastImagePath = "";
         public List<GroupPage> GroupPages = new List<GroupPage>();
         public List<GroupButton> GroupButtons = new List<GroupButton>();
         private List<Product> Customers = new List<Product>();
@@ -36,7 +35,6 @@ namespace POSA.Forms
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         #endregion
-
         #region CLASSES
         private class Product
         {
@@ -49,9 +47,7 @@ namespace POSA.Forms
             public DateTime RecordDate { get; set; } = DateTime.Now;
         }
         #endregion
-
         #region Functions & Events
-
         #region Customer Events
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
@@ -115,7 +111,6 @@ namespace POSA.Forms
             }
         }
         #endregion
-
         #region Customer Functions
         private void NextCustomer()
         {
@@ -174,7 +169,6 @@ namespace POSA.Forms
             return "";
         }
         #endregion
-
         #region Group Events
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
@@ -183,20 +177,11 @@ namespace POSA.Forms
             else
             {
                 tbNewGroupName.Text = "";
-                addGroupLastImagePath = "";
+                btnDeleteGroup.Visible = false;
                 pnlAddGroup.Visible = true;
             }
         }
-        private void btnSelectGroupImage_Click(object sender, EventArgs e)
-        {
-            var ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
-            if (ofd.ShowDialog() != DialogResult.OK)
-                return;
-            addGroupLastImagePath = ofd.FileName;
-        }
         #endregion
-
         #region Group Functions
         public void UndyeAllGroups()
         {
@@ -262,7 +247,6 @@ namespace POSA.Forms
             }
         }
         #endregion
-
         #region  General Button Events
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -294,10 +278,40 @@ namespace POSA.Forms
             }
             GroupPages.Add(new GroupPage
             {
-                PageName = buttonText,
-                PageImageBase64 = !string.IsNullOrWhiteSpace(addGroupLastImagePath) ? ConvertImageToBase64(Image.FromFile(addGroupLastImagePath)) : ""
+                PageName = buttonText
             });
             return false;
+        }
+        public void RefreshGroupButtons()
+        {
+            foreach (Button btn in flpGroups.Controls)
+            {
+                if (btn.Text.Length>0)
+                    flpGroups.Controls.Remove(btn);
+            }
+            foreach (var btn in GroupPages)
+            {
+                if (btn.PageName != "ROOT")
+                {
+                    var newButton = new Button();
+                    newButton.Size = btnRootGroup.Size;
+                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    newButton.ForeColor = Color.Black;
+                    newButton.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+                    newButton.TextAlign = ContentAlignment.MiddleCenter;
+                    newButton.FlatStyle = btnRootGroup.FlatStyle;
+                    newButton.Text = btn.PageName;
+                    newButton.Font = btnRootGroup.Font;
+                    newButton.MouseDown += GeneralGroup_MouseDown;
+                    newButton.MouseUp += GeneralGroup_MouseUp;
+                    flpGroups.Controls.Add(newButton);
+                }
+            }
+            foreach (Button btn in flpGroups.Controls)
+            {
+                if (btn.Text == HoldedGroupButtonText)
+                    btn.PerformClick();
+            }
         }
         private void btnNewGroupAdd_Click(object sender, EventArgs e)
         {
@@ -310,24 +324,43 @@ namespace POSA.Forms
             {
                 if (!IsButtonExist(tbNewGroupName.Text))
                 {
-                    SaveButtons();
-                    var newButton = new Button();
-                    newButton.Size = btnRootGroup.Size;
-                    newButton.BackColor = Color.LightGreen;
-                    newButton.BackgroundImageLayout = ImageLayout.Zoom;
-                    newButton.ForeColor = Color.Black;
-                    newButton.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
-                    newButton.TextAlign = ContentAlignment.BottomCenter;
-                    newButton.FlatStyle = btnRootGroup.FlatStyle;
-                    if (!string.IsNullOrWhiteSpace(addGroupLastImagePath))
-                        newButton.BackgroundImage = Image.FromFile(addGroupLastImagePath);
-                    newButton.Text = tbNewGroupName.Text;
-                    newButton.Font = btnRootGroup.Font;
-                    newButton.Click += GroupsGeneral_Click;
-                    flpGroups.Controls.Add(newButton);
-                    addGroupLastImagePath = "";
-                    ResetAllGroupButtons();
-                    pnlAddGroup.Visible = false;
+                    if (HoldedGroupButtonText.Length>0)
+                    {
+                        foreach (var page in (from x in GroupPages where x.PageName == HoldedGroupButtonText select x))
+                        {
+                            page.PageName = tbNewGroupName.Text;
+                        }
+                        foreach (var button in (from x in GroupButtons where x.PageName == HoldedGroupButtonText select x))
+                        {
+                            button.PageName = tbNewGroupName.Text;
+                        }
+                        RefreshGroupButtons();
+                        HoldedGroupButtonText = "";
+                        pnlAddGroup.Visible = false;
+                    }
+                    else
+                    {
+                        SaveButtons();
+                        foreach (Button btn in flpGroups.Controls)
+                        {
+                            btn.BackColor = btnRootGroup.BackColor;
+                        }
+                        var newButton = new Button();
+                        newButton.Size = btnRootGroup.Size;
+                        newButton.BackColor = Color.LightGreen;
+                        newButton.BackgroundImageLayout = ImageLayout.Zoom;
+                        newButton.ForeColor = Color.Black;
+                        newButton.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+                        newButton.TextAlign = ContentAlignment.MiddleCenter;
+                        newButton.FlatStyle = btnRootGroup.FlatStyle;
+                        newButton.Text = tbNewGroupName.Text;
+                        newButton.Font = btnRootGroup.Font;
+                        newButton.MouseDown += GeneralGroup_MouseDown;
+                        newButton.MouseUp += GeneralGroup_MouseUp;
+                        flpGroups.Controls.Add(newButton);
+                        ResetAllGroupButtons();
+                        pnlAddGroup.Visible = false;
+                    }
                 }
                 else
                 {
@@ -346,7 +379,10 @@ namespace POSA.Forms
                     pnlAddNewGroupsButton.Visible = false;
                 }
                 else
+                {
                     pnlAddNewGroupsButton.Visible = true;
+                    tbAddNewGroupsButton.Focus();
+                }
             }
             else
             {
@@ -433,45 +469,45 @@ namespace POSA.Forms
                 }
             }
         }
-        private void tbAddNewGroupsButton_KeyDown(object sender, KeyEventArgs e)
+        private async void tbAddNewGroupsButton_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!string.IsNullOrWhiteSpace(tbAddNewGroupsButton.Text))
+                dgvBarcodeSearch.Rows.Clear();
+                if (!string.IsNullOrWhiteSpace(tbAddNewGroupsButton.Texts))
                 {
-                    foreach (Button btn in flpGroupButtons.Controls)
+                    var setting = Setting.Get();
+                    await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+                    conn.Open();
+                    var sqlBuilder = new SqlBuilder();
+                    sqlBuilder.Select($"""
+                                        BARCODE,NAME,B64IMAGE
+                                        """);
+                    sqlBuilder.Where($"""
+                                        BARCODE=@BARCODE OR NAME LIKE '%'+@BARCODE+'%'
+                                        """);
+                    var param = new
                     {
-                        if (btn.Name == tbAddNewGroupsButton.Text)
+                        BARCODE = tbAddNewGroupsButton.Texts
+                    };
+                    var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
+                    var products = conn.QueryAsync<ProductNameImageDto>(builderTemp.RawSql, param).Result.ToList();
+                    if (products.Any())
+                    {
+                        foreach (var prod in products)
                         {
-                            MessageBox.Show("Bu ürün sayfada zaten mevcut.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
+                            dgvBarcodeSearch.Rows.Add(prod.BARCODE, prod.NAME, prod.B64IMAGE);
                         }
                     }
-                    var currentPage = "ROOT";
-                    foreach (Button btn in flpGroups.Controls)
-                    {
-                        if (btn.BackColor == Color.LightGreen)
-                        {
-                            currentPage = btn.Text;
-                            break;
-                        }
-                    }
-                    GroupButtons.Add(GetMaterialAsButton(tbAddNewGroupsButton.Text, currentPage).Result);
-                    pnlAddNewGroupsButton.Visible = false;
-                    tbAddNewGroupsButton.Text = "";
-                    RefreshCurrentPageButtons();
-                }
-                else
-                {
-                    MessageBox.Show("Barkod okutulmadan devam edilemez.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
         #endregion
-
         #region Form Events
         private void Sales_Load(object sender, EventArgs e)
         {
+            cbPriceType.SelectedIndex = 0;
+            rtbSearch.Focus();
             dgvMain.Columns.Insert(3, new DataGridViewImageColumn()
             {
                 Image = Properties.Resources._24pxMinus,
@@ -511,13 +547,12 @@ namespace POSA.Forms
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     newButton.ForeColor = Color.Black;
                     newButton.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
-                    newButton.TextAlign = ContentAlignment.BottomCenter;
+                    newButton.TextAlign = ContentAlignment.MiddleCenter;
                     newButton.FlatStyle = btnRootGroup.FlatStyle;
-                    if (!string.IsNullOrWhiteSpace(btn.PageImageBase64))
-                        newButton.BackgroundImage = Base64ToImage(btn.PageImageBase64);
                     newButton.Text = btn.PageName;
                     newButton.Font = btnRootGroup.Font;
-                    newButton.Click += GroupsGeneral_Click;
+                    newButton.MouseDown += GeneralGroup_MouseDown;
+                    newButton.MouseUp += GeneralGroup_MouseUp;
                     flpGroups.Controls.Add(newButton);
                 }
             }
@@ -554,7 +589,6 @@ namespace POSA.Forms
             {
                 if (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) > 1)
                 {
-
                     dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) - 1).ToString();
                     dgvMain.Rows[e.RowIndex].Cells["Total"].Value = decimal.Round(Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()), 2, MidpointRounding.AwayFromZero).ToString();
                     CalculateAll();
@@ -568,17 +602,16 @@ namespace POSA.Forms
             }
         }
         #endregion
-
         #region Functions
         private string ConvertImageToBase64(Image? img)
         {
             if (img is null)
                 return "";
-            using (Image image = img)
+            using (Image image = new Bitmap(img))
             {
                 using (MemoryStream m = new MemoryStream())
                 {
-                    image.Save(m, image.RawFormat);
+                    image.Save(m, ImageFormat.Png);
                     byte[] imageBytes = m.ToArray();
                     string base64String = Convert.ToBase64String(imageBytes);
                     return base64String;
@@ -617,7 +650,7 @@ namespace POSA.Forms
             var setting = Setting.Get();
             await using var conn = new SqlConnection(setting.Sql.ConnectionString());
             var sqlBuilder = new SqlBuilder();
-            sqlBuilder.Select("BARCODE,NAME,SALEPRICE");
+            sqlBuilder.Select($"BARCODE,NAME,SALEPRICE{(cbPriceType.Text == "1" ? "" : cbPriceType.Text)} AS SALEPRICE,BUYPRICE");
             sqlBuilder.Where("BARCODE=@BARCODE");
             var param = new { BARCODE = barcode };
             var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
@@ -646,47 +679,21 @@ namespace POSA.Forms
             btnDolarTotalPrice.Text = decimal.Round((totalTL / currencies.Item1), 2, MidpointRounding.AwayFromZero).ToString() + "$";
             btnEuroTotalPrice.Text = decimal.Round((totalTL / currencies.Item2), 2, MidpointRounding.AwayFromZero).ToString() + "€";
         }
-        private async Task<GroupButton> GetMaterialAsButton(string barcode, string currentPage)
-        {
-            //get it from database and fill the object
-            var setting = Setting.Get();
-            var response = new GroupButton();
-            var cstr = setting.Sql.ConnectionString();
-            await using var conn = new SqlConnection(setting.Sql.ConnectionString());
-            conn.Open();
-            var sqlBuilder = new SqlBuilder();
-            sqlBuilder.Select($"""
-                NAME,B64IMAGE
-                """);
-            sqlBuilder.Where($"""
-                BARCODE=@BARCODE
-                """);
-            var param = new
-            {
-                BARCODE = barcode
-            };
-            var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
-            var result = conn.QueryAsync<ProductNameImageDto>(builderTemp.RawSql, param).Result;
-            if (result.Any())
-            {
-                var snc = result.First();
-                response.B64Image = snc.B64IMAGE;
-                response.Name = snc.NAME;
-                response.Barcode = barcode;
-                response.PageName = currentPage;
-
-            }
-            return response;
-        }
-        #endregion
 
         #endregion
-
+        #endregion
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
             dgvMain.Rows.Clear();
+            btnTotalPrice.Text = "";
+            btnEuroTotalPrice.Text = "";
+            btnDolarTotalPrice.Text = "";
+            tbTakenMoney.Text = "0";
+            lblChangeMoney.Text = "";
+            cbFree.CheckState = CheckState.Unchecked;
+            cbReturn.CheckState = CheckState.Unchecked;
+            cbPriceType.SelectedIndex = 0;
         }
-
         private void btnShowPrices_Click(object sender, EventArgs e)
         {
             btnTotalPrice.Visible = !btnTotalPrice.Visible;
@@ -701,7 +708,6 @@ namespace POSA.Forms
             decimal euro = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
             return new Tuple<decimal, decimal>(dolar, euro);
         }
-
         private void btnClearTakenMoney_Click(object sender, EventArgs e)
         {
             tbTakenMoney.Text = "0";
@@ -709,12 +715,194 @@ namespace POSA.Forms
         private void btnTL_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            tbTakenMoney.Text = (Convert.ToInt32(tbTakenMoney.Text) + Convert.ToInt32(btn.Text.Replace("₺",""))).ToString();
+            tbTakenMoney.Text = (Convert.ToInt32(tbTakenMoney.Text) + Convert.ToInt32(btn.Text.Replace("₺", ""))).ToString();
             RefreshChange();
         }
         private void RefreshChange()
         {
-            lblChangeMoney.Text = decimal.Round(Convert.ToInt32(tbTakenMoney.Text) - Convert.ToDecimal(btnTotalPrice.Text.Replace("₺","")),2,MidpointRounding.AwayFromZero).ToString();
+            lblChangeMoney.Text = decimal.Round(Convert.ToInt32(tbTakenMoney.Text) - Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero).ToString();
+        }
+        private async void cbPriceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dgvMain.Rows.Count > 0)
+            {
+                var barcodeList = new List<string>();
+                foreach (DataGridViewRow row in dgvMain.Rows)
+                {
+                    barcodeList.Add((row.Cells["Barcode"].Value ?? "").ToString());
+                }
+                barcodeList = (from x in barcodeList where x.Length > 0 select x).ToList();
+                var strBarcodeList = string.Join(",", barcodeList);
+                var setting = Setting.Get();
+                await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+                var sqlBuilder = new SqlBuilder();
+                sqlBuilder.Select($"BARCODE,SALEPRICE{(cbPriceType.Text == "1" ? "" : cbPriceType.Text)} AS SALEPRICE");
+                sqlBuilder.Where("BARCODE IN (@BARCODE)");
+                var param = new { BARCODE = strBarcodeList };
+                var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
+                conn.Open();
+                var result = conn.QueryAsync<SaleProduct>(builderTemp.RawSql, param).Result.ToList();
+                if (result.Any())
+                {
+                    foreach (DataGridViewRow row in dgvMain.Rows)
+                    {
+                        row.Cells["Price"].Value = (from x in result where x.BARCODE == row.Cells["Barcode"].Value.ToString() select x.SALEPRICE).First().ToString();
+                        row.Cells["Total"].Value = decimal.Round(Convert.ToDecimal(row.Cells["Quantity"].Value.ToString()) * Convert.ToDecimal(row.Cells["Price"].Value.ToString()), 2, MidpointRounding.AwayFromZero);
+                    }
+                    CalculateAll();
+                }
+            }
+        }
+
+        private void dgvBarcodeSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!(e.RowIndex > -1 && e.RowIndex < dgvBarcodeSearch.Rows.Count))
+                return;
+            var barcode = dgvBarcodeSearch.Rows[e.RowIndex].Cells["IBARCODE"].Value.ToString();
+            foreach (Button btn in flpGroupButtons.Controls)
+            {
+                if (btn.Name == barcode)
+                {
+                    MessageBox.Show("Bu ürün sayfada zaten mevcut.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            var currentPage = "ROOT";
+            foreach (Button btn in flpGroups.Controls)
+            {
+                if (btn.BackColor == Color.LightGreen)
+                {
+                    currentPage = btn.Text;
+                    break;
+                }
+            }
+            var b64Image = (dgvBarcodeSearch.Rows[e.RowIndex].Cells["IB64IMAGE"].Value ?? "").ToString();
+            var name = dgvBarcodeSearch.Rows[e.RowIndex].Cells["INAME"].Value.ToString();
+
+            if (HoldedButtonsBarcode.Length > 0)
+            {
+                foreach (var btn in (from x in GroupButtons where x.Barcode == HoldedButtonsBarcode && x.PageName == currentPage select x))
+                {
+                    btn.B64Image = b64Image;
+                    btn.Name = name;
+                    btn.Barcode = barcode;
+                    btn.PageName = currentPage;
+                }
+                HoldedButtonsBarcode = "";
+            }
+            else
+            {
+                var buttonToAdd = new GroupButton();
+                buttonToAdd.B64Image = b64Image;
+                buttonToAdd.Name = name;
+                buttonToAdd.Barcode = barcode;
+                buttonToAdd.PageName = currentPage;
+                GroupButtons.Add(buttonToAdd);
+            }
+            dgvBarcodeSearch.Rows.Clear();
+            pnlAddNewGroupsButton.Visible = false;
+            tbAddNewGroupsButton.Texts = "";
+            RefreshCurrentPageButtons();
+        }
+
+        private void rtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(rtbSearch.Texts))
+                AddToGridWithBarcode(rtbSearch.Texts);
+            rtbSearch.Focus();
+        }
+
+        private void btnHidepnlAddNewGroupsButton_Click(object sender, EventArgs e)
+        {
+            pnlAddNewGroupsButton.Visible = false;
+            tbAddNewGroupsButton.Texts = "";
+            dgvBarcodeSearch.Rows.Clear();
+        }
+        private void GroupButtonsGeneral_MouseDown(object sender, MouseEventArgs e)
+        {
+            tmrMouse.Enabled = true;
+        }
+        public string HoldedButtonsBarcode = "";
+        private void GroupButtonsGeneral_MouseUp(object sender, MouseEventArgs e)
+        {
+            var selectedButton = sender as Button;
+            tmrMouse.Enabled = false;
+            if (string.IsNullOrWhiteSpace(selectedButton.Text) || isMouseHold)
+            {
+                if (isMouseHold)
+                {
+                    HoldedButtonsBarcode = selectedButton.Name;
+                }
+                isMouseHold = false;
+                if (pnlAddNewGroupsButton.Visible)
+                {
+                    pnlAddNewGroupsButton.Visible = false;
+                }
+                else
+                {
+                    pnlAddNewGroupsButton.Visible = true;
+                    tbAddNewGroupsButton.Focus();
+                }
+            }
+            else
+            {
+                AddToGridWithBarcode(selectedButton.Name);
+            }
+            isMouseHold = false;
+        }
+        public bool isMouseHold = false;
+        private void tmrMouse_Tick(object sender, EventArgs e)
+        {
+            isMouseHold = true;
+        }
+
+        private void tbNewGroupName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnNewGroupAdd.PerformClick();
+            }
+        }
+
+        private void GeneralGroup_MouseDown(object sender, MouseEventArgs e)
+        {
+            UndyeAllGroups();
+            var selectedButton = sender as Button;
+            selectedButton.BackColor = Color.LightGreen;
+            tmrMouse.Enabled = true;
+        }
+        public string HoldedGroupButtonText = "";
+        private void GeneralGroup_MouseUp(object sender, MouseEventArgs e)
+        {
+            var selectedButton = sender as Button;
+            tmrMouse.Enabled = false;
+            if (isMouseHold)
+            {
+                tbNewGroupName.Text = selectedButton.Text;
+                HoldedGroupButtonText = selectedButton.Text;
+                pnlAddGroup.Visible = true;
+                btnDeleteGroup.Visible = true;
+                isMouseHold = false;
+            }
+            else
+            {
+                ResetAllGroupButtons();
+                var SelectedGroupButtons = (from x in GroupButtons where x.PageName == selectedButton.Text select x).ToList();
+                foreach (var button in SelectedGroupButtons)
+                {
+                    foreach (Button btn in flpGroupButtons.Controls)
+                    {
+                        if (string.IsNullOrWhiteSpace(btn.Text))
+                        {
+                            btn.Text = button.Name;
+                            btn.Name = button.Barcode;
+                            if (!string.IsNullOrWhiteSpace(button.B64Image))
+                                btn.BackgroundImage = Base64ToImage(button.B64Image);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

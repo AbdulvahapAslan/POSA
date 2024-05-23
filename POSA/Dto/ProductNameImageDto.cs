@@ -7,5 +7,6 @@ namespace POSA.Dto;
 public class ProductNameImageDto
 {
     public string NAME { get; set; }
+    public string BARCODE { get; set; }
     public string B64IMAGE { get; set; }
 }

@@ -220,7 +220,7 @@ namespace POSA.CustomObjects
                 SetPlaceholder();
             }
         }
-        
+
         #region -> Overridden methods
         protected override void OnResize(EventArgs e)
         {
@@ -331,6 +331,10 @@ namespace POSA.CustomObjects
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.OnKeyPress(e);
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.OnKeyDown(e);
         }
     }
 }
