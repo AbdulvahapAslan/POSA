@@ -44,6 +44,9 @@
             lblPageHeader = new Label();
             pnlMain = new Panel();
             scMainContainer = new SplitContainer();
+            tbStockPlace = new TextBox();
+            label1 = new Label();
+            btnCheckBarcode = new Button();
             cbCurrency = new ComboBox();
             lblCurrency = new Label();
             btnAddBranch = new Button();
@@ -53,7 +56,6 @@
             btnAddColor = new Button();
             btnAddUnit = new Button();
             btnAddCategory = new Button();
-            btnSave = new Button();
             cbSize = new ComboBox();
             lblSize = new Label();
             cbBranch = new ComboBox();
@@ -117,6 +119,7 @@
             SUPPLIER = new DataGridViewTextBoxColumn();
             BRANCH = new DataGridViewTextBoxColumn();
             B64IMAGE = new DataGridViewTextBoxColumn();
+            STOCKPLACE = new DataGridViewTextBoxColumn();
             dgvVariant = new DataGridView();
             VBARCODE = new DataGridViewTextBoxColumn();
             VNAME = new DataGridViewTextBoxColumn();
@@ -135,8 +138,8 @@
             VCRITICALSTOCK = new DataGridViewTextBoxColumn();
             VSUPPLIER = new DataGridViewTextBoxColumn();
             VBRANCH = new DataGridViewTextBoxColumn();
+            btnSave = new Button();
             tmrNewProduct = new System.Windows.Forms.Timer(components);
-            btnCheckBarcode = new Button();
             pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMainContainer).BeginInit();
             scMainContainer.Panel1.SuspendLayout();
@@ -236,6 +239,8 @@
             // scMainContainer.Panel1
             // 
             scMainContainer.Panel1.BackColor = Color.Transparent;
+            scMainContainer.Panel1.Controls.Add(tbStockPlace);
+            scMainContainer.Panel1.Controls.Add(label1);
             scMainContainer.Panel1.Controls.Add(btnCheckBarcode);
             scMainContainer.Panel1.Controls.Add(cbCurrency);
             scMainContainer.Panel1.Controls.Add(lblCurrency);
@@ -246,7 +251,6 @@
             scMainContainer.Panel1.Controls.Add(btnAddColor);
             scMainContainer.Panel1.Controls.Add(btnAddUnit);
             scMainContainer.Panel1.Controls.Add(btnAddCategory);
-            scMainContainer.Panel1.Controls.Add(btnSave);
             scMainContainer.Panel1.Controls.Add(cbSize);
             scMainContainer.Panel1.Controls.Add(lblSize);
             scMainContainer.Panel1.Controls.Add(cbBranch);
@@ -292,6 +296,39 @@
             scMainContainer.SplitterDistance = 431;
             scMainContainer.TabIndex = 0;
             // 
+            // tbStockPlace
+            // 
+            tbStockPlace.BorderStyle = BorderStyle.None;
+            tbStockPlace.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
+            tbStockPlace.Location = new Point(127, 647);
+            tbStockPlace.Name = "tbStockPlace";
+            tbStockPlace.Size = new Size(260, 23);
+            tbStockPlace.TabIndex = 85;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(3, 645);
+            label1.Name = "label1";
+            label1.Size = new Size(36, 23);
+            label1.TabIndex = 84;
+            label1.Text = "Raf";
+            // 
+            // btnCheckBarcode
+            // 
+            btnCheckBarcode.FlatAppearance.BorderSize = 0;
+            btnCheckBarcode.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnCheckBarcode.FlatStyle = FlatStyle.Flat;
+            btnCheckBarcode.Image = Properties.Resources._32pxTick;
+            btnCheckBarcode.Location = new Point(391, 171);
+            btnCheckBarcode.Name = "btnCheckBarcode";
+            btnCheckBarcode.Size = new Size(35, 35);
+            btnCheckBarcode.TabIndex = 83;
+            btnCheckBarcode.UseVisualStyleBackColor = true;
+            btnCheckBarcode.Click += btnCheckBarcode_Click;
+            // 
             // cbCurrency
             // 
             cbCurrency.BackColor = Color.White;
@@ -300,7 +337,7 @@
             cbCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbCurrency.FormattingEnabled = true;
             cbCurrency.Items.AddRange(new object[] { "TL", "USD", "EURO" });
-            cbCurrency.Location = new Point(127, 539);
+            cbCurrency.Location = new Point(127, 536);
             cbCurrency.Name = "cbCurrency";
             cbCurrency.Size = new Size(260, 31);
             cbCurrency.TabIndex = 82;
@@ -310,7 +347,7 @@
             lblCurrency.AutoSize = true;
             lblCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblCurrency.ForeColor = Color.White;
-            lblCurrency.Location = new Point(3, 542);
+            lblCurrency.Location = new Point(3, 539);
             lblCurrency.Name = "lblCurrency";
             lblCurrency.Size = new Size(94, 23);
             lblCurrency.TabIndex = 81;
@@ -321,7 +358,7 @@
             btnAddBranch.FlatAppearance.BorderSize = 0;
             btnAddBranch.FlatStyle = FlatStyle.Flat;
             btnAddBranch.Image = Properties.Resources._32pxAdd;
-            btnAddBranch.Location = new Point(391, 611);
+            btnAddBranch.Location = new Point(391, 608);
             btnAddBranch.Name = "btnAddBranch";
             btnAddBranch.Size = new Size(35, 35);
             btnAddBranch.TabIndex = 80;
@@ -334,7 +371,7 @@
             btnAddSupplier.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddSupplier.FlatStyle = FlatStyle.Flat;
             btnAddSupplier.Image = Properties.Resources._32pxAdd;
-            btnAddSupplier.Location = new Point(391, 574);
+            btnAddSupplier.Location = new Point(391, 571);
             btnAddSupplier.Name = "btnAddSupplier";
             btnAddSupplier.Size = new Size(35, 35);
             btnAddSupplier.TabIndex = 79;
@@ -347,7 +384,7 @@
             btnAddMaterial.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddMaterial.FlatStyle = FlatStyle.Flat;
             btnAddMaterial.Image = Properties.Resources._32pxAdd;
-            btnAddMaterial.Location = new Point(391, 384);
+            btnAddMaterial.Location = new Point(391, 381);
             btnAddMaterial.Name = "btnAddMaterial";
             btnAddMaterial.Size = new Size(35, 35);
             btnAddMaterial.TabIndex = 78;
@@ -360,7 +397,7 @@
             btnAddSize.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddSize.FlatStyle = FlatStyle.Flat;
             btnAddSize.Image = Properties.Resources._32pxAdd;
-            btnAddSize.Location = new Point(391, 347);
+            btnAddSize.Location = new Point(391, 344);
             btnAddSize.Name = "btnAddSize";
             btnAddSize.Size = new Size(35, 35);
             btnAddSize.TabIndex = 77;
@@ -373,7 +410,7 @@
             btnAddColor.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddColor.FlatStyle = FlatStyle.Flat;
             btnAddColor.Image = Properties.Resources._32pxAdd;
-            btnAddColor.Location = new Point(391, 310);
+            btnAddColor.Location = new Point(391, 307);
             btnAddColor.Name = "btnAddColor";
             btnAddColor.Size = new Size(35, 35);
             btnAddColor.TabIndex = 76;
@@ -386,7 +423,7 @@
             btnAddUnit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddUnit.FlatStyle = FlatStyle.Flat;
             btnAddUnit.Image = Properties.Resources._32pxAdd;
-            btnAddUnit.Location = new Point(391, 273);
+            btnAddUnit.Location = new Point(391, 270);
             btnAddUnit.Name = "btnAddUnit";
             btnAddUnit.Size = new Size(35, 35);
             btnAddUnit.TabIndex = 75;
@@ -399,28 +436,12 @@
             btnAddCategory.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddCategory.FlatStyle = FlatStyle.Flat;
             btnAddCategory.Image = Properties.Resources._32pxAdd;
-            btnAddCategory.Location = new Point(391, 235);
+            btnAddCategory.Location = new Point(391, 232);
             btnAddCategory.Name = "btnAddCategory";
             btnAddCategory.Size = new Size(35, 35);
             btnAddCategory.TabIndex = 74;
             btnAddCategory.UseVisualStyleBackColor = true;
             btnAddCategory.Click += btnAddCategory_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.LightGreen;
-            btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnSave.ForeColor = Color.Black;
-            btnSave.ImageAlign = ContentAlignment.TopCenter;
-            btnSave.Location = new Point(0, 665);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(428, 38);
-            btnSave.TabIndex = 73;
-            btnSave.Text = "KAYDET";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
             // 
             // cbSize
             // 
@@ -429,7 +450,7 @@
             cbSize.FlatStyle = FlatStyle.Flat;
             cbSize.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbSize.FormattingEnabled = true;
-            cbSize.Location = new Point(127, 349);
+            cbSize.Location = new Point(127, 346);
             cbSize.Name = "cbSize";
             cbSize.Size = new Size(260, 31);
             cbSize.TabIndex = 72;
@@ -439,7 +460,7 @@
             lblSize.AutoSize = true;
             lblSize.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblSize.ForeColor = Color.White;
-            lblSize.Location = new Point(3, 352);
+            lblSize.Location = new Point(3, 349);
             lblSize.Name = "lblSize";
             lblSize.Size = new Size(100, 23);
             lblSize.TabIndex = 71;
@@ -452,7 +473,7 @@
             cbBranch.FlatStyle = FlatStyle.Flat;
             cbBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbBranch.FormattingEnabled = true;
-            cbBranch.Location = new Point(127, 613);
+            cbBranch.Location = new Point(127, 610);
             cbBranch.Name = "cbBranch";
             cbBranch.Size = new Size(260, 31);
             cbBranch.TabIndex = 70;
@@ -464,7 +485,7 @@
             cbSupplier.FlatStyle = FlatStyle.Flat;
             cbSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbSupplier.FormattingEnabled = true;
-            cbSupplier.Location = new Point(127, 576);
+            cbSupplier.Location = new Point(127, 573);
             cbSupplier.Name = "cbSupplier";
             cbSupplier.Size = new Size(260, 31);
             cbSupplier.TabIndex = 69;
@@ -476,7 +497,7 @@
             cbMaterial.FlatStyle = FlatStyle.Flat;
             cbMaterial.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbMaterial.FormattingEnabled = true;
-            cbMaterial.Location = new Point(127, 386);
+            cbMaterial.Location = new Point(127, 383);
             cbMaterial.Name = "cbMaterial";
             cbMaterial.Size = new Size(260, 31);
             cbMaterial.TabIndex = 68;
@@ -488,7 +509,7 @@
             cbColor.FlatStyle = FlatStyle.Flat;
             cbColor.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbColor.FormattingEnabled = true;
-            cbColor.Location = new Point(127, 312);
+            cbColor.Location = new Point(127, 309);
             cbColor.Name = "cbColor";
             cbColor.Size = new Size(260, 31);
             cbColor.TabIndex = 67;
@@ -500,7 +521,7 @@
             cbUnit.FlatStyle = FlatStyle.Flat;
             cbUnit.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbUnit.FormattingEnabled = true;
-            cbUnit.Location = new Point(127, 275);
+            cbUnit.Location = new Point(127, 272);
             cbUnit.Name = "cbUnit";
             cbUnit.Size = new Size(260, 31);
             cbUnit.TabIndex = 66;
@@ -515,7 +536,7 @@
             btnClearPage.ForeColor = Color.White;
             btnClearPage.Image = Properties.Resources._64pxSmallWhiteTrash;
             btnClearPage.ImageAlign = ContentAlignment.TopCenter;
-            btnClearPage.Location = new Point(310, 91);
+            btnClearPage.Location = new Point(310, 88);
             btnClearPage.Name = "btnClearPage";
             btnClearPage.Size = new Size(118, 82);
             btnClearPage.TabIndex = 65;
@@ -531,7 +552,7 @@
             cbCategory.FlatStyle = FlatStyle.Flat;
             cbCategory.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbCategory.FormattingEnabled = true;
-            cbCategory.Location = new Point(127, 238);
+            cbCategory.Location = new Point(127, 235);
             cbCategory.Name = "cbCategory";
             cbCategory.Size = new Size(260, 31);
             cbCategory.TabIndex = 64;
@@ -541,7 +562,7 @@
             lblBranch.AutoSize = true;
             lblBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblBranch.ForeColor = Color.White;
-            lblBranch.Location = new Point(3, 616);
+            lblBranch.Location = new Point(3, 613);
             lblBranch.Name = "lblBranch";
             lblBranch.Size = new Size(48, 23);
             lblBranch.TabIndex = 62;
@@ -551,7 +572,7 @@
             // 
             tbSalePrice3.BorderStyle = BorderStyle.None;
             tbSalePrice3.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbSalePrice3.Location = new Point(320, 481);
+            tbSalePrice3.Location = new Point(320, 478);
             tbSalePrice3.Name = "tbSalePrice3";
             tbSalePrice3.Size = new Size(67, 23);
             tbSalePrice3.TabIndex = 61;
@@ -564,7 +585,7 @@
             label15.BorderStyle = BorderStyle.FixedSingle;
             label15.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             label15.ForeColor = Color.White;
-            label15.Location = new Point(297, 480);
+            label15.Location = new Point(297, 477);
             label15.Name = "label15";
             label15.Size = new Size(76, 25);
             label15.TabIndex = 60;
@@ -576,7 +597,7 @@
             // 
             tbSalePrice2.BorderStyle = BorderStyle.None;
             tbSalePrice2.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbSalePrice2.Location = new Point(224, 481);
+            tbSalePrice2.Location = new Point(224, 478);
             tbSalePrice2.Name = "tbSalePrice2";
             tbSalePrice2.Size = new Size(70, 23);
             tbSalePrice2.TabIndex = 59;
@@ -589,7 +610,7 @@
             label14.BorderStyle = BorderStyle.FixedSingle;
             label14.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(204, 480);
+            label14.Location = new Point(204, 477);
             label14.Name = "label14";
             label14.Size = new Size(76, 25);
             label14.TabIndex = 58;
@@ -600,7 +621,7 @@
             // 
             tbCriticalStock.BorderStyle = BorderStyle.None;
             tbCriticalStock.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbCriticalStock.Location = new Point(310, 510);
+            tbCriticalStock.Location = new Point(310, 507);
             tbCriticalStock.Name = "tbCriticalStock";
             tbCriticalStock.Size = new Size(77, 23);
             tbCriticalStock.TabIndex = 57;
@@ -613,7 +634,7 @@
             lblCriticalStock.BorderStyle = BorderStyle.FixedSingle;
             lblCriticalStock.Font = new Font("Segoe UI Semibold", 12.5F, FontStyle.Bold);
             lblCriticalStock.ForeColor = Color.White;
-            lblCriticalStock.Location = new Point(203, 509);
+            lblCriticalStock.Location = new Point(203, 506);
             lblCriticalStock.Name = "lblCriticalStock";
             lblCriticalStock.Size = new Size(155, 25);
             lblCriticalStock.TabIndex = 56;
@@ -625,7 +646,7 @@
             lblSupplier.AutoSize = true;
             lblSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblSupplier.ForeColor = Color.White;
-            lblSupplier.Location = new Point(4, 579);
+            lblSupplier.Location = new Point(4, 576);
             lblSupplier.Name = "lblSupplier";
             lblSupplier.Size = new Size(76, 23);
             lblSupplier.TabIndex = 54;
@@ -635,7 +656,7 @@
             // 
             tbStock.BorderStyle = BorderStyle.None;
             tbStock.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbStock.Location = new Point(127, 510);
+            tbStock.Location = new Point(127, 507);
             tbStock.Name = "tbStock";
             tbStock.Size = new Size(73, 23);
             tbStock.TabIndex = 53;
@@ -647,7 +668,7 @@
             lblStock.AutoSize = true;
             lblStock.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblStock.ForeColor = Color.White;
-            lblStock.Location = new Point(3, 509);
+            lblStock.Location = new Point(3, 506);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(44, 23);
             lblStock.TabIndex = 52;
@@ -658,7 +679,7 @@
             lblMaterial.AutoSize = true;
             lblMaterial.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblMaterial.ForeColor = Color.White;
-            lblMaterial.Location = new Point(3, 389);
+            lblMaterial.Location = new Point(3, 386);
             lblMaterial.Name = "lblMaterial";
             lblMaterial.Size = new Size(79, 23);
             lblMaterial.TabIndex = 50;
@@ -669,7 +690,7 @@
             lblColor.AutoSize = true;
             lblColor.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblColor.ForeColor = Color.White;
-            lblColor.Location = new Point(3, 315);
+            lblColor.Location = new Point(3, 312);
             lblColor.Name = "lblColor";
             lblColor.Size = new Size(49, 23);
             lblColor.TabIndex = 48;
@@ -680,7 +701,7 @@
             lblUnit.AutoSize = true;
             lblUnit.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblUnit.ForeColor = Color.White;
-            lblUnit.Location = new Point(4, 278);
+            lblUnit.Location = new Point(4, 275);
             lblUnit.Name = "lblUnit";
             lblUnit.Size = new Size(49, 23);
             lblUnit.TabIndex = 46;
@@ -690,7 +711,7 @@
             // 
             tbSalePrice.BorderStyle = BorderStyle.None;
             tbSalePrice.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbSalePrice.Location = new Point(127, 481);
+            tbSalePrice.Location = new Point(127, 478);
             tbSalePrice.Name = "tbSalePrice";
             tbSalePrice.Size = new Size(73, 23);
             tbSalePrice.TabIndex = 45;
@@ -702,7 +723,7 @@
             lblSalePrice.AutoSize = true;
             lblSalePrice.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblSalePrice.ForeColor = Color.White;
-            lblSalePrice.Location = new Point(3, 479);
+            lblSalePrice.Location = new Point(3, 476);
             lblSalePrice.Name = "lblSalePrice";
             lblSalePrice.Size = new Size(91, 23);
             lblSalePrice.TabIndex = 44;
@@ -712,7 +733,7 @@
             // 
             tbBuyPrice.BorderStyle = BorderStyle.None;
             tbBuyPrice.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbBuyPrice.Location = new Point(127, 452);
+            tbBuyPrice.Location = new Point(127, 449);
             tbBuyPrice.Name = "tbBuyPrice";
             tbBuyPrice.Size = new Size(260, 23);
             tbBuyPrice.TabIndex = 43;
@@ -724,7 +745,7 @@
             lblBuyPrice.AutoSize = true;
             lblBuyPrice.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblBuyPrice.ForeColor = Color.White;
-            lblBuyPrice.Location = new Point(3, 450);
+            lblBuyPrice.Location = new Point(3, 447);
             lblBuyPrice.Name = "lblBuyPrice";
             lblBuyPrice.Size = new Size(82, 23);
             lblBuyPrice.TabIndex = 42;
@@ -734,7 +755,7 @@
             // 
             tbVatRate.BorderStyle = BorderStyle.None;
             tbVatRate.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbVatRate.Location = new Point(127, 423);
+            tbVatRate.Location = new Point(127, 420);
             tbVatRate.Name = "tbVatRate";
             tbVatRate.Size = new Size(260, 23);
             tbVatRate.TabIndex = 41;
@@ -746,7 +767,7 @@
             lblVatRate.AutoSize = true;
             lblVatRate.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblVatRate.ForeColor = Color.White;
-            lblVatRate.Location = new Point(3, 421);
+            lblVatRate.Location = new Point(3, 418);
             lblVatRate.Name = "lblVatRate";
             lblVatRate.Size = new Size(90, 23);
             lblVatRate.TabIndex = 40;
@@ -757,7 +778,7 @@
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblCategory.ForeColor = Color.White;
-            lblCategory.Location = new Point(4, 241);
+            lblCategory.Location = new Point(4, 238);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(74, 23);
             lblCategory.TabIndex = 38;
@@ -767,7 +788,7 @@
             // 
             tbProductName.BorderStyle = BorderStyle.None;
             tbProductName.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbProductName.Location = new Point(127, 209);
+            tbProductName.Location = new Point(127, 206);
             tbProductName.Name = "tbProductName";
             tbProductName.Size = new Size(260, 23);
             tbProductName.TabIndex = 37;
@@ -777,7 +798,7 @@
             lblProductName.AutoSize = true;
             lblProductName.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblProductName.ForeColor = Color.White;
-            lblProductName.Location = new Point(3, 207);
+            lblProductName.Location = new Point(3, 204);
             lblProductName.Name = "lblProductName";
             lblProductName.Size = new Size(78, 23);
             lblProductName.TabIndex = 36;
@@ -787,7 +808,7 @@
             // 
             tbBarcode.BorderStyle = BorderStyle.None;
             tbBarcode.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbBarcode.Location = new Point(127, 180);
+            tbBarcode.Location = new Point(127, 177);
             tbBarcode.Name = "tbBarcode";
             tbBarcode.Size = new Size(260, 23);
             tbBarcode.TabIndex = 34;
@@ -797,7 +818,7 @@
             lblBarcode.AutoSize = true;
             lblBarcode.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblBarcode.ForeColor = Color.White;
-            lblBarcode.Location = new Point(3, 178);
+            lblBarcode.Location = new Point(3, 175);
             lblBarcode.Name = "lblBarcode";
             lblBarcode.Size = new Size(92, 23);
             lblBarcode.TabIndex = 33;
@@ -808,7 +829,7 @@
             pbProduct.BackColor = Color.FromArgb(109, 134, 176);
             pbProduct.BackgroundImage = Properties.Resources._256pxNoImage;
             pbProduct.BackgroundImageLayout = ImageLayout.Zoom;
-            pbProduct.Location = new Point(133, 3);
+            pbProduct.Location = new Point(133, 0);
             pbProduct.Name = "pbProduct";
             pbProduct.Size = new Size(171, 171);
             pbProduct.TabIndex = 32;
@@ -824,7 +845,7 @@
             btnAddPicture.ForeColor = Color.White;
             btnAddPicture.Image = Properties.Resources._64pxPicture;
             btnAddPicture.ImageAlign = ContentAlignment.TopCenter;
-            btnAddPicture.Location = new Point(310, 4);
+            btnAddPicture.Location = new Point(310, 1);
             btnAddPicture.Name = "btnAddPicture";
             btnAddPicture.Size = new Size(118, 82);
             btnAddPicture.TabIndex = 31;
@@ -843,7 +864,7 @@
             btnNewVariant.ForeColor = Color.White;
             btnNewVariant.Image = Properties.Resources._64pxVariant1;
             btnNewVariant.ImageAlign = ContentAlignment.TopCenter;
-            btnNewVariant.Location = new Point(9, 91);
+            btnNewVariant.Location = new Point(9, 88);
             btnNewVariant.Name = "btnNewVariant";
             btnNewVariant.Size = new Size(118, 82);
             btnNewVariant.TabIndex = 30;
@@ -861,7 +882,7 @@
             btnGiveNextBarcode.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             btnGiveNextBarcode.ForeColor = Color.White;
             btnGiveNextBarcode.Image = Properties.Resources._64pxWhiteBarcode1;
-            btnGiveNextBarcode.Location = new Point(9, 4);
+            btnGiveNextBarcode.Location = new Point(9, 1);
             btnGiveNextBarcode.Name = "btnGiveNextBarcode";
             btnGiveNextBarcode.Size = new Size(118, 82);
             btnGiveNextBarcode.TabIndex = 29;
@@ -964,6 +985,7 @@
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
             rtbSearch._TextChanged += rtbSearch__TextChanged;
+            rtbSearch.KeyDown += rtbSearch_KeyDown;
             // 
             // btnSaveVariants
             // 
@@ -1005,7 +1027,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH, B64IMAGE });
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH, B64IMAGE, STOCKPLACE });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
@@ -1187,6 +1209,14 @@
             B64IMAGE.Visible = false;
             B64IMAGE.Width = 101;
             // 
+            // STOCKPLACE
+            // 
+            STOCKPLACE.DataPropertyName = "STOCKPLACE";
+            STOCKPLACE.HeaderText = "STOCKPLACE";
+            STOCKPLACE.Name = "STOCKPLACE";
+            STOCKPLACE.Visible = false;
+            STOCKPLACE.Width = 118;
+            // 
             // dgvVariant
             // 
             dgvVariant.AllowUserToAddRows = false;
@@ -1365,24 +1395,27 @@
             VBRANCH.Name = "VBRANCH";
             VBRANCH.Visible = false;
             // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.LightGreen;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnSave.ForeColor = Color.Black;
+            btnSave.ImageAlign = ContentAlignment.TopCenter;
+            btnSave.Location = new Point(10, 726);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(428, 38);
+            btnSave.TabIndex = 73;
+            btnSave.Text = "KAYDET";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
             // tmrNewProduct
             // 
             tmrNewProduct.Enabled = true;
             tmrNewProduct.Interval = 600;
             tmrNewProduct.Tick += tmrNewProduct_Tick;
-            // 
-            // btnCheckBarcode
-            // 
-            btnCheckBarcode.FlatAppearance.BorderSize = 0;
-            btnCheckBarcode.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            btnCheckBarcode.FlatStyle = FlatStyle.Flat;
-            btnCheckBarcode.Image = Properties.Resources._32pxTick;
-            btnCheckBarcode.Location = new Point(391, 174);
-            btnCheckBarcode.Name = "btnCheckBarcode";
-            btnCheckBarcode.Size = new Size(35, 35);
-            btnCheckBarcode.TabIndex = 83;
-            btnCheckBarcode.UseVisualStyleBackColor = true;
-            btnCheckBarcode.Click += btnCheckBarcode_Click;
             // 
             // NewProduct
             // 
@@ -1392,6 +1425,7 @@
             BackgroundImage = Properties.Resources.BackgroundGeneral;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1360, 768);
+            Controls.Add(btnSave);
             Controls.Add(pnlMain);
             Controls.Add(lblPageHeader);
             Controls.Add(btnMinimize);
@@ -1507,6 +1541,9 @@
         private DataGridViewTextBoxColumn VCRITICALSTOCK;
         private DataGridViewTextBoxColumn VSUPPLIER;
         private DataGridViewTextBoxColumn VBRANCH;
+        private Button btnCheckBarcode;
+        private TextBox tbStockPlace;
+        private Label label1;
         private DataGridViewTextBoxColumn BARCODE;
         private DataGridViewTextBoxColumn VATRATE;
         private DataGridViewTextBoxColumn NAME;
@@ -1525,6 +1562,6 @@
         private DataGridViewTextBoxColumn SUPPLIER;
         private DataGridViewTextBoxColumn BRANCH;
         private DataGridViewTextBoxColumn B64IMAGE;
-        private Button btnCheckBarcode;
+        private DataGridViewTextBoxColumn STOCKPLACE;
     }
 }

@@ -15,6 +15,7 @@ using Dapper;
 using POSA.CustomObjects;
 using POSA.Dto;
 using POSA.Helpers.Settings;
+using static Dapper.SqlMapper;
 namespace POSA.Forms
 {
     public partial class Sales : Form
@@ -41,6 +42,7 @@ namespace POSA.Forms
             public string Barcode { get; set; }
             public string ProductName { get; set; }
             public string Price { get; set; }
+            public string BuyPrice { get; set; }
             public string Quantity { get; set; }
             public string ButtonNumber { get; set; }
             public string Total { get; set; }
@@ -88,10 +90,15 @@ namespace POSA.Forms
                 }
             }
         }
+        public bool IsGridAlreadyCleared = false;
         private void btnRootCustomer_Click(object sender, EventArgs e)
         {
-            NextCustomer();
-            dgvMain.Rows.Clear();
+            if (!IsGridAlreadyCleared)
+            {
+                NextCustomer();
+                dgvMain.Rows.Clear();
+            }
+            IsGridAlreadyCleared = false;
             foreach (Button button in flpCustomers.Controls)
             {
                 button.BackColor = btnRootCustomer.BackColor;
@@ -187,7 +194,7 @@ namespace POSA.Forms
         {
             foreach (Button btn in flpGroups.Controls)
             {
-                btn.BackColor = Color.Gainsboro;
+                btn.BackColor = Color.FromArgb(210, 226, 252);
             }
         }
         public void ResetAllGroupButtons()
@@ -195,7 +202,7 @@ namespace POSA.Forms
             int i = 1;
             foreach (Button btn in flpGroupButtons.Controls)
             {
-                btn.BackColor = Color.Gainsboro;
+                btn.BackColor = Color.FromArgb(210, 226, 252);
                 btn.BackgroundImage = null;
                 btn.Name = "Button" + i;
                 btn.Text = "";
@@ -286,7 +293,7 @@ namespace POSA.Forms
         {
             foreach (Button btn in flpGroups.Controls)
             {
-                if (btn.Text.Length>0)
+                if (btn.Text.Length > 0)
                     flpGroups.Controls.Remove(btn);
             }
             foreach (var btn in GroupPages)
@@ -324,7 +331,7 @@ namespace POSA.Forms
             {
                 if (!IsButtonExist(tbNewGroupName.Text))
                 {
-                    if (HoldedGroupButtonText.Length>0)
+                    if (HoldedGroupButtonText.Length > 0)
                     {
                         foreach (var page in (from x in GroupPages where x.PageName == HoldedGroupButtonText select x))
                         {
@@ -507,7 +514,7 @@ namespace POSA.Forms
         private void Sales_Load(object sender, EventArgs e)
         {
             cbPriceType.SelectedIndex = 0;
-            rtbSearch.Focus();
+            tbSearch.Focus();
             dgvMain.Columns.Insert(3, new DataGridViewImageColumn()
             {
                 Image = Properties.Resources._24pxMinus,
@@ -650,7 +657,7 @@ namespace POSA.Forms
             var setting = Setting.Get();
             await using var conn = new SqlConnection(setting.Sql.ConnectionString());
             var sqlBuilder = new SqlBuilder();
-            sqlBuilder.Select($"BARCODE,NAME,SALEPRICE{(cbPriceType.Text == "1" ? "" : cbPriceType.Text)} AS SALEPRICE,BUYPRICE");
+            sqlBuilder.Select($"ID,BARCODE,NAME,SALEPRICE{(cbPriceType.Text == "1" ? "" : cbPriceType.Text)} AS SALEPRICE");
             sqlBuilder.Where("BARCODE=@BARCODE");
             var param = new { BARCODE = barcode };
             var builderTemp = sqlBuilder.AddTemplate("SELECT /**select**/ FROM PRODUCTS /**where**/");
@@ -674,12 +681,14 @@ namespace POSA.Forms
             {
                 totalTL += Convert.ToDecimal(row.Cells["Total"].Value.ToString());
             }
-            var currencies = GetCurrencies();
             btnTotalPrice.Text = totalTL.ToString() + "₺";
-            btnDolarTotalPrice.Text = decimal.Round((totalTL / currencies.Item1), 2, MidpointRounding.AwayFromZero).ToString() + "$";
-            btnEuroTotalPrice.Text = decimal.Round((totalTL / currencies.Item2), 2, MidpointRounding.AwayFromZero).ToString() + "€";
+            if (btnTotalPrice.Visible)
+            {
+                var currencies = GetCurrencies();
+                btnDolarTotalPrice.Text = decimal.Round((totalTL / currencies.Item1), 2, MidpointRounding.AwayFromZero).ToString() + "$";
+                btnEuroTotalPrice.Text = decimal.Round((totalTL / currencies.Item2), 2, MidpointRounding.AwayFromZero).ToString() + "€";
+            }
         }
-
         #endregion
         #endregion
         private void btnClearGrid_Click(object sender, EventArgs e)
@@ -699,6 +708,10 @@ namespace POSA.Forms
             btnTotalPrice.Visible = !btnTotalPrice.Visible;
             btnEuroTotalPrice.Visible = !btnEuroTotalPrice.Visible;
             btnDolarTotalPrice.Visible = !btnDolarTotalPrice.Visible;
+            if (btnTotalPrice.Visible)
+            {
+                CalculateAll();
+            }
         }
         public Tuple<decimal, decimal> GetCurrencies()
         {
@@ -711,6 +724,7 @@ namespace POSA.Forms
         private void btnClearTakenMoney_Click(object sender, EventArgs e)
         {
             tbTakenMoney.Text = "0";
+            lblChangeMoney.Text = "";
         }
         private void btnTL_Click(object sender, EventArgs e)
         {
@@ -753,7 +767,6 @@ namespace POSA.Forms
                 }
             }
         }
-
         private void dgvBarcodeSearch_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (!(e.RowIndex > -1 && e.RowIndex < dgvBarcodeSearch.Rows.Count))
@@ -778,7 +791,6 @@ namespace POSA.Forms
             }
             var b64Image = (dgvBarcodeSearch.Rows[e.RowIndex].Cells["IB64IMAGE"].Value ?? "").ToString();
             var name = dgvBarcodeSearch.Rows[e.RowIndex].Cells["INAME"].Value.ToString();
-
             if (HoldedButtonsBarcode.Length > 0)
             {
                 foreach (var btn in (from x in GroupButtons where x.Barcode == HoldedButtonsBarcode && x.PageName == currentPage select x))
@@ -804,14 +816,18 @@ namespace POSA.Forms
             tbAddNewGroupsButton.Texts = "";
             RefreshCurrentPageButtons();
         }
-
         private void rtbSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(rtbSearch.Texts))
-                AddToGridWithBarcode(rtbSearch.Texts);
-            rtbSearch.Focus();
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!string.IsNullOrWhiteSpace(tbSearch.Text))
+                {
+                    AddToGridWithBarcode(tbSearch.Text);
+                    tbSearch.Text = "";
+                }
+                tbSearch.Focus();
+            }
         }
-
         private void btnHidepnlAddNewGroupsButton_Click(object sender, EventArgs e)
         {
             pnlAddNewGroupsButton.Visible = false;
@@ -855,7 +871,6 @@ namespace POSA.Forms
         {
             isMouseHold = true;
         }
-
         private void tbNewGroupName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -863,7 +878,6 @@ namespace POSA.Forms
                 btnNewGroupAdd.PerformClick();
             }
         }
-
         private void GeneralGroup_MouseDown(object sender, MouseEventArgs e)
         {
             UndyeAllGroups();
@@ -902,6 +916,451 @@ namespace POSA.Forms
                         }
                     }
                 }
+            }
+        }
+        private void pbClearSearch_Click(object sender, EventArgs e)
+        {
+            tbSearch.Text = "";
+        }
+        private void dgvMain_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dgvMain.ClearSelection();
+        }
+        private void dgvMain_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            dgvMain.ClearSelection();
+        }
+        private void btnSearchProduct_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "ProdDet");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                var pd = new ProductDetails(cbPriceType.Text);
+                pd.Name = "ProdDet";
+                pd.Show();
+            }
+        }
+        private void ClearAfterPayment()
+        {
+            btnClearGrid.PerformClick();
+            foreach (Button btn in flpCustomers.Controls)
+            {
+                if (btn.BackColor == Color.LightGreen)
+                {
+                    flpCustomers.Controls.Remove(btn);
+                    IsGridAlreadyCleared = true;
+                    break;
+                }
+            }
+            btnRootCustomer.PerformClick();
+        }
+        public int LastSelectedCustomerID = 0;
+        public async Task<bool> AddFicheHead(string paymentType, string ficheRef, int ficheType, SqlTransaction trn, SqlConnection conn, Tuple<decimal, decimal> currencies, decimal totalPrice)
+        {
+            try
+            {
+                var settings = Setting.Get();
+                var totalPriceUSD = decimal.Round((totalPrice / currencies.Item1), 2, MidpointRounding.AwayFromZero);
+                var totalPriceEURO = decimal.Round((totalPrice / currencies.Item2), 2, MidpointRounding.AwayFromZero);
+                var sB = new SqlBuilder();//sB == sqlBuilder
+                var bT = sB.AddTemplate(
+                    $"""
+                INSERT INTO FICHES(FICHEREF,FICHETYPE,CUSTOMERID,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CREATEDBY,CREATEDATE,ISCUSTORVEND,PAYMENTTYPE)
+                VALUES (@FICHEREF,@FICHETYPE,@CUSTOMERID,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CREATEDBY,GETDATE(),'CUST',@PAYMENTTYPE)
+                """
+                    );
+                var param = new
+                {
+                    FICHEREF = ficheRef,
+                    FICHETYPE = ficheType,
+                    CUSTOMERID = LastSelectedCustomerID,
+                    TOTALPRICE = totalPrice,
+                    USDTOTALPRICE = totalPriceUSD,
+                    EUROTOTALPRICE = totalPriceEURO,
+                    CREATEDBY = settings.LastSuccesfullyLoggedUser,
+                    PAYMENTTYPE = paymentType
+                };
+                var result = conn.ExecuteAsync(bT.RawSql, param, trn).Result;
+                if (result > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> AddFicheLines(int ficheType, string ficheRef, SqlTransaction trn, SqlConnection conn, Tuple<decimal, decimal> currencies)
+        {
+            try
+            {
+                var settings = Setting.Get();
+                foreach (DataGridViewRow row in dgvMain.Rows)
+                {
+                    var barcode = row.Cells["Barcode"].Value.ToString();
+                    var sB = new SqlBuilder();
+                    var bT = sB.AddTemplate(
+                        $"""
+                            SELECT ID,STOCK,BUYPRICE FROM STOCKS WHERE PRODID = (SELECT ID FROM PRODUCTS WHERE BARCODE = @BARCODE) AND STOCK>0 ORDER BY CREATEDATE
+                            """
+                        );
+                    var stockParam = new
+                    {
+                        BARCODE = barcode
+                    };
+                    var stocks = conn.QueryAsync<ProdStocks>(bT.RawSql, stockParam, trn).Result.ToList();
+                    var quantity = Convert.ToDecimal(row.Cells["Quantity"].Value.ToString());
+                    decimal totalStock = stocks.Sum(x => x.STOCK);
+                    decimal totalProfit = 0;
+                    decimal sellPrice = Convert.ToDecimal(row.Cells["Price"].Value.ToString());
+                    if (ficheType == 2 || ficheType == 3)
+                        sellPrice = 0;
+                    int refundMarker = 1;
+                    if (ficheType == 1)
+                        refundMarker = -1;
+                    if (stocks.Any())
+                    {
+                        if (quantity <= stocks[0].STOCK)
+                        {
+                            var lineProfit = decimal.Round(refundMarker * (quantity * (sellPrice - stocks[0].BUYPRICE)), 2, MidpointRounding.AwayFromZero);
+                            var lineTotalPrice = decimal.Round(sellPrice * quantity, 2, MidpointRounding.AwayFromZero);
+                            var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
+                            var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                            //INSERT LINES
+                            sB = new SqlBuilder();
+                            bT = sB.AddTemplate(
+                                $"""
+                                               INSERT INTO FICHELINES(FICHEREF,BARCODE,QUANTITY,UNITPRICE,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CURRENCY,CREATEDBY,CREATEDATE,PROFIT)
+                                               VALUES(@FICHEREF,@BARCODE,@QUANTITY,@UNITPRICE,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CURRENCY,@CREATEDBY,GETDATE(),@PROFIT)
+                                            """
+                                );
+                            var prmLine = new
+                            {
+                                FICHEREF = ficheRef,
+                                BARCODE = barcode,
+                                QUANTITY = quantity,
+                                UNITPRICE = sellPrice,
+                                TOTALPRICE = lineTotalPrice,
+                                USDTOTALPRICE = lineTotalPriceUSD,
+                                EUROTOTALPRICE = lineTotalPriceEURO,
+                                CURRENCY = "TL",
+                                CREATEDBY = settings.LastSuccesfullyLoggedUser,
+                                PROFIT = lineProfit
+                            };
+                            var snc = conn.ExecuteAsync(bT.RawSql, prmLine, trn).Result;
+                            //UPDATE STOCK
+                            if (snc > 0)
+                            {
+                                sB = new SqlBuilder();
+                                bT = sB.AddTemplate(
+                                    $"""
+                                               UPDATE STOCKS SET STOCK = @STOCK WHERE ID = @ID
+                                            """
+                                    );
+                                var prmStock = new
+                                {
+                                    STOCK = stocks[0].STOCK - quantity,
+                                    ID = stocks[0].ID
+                                };
+                                snc = conn.ExecuteAsync(bT.RawSql, prmStock, trn).Result;
+                                if (snc == 0)
+                                    throw new Exception();
+                            }
+                        }
+                        else if (quantity <= totalStock)
+                        {
+                            var remainingQuantity = quantity;
+                            foreach (var stock in stocks)
+                            {
+                                if (remainingQuantity <= stock.STOCK)
+                                {
+                                    var lineProfit = decimal.Round(refundMarker * (remainingQuantity * (sellPrice - stock.BUYPRICE)), 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPrice = decimal.Round(sellPrice * remainingQuantity, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                                    //INSERT LINES
+                                    sB = new SqlBuilder();
+                                    bT = sB.AddTemplate(
+                                        $"""
+                                               INSERT INTO FICHELINES(FICHEREF,BARCODE,QUANTITY,UNITPRICE,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CURRENCY,CREATEDBY,CREATEDATE,PROFIT)
+                                               VALUES(@FICHEREF,@BARCODE,@QUANTITY,@UNITPRICE,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CURRENCY,@CREATEDBY,GETDATE(),@PROFIT)
+                                            """
+                                        );
+                                    var prmLine = new
+                                    {
+                                        FICHEREF = ficheRef,
+                                        BARCODE = barcode,
+                                        QUANTITY = remainingQuantity,
+                                        UNITPRICE = sellPrice,
+                                        TOTALPRICE = lineTotalPrice,
+                                        USDTOTALPRICE = lineTotalPriceUSD,
+                                        EUROTOTALPRICE = lineTotalPriceEURO,
+                                        CURRENCY = "TL",
+                                        CREATEDBY = settings.LastSuccesfullyLoggedUser,
+                                        PROFIT = lineProfit
+                                    };
+                                    var snc = conn.ExecuteAsync(bT.RawSql, prmLine, trn).Result;
+                                    if (snc > 0)
+                                    {
+                                        //UPDATE STOCK
+                                        sB = new SqlBuilder();
+                                        bT = sB.AddTemplate(
+                                            $"""
+                                               UPDATE STOCKS SET STOCK = @STOCK WHERE ID = @ID
+                                            """
+                                            );
+                                        var prmStock = new
+                                        {
+                                            STOCK = stock.STOCK - remainingQuantity,
+                                            ID = stock.ID
+                                        };
+                                        snc = conn.ExecuteAsync(bT.RawSql, prmStock, trn).Result;
+                                        if (snc == 0)
+                                            throw new Exception();
+                                    }
+                                    else
+                                        throw new Exception();
+                                }
+                                else
+                                {
+                                    remainingQuantity -= stock.STOCK;
+                                    var lineProfit = decimal.Round(refundMarker * (stock.STOCK * (sellPrice - stock.BUYPRICE)), 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPrice = decimal.Round(sellPrice * stock.STOCK, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                                    //INSERT LINES
+                                    sB = new SqlBuilder();
+                                    bT = sB.AddTemplate(
+                                        $"""
+                                               INSERT INTO FICHELINES(FICHEREF,BARCODE,QUANTITY,UNITPRICE,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CURRENCY,CREATEDBY,CREATEDATE,PROFIT)
+                                               VALUES(@FICHEREF,@BARCODE,@QUANTITY,@UNITPRICE,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CURRENCY,@CREATEDBY,GETDATE(),@PROFIT)
+                                            """
+                                        );
+                                    var prmLine = new
+                                    {
+                                        FICHEREF = ficheRef,
+                                        BARCODE = barcode,
+                                        QUANTITY = stock.STOCK,
+                                        UNITPRICE = sellPrice,
+                                        TOTALPRICE = lineTotalPrice,
+                                        USDTOTALPRICE = lineTotalPriceUSD,
+                                        EUROTOTALPRICE = lineTotalPriceEURO,
+                                        CURRENCY = "TL",
+                                        CREATEDBY = settings.LastSuccesfullyLoggedUser,
+                                        PROFIT = lineProfit
+                                    };
+                                    var snc = conn.ExecuteAsync(bT.RawSql, prmLine, trn).Result;
+                                    if (snc > 0)
+                                    {
+                                        //UPDATE STOCK
+                                        sB = new SqlBuilder();
+                                        bT = sB.AddTemplate(
+                                            $"""
+                                               UPDATE STOCKS SET STOCK = 0 WHERE ID = @ID
+                                            """
+                                            );
+                                        var prmStock = new
+                                        {
+                                            ID = stock.ID
+                                        };
+                                        snc = conn.ExecuteAsync(bT.RawSql, prmStock, trn).Result;
+                                        if (snc == 0)
+                                            throw new Exception();
+                                    }
+                                    else
+                                        throw new Exception();
+                                }
+                            }
+                            throw new Exception();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"{row.Cells["Barcode"].Value.ToString()} barkodlu ürün için stok yetersiz. Kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Stoklara erişilemiyor yada {row.Cells["Barcode"].Value.ToString()} barkodlu ürün için stok bulunamadı. Kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Fiş kaydedilemedi. Bağlantınızı kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        private async void btnCash_Click(object sender, EventArgs e)
+        {
+            // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            SqlTransaction trn = null;
+            var settings = Setting.Get();
+            await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+            conn.Open();
+            trn = conn.BeginTransaction();
+            var currencies = GetCurrencies();
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            CalculateAll();
+            var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
+            var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
+            var headRes = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            if (headRes)
+            {
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                if (lineRes)
+                {
+                    ClearAfterPayment();
+                    trn.Commit();
+                }
+                else
+                {
+                    trn.Rollback();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fiş kaydedilemedi. Bağlantınızı kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                trn.Rollback();
+                return;
+            }
+        }
+        private async void btnCard_Click(object sender, EventArgs e)
+        {
+            // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            SqlTransaction trn = null;
+            var settings = Setting.Get();
+            await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+            conn.Open();
+            trn = conn.BeginTransaction();
+            var currencies = GetCurrencies();
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            CalculateAll();
+            var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
+            var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
+            var headRes = AddFicheHead("KART", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            if (headRes)
+            {
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                if (lineRes)
+                {
+                    ClearAfterPayment();
+                    trn.Commit();
+                }
+                else
+                {
+                    trn.Rollback();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fiş kaydedilemedi. Bağlantınızı kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                trn.Rollback();
+                return;
+            }
+        }
+        private async void btnOther_Click(object sender, EventArgs e)
+        {
+            // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            SqlTransaction trn = null;
+            var settings = Setting.Get();
+            await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+            conn.Open();
+            trn = conn.BeginTransaction();
+            var currencies = GetCurrencies();
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            CalculateAll();
+            var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
+            var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
+            var headRes = AddFicheHead("DİĞER", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            if (headRes)
+            {
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                if (lineRes)
+                {
+                    ClearAfterPayment();
+                    trn.Commit();
+                }
+                else
+                {
+                    trn.Rollback();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fiş kaydedilemedi. Bağlantınızı kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                trn.Rollback();
+                return;
+            }
+        }
+        private async void btnMulti_Click(object sender, EventArgs e)
+        {
+            CalculateAll();
+            var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
+            using (var pm = new PayMulti(totalPrice))
+            {
+                var dr = pm.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    var cardAmount = pm.cardAmount;
+                    var cashAmount = pm.cashAmount;
+                    SqlTransaction trn = null;
+                    var settings = Setting.Get();
+                    await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+                    conn.Open();
+                    trn = conn.BeginTransaction();
+                    var currencies = GetCurrencies();
+                    int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+                    var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
+                    var headResCard = AddFicheHead("KART", ficheRef, ficheType, trn, conn, currencies, cardAmount).Result;
+                    var headResCash = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, currencies, cashAmount).Result;
+                    if (headResCard && headResCash)
+                    {
+                        var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                        if (lineRes)
+                        {
+                            ClearAfterPayment();
+                            trn.Commit();
+                        }
+                        else
+                        {
+                            trn.Rollback();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fiş kaydedilemedi. Bağlantınızı kontrol ederek tekrar deneyin.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        trn.Rollback();
+                        return;
+                    }
+                }
+            }
+
+        }
+
+        private void btnParts_Click(object sender, EventArgs e)
+        {
+            CalculateAll();
+            var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
+            using (var pp = new PayPartite(totalPrice))
+            {
+                pp.ShowDialog();
             }
         }
     }

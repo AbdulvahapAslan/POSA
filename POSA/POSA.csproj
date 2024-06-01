@@ -19,6 +19,15 @@
     <Compile Update="Forms\AddBranch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\PayPartite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PayMulti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\AddMaterial.cs">
       <SubType>Form</SubType>
     </Compile>

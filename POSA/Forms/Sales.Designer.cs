@@ -33,11 +33,14 @@ namespace POSA.Forms
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sales));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
@@ -55,18 +58,17 @@ namespace POSA.Forms
             btnRootCustomer = new Button();
             scLeftBottomMain = new SplitContainer();
             scLeftBottomMainsTop = new SplitContainer();
+            pictureBox3 = new PictureBox();
+            pbClearSearch = new PictureBox();
+            tbSearch = new TextBox();
             label8 = new Label();
             cbPriceType = new ComboBox();
-            pbClearSearch = new PictureBox();
-            pictureBox3 = new PictureBox();
-            rtbSearch = new CustomObjects.RoundTextBox();
-            btnCheckPrice = new Button();
             btnClearGrid = new Button();
             btnSearchProduct = new Button();
-            btnShowPrices = new Button();
             btnTotalPrice = new Button();
             btnDolarTotalPrice = new Button();
             btnEuroTotalPrice = new Button();
+            btnShowPrices = new Button();
             dgvMain = new DataGridView();
             Barcode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
@@ -196,8 +198,8 @@ namespace POSA.Forms
             scLeftBottomMainsTop.Panel1.SuspendLayout();
             scLeftBottomMainsTop.Panel2.SuspendLayout();
             scLeftBottomMainsTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -404,7 +406,7 @@ namespace POSA.Forms
             // btnAddCustomer
             // 
             btnAddCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddCustomer.BackColor = Color.Gainsboro;
+            btnAddCustomer.BackColor = Color.FromArgb(210, 226, 252);
             btnAddCustomer.BackgroundImage = (Image)resources.GetObject("btnAddCustomer.BackgroundImage");
             btnAddCustomer.BackgroundImageLayout = ImageLayout.Center;
             btnAddCustomer.FlatAppearance.BorderSize = 0;
@@ -429,7 +431,7 @@ namespace POSA.Forms
             // 
             // btnRootCustomer
             // 
-            btnRootCustomer.BackColor = Color.Gainsboro;
+            btnRootCustomer.BackColor = Color.FromArgb(210, 226, 252);
             btnRootCustomer.BackgroundImage = Properties.Resources.user__1_;
             btnRootCustomer.BackgroundImageLayout = ImageLayout.Center;
             btnRootCustomer.FlatStyle = FlatStyle.Flat;
@@ -473,32 +475,66 @@ namespace POSA.Forms
             // 
             // scLeftBottomMainsTop.Panel1
             // 
-            scLeftBottomMainsTop.Panel1.BackColor = Color.FromArgb(210, 210, 210);
+            scLeftBottomMainsTop.Panel1.BackColor = Color.FromArgb(210, 226, 252);
+            scLeftBottomMainsTop.Panel1.Controls.Add(pictureBox3);
+            scLeftBottomMainsTop.Panel1.Controls.Add(pbClearSearch);
+            scLeftBottomMainsTop.Panel1.Controls.Add(tbSearch);
             scLeftBottomMainsTop.Panel1.Controls.Add(label8);
             scLeftBottomMainsTop.Panel1.Controls.Add(cbPriceType);
-            scLeftBottomMainsTop.Panel1.Controls.Add(pbClearSearch);
-            scLeftBottomMainsTop.Panel1.Controls.Add(pictureBox3);
-            scLeftBottomMainsTop.Panel1.Controls.Add(rtbSearch);
-            scLeftBottomMainsTop.Panel1.Controls.Add(btnCheckPrice);
             scLeftBottomMainsTop.Panel1.Controls.Add(btnClearGrid);
             scLeftBottomMainsTop.Panel1.Controls.Add(btnSearchProduct);
             // 
             // scLeftBottomMainsTop.Panel2
             // 
-            scLeftBottomMainsTop.Panel2.Controls.Add(btnShowPrices);
             scLeftBottomMainsTop.Panel2.Controls.Add(btnTotalPrice);
             scLeftBottomMainsTop.Panel2.Controls.Add(btnDolarTotalPrice);
             scLeftBottomMainsTop.Panel2.Controls.Add(btnEuroTotalPrice);
+            scLeftBottomMainsTop.Panel2.Controls.Add(btnShowPrices);
             scLeftBottomMainsTop.Panel2.Controls.Add(dgvMain);
             scLeftBottomMainsTop.Size = new Size(733, 532);
-            scLeftBottomMainsTop.SplitterDistance = 61;
+            scLeftBottomMainsTop.SplitterDistance = 49;
             scLeftBottomMainsTop.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.White;
+            pictureBox3.BackgroundImage = Properties.Resources._16pxSearch;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox3.Location = new Point(6, 9);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(29, 29);
+            pictureBox3.TabIndex = 86;
+            pictureBox3.TabStop = false;
+            // 
+            // pbClearSearch
+            // 
+            pbClearSearch.BackColor = Color.White;
+            pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
+            pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
+            pbClearSearch.Location = new Point(258, 9);
+            pbClearSearch.Name = "pbClearSearch";
+            pbClearSearch.Size = new Size(29, 29);
+            pbClearSearch.TabIndex = 87;
+            pbClearSearch.TabStop = false;
+            pbClearSearch.Click += pbClearSearch_Click;
+            // 
+            // tbSearch
+            // 
+            tbSearch.BackColor = Color.White;
+            tbSearch.BorderStyle = BorderStyle.None;
+            tbSearch.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            tbSearch.Location = new Point(35, 9);
+            tbSearch.Name = "tbSearch";
+            tbSearch.PlaceholderText = "Barkod okutunuz...";
+            tbSearch.Size = new Size(228, 29);
+            tbSearch.TabIndex = 91;
+            tbSearch.KeyDown += rtbSearch_KeyDown;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            label8.Location = new Point(645, 6);
+            label8.Location = new Point(542, 12);
             label8.Name = "label8";
             label8.Size = new Size(85, 20);
             label8.TabIndex = 90;
@@ -512,73 +548,11 @@ namespace POSA.Forms
             cbPriceType.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             cbPriceType.FormattingEnabled = true;
             cbPriceType.Items.AddRange(new object[] { "1", "2", "3" });
-            cbPriceType.Location = new Point(642, 29);
+            cbPriceType.Location = new Point(633, 10);
             cbPriceType.Name = "cbPriceType";
             cbPriceType.Size = new Size(88, 28);
             cbPriceType.TabIndex = 89;
             cbPriceType.SelectedValueChanged += cbPriceType_SelectedIndexChanged;
-            // 
-            // pbClearSearch
-            // 
-            pbClearSearch.BackColor = Color.White;
-            pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
-            pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
-            pbClearSearch.Location = new Point(249, 16);
-            pbClearSearch.Name = "pbClearSearch";
-            pbClearSearch.Size = new Size(32, 32);
-            pbClearSearch.TabIndex = 87;
-            pbClearSearch.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.White;
-            pictureBox3.BackgroundImage = Properties.Resources._16pxSearch;
-            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox3.Location = new Point(13, 17);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(31, 31);
-            pictureBox3.TabIndex = 86;
-            pictureBox3.TabStop = false;
-            // 
-            // rtbSearch
-            // 
-            rtbSearch.BackColor = SystemColors.Window;
-            rtbSearch.BorderColor = Color.FromArgb(38, 38, 38);
-            rtbSearch.BorderFocusColor = Color.FromArgb(38, 38, 38);
-            rtbSearch.BorderRadius = 5;
-            rtbSearch.BorderSize = 2;
-            rtbSearch.Font = new Font("Segoe UI", 15F);
-            rtbSearch.ForeColor = Color.FromArgb(64, 64, 64);
-            rtbSearch.Location = new Point(8, 10);
-            rtbSearch.Margin = new Padding(4);
-            rtbSearch.Multiline = false;
-            rtbSearch.Name = "rtbSearch";
-            rtbSearch.Padding = new Padding(35, 7, 30, 7);
-            rtbSearch.PasswordChar = false;
-            rtbSearch.PlaceholderColor = Color.DarkGray;
-            rtbSearch.PlaceholderText = "Barkod okutunuz...";
-            rtbSearch.Size = new Size(278, 43);
-            rtbSearch.TabIndex = 88;
-            rtbSearch.Texts = "";
-            rtbSearch.UnderlinedStyle = false;
-            rtbSearch.KeyDown += rtbSearch_KeyDown;
-            // 
-            // btnCheckPrice
-            // 
-            btnCheckPrice.BackColor = Color.White;
-            btnCheckPrice.FlatAppearance.BorderSize = 0;
-            btnCheckPrice.FlatStyle = FlatStyle.Flat;
-            btnCheckPrice.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnCheckPrice.ForeColor = Color.FromArgb(95, 95, 95);
-            btnCheckPrice.Image = Properties.Resources._24pxEye;
-            btnCheckPrice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCheckPrice.Location = new Point(519, 10);
-            btnCheckPrice.Name = "btnCheckPrice";
-            btnCheckPrice.Size = new Size(117, 43);
-            btnCheckPrice.TabIndex = 5;
-            btnCheckPrice.Text = "FİYAT GÖR";
-            btnCheckPrice.TextAlign = ContentAlignment.MiddleRight;
-            btnCheckPrice.UseVisualStyleBackColor = false;
             // 
             // btnClearGrid
             // 
@@ -589,9 +563,9 @@ namespace POSA.Forms
             btnClearGrid.ForeColor = Color.FromArgb(95, 95, 95);
             btnClearGrid.Image = Properties.Resources._24pxClose;
             btnClearGrid.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClearGrid.Location = new Point(411, 10);
+            btnClearGrid.Location = new Point(432, 10);
             btnClearGrid.Name = "btnClearGrid";
-            btnClearGrid.Size = new Size(102, 43);
+            btnClearGrid.Size = new Size(102, 28);
             btnClearGrid.TabIndex = 4;
             btnClearGrid.Text = "TEMİZLE";
             btnClearGrid.TextAlign = ContentAlignment.MiddleRight;
@@ -609,29 +583,12 @@ namespace POSA.Forms
             btnSearchProduct.ImageAlign = ContentAlignment.MiddleLeft;
             btnSearchProduct.Location = new Point(293, 10);
             btnSearchProduct.Name = "btnSearchProduct";
-            btnSearchProduct.Size = new Size(112, 43);
+            btnSearchProduct.Size = new Size(133, 28);
             btnSearchProduct.TabIndex = 3;
-            btnSearchProduct.Text = "ÜRÜN BUL";
+            btnSearchProduct.Text = "ÜRÜN DETAY";
             btnSearchProduct.TextAlign = ContentAlignment.MiddleRight;
             btnSearchProduct.UseVisualStyleBackColor = false;
-            // 
-            // btnShowPrices
-            // 
-            btnShowPrices.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnShowPrices.BackColor = Color.FromArgb(66, 178, 38);
-            btnShowPrices.BackgroundImage = Properties.Resources._24pxWhiteEye;
-            btnShowPrices.BackgroundImageLayout = ImageLayout.Center;
-            btnShowPrices.FlatAppearance.BorderSize = 0;
-            btnShowPrices.FlatStyle = FlatStyle.Flat;
-            btnShowPrices.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnShowPrices.ForeColor = Color.FromArgb(95, 95, 95);
-            btnShowPrices.Location = new Point(703, 0);
-            btnShowPrices.Name = "btnShowPrices";
-            btnShowPrices.Size = new Size(30, 30);
-            btnShowPrices.TabIndex = 89;
-            btnShowPrices.TextAlign = ContentAlignment.MiddleRight;
-            btnShowPrices.UseVisualStyleBackColor = false;
-            btnShowPrices.Click += btnShowPrices_Click;
+            btnSearchProduct.Click += btnSearchProduct_Click;
             // 
             // btnTotalPrice
             // 
@@ -643,10 +600,10 @@ namespace POSA.Forms
             btnTotalPrice.FlatStyle = FlatStyle.Flat;
             btnTotalPrice.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             btnTotalPrice.ForeColor = Color.White;
-            btnTotalPrice.Location = new Point(575, 324);
+            btnTotalPrice.Location = new Point(573, 334);
             btnTotalPrice.Name = "btnTotalPrice";
             btnTotalPrice.Size = new Size(155, 58);
-            btnTotalPrice.TabIndex = 3;
+            btnTotalPrice.TabIndex = 93;
             btnTotalPrice.UseVisualStyleBackColor = false;
             btnTotalPrice.Visible = false;
             // 
@@ -660,10 +617,10 @@ namespace POSA.Forms
             btnDolarTotalPrice.FlatStyle = FlatStyle.Flat;
             btnDolarTotalPrice.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
             btnDolarTotalPrice.ForeColor = Color.White;
-            btnDolarTotalPrice.Location = new Point(576, 388);
+            btnDolarTotalPrice.Location = new Point(574, 398);
             btnDolarTotalPrice.Name = "btnDolarTotalPrice";
             btnDolarTotalPrice.Size = new Size(155, 35);
-            btnDolarTotalPrice.TabIndex = 2;
+            btnDolarTotalPrice.TabIndex = 92;
             btnDolarTotalPrice.UseVisualStyleBackColor = false;
             btnDolarTotalPrice.Visible = false;
             // 
@@ -677,12 +634,30 @@ namespace POSA.Forms
             btnEuroTotalPrice.FlatStyle = FlatStyle.Flat;
             btnEuroTotalPrice.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
             btnEuroTotalPrice.ForeColor = Color.White;
-            btnEuroTotalPrice.Location = new Point(576, 429);
+            btnEuroTotalPrice.Location = new Point(574, 439);
             btnEuroTotalPrice.Name = "btnEuroTotalPrice";
             btnEuroTotalPrice.Size = new Size(155, 35);
-            btnEuroTotalPrice.TabIndex = 1;
+            btnEuroTotalPrice.TabIndex = 91;
             btnEuroTotalPrice.UseVisualStyleBackColor = false;
             btnEuroTotalPrice.Visible = false;
+            // 
+            // btnShowPrices
+            // 
+            btnShowPrices.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnShowPrices.BackColor = Color.FromArgb(66, 178, 38);
+            btnShowPrices.BackgroundImage = Properties.Resources._24pxWhiteEye;
+            btnShowPrices.BackgroundImageLayout = ImageLayout.Center;
+            btnShowPrices.FlatAppearance.BorderSize = 0;
+            btnShowPrices.FlatStyle = FlatStyle.Flat;
+            btnShowPrices.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnShowPrices.ForeColor = Color.FromArgb(95, 95, 95);
+            btnShowPrices.Location = new Point(699, 5);
+            btnShowPrices.Name = "btnShowPrices";
+            btnShowPrices.Size = new Size(30, 30);
+            btnShowPrices.TabIndex = 94;
+            btnShowPrices.TextAlign = ContentAlignment.MiddleRight;
+            btnShowPrices.UseVisualStyleBackColor = false;
+            btnShowPrices.Click += btnShowPrices_Click;
             // 
             // dgvMain
             // 
@@ -690,78 +665,97 @@ namespace POSA.Forms
             dgvMain.AllowUserToDeleteRows = false;
             dgvMain.AllowUserToResizeColumns = false;
             dgvMain.AllowUserToResizeRows = false;
-            dgvMain.BackgroundColor = Color.FromArgb(215, 215, 215);
+            dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMain.BackgroundColor = Color.White;
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { Barcode, ProductName, Price, Quantity, Total, BUYPRICE });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvMain.Dock = DockStyle.Fill;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle7;
             dgvMain.EnableHeadersVisualStyles = false;
-            dgvMain.GridColor = Color.FromArgb(215, 215, 215);
-            dgvMain.Location = new Point(0, 0);
+            dgvMain.GridColor = Color.White;
+            dgvMain.Location = new Point(5, 5);
+            dgvMain.Margin = new Padding(5);
             dgvMain.Name = "dgvMain";
             dgvMain.RowHeadersVisible = false;
+            dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
+            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvMain.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(210, 226, 252);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMain.RowTemplate.DividerHeight = 10;
             dgvMain.RowTemplate.Height = 40;
-            dgvMain.Size = new Size(733, 467);
-            dgvMain.TabIndex = 0;
+            dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMain.Size = new Size(723, 469);
+            dgvMain.TabIndex = 90;
             dgvMain.CellClick += dgvMain_CellClick;
             // 
             // Barcode
             // 
             Barcode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Barcode.DefaultCellStyle = dataGridViewCellStyle2;
             Barcode.FillWeight = 18F;
             Barcode.HeaderText = "BARKOD";
             Barcode.Name = "Barcode";
+            Barcode.ReadOnly = true;
             // 
             // ProductName
             // 
             ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ProductName.DefaultCellStyle = dataGridViewCellStyle3;
             ProductName.FillWeight = 24F;
             ProductName.HeaderText = "ÜRÜN ADI";
             ProductName.Name = "ProductName";
+            ProductName.ReadOnly = true;
             // 
             // Price
             // 
             Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Price.DefaultCellStyle = dataGridViewCellStyle4;
             Price.FillWeight = 14F;
             Price.HeaderText = "FİYAT";
             Price.Name = "Price";
+            Price.ReadOnly = true;
             // 
             // Quantity
             // 
             Quantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle5;
             Quantity.FillWeight = 11F;
             Quantity.HeaderText = "ADET";
             Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
             // 
             // Total
             // 
             Total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Total.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Total.DefaultCellStyle = dataGridViewCellStyle6;
             Total.FillWeight = 20F;
             Total.HeaderText = "TOPLAM";
             Total.Name = "Total";
+            Total.ReadOnly = true;
             // 
             // BUYPRICE
             // 
@@ -976,6 +970,7 @@ namespace POSA.Forms
             btnOther.Text = "DİĞER";
             btnOther.TextAlign = ContentAlignment.BottomCenter;
             btnOther.UseVisualStyleBackColor = true;
+            btnOther.Click += btnOther_Click;
             // 
             // btnParts
             // 
@@ -993,6 +988,7 @@ namespace POSA.Forms
             btnParts.Text = "PARÇALI(F4)";
             btnParts.TextAlign = ContentAlignment.BottomCenter;
             btnParts.UseVisualStyleBackColor = true;
+            btnParts.Click += btnParts_Click;
             // 
             // btnMulti
             // 
@@ -1010,6 +1006,7 @@ namespace POSA.Forms
             btnMulti.Text = "ÇOKLU (F3)";
             btnMulti.TextAlign = ContentAlignment.BottomCenter;
             btnMulti.UseVisualStyleBackColor = true;
+            btnMulti.Click += btnMulti_Click;
             // 
             // btnCard
             // 
@@ -1027,6 +1024,7 @@ namespace POSA.Forms
             btnCard.Text = "KART (F2)";
             btnCard.TextAlign = ContentAlignment.BottomCenter;
             btnCard.UseVisualStyleBackColor = true;
+            btnCard.Click += btnCard_Click;
             // 
             // btnCash
             // 
@@ -1044,6 +1042,7 @@ namespace POSA.Forms
             btnCash.Text = "NAKİT (F1)";
             btnCash.TextAlign = ContentAlignment.BottomCenter;
             btnCash.UseVisualStyleBackColor = true;
+            btnCash.Click += btnCash_Click;
             // 
             // flpMiddleButtons
             // 
@@ -1217,6 +1216,7 @@ namespace POSA.Forms
             // 
             // btnGroup1
             // 
+            btnGroup1.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup1.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup1.FlatStyle = FlatStyle.Flat;
             btnGroup1.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1225,12 +1225,13 @@ namespace POSA.Forms
             btnGroup1.Size = new Size(117, 117);
             btnGroup1.TabIndex = 0;
             btnGroup1.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup1.UseVisualStyleBackColor = true;
+            btnGroup1.UseVisualStyleBackColor = false;
             btnGroup1.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup1.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup2
             // 
+            btnGroup2.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup2.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup2.FlatStyle = FlatStyle.Flat;
             btnGroup2.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1239,12 +1240,13 @@ namespace POSA.Forms
             btnGroup2.Size = new Size(117, 117);
             btnGroup2.TabIndex = 1;
             btnGroup2.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup2.UseVisualStyleBackColor = true;
+            btnGroup2.UseVisualStyleBackColor = false;
             btnGroup2.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup2.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup3
             // 
+            btnGroup3.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup3.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup3.FlatStyle = FlatStyle.Flat;
             btnGroup3.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1253,12 +1255,13 @@ namespace POSA.Forms
             btnGroup3.Size = new Size(117, 117);
             btnGroup3.TabIndex = 2;
             btnGroup3.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup3.UseVisualStyleBackColor = true;
+            btnGroup3.UseVisualStyleBackColor = false;
             btnGroup3.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup3.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup4
             // 
+            btnGroup4.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup4.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup4.FlatStyle = FlatStyle.Flat;
             btnGroup4.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1267,12 +1270,13 @@ namespace POSA.Forms
             btnGroup4.Size = new Size(117, 117);
             btnGroup4.TabIndex = 3;
             btnGroup4.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup4.UseVisualStyleBackColor = true;
+            btnGroup4.UseVisualStyleBackColor = false;
             btnGroup4.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup4.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup5
             // 
+            btnGroup5.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup5.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup5.FlatStyle = FlatStyle.Flat;
             btnGroup5.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1281,12 +1285,13 @@ namespace POSA.Forms
             btnGroup5.Size = new Size(117, 117);
             btnGroup5.TabIndex = 4;
             btnGroup5.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup5.UseVisualStyleBackColor = true;
+            btnGroup5.UseVisualStyleBackColor = false;
             btnGroup5.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup5.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup6
             // 
+            btnGroup6.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup6.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup6.FlatStyle = FlatStyle.Flat;
             btnGroup6.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1295,12 +1300,13 @@ namespace POSA.Forms
             btnGroup6.Size = new Size(117, 117);
             btnGroup6.TabIndex = 5;
             btnGroup6.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup6.UseVisualStyleBackColor = true;
+            btnGroup6.UseVisualStyleBackColor = false;
             btnGroup6.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup6.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup7
             // 
+            btnGroup7.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup7.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup7.FlatStyle = FlatStyle.Flat;
             btnGroup7.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1309,12 +1315,13 @@ namespace POSA.Forms
             btnGroup7.Size = new Size(117, 117);
             btnGroup7.TabIndex = 6;
             btnGroup7.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup7.UseVisualStyleBackColor = true;
+            btnGroup7.UseVisualStyleBackColor = false;
             btnGroup7.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup7.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup8
             // 
+            btnGroup8.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup8.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup8.FlatStyle = FlatStyle.Flat;
             btnGroup8.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1323,12 +1330,13 @@ namespace POSA.Forms
             btnGroup8.Size = new Size(117, 117);
             btnGroup8.TabIndex = 7;
             btnGroup8.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup8.UseVisualStyleBackColor = true;
+            btnGroup8.UseVisualStyleBackColor = false;
             btnGroup8.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup8.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup9
             // 
+            btnGroup9.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup9.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup9.FlatStyle = FlatStyle.Flat;
             btnGroup9.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1337,12 +1345,13 @@ namespace POSA.Forms
             btnGroup9.Size = new Size(117, 117);
             btnGroup9.TabIndex = 8;
             btnGroup9.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup9.UseVisualStyleBackColor = true;
+            btnGroup9.UseVisualStyleBackColor = false;
             btnGroup9.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup9.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup10
             // 
+            btnGroup10.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup10.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup10.FlatStyle = FlatStyle.Flat;
             btnGroup10.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1351,12 +1360,13 @@ namespace POSA.Forms
             btnGroup10.Size = new Size(117, 117);
             btnGroup10.TabIndex = 9;
             btnGroup10.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup10.UseVisualStyleBackColor = true;
+            btnGroup10.UseVisualStyleBackColor = false;
             btnGroup10.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup10.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup11
             // 
+            btnGroup11.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup11.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup11.FlatStyle = FlatStyle.Flat;
             btnGroup11.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1365,12 +1375,13 @@ namespace POSA.Forms
             btnGroup11.Size = new Size(117, 117);
             btnGroup11.TabIndex = 10;
             btnGroup11.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup11.UseVisualStyleBackColor = true;
+            btnGroup11.UseVisualStyleBackColor = false;
             btnGroup11.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup11.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup12
             // 
+            btnGroup12.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup12.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup12.FlatStyle = FlatStyle.Flat;
             btnGroup12.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1379,12 +1390,13 @@ namespace POSA.Forms
             btnGroup12.Size = new Size(117, 117);
             btnGroup12.TabIndex = 11;
             btnGroup12.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup12.UseVisualStyleBackColor = true;
+            btnGroup12.UseVisualStyleBackColor = false;
             btnGroup12.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup12.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup13
             // 
+            btnGroup13.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup13.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup13.FlatStyle = FlatStyle.Flat;
             btnGroup13.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1393,12 +1405,13 @@ namespace POSA.Forms
             btnGroup13.Size = new Size(117, 117);
             btnGroup13.TabIndex = 12;
             btnGroup13.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup13.UseVisualStyleBackColor = true;
+            btnGroup13.UseVisualStyleBackColor = false;
             btnGroup13.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup13.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup14
             // 
+            btnGroup14.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup14.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup14.FlatStyle = FlatStyle.Flat;
             btnGroup14.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1407,12 +1420,13 @@ namespace POSA.Forms
             btnGroup14.Size = new Size(117, 117);
             btnGroup14.TabIndex = 13;
             btnGroup14.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup14.UseVisualStyleBackColor = true;
+            btnGroup14.UseVisualStyleBackColor = false;
             btnGroup14.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup14.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup15
             // 
+            btnGroup15.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup15.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup15.FlatStyle = FlatStyle.Flat;
             btnGroup15.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1421,12 +1435,13 @@ namespace POSA.Forms
             btnGroup15.Size = new Size(117, 117);
             btnGroup15.TabIndex = 14;
             btnGroup15.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup15.UseVisualStyleBackColor = true;
+            btnGroup15.UseVisualStyleBackColor = false;
             btnGroup15.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup15.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup16
             // 
+            btnGroup16.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup16.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup16.FlatStyle = FlatStyle.Flat;
             btnGroup16.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1435,12 +1450,13 @@ namespace POSA.Forms
             btnGroup16.Size = new Size(117, 117);
             btnGroup16.TabIndex = 15;
             btnGroup16.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup16.UseVisualStyleBackColor = true;
+            btnGroup16.UseVisualStyleBackColor = false;
             btnGroup16.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup16.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup17
             // 
+            btnGroup17.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup17.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup17.FlatStyle = FlatStyle.Flat;
             btnGroup17.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1449,12 +1465,13 @@ namespace POSA.Forms
             btnGroup17.Size = new Size(117, 117);
             btnGroup17.TabIndex = 16;
             btnGroup17.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup17.UseVisualStyleBackColor = true;
+            btnGroup17.UseVisualStyleBackColor = false;
             btnGroup17.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup17.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup18
             // 
+            btnGroup18.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup18.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup18.FlatStyle = FlatStyle.Flat;
             btnGroup18.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1463,12 +1480,13 @@ namespace POSA.Forms
             btnGroup18.Size = new Size(117, 117);
             btnGroup18.TabIndex = 17;
             btnGroup18.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup18.UseVisualStyleBackColor = true;
+            btnGroup18.UseVisualStyleBackColor = false;
             btnGroup18.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup18.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup19
             // 
+            btnGroup19.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup19.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup19.FlatStyle = FlatStyle.Flat;
             btnGroup19.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1477,12 +1495,13 @@ namespace POSA.Forms
             btnGroup19.Size = new Size(117, 117);
             btnGroup19.TabIndex = 18;
             btnGroup19.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup19.UseVisualStyleBackColor = true;
+            btnGroup19.UseVisualStyleBackColor = false;
             btnGroup19.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup19.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup20
             // 
+            btnGroup20.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup20.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup20.FlatStyle = FlatStyle.Flat;
             btnGroup20.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1491,12 +1510,13 @@ namespace POSA.Forms
             btnGroup20.Size = new Size(117, 117);
             btnGroup20.TabIndex = 19;
             btnGroup20.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup20.UseVisualStyleBackColor = true;
+            btnGroup20.UseVisualStyleBackColor = false;
             btnGroup20.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup20.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup21
             // 
+            btnGroup21.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup21.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup21.FlatStyle = FlatStyle.Flat;
             btnGroup21.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1505,12 +1525,13 @@ namespace POSA.Forms
             btnGroup21.Size = new Size(117, 117);
             btnGroup21.TabIndex = 20;
             btnGroup21.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup21.UseVisualStyleBackColor = true;
+            btnGroup21.UseVisualStyleBackColor = false;
             btnGroup21.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup21.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup22
             // 
+            btnGroup22.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup22.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup22.FlatStyle = FlatStyle.Flat;
             btnGroup22.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1519,12 +1540,13 @@ namespace POSA.Forms
             btnGroup22.Size = new Size(117, 117);
             btnGroup22.TabIndex = 21;
             btnGroup22.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup22.UseVisualStyleBackColor = true;
+            btnGroup22.UseVisualStyleBackColor = false;
             btnGroup22.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup22.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup23
             // 
+            btnGroup23.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup23.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup23.FlatStyle = FlatStyle.Flat;
             btnGroup23.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1533,12 +1555,13 @@ namespace POSA.Forms
             btnGroup23.Size = new Size(117, 117);
             btnGroup23.TabIndex = 22;
             btnGroup23.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup23.UseVisualStyleBackColor = true;
+            btnGroup23.UseVisualStyleBackColor = false;
             btnGroup23.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup23.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup24
             // 
+            btnGroup24.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup24.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup24.FlatStyle = FlatStyle.Flat;
             btnGroup24.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1547,12 +1570,13 @@ namespace POSA.Forms
             btnGroup24.Size = new Size(117, 117);
             btnGroup24.TabIndex = 23;
             btnGroup24.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup24.UseVisualStyleBackColor = true;
+            btnGroup24.UseVisualStyleBackColor = false;
             btnGroup24.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup24.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup25
             // 
+            btnGroup25.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup25.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup25.FlatStyle = FlatStyle.Flat;
             btnGroup25.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1561,12 +1585,13 @@ namespace POSA.Forms
             btnGroup25.Size = new Size(117, 117);
             btnGroup25.TabIndex = 24;
             btnGroup25.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup25.UseVisualStyleBackColor = true;
+            btnGroup25.UseVisualStyleBackColor = false;
             btnGroup25.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup25.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup26
             // 
+            btnGroup26.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup26.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup26.FlatStyle = FlatStyle.Flat;
             btnGroup26.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1575,12 +1600,13 @@ namespace POSA.Forms
             btnGroup26.Size = new Size(117, 117);
             btnGroup26.TabIndex = 25;
             btnGroup26.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup26.UseVisualStyleBackColor = true;
+            btnGroup26.UseVisualStyleBackColor = false;
             btnGroup26.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup26.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup27
             // 
+            btnGroup27.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup27.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup27.FlatStyle = FlatStyle.Flat;
             btnGroup27.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1589,12 +1615,13 @@ namespace POSA.Forms
             btnGroup27.Size = new Size(117, 117);
             btnGroup27.TabIndex = 26;
             btnGroup27.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup27.UseVisualStyleBackColor = true;
+            btnGroup27.UseVisualStyleBackColor = false;
             btnGroup27.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup27.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup28
             // 
+            btnGroup28.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup28.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup28.FlatStyle = FlatStyle.Flat;
             btnGroup28.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1603,12 +1630,13 @@ namespace POSA.Forms
             btnGroup28.Size = new Size(117, 117);
             btnGroup28.TabIndex = 27;
             btnGroup28.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup28.UseVisualStyleBackColor = true;
+            btnGroup28.UseVisualStyleBackColor = false;
             btnGroup28.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup28.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup29
             // 
+            btnGroup29.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup29.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup29.FlatStyle = FlatStyle.Flat;
             btnGroup29.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1617,12 +1645,13 @@ namespace POSA.Forms
             btnGroup29.Size = new Size(117, 117);
             btnGroup29.TabIndex = 28;
             btnGroup29.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup29.UseVisualStyleBackColor = true;
+            btnGroup29.UseVisualStyleBackColor = false;
             btnGroup29.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup29.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup30
             // 
+            btnGroup30.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup30.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup30.FlatStyle = FlatStyle.Flat;
             btnGroup30.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1631,12 +1660,13 @@ namespace POSA.Forms
             btnGroup30.Size = new Size(117, 117);
             btnGroup30.TabIndex = 29;
             btnGroup30.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup30.UseVisualStyleBackColor = true;
+            btnGroup30.UseVisualStyleBackColor = false;
             btnGroup30.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup30.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup31
             // 
+            btnGroup31.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup31.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup31.FlatStyle = FlatStyle.Flat;
             btnGroup31.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1645,12 +1675,13 @@ namespace POSA.Forms
             btnGroup31.Size = new Size(117, 117);
             btnGroup31.TabIndex = 30;
             btnGroup31.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup31.UseVisualStyleBackColor = true;
+            btnGroup31.UseVisualStyleBackColor = false;
             btnGroup31.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup31.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup32
             // 
+            btnGroup32.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup32.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup32.FlatStyle = FlatStyle.Flat;
             btnGroup32.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1659,12 +1690,13 @@ namespace POSA.Forms
             btnGroup32.Size = new Size(117, 117);
             btnGroup32.TabIndex = 31;
             btnGroup32.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup32.UseVisualStyleBackColor = true;
+            btnGroup32.UseVisualStyleBackColor = false;
             btnGroup32.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup32.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup33
             // 
+            btnGroup33.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup33.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup33.FlatStyle = FlatStyle.Flat;
             btnGroup33.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1673,12 +1705,13 @@ namespace POSA.Forms
             btnGroup33.Size = new Size(117, 117);
             btnGroup33.TabIndex = 32;
             btnGroup33.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup33.UseVisualStyleBackColor = true;
+            btnGroup33.UseVisualStyleBackColor = false;
             btnGroup33.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup33.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup34
             // 
+            btnGroup34.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup34.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup34.FlatStyle = FlatStyle.Flat;
             btnGroup34.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1687,12 +1720,13 @@ namespace POSA.Forms
             btnGroup34.Size = new Size(117, 117);
             btnGroup34.TabIndex = 33;
             btnGroup34.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup34.UseVisualStyleBackColor = true;
+            btnGroup34.UseVisualStyleBackColor = false;
             btnGroup34.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup34.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup35
             // 
+            btnGroup35.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup35.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup35.FlatStyle = FlatStyle.Flat;
             btnGroup35.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1701,12 +1735,13 @@ namespace POSA.Forms
             btnGroup35.Size = new Size(117, 117);
             btnGroup35.TabIndex = 34;
             btnGroup35.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup35.UseVisualStyleBackColor = true;
+            btnGroup35.UseVisualStyleBackColor = false;
             btnGroup35.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup35.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup36
             // 
+            btnGroup36.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup36.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup36.FlatStyle = FlatStyle.Flat;
             btnGroup36.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1715,12 +1750,13 @@ namespace POSA.Forms
             btnGroup36.Size = new Size(117, 117);
             btnGroup36.TabIndex = 35;
             btnGroup36.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup36.UseVisualStyleBackColor = true;
+            btnGroup36.UseVisualStyleBackColor = false;
             btnGroup36.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup36.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup37
             // 
+            btnGroup37.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup37.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup37.FlatStyle = FlatStyle.Flat;
             btnGroup37.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1729,13 +1765,14 @@ namespace POSA.Forms
             btnGroup37.Size = new Size(117, 117);
             btnGroup37.TabIndex = 36;
             btnGroup37.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup37.UseVisualStyleBackColor = true;
+            btnGroup37.UseVisualStyleBackColor = false;
             btnGroup37.Click += GroupButtonsGeneral_Click;
             btnGroup37.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup37.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup38
             // 
+            btnGroup38.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup38.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup38.FlatStyle = FlatStyle.Flat;
             btnGroup38.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1744,13 +1781,14 @@ namespace POSA.Forms
             btnGroup38.Size = new Size(117, 117);
             btnGroup38.TabIndex = 37;
             btnGroup38.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup38.UseVisualStyleBackColor = true;
+            btnGroup38.UseVisualStyleBackColor = false;
             btnGroup38.Click += GroupButtonsGeneral_Click;
             btnGroup38.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup38.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup39
             // 
+            btnGroup39.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup39.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup39.FlatStyle = FlatStyle.Flat;
             btnGroup39.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1759,13 +1797,14 @@ namespace POSA.Forms
             btnGroup39.Size = new Size(117, 117);
             btnGroup39.TabIndex = 38;
             btnGroup39.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup39.UseVisualStyleBackColor = true;
+            btnGroup39.UseVisualStyleBackColor = false;
             btnGroup39.Click += GroupButtonsGeneral_Click;
             btnGroup39.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup39.MouseUp += GroupButtonsGeneral_MouseUp;
             // 
             // btnGroup40
             // 
+            btnGroup40.BackColor = Color.FromArgb(210, 226, 252);
             btnGroup40.BackgroundImageLayout = ImageLayout.Zoom;
             btnGroup40.FlatStyle = FlatStyle.Flat;
             btnGroup40.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
@@ -1774,7 +1813,7 @@ namespace POSA.Forms
             btnGroup40.Size = new Size(117, 117);
             btnGroup40.TabIndex = 39;
             btnGroup40.TextAlign = ContentAlignment.BottomCenter;
-            btnGroup40.UseVisualStyleBackColor = true;
+            btnGroup40.UseVisualStyleBackColor = false;
             btnGroup40.Click += GroupButtonsGeneral_Click;
             btnGroup40.MouseDown += GroupButtonsGeneral_MouseDown;
             btnGroup40.MouseUp += GroupButtonsGeneral_MouseUp;
@@ -1809,7 +1848,7 @@ namespace POSA.Forms
             // 
             // btnAddGroup
             // 
-            btnAddGroup.BackColor = Color.Gainsboro;
+            btnAddGroup.BackColor = Color.FromArgb(210, 226, 252);
             btnAddGroup.BackgroundImage = (Image)resources.GetObject("btnAddGroup.BackgroundImage");
             btnAddGroup.BackgroundImageLayout = ImageLayout.Center;
             btnAddGroup.FlatAppearance.BorderSize = 0;
@@ -1835,7 +1874,7 @@ namespace POSA.Forms
             // 
             // btnRootGroup
             // 
-            btnRootGroup.BackColor = Color.Gainsboro;
+            btnRootGroup.BackColor = Color.FromArgb(210, 226, 252);
             btnRootGroup.BackgroundImage = Properties.Resources.cosmetic;
             btnRootGroup.BackgroundImageLayout = ImageLayout.Center;
             btnRootGroup.FlatStyle = FlatStyle.Flat;
@@ -1874,7 +1913,7 @@ namespace POSA.Forms
             // pnlAddGroup
             // 
             pnlAddGroup.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pnlAddGroup.BackColor = Color.Gainsboro;
+            pnlAddGroup.BackColor = Color.FromArgb(210, 226, 252);
             pnlAddGroup.Controls.Add(btnDeleteGroup);
             pnlAddGroup.Controls.Add(tbNewGroupName);
             pnlAddGroup.Controls.Add(btnNewGroupAdd);
@@ -1887,6 +1926,7 @@ namespace POSA.Forms
             // 
             // btnDeleteGroup
             // 
+            btnDeleteGroup.BackColor = Color.White;
             btnDeleteGroup.FlatStyle = FlatStyle.Flat;
             btnDeleteGroup.Font = new Font("Segoe UI", 13F);
             btnDeleteGroup.Location = new Point(5, 40);
@@ -1895,7 +1935,7 @@ namespace POSA.Forms
             btnDeleteGroup.TabIndex = 4;
             btnDeleteGroup.Text = "Sil";
             btnDeleteGroup.TextAlign = ContentAlignment.TopCenter;
-            btnDeleteGroup.UseVisualStyleBackColor = true;
+            btnDeleteGroup.UseVisualStyleBackColor = false;
             btnDeleteGroup.Visible = false;
             // 
             // tbNewGroupName
@@ -1910,6 +1950,7 @@ namespace POSA.Forms
             // 
             // btnNewGroupAdd
             // 
+            btnNewGroupAdd.BackColor = Color.White;
             btnNewGroupAdd.FlatStyle = FlatStyle.Flat;
             btnNewGroupAdd.Font = new Font("Segoe UI", 13F);
             btnNewGroupAdd.Location = new Point(188, 40);
@@ -1918,7 +1959,7 @@ namespace POSA.Forms
             btnNewGroupAdd.TabIndex = 2;
             btnNewGroupAdd.Text = "Tamam";
             btnNewGroupAdd.TextAlign = ContentAlignment.TopCenter;
-            btnNewGroupAdd.UseVisualStyleBackColor = true;
+            btnNewGroupAdd.UseVisualStyleBackColor = false;
             btnNewGroupAdd.Click += btnNewGroupAdd_Click;
             // 
             // label2
@@ -1960,7 +2001,7 @@ namespace POSA.Forms
             pnlAddNewGroupsButton.Controls.Add(pictureBox1);
             pnlAddNewGroupsButton.Controls.Add(tbAddNewGroupsButton);
             pnlAddNewGroupsButton.Controls.Add(dgvBarcodeSearch);
-            pnlAddNewGroupsButton.Location = new Point(524, 180);
+            pnlAddNewGroupsButton.Location = new Point(523, 143);
             pnlAddNewGroupsButton.Name = "pnlAddNewGroupsButton";
             pnlAddNewGroupsButton.Size = new Size(317, 259);
             pnlAddNewGroupsButton.TabIndex = 1;
@@ -2027,25 +2068,25 @@ namespace POSA.Forms
             dgvBarcodeSearch.BorderStyle = BorderStyle.None;
             dgvBarcodeSearch.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBarcodeSearch.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.SelectionBackColor = Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvBarcodeSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle8.SelectionBackColor = Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvBarcodeSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvBarcodeSearch.ColumnHeadersHeight = 50;
             dgvBarcodeSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvBarcodeSearch.Columns.AddRange(new DataGridViewColumn[] { IBARCODE, INAME, IB64IMAGE });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvBarcodeSearch.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvBarcodeSearch.DefaultCellStyle = dataGridViewCellStyle9;
             dgvBarcodeSearch.EnableHeadersVisualStyles = false;
             dgvBarcodeSearch.GridColor = Color.White;
             dgvBarcodeSearch.Location = new Point(10, 60);
@@ -2152,8 +2193,8 @@ namespace POSA.Forms
             scLeftBottomMainsTop.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)scLeftBottomMainsTop).EndInit();
             scLeftBottomMainsTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -2203,7 +2244,6 @@ namespace POSA.Forms
         private Button btnAddCustomer;
         private SplitContainer scLeftBottomMain;
         private SplitContainer scLeftBottomMainsTop;
-        private DataGridView dgvMain;
         private FlowLayoutPanel flpCustomers;
         private Button btnRootCustomer;
         private FlowLayoutPanel flpGroups;
@@ -2254,7 +2294,6 @@ namespace POSA.Forms
         private Button btnGroup39;
         private Button btnGroup40;
         private Button btnSearchProduct;
-        private Button btnCheckPrice;
         private Button btnClearGrid;
         private FlowLayoutPanel flpMiddleButtons;
         private Button btnCard;
@@ -2283,21 +2322,10 @@ namespace POSA.Forms
         private Label label6;
         private Label lblChangeMoney;
         private Label label7;
-        private Button btnEuroTotalPrice;
-        private Button btnTotalPrice;
-        private Button btnDolarTotalPrice;
         private PictureBox pbClearSearch;
         private PictureBox pictureBox3;
-        private CustomObjects.RoundTextBox rtbSearch;
-        private Button btnShowPrices;
         private Label label8;
         private ComboBox cbPriceType;
-        private DataGridViewTextBoxColumn Barcode;
-        private DataGridViewTextBoxColumn ProductName;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Total;
-        private DataGridViewTextBoxColumn BUYPRICE;
         private PictureBox pictureBox1;
         private CustomObjects.RoundTextBox tbAddNewGroupsButton;
         private DataGridView dgvBarcodeSearch;
@@ -2307,5 +2335,17 @@ namespace POSA.Forms
         private Button btnHidepnlAddNewGroupsButton;
         private System.Windows.Forms.Timer tmrMouse;
         private Button btnDeleteGroup;
+        private TextBox tbSearch;
+        private Button btnTotalPrice;
+        private Button btnDolarTotalPrice;
+        private Button btnEuroTotalPrice;
+        private DataGridView dgvMain;
+        private Button btnShowPrices;
+        private DataGridViewTextBoxColumn Barcode;
+        private DataGridViewTextBoxColumn ProductName;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn Total;
+        private DataGridViewTextBoxColumn BUYPRICE;
     }
 }

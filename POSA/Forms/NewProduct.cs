@@ -204,7 +204,7 @@ namespace POSA.Forms
             if (tbBarcode.Enabled == false)
             {//update
                 var sqlBuilder = new SqlBuilder();
-                var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND BUYPRICE=@BUYPRICE AND VATRATE=@VATRATE AND CURRENCY=@CURRENCY AND STOCK=@STOCK AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() WHERE BARCODE = @BARCODE");
+                var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND VATRATE=@VATRATE AND CURRENCY=@CURRENCY AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() AND STOCKPLACE = @STOCKPLACE WHERE BARCODE = @BARCODE");
                 var param = new
                 {
                     CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
@@ -222,13 +222,31 @@ namespace POSA.Forms
                     BUYPRICE = Convert.ToDecimal(tbBuyPrice.Text, new CultureInfo("en-GB")),
                     VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
                     CURRENCY = cbCurrency.Text,
-                    STOCK = Convert.ToDecimal(tbStock.Text, new CultureInfo("en-GB")),
                     CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
                     B64IMAGE = pbProduct.Image == Properties.Resources._256pxNoImage ? "" : ConvertImageToBase64(pbProduct.Image),
-                    CREATEDBY = setting.LastSuccesfullyLoggedUser
+                    CREATEDBY = setting.LastSuccesfullyLoggedUser,
+                    STOCKPLACE = tbStockPlace.Text
                 };
                 var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
-                ClearAfterAddingToDB();
+                if (result > 0)
+                {
+                    sqlBuilder = new SqlBuilder();
+                    builderTemp = sqlBuilder.AddTemplate($"""
+                    UPDATE STOCKS SET BUYPRICE=@BUYPRICE WHERE ID = (SELECT ID FROM STOCKS WHERE PRODID = (SELECT TOP 1 ID FROM PRODUCTS WITH (NOLOCK) WHERE BARCODE = @BARCODE) ORDER BY CREATEDATE DESC)
+                    """);
+                    var param2 = new
+                    {
+                        BARCODE = tbBarcode.Text,
+                        BUYPRICE = tbBuyPrice.Text
+                    };
+                    result = await conn.ExecuteAsync(builderTemp.RawSql, param2);
+                    ClearAfterAddingToDB();
+                }
+                else
+                {
+                    MessageBox.Show("Güncellenemedi! Kayıtlar veri tabanına aktarılamadı.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             else
             {
@@ -262,7 +280,7 @@ namespace POSA.Forms
                         }
                     }
                     var sqlBuilder = new SqlBuilder();
-                    var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,CURRENCY,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@CURRENCY,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
+                    var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,VATRATE,CURRENCY,,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE,STOCKPLACE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@VATRATE,@CURRENCY,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE(),@STOCKPLACE)");
                     var param = new
                     {
                         CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
@@ -277,16 +295,36 @@ namespace POSA.Forms
                         SALEPRICE = Convert.ToDecimal(tbSalePrice.Text, new CultureInfo("en-GB")),
                         SALEPRICE2 = Convert.ToDecimal(tbSalePrice2.Text, new CultureInfo("en-GB")),
                         SALEPRICE3 = Convert.ToDecimal(tbSalePrice3.Text, new CultureInfo("en-GB")),
-                        BUYPRICE = Convert.ToDecimal(tbBuyPrice.Text, new CultureInfo("en-GB")),
                         VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
                         CURRENCY = cbCurrency.Text,
-                        STOCK = Convert.ToDecimal(tbStock.Text, new CultureInfo("en-GB")),
                         CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
                         B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath) ? "" : ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
-                        CREATEDBY = setting.LastSuccesfullyLoggedUser
+                        CREATEDBY = setting.LastSuccesfullyLoggedUser,
+                        STOCKPLACE = tbStockPlace.Text
                     };
                     var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
-                    ClearAfterAddingToDB();
+                    if (result > 0)
+                    {
+                        sqlBuilder = new SqlBuilder();
+                        builderTemp = sqlBuilder.AddTemplate(
+                            $"""
+                                INSERT INTO STOCKS(PRODID,STOCK,BUYPRICE,CREATEDATE,CREATEDBY) VALUES((SELECT TOP 1 ID FROM PRODUCTS WITH (NOLOCK) WHERE BARCODE = @BARCODE),@STOCK,@BUYPRICE,GETDATE(),@CREATEDBY)
+                            """);
+                        var param2 = new
+                        {
+                            BARCODE = tbBarcode.Text,
+                            BUYPRICE = tbBuyPrice.Text,
+                            CREATEDBY = setting.LastSuccesfullyLoggedUser,
+                            STOCK = tbStock.Text
+                        };
+                        result = await conn.ExecuteAsync(builderTemp.RawSql, param2);
+                        ClearAfterAddingToDB();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Güncellenemedi! Kayıtlar veri tabanına aktarılamadı.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             RefreshMainDataGrid();
@@ -364,22 +402,36 @@ namespace POSA.Forms
             if (string.IsNullOrWhiteSpace(id))
                 return;
             var settings = Setting.Get();
-            var sb = new SqlBuilder();
-            var builderTemp = sb.AddTemplate($"DELETE FROM PRODUCTS WHERE BARCODE = '{id}'");
+            var qry = $"DELETE FROM PRODUCTS WHERE BARCODE = '{id}'";
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
-            var result = await conn.ExecuteAsync(builderTemp.RawSql);
+            var result = await conn.ExecuteAsync(qry);
+            qry = $"DELETE FROM STOCKS WHERE PRODID = '{id}'";
+            result = await conn.ExecuteAsync(qry);
         }
         public async void RefreshMainDataGrid()
         {
             dgvMain.EndEdit();
             var settings = Setting.Get();
-            var sb = new SqlBuilder();
-            sb.Select("PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,PROD.SALEPRICE3 AS SELLPRICE3,PROD.BUYPRICE AS BUYINGPRICE,PROD.STOCK,PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR, UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE ");
-            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM PRODUCTS AS PROD LEFT JOIN CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID=" + Convert.ToInt32(cbListingBranch.SelectedValue.ToString()));
+            var qry = $"""
+                WITH TABLO AS(SELECT TOP 200 PROD.ID,PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,
+                PROD.SALEPRICE3 AS SELLPRICE3,
+                PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
+                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE, PROD.STOCKPLACE
+                FROM PRODUCTS AS PROD LEFT JOIN 
+                CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN
+                COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN 
+                UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN 
+                MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN 
+                SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN 
+                SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID={Convert.ToInt32(cbListingBranch.SelectedValue.ToString())})
+                SELECT T.*,(SELECT SUM(STOCK) FROM STOCKS AS ST WHERE ST.PRODID = T.ID) AS STOCK ,
+                (SELECT TOP 1 ST.BUYPRICE FROM STOCKS AS ST WHERE ST.PRODID = T.ID ORDER BY ST.CREATEDATE DESC) AS BUYINGPRICE
+                FROM TABLO AS T ORDER BY T.ID
+                """; ;
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
-            var ar = new SqlDataAdapter(builderTemp.RawSql, conn);
+            var ar = new SqlDataAdapter(qry, conn);
             var dt = new DataTable();
             ar.Fill(dt);
             dgvMain.DataSource = dt;
@@ -398,6 +450,7 @@ namespace POSA.Forms
             }
             if (e.ColumnIndex == dgvMain.Columns["UPDATE"].Index)
             {
+                tbStock.Enabled = false;
                 tbBarcode.Text = dgvMain.Rows[e.RowIndex].Cells["BARCODE"].Value.ToString();
                 tbBarcode.Enabled = false;
                 tbProductName.Text = dgvMain.Rows[e.RowIndex].Cells["NAME"].Value.ToString();
@@ -417,6 +470,7 @@ namespace POSA.Forms
                 cbSupplier.Text = dgvMain.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
                 pbProduct.BackgroundImage = string.IsNullOrWhiteSpace(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString()) ? Properties.Resources._256pxNoImage : Base64ToImage(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString());
                 cbBranch.Text = cbListingBranch.SelectedText;
+                tbStockPlace.Text = (dgvMain.Rows[e.RowIndex].Cells["STOCKPLACE"].Value is null) ? "" : dgvMain.Rows[e.RowIndex].Cells["STOCKPLACE"].Value.ToString();
             }
         }
         private async void btnGiveNextBarcode_Click(object sender, EventArgs e)
@@ -662,6 +716,40 @@ namespace POSA.Forms
                     tbBarcode.BackColor = Color.Tomato;
                 else
                     tbBarcode.BackColor = Color.LightGreen;
+            }
+        }
+
+        private async void rtbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (rtbSearch.Texts.Length == 0)
+                    return;
+                dgvMain.EndEdit();
+                var settings = Setting.Get();
+                var qry = $"""
+                WITH TABLO AS(SELECT TOP 200 PROD.ID,PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,
+                PROD.SALEPRICE3 AS SELLPRICE3,
+                PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
+                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE, PROD.STOCKPLACE
+                FROM PRODUCTS AS PROD LEFT JOIN 
+                CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN
+                COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN 
+                UNITS AS UN ON UN.ID = PROD.UNITID LEFT JOIN 
+                MATERIALS AS MAT ON MAT.ID = PROD.MATERIALID LEFT JOIN 
+                SUPPLIERS AS SUP ON SUP.ID = PROD.SUPPLIERID LEFT JOIN 
+                SIZES AS S ON S.ID = PROD.SIZEID WHERE PROD.BRANCHID={Convert.ToInt32(cbListingBranch.SelectedValue.ToString())} AND (PROD.BARCODE='{rtbSearch.Texts}' OR PROD.NAME LIKE '%{rtbSearch.Texts}%'))
+                SELECT T.*,(SELECT SUM(STOCK) FROM STOCKS AS ST WHERE ST.PRODID = T.ID) AS STOCK ,
+                (SELECT TOP 1 ST.BUYPRICE FROM STOCKS AS ST WHERE ST.PRODID = T.ID ORDER BY ST.CREATEDATE DESC) AS BUYINGPRICE
+                FROM TABLO AS T ORDER BY T.ID
+                """; ;
+                await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+                conn.Open();
+                var ar = new SqlDataAdapter(qry, conn);
+                var dt = new DataTable();
+                ar.Fill(dt);
+                dgvMain.DataSource = dt;
+                dgvMain.ClearSelection();
             }
         }
     }
