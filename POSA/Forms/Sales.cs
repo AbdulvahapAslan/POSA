@@ -507,6 +507,53 @@ namespace POSA.Forms
                         }
                     }
                 }
+                if (dgvBarcodeSearch.Rows.Count==1)
+                {
+                    var barcode = dgvBarcodeSearch.Rows[0].Cells["IBARCODE"].Value.ToString();
+                    foreach (Button btn in flpGroupButtons.Controls)
+                    {
+                        if (btn.Name == barcode)
+                        {
+                            MessageBox.Show("Bu ürün sayfada zaten mevcut.", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                    }
+                    var currentPage = "ROOT";
+                    foreach (Button btn in flpGroups.Controls)
+                    {
+                        if (btn.BackColor == Color.LightGreen)
+                        {
+                            currentPage = btn.Text;
+                            break;
+                        }
+                    }
+                    var b64Image = (dgvBarcodeSearch.Rows[0].Cells["IB64IMAGE"].Value ?? "").ToString();
+                    var name = dgvBarcodeSearch.Rows[0].Cells["INAME"].Value.ToString();
+                    if (HoldedButtonsBarcode.Length > 0)
+                    {
+                        foreach (var btn in (from x in GroupButtons where x.Barcode == HoldedButtonsBarcode && x.PageName == currentPage select x))
+                        {
+                            btn.B64Image = b64Image;
+                            btn.Name = name;
+                            btn.Barcode = barcode;
+                            btn.PageName = currentPage;
+                        }
+                        HoldedButtonsBarcode = "";
+                    }
+                    else
+                    {
+                        var buttonToAdd = new GroupButton();
+                        buttonToAdd.B64Image = b64Image;
+                        buttonToAdd.Name = name;
+                        buttonToAdd.Barcode = barcode;
+                        buttonToAdd.PageName = currentPage;
+                        GroupButtons.Add(buttonToAdd);
+                    }
+                    dgvBarcodeSearch.Rows.Clear();
+                    pnlAddNewGroupsButton.Visible = false;
+                    tbAddNewGroupsButton.Texts = "";
+                    RefreshCurrentPageButtons();
+                }
             }
         }
         #endregion
@@ -596,15 +643,15 @@ namespace POSA.Forms
             {
                 if (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) > 1)
                 {
-                    dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) - 1).ToString();
+                    dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) - 1).ToString();
                     dgvMain.Rows[e.RowIndex].Cells["Total"].Value = decimal.Round(Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()), 2, MidpointRounding.AwayFromZero).ToString();
                     CalculateAll();
                 }
             }
             else if (e.ColumnIndex == dgvMain.Columns["PLUS"].Index)
             {
-                dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value = (Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString()) + 1).ToString();
-                dgvMain.Rows[e.RowIndex].Cells["Total"].Value = (Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDouble(dgvMain.Rows[e.RowIndex].Cells["Quantity"].Value.ToString())).ToString();
+                dgvMain.Rows[e.RowIndex].Cells["QUANTITY"].Value = (Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString()) + 1).ToString();
+                dgvMain.Rows[e.RowIndex].Cells["Total"].Value = (Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["Price"].Value.ToString()) * Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString())).ToString();
                 CalculateAll();
             }
         }
@@ -1358,9 +1405,22 @@ namespace POSA.Forms
         {
             CalculateAll();
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
-            using (var pp = new PayPartite(totalPrice))
+            var dt = new DataTable();
+            for (int i = 0; i < 5; i++)
             {
-                pp.ShowDialog();
+                dt.Columns.Add();
+            }
+            foreach (DataGridViewRow row in dgvMain.Rows)
+            {
+                dt.Rows.Add(row.Cells["Barcode"].Value.ToString(), row.Cells["ProductName"].Value.ToString(), row.Cells["Price"].Value.ToString(), row.Cells["Quantity"].Value.ToString(), "0");
+            }
+            using (var pp = new PayPartite(dt, totalPrice))
+            {
+                var dr = pp.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+
+                }
             }
         }
     }

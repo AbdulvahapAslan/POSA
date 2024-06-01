@@ -68,6 +68,8 @@ namespace POSA.Forms
         }
         private void tbCash_TextChanged(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(tbCash.Text))
+                tbCash.Text = "0";
             if (!tbCash.Text.EndsWith('.'))
             {
                 tbCard.Text = (totalPrice - Convert.ToDecimal(tbCash.Text)).ToString();
