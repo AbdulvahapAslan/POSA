@@ -507,7 +507,7 @@ namespace POSA.Forms
                         }
                     }
                 }
-                if (dgvBarcodeSearch.Rows.Count==1)
+                if (dgvBarcodeSearch.Rows.Count == 1)
                 {
                     var barcode = dgvBarcodeSearch.Rows[0].Cells["IBARCODE"].Value.ToString();
                     foreach (Button btn in flpGroupButtons.Controls)
@@ -1398,9 +1398,7 @@ namespace POSA.Forms
                     }
                 }
             }
-
         }
-
         private void btnParts_Click(object sender, EventArgs e)
         {
             CalculateAll();
@@ -1419,7 +1417,9 @@ namespace POSA.Forms
                 var dr = pp.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-
+                    MessageBox.Show("kart:" + pp.cardAmount + "₺");
+                    MessageBox.Show("nakit:" + pp.cashAmount + "₺");
+                    MessageBox.Show("diğer:" + pp.otherAmount + "₺");
                 }
             }
         }

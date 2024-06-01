@@ -78,6 +78,11 @@ namespace POSA.Forms
                     otherAmount += Convert.ToDecimal(tbPrice.Text);
                 }
             }
+            foreach (DataGridViewRow row in dgvMain.Rows)
+            {
+                row.Cells["TOTALQUANTITY"].Value = (Convert.ToDecimal(row.Cells["TOTALQUANTITY"].Value.ToString()) - Convert.ToDecimal(row.Cells["QUANTITY"].Value.ToString())).ToString();
+                row.Cells["QUANTITY"].Value = "0";
+            }
             if (payed == remaining)
             {
                 tbRemainingPrice.Text = "0";
