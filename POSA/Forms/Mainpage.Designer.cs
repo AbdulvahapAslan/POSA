@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mainpage));
             btnClose = new Button();
             btnMaximize = new Button();
@@ -51,6 +52,7 @@
             btnWholesaler = new Button();
             btnBuying = new Button();
             btnStocks = new Button();
+            trmCurrency = new System.Windows.Forms.Timer(components);
             pnlButtons.SuspendLayout();
             SuspendLayout();
             // 
@@ -390,6 +392,12 @@
             btnStocks.UseVisualStyleBackColor = false;
             btnStocks.Click += btnStocks_Click;
             // 
+            // trmCurrency
+            // 
+            trmCurrency.Enabled = true;
+            trmCurrency.Interval = 1200000;
+            trmCurrency.Tick += trmCurrency_Tick;
+            // 
             // Mainpage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -415,6 +423,7 @@
             Opacity = 0D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Mainpage";
+            WindowState = FormWindowState.Maximized;
             Load += Mainpage_Load;
             MouseDown += Mainpage_MouseDown;
             pnlButtons.ResumeLayout(false);
@@ -446,5 +455,6 @@
         private Button btnBackup;
         private Button btnSettings;
         private Button btnBuying;
+        private System.Windows.Forms.Timer trmCurrency;
     }
 }

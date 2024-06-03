@@ -30,25 +30,21 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle41 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle44 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle42 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle43 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle45 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle48 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle46 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle47 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
             lblPageHeader = new Label();
             pnlMain = new Panel();
             scMainContainer = new SplitContainer();
-            tbStockPlace = new TextBox();
-            label1 = new Label();
             btnCheckBarcode = new Button();
-            cbCurrency = new ComboBox();
-            lblCurrency = new Label();
             btnAddBranch = new Button();
             btnAddSupplier = new Button();
             btnAddMaterial = new Button();
@@ -90,7 +86,7 @@
             tbBarcode = new TextBox();
             lblBarcode = new Label();
             pbProduct = new PictureBox();
-            btnAddPicture = new Button();
+            btnAddDetail = new Button();
             btnNewVariant = new Button();
             btnGiveNextBarcode = new Button();
             scRightSide = new SplitContainer();
@@ -239,11 +235,7 @@
             // scMainContainer.Panel1
             // 
             scMainContainer.Panel1.BackColor = Color.Transparent;
-            scMainContainer.Panel1.Controls.Add(tbStockPlace);
-            scMainContainer.Panel1.Controls.Add(label1);
             scMainContainer.Panel1.Controls.Add(btnCheckBarcode);
-            scMainContainer.Panel1.Controls.Add(cbCurrency);
-            scMainContainer.Panel1.Controls.Add(lblCurrency);
             scMainContainer.Panel1.Controls.Add(btnAddBranch);
             scMainContainer.Panel1.Controls.Add(btnAddSupplier);
             scMainContainer.Panel1.Controls.Add(btnAddMaterial);
@@ -285,7 +277,7 @@
             scMainContainer.Panel1.Controls.Add(tbBarcode);
             scMainContainer.Panel1.Controls.Add(lblBarcode);
             scMainContainer.Panel1.Controls.Add(pbProduct);
-            scMainContainer.Panel1.Controls.Add(btnAddPicture);
+            scMainContainer.Panel1.Controls.Add(btnAddDetail);
             scMainContainer.Panel1.Controls.Add(btnNewVariant);
             scMainContainer.Panel1.Controls.Add(btnGiveNextBarcode);
             // 
@@ -295,26 +287,6 @@
             scMainContainer.Size = new Size(1336, 703);
             scMainContainer.SplitterDistance = 431;
             scMainContainer.TabIndex = 0;
-            // 
-            // tbStockPlace
-            // 
-            tbStockPlace.BorderStyle = BorderStyle.None;
-            tbStockPlace.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            tbStockPlace.Location = new Point(127, 647);
-            tbStockPlace.Name = "tbStockPlace";
-            tbStockPlace.Size = new Size(260, 23);
-            tbStockPlace.TabIndex = 85;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 645);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 23);
-            label1.TabIndex = 84;
-            label1.Text = "Raf";
             // 
             // btnCheckBarcode
             // 
@@ -328,30 +300,6 @@
             btnCheckBarcode.TabIndex = 83;
             btnCheckBarcode.UseVisualStyleBackColor = true;
             btnCheckBarcode.Click += btnCheckBarcode_Click;
-            // 
-            // cbCurrency
-            // 
-            cbCurrency.BackColor = Color.White;
-            cbCurrency.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbCurrency.FlatStyle = FlatStyle.Flat;
-            cbCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            cbCurrency.FormattingEnabled = true;
-            cbCurrency.Items.AddRange(new object[] { "TL", "USD", "EURO" });
-            cbCurrency.Location = new Point(127, 536);
-            cbCurrency.Name = "cbCurrency";
-            cbCurrency.Size = new Size(260, 31);
-            cbCurrency.TabIndex = 82;
-            // 
-            // lblCurrency
-            // 
-            lblCurrency.AutoSize = true;
-            lblCurrency.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
-            lblCurrency.ForeColor = Color.White;
-            lblCurrency.Location = new Point(3, 539);
-            lblCurrency.Name = "lblCurrency";
-            lblCurrency.Size = new Size(94, 23);
-            lblCurrency.TabIndex = 81;
-            lblCurrency.Text = "Döviz Cinsi";
             // 
             // btnAddBranch
             // 
@@ -834,25 +782,26 @@
             pbProduct.Size = new Size(171, 171);
             pbProduct.TabIndex = 32;
             pbProduct.TabStop = false;
+            pbProduct.Click += btnAddPicture_Click;
             // 
-            // btnAddPicture
+            // btnAddDetail
             // 
-            btnAddPicture.BackColor = Color.FromArgb(83, 98, 123);
-            btnAddPicture.FlatAppearance.BorderSize = 0;
-            btnAddPicture.FlatAppearance.MouseOverBackColor = Color.FromArgb(108, 128, 161);
-            btnAddPicture.FlatStyle = FlatStyle.Flat;
-            btnAddPicture.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnAddPicture.ForeColor = Color.White;
-            btnAddPicture.Image = Properties.Resources._64pxPicture;
-            btnAddPicture.ImageAlign = ContentAlignment.TopCenter;
-            btnAddPicture.Location = new Point(310, 1);
-            btnAddPicture.Name = "btnAddPicture";
-            btnAddPicture.Size = new Size(118, 82);
-            btnAddPicture.TabIndex = 31;
-            btnAddPicture.Text = "Resim Ekle";
-            btnAddPicture.TextAlign = ContentAlignment.BottomCenter;
-            btnAddPicture.UseVisualStyleBackColor = false;
-            btnAddPicture.Click += btnAddPicture_Click;
+            btnAddDetail.BackColor = Color.FromArgb(83, 98, 123);
+            btnAddDetail.FlatAppearance.BorderSize = 0;
+            btnAddDetail.FlatAppearance.MouseOverBackColor = Color.FromArgb(108, 128, 161);
+            btnAddDetail.FlatStyle = FlatStyle.Flat;
+            btnAddDetail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnAddDetail.ForeColor = Color.White;
+            btnAddDetail.Image = Properties.Resources._64pxDetail;
+            btnAddDetail.ImageAlign = ContentAlignment.TopCenter;
+            btnAddDetail.Location = new Point(310, 1);
+            btnAddDetail.Name = "btnAddDetail";
+            btnAddDetail.Size = new Size(118, 82);
+            btnAddDetail.TabIndex = 31;
+            btnAddDetail.Text = "Detay Ekle";
+            btnAddDetail.TextAlign = ContentAlignment.BottomCenter;
+            btnAddDetail.UseVisualStyleBackColor = false;
+            btnAddDetail.Click += btnAddDetail_Click;
             // 
             // btnNewVariant
             // 
@@ -1018,24 +967,24 @@
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle41.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle41.BackColor = Color.White;
+            dataGridViewCellStyle41.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle41.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle41.SelectionBackColor = Color.White;
+            dataGridViewCellStyle41.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle41.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH, B64IMAGE, STOCKPLACE });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle44.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = Color.White;
+            dataGridViewCellStyle44.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle44.ForeColor = Color.Black;
+            dataGridViewCellStyle44.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle44.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle44.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle44;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(7, 7);
@@ -1093,8 +1042,8 @@
             // 
             UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UNIT.DataPropertyName = "UNIT";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            UNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle42.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            UNIT.DefaultCellStyle = dataGridViewCellStyle42;
             UNIT.FillWeight = 40F;
             UNIT.HeaderText = "BİRİM";
             UNIT.Name = "UNIT";
@@ -1103,8 +1052,8 @@
             // 
             COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             COLOR.DataPropertyName = "COLOR";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            COLOR.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle43.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            COLOR.DefaultCellStyle = dataGridViewCellStyle43;
             COLOR.FillWeight = 40F;
             COLOR.HeaderText = "RENK";
             COLOR.Name = "COLOR";
@@ -1230,24 +1179,24 @@
             dgvVariant.BorderStyle = BorderStyle.None;
             dgvVariant.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvVariant.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.SelectionBackColor = Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle45.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle45.BackColor = Color.White;
+            dataGridViewCellStyle45.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle45.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle45.SelectionBackColor = Color.White;
+            dataGridViewCellStyle45.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle45.WrapMode = DataGridViewTriState.True;
+            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
             dgvVariant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVariant.Columns.AddRange(new DataGridViewColumn[] { VBARCODE, VNAME, VCATEGORY, VUNIT, VCOLOR, VSIZE, VMATERIAL, VBUYPRICE, VSELLPRICE, VSELLPRICE2, VSELLPRICE3, VVATRATE, VCURRENCY, VSTOCK, VCRITICALSTOCK, VSUPPLIER, VBRANCH });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvVariant.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle48.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = Color.White;
+            dataGridViewCellStyle48.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle48.ForeColor = Color.Black;
+            dataGridViewCellStyle48.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle48.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle48.WrapMode = DataGridViewTriState.False;
+            dgvVariant.DefaultCellStyle = dataGridViewCellStyle48;
             dgvVariant.EnableHeadersVisualStyles = false;
             dgvVariant.GridColor = Color.White;
             dgvVariant.Location = new Point(7, 7);
@@ -1293,8 +1242,8 @@
             // VUNIT
             // 
             VUNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VUNIT.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle46.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VUNIT.DefaultCellStyle = dataGridViewCellStyle46;
             VUNIT.FillWeight = 33.9246368F;
             VUNIT.HeaderText = "BİRİM";
             VUNIT.Name = "VUNIT";
@@ -1302,8 +1251,8 @@
             // VCOLOR
             // 
             VCOLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VCOLOR.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle47.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VCOLOR.DefaultCellStyle = dataGridViewCellStyle47;
             VCOLOR.FillWeight = 33.9246368F;
             VCOLOR.HeaderText = "RENK";
             VCOLOR.Name = "VCOLOR";
@@ -1483,7 +1432,7 @@
         private Label lblBarcode;
         private PictureBox pbProduct;
         private Button btnClearPage;
-        private Button btnAddPicture;
+        private Button btnAddDetail;
         private Button btnNewVariant;
         private Button btnGiveNextBarcode;
         private TextBox tbStock;
@@ -1519,11 +1468,9 @@
         private Button btnSaveVariants;
         private DataGridView dgvVariant;
         private DataGridView dgvMain;
-        private Label lblCurrency;
         private Label lblListingBranch;
         private ComboBox cbListingBranch;
         private System.Windows.Forms.Timer tmrNewProduct;
-        private ComboBox cbCurrency;
         private DataGridViewTextBoxColumn VBARCODE;
         private DataGridViewTextBoxColumn VNAME;
         private DataGridViewTextBoxColumn VCATEGORY;
@@ -1542,8 +1489,6 @@
         private DataGridViewTextBoxColumn VSUPPLIER;
         private DataGridViewTextBoxColumn VBRANCH;
         private Button btnCheckBarcode;
-        private TextBox tbStockPlace;
-        private Label label1;
         private DataGridViewTextBoxColumn BARCODE;
         private DataGridViewTextBoxColumn VATRATE;
         private DataGridViewTextBoxColumn NAME;

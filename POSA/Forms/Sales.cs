@@ -731,9 +731,8 @@ namespace POSA.Forms
             btnTotalPrice.Text = totalTL.ToString() + "₺";
             if (btnTotalPrice.Visible)
             {
-                var currencies = GetCurrencies();
-                btnDolarTotalPrice.Text = decimal.Round((totalTL / currencies.Item1), 2, MidpointRounding.AwayFromZero).ToString() + "$";
-                btnEuroTotalPrice.Text = decimal.Round((totalTL / currencies.Item2), 2, MidpointRounding.AwayFromZero).ToString() + "€";
+                btnDolarTotalPrice.Text = decimal.Round((totalTL / Mainpage.USD), 2, MidpointRounding.AwayFromZero).ToString() + "$";
+                btnEuroTotalPrice.Text = decimal.Round((totalTL / Mainpage.EURO), 2, MidpointRounding.AwayFromZero).ToString() + "€";
             }
         }
         #endregion
@@ -760,14 +759,7 @@ namespace POSA.Forms
                 CalculateAll();
             }
         }
-        public Tuple<decimal, decimal> GetCurrencies()
-        {
-            XmlDocument xmlVerisi = new XmlDocument();
-            xmlVerisi.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
-            decimal dolar = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "USD")).InnerText, new CultureInfo("en-gb"));
-            decimal euro = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
-            return new Tuple<decimal, decimal>(dolar, euro);
-        }
+       
         private void btnClearTakenMoney_Click(object sender, EventArgs e)
         {
             tbTakenMoney.Text = "0";
@@ -1007,13 +999,13 @@ namespace POSA.Forms
             btnRootCustomer.PerformClick();
         }
         public int LastSelectedCustomerID = 0;
-        public async Task<bool> AddFicheHead(string paymentType, string ficheRef, int ficheType, SqlTransaction trn, SqlConnection conn, Tuple<decimal, decimal> currencies, decimal totalPrice)
+        public async Task<bool> AddFicheHead(string paymentType, string ficheRef, int ficheType, SqlTransaction trn, SqlConnection conn, decimal totalPrice)
         {
             try
             {
                 var settings = Setting.Get();
-                var totalPriceUSD = decimal.Round((totalPrice / currencies.Item1), 2, MidpointRounding.AwayFromZero);
-                var totalPriceEURO = decimal.Round((totalPrice / currencies.Item2), 2, MidpointRounding.AwayFromZero);
+                var totalPriceUSD = decimal.Round((totalPrice / Mainpage.USD), 2, MidpointRounding.AwayFromZero);
+                var totalPriceEURO = decimal.Round((totalPrice / Mainpage.EURO), 2, MidpointRounding.AwayFromZero);
                 var sB = new SqlBuilder();//sB == sqlBuilder
                 var bT = sB.AddTemplate(
                     $"""
@@ -1047,7 +1039,7 @@ namespace POSA.Forms
                 return false;
             }
         }
-        public async Task<bool> AddFicheLines(int ficheType, string ficheRef, SqlTransaction trn, SqlConnection conn, Tuple<decimal, decimal> currencies)
+        public async Task<bool> AddFicheLines(int ficheType, string ficheRef, SqlTransaction trn, SqlConnection conn)
         {
             try
             {
@@ -1081,8 +1073,8 @@ namespace POSA.Forms
                         {
                             var lineProfit = decimal.Round(refundMarker * (quantity * (sellPrice - stocks[0].BUYPRICE)), 2, MidpointRounding.AwayFromZero);
                             var lineTotalPrice = decimal.Round(sellPrice * quantity, 2, MidpointRounding.AwayFromZero);
-                            var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
-                            var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                            var lineTotalPriceUSD = decimal.Round(lineTotalPrice / Mainpage.USD, 2, MidpointRounding.AwayFromZero);
+                            var lineTotalPriceEURO = decimal.Round(lineTotalPrice / Mainpage.EURO, 2, MidpointRounding.AwayFromZero);
                             //INSERT LINES
                             sB = new SqlBuilder();
                             bT = sB.AddTemplate(
@@ -1133,8 +1125,8 @@ namespace POSA.Forms
                                 {
                                     var lineProfit = decimal.Round(refundMarker * (remainingQuantity * (sellPrice - stock.BUYPRICE)), 2, MidpointRounding.AwayFromZero);
                                     var lineTotalPrice = decimal.Round(sellPrice * remainingQuantity, 2, MidpointRounding.AwayFromZero);
-                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
-                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / Mainpage.USD, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / Mainpage.EURO, 2, MidpointRounding.AwayFromZero);
                                     //INSERT LINES
                                     sB = new SqlBuilder();
                                     bT = sB.AddTemplate(
@@ -1183,8 +1175,8 @@ namespace POSA.Forms
                                     remainingQuantity -= stock.STOCK;
                                     var lineProfit = decimal.Round(refundMarker * (stock.STOCK * (sellPrice - stock.BUYPRICE)), 2, MidpointRounding.AwayFromZero);
                                     var lineTotalPrice = decimal.Round(sellPrice * stock.STOCK, 2, MidpointRounding.AwayFromZero);
-                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / currencies.Item1, 2, MidpointRounding.AwayFromZero);
-                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / currencies.Item2, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceUSD = decimal.Round(lineTotalPrice / Mainpage.USD, 2, MidpointRounding.AwayFromZero);
+                                    var lineTotalPriceEURO = decimal.Round(lineTotalPrice / Mainpage.EURO, 2, MidpointRounding.AwayFromZero);
                                     //INSERT LINES
                                     sB = new SqlBuilder();
                                     bT = sB.AddTemplate(
@@ -1258,15 +1250,14 @@ namespace POSA.Forms
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            var currencies = GetCurrencies();
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
-            var headRes = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            var headRes = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, totalPrice).Result;
             if (headRes)
             {
-                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn).Result;
                 if (lineRes)
                 {
                     ClearAfterPayment();
@@ -1293,15 +1284,14 @@ namespace POSA.Forms
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            var currencies = GetCurrencies();
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
-            var headRes = AddFicheHead("KART", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            var headRes = AddFicheHead("KART", ficheRef, ficheType, trn, conn, totalPrice).Result;
             if (headRes)
             {
-                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn).Result;
                 if (lineRes)
                 {
                     ClearAfterPayment();
@@ -1328,15 +1318,14 @@ namespace POSA.Forms
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            var currencies = GetCurrencies();
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
-            var headRes = AddFicheHead("DİĞER", ficheRef, ficheType, trn, conn, currencies, totalPrice).Result;
+            var headRes = AddFicheHead("DİĞER", ficheRef, ficheType, trn, conn, totalPrice).Result;
             if (headRes)
             {
-                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn).Result;
                 if (lineRes)
                 {
                     ClearAfterPayment();
@@ -1371,14 +1360,13 @@ namespace POSA.Forms
                     await using var conn = new SqlConnection(settings.Sql.ConnectionString());
                     conn.Open();
                     trn = conn.BeginTransaction();
-                    var currencies = GetCurrencies();
                     int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
                     var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
-                    var headResCard = AddFicheHead("KART", ficheRef, ficheType, trn, conn, currencies, cardAmount).Result;
-                    var headResCash = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, currencies, cashAmount).Result;
+                    var headResCard = AddFicheHead("KART", ficheRef, ficheType, trn, conn, cardAmount).Result;
+                    var headResCash = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, cashAmount).Result;
                     if (headResCard && headResCash)
                     {
-                        var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn, currencies).Result;
+                        var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn).Result;
                         if (lineRes)
                         {
                             ClearAfterPayment();

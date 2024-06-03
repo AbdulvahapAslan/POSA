@@ -117,7 +117,6 @@ namespace POSA.Forms
             tbBarcode.BackColor = Color.White;
             tbBuyPrice.Text = "0";
             tbCriticalStock.Text = "0";
-            cbCurrency.SelectedIndex = 0;
             tbVatRate.Text = "0";
             tbStock.Text = "0";
             tbSalePrice.Text = "0";
@@ -204,7 +203,7 @@ namespace POSA.Forms
             if (tbBarcode.Enabled == false)
             {//update
                 var sqlBuilder = new SqlBuilder();
-                var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND VATRATE=@VATRATE AND CURRENCY=@CURRENCY AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() AND STOCKPLACE = @STOCKPLACE WHERE BARCODE = @BARCODE");
+                var builderTemp = sqlBuilder.AddTemplate("UPDATE PRODUCTS SET CATEGORYID=@CATEGORYID AND SUPPLIERID=@SUPPLIERID AND MATERIALID=@MATERIALID AND SIZEID=@SIZEID AND UNITID=@UNITID AND COLORID=@COLORID AND BRANCHID=@BRANCHID AND NAME=@NAME AND SALEPRICE=@SALEPRICE AND SALEPRICE2=@SALEPRICE2 AND SALEPRICE3=@SALEPRICE3 AND VATRATE=@VATRATE AND CRITICALSTOCK=@CRITICALSTOCK AND B64IMAGE=@B64IMAGE AND CHANGEDBY = @CHANGEDBY AND CHANGEDATE=GETDATE() WHERE BARCODE = @BARCODE");
                 var param = new
                 {
                     CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
@@ -221,11 +220,9 @@ namespace POSA.Forms
                     SALEPRICE3 = Convert.ToDecimal(tbSalePrice3.Text, new CultureInfo("en-GB")),
                     BUYPRICE = Convert.ToDecimal(tbBuyPrice.Text, new CultureInfo("en-GB")),
                     VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
-                    CURRENCY = cbCurrency.Text,
                     CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
                     B64IMAGE = pbProduct.Image == Properties.Resources._256pxNoImage ? "" : ConvertImageToBase64(pbProduct.Image),
-                    CREATEDBY = setting.LastSuccesfullyLoggedUser,
-                    STOCKPLACE = tbStockPlace.Text
+                    CREATEDBY = setting.LastSuccesfullyLoggedUser
                 };
                 var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
                 if (result > 0)
@@ -261,7 +258,7 @@ namespace POSA.Forms
                         }
                     }
                     //add to variant grid and picture to string list
-                    dgvVariant.Rows.Add(tbBarcode.Text, tbProductName.Text, cbCategory.Text, cbUnit.Text, cbColor.Text, cbSize.Text, cbMaterial.Text, tbBuyPrice.Text, tbSalePrice.Text, tbSalePrice2.Text, tbSalePrice3.Text, tbVatRate.Text, cbCurrency.Text, tbStock.Text, tbCriticalStock.Text, cbSupplier.Text, cbBranch.Text);
+                    dgvVariant.Rows.Add(tbBarcode.Text, tbProductName.Text, cbCategory.Text, cbUnit.Text, cbColor.Text, cbSize.Text, cbMaterial.Text, tbBuyPrice.Text, tbSalePrice.Text, tbSalePrice2.Text, tbSalePrice3.Text, tbVatRate.Text, tbStock.Text, tbCriticalStock.Text, cbSupplier.Text, cbBranch.Text);
                     VariantImages.Add(new VariantImage
                     {
                         ImagePath = LastAddedImagePath,
@@ -280,7 +277,7 @@ namespace POSA.Forms
                         }
                     }
                     var sqlBuilder = new SqlBuilder();
-                    var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,VATRATE,CURRENCY,,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE,STOCKPLACE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@VATRATE,@CURRENCY,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE(),@STOCKPLACE)");
+                    var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,VATRATE,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES(@CATEGORYID,@SUPPLIERID,@MATERIALID,@SIZEID,@UNITID,@COLORID,@BRANCHID,@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@VATRATE,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
                     var param = new
                     {
                         CATEGORYID = Convert.ToInt32(cbCategory.SelectedValue.ToString()),
@@ -296,11 +293,9 @@ namespace POSA.Forms
                         SALEPRICE2 = Convert.ToDecimal(tbSalePrice2.Text, new CultureInfo("en-GB")),
                         SALEPRICE3 = Convert.ToDecimal(tbSalePrice3.Text, new CultureInfo("en-GB")),
                         VATRATE = Convert.ToDecimal(tbVatRate.Text, new CultureInfo("en-GB")),
-                        CURRENCY = cbCurrency.Text,
                         CRITICALSTOCK = Convert.ToDecimal(tbCriticalStock.Text, new CultureInfo("en-GB")),
                         B64IMAGE = string.IsNullOrWhiteSpace(LastAddedImagePath) ? "" : ConvertImageToBase64(Image.FromFile(LastAddedImagePath)),
-                        CREATEDBY = setting.LastSuccesfullyLoggedUser,
-                        STOCKPLACE = tbStockPlace.Text
+                        CREATEDBY = setting.LastSuccesfullyLoggedUser
                     };
                     var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
                     if (result > 0)
@@ -416,8 +411,8 @@ namespace POSA.Forms
             var qry = $"""
                 WITH TABLO AS(SELECT TOP 200 PROD.ID,PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,
                 PROD.SALEPRICE3 AS SELLPRICE3,
-                PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
-                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE, PROD.STOCKPLACE
+                PROD.CRITICALSTOCK,PROD.VATRATE,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
+                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE
                 FROM PRODUCTS AS PROD LEFT JOIN 
                 CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN
                 COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN 
@@ -466,11 +461,9 @@ namespace POSA.Forms
                 tbSalePrice3.Text = dgvMain.Rows[e.RowIndex].Cells["SELLPRICE3"].Value.ToString();
                 tbStock.Text = dgvMain.Rows[e.RowIndex].Cells["STOCK"].Value.ToString();
                 tbCriticalStock.Text = dgvMain.Rows[e.RowIndex].Cells["CRITICALSTOCK"].Value.ToString();
-                cbCurrency.Text = dgvMain.Rows[e.RowIndex].Cells["CURRENCY"].Value.ToString();
                 cbSupplier.Text = dgvMain.Rows[e.RowIndex].Cells["SUPPLIER"].Value.ToString();
                 pbProduct.BackgroundImage = string.IsNullOrWhiteSpace(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString()) ? Properties.Resources._256pxNoImage : Base64ToImage(dgvMain.Rows[e.RowIndex].Cells["B64IMAGE"].Value.ToString());
                 cbBranch.Text = cbListingBranch.SelectedText;
-                tbStockPlace.Text = (dgvMain.Rows[e.RowIndex].Cells["STOCKPLACE"].Value is null) ? "" : dgvMain.Rows[e.RowIndex].Cells["STOCKPLACE"].Value.ToString();
             }
         }
         private async void btnGiveNextBarcode_Click(object sender, EventArgs e)
@@ -665,7 +658,7 @@ namespace POSA.Forms
             {
                 var imagePath = ((from x in VariantImages where x.Barcode == row.Cells["VBARCODE"].Value.ToString() select x).First() ?? new VariantImage()).ImagePath;
                 var sqlBuilder = new SqlBuilder();
-                var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,CURRENCY,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES((SELECT TOP 1 ID FROM CATEGORIES WHERE NAME=@CATEGORYID),(SELECT TOP 1 ID FROM SUPPLIERS WHERE NAME=@SUPPLIERID),(SELECT TOP 1 ID FROM MATERIALS WHERE NAME=@MATERIALID),(SELECT TOP 1 ID FROM SIZES WHERE NAME=@SIZEID),(SELECT TOP 1 ID FROM UNITS WHERE NAME=@UNITID),(SELECT TOP 1 ID FROM COLORS WHERE NAME=@COLORID),(SELECT TOP 1 ID FROM BRANCHES WHERE NAME=@BRANCHID),@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@CURRENCY,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
+                var builderTemp = sqlBuilder.AddTemplate("INSERT INTO PRODUCTS(CATEGORYID,SUPPLIERID,MATERIALID,SIZEID,UNITID,COLORID,BRANCHID,NAME,BARCODE,SALEPRICE,SALEPRICE2,SALEPRICE3,BUYPRICE,VATRATE,STOCK,CRITICALSTOCK,B64IMAGE,CREATEDBY,CREATEDATE) VALUES((SELECT TOP 1 ID FROM CATEGORIES WHERE NAME=@CATEGORYID),(SELECT TOP 1 ID FROM SUPPLIERS WHERE NAME=@SUPPLIERID),(SELECT TOP 1 ID FROM MATERIALS WHERE NAME=@MATERIALID),(SELECT TOP 1 ID FROM SIZES WHERE NAME=@SIZEID),(SELECT TOP 1 ID FROM UNITS WHERE NAME=@UNITID),(SELECT TOP 1 ID FROM COLORS WHERE NAME=@COLORID),(SELECT TOP 1 ID FROM BRANCHES WHERE NAME=@BRANCHID),@NAME,@BARCODE,@SALEPRICE,@SALEPRICE2,@SALEPRICE3,@BUYPRICE,@VATRATE,@STOCK,@CRITICALSTOCK,@B64IMAGE,@CREATEDBY,GETDATE())");
                 var param = new
                 {
                     CATEGORYID = row.Cells["VCATEGORY"].Value.ToString(),
@@ -682,7 +675,6 @@ namespace POSA.Forms
                     SALEPRICE3 = Convert.ToDecimal(row.Cells["VSELLPRICE3"].Value.ToString(), new CultureInfo("en-GB")),
                     BUYPRICE = Convert.ToDecimal(row.Cells["VBUYPRICE"].Value.ToString(), new CultureInfo("en-GB")),
                     VATRATE = Convert.ToDecimal(row.Cells["VVATRATE"].Value.ToString(), new CultureInfo("en-GB")),
-                    CURRENCY = row.Cells["VCURRENCY"].Value.ToString(),
                     STOCK = Convert.ToDecimal(row.Cells["VSTOCK"].Value.ToString(), new CultureInfo("en-GB")),
                     CRITICALSTOCK = Convert.ToDecimal(row.Cells["VCRITICALSTOCK"].Value.ToString(), new CultureInfo("en-GB")),
                     B64IMAGE = string.IsNullOrWhiteSpace(imagePath) ? "" : ConvertImageToBase64(Image.FromFile(imagePath)),
@@ -718,7 +710,6 @@ namespace POSA.Forms
                     tbBarcode.BackColor = Color.LightGreen;
             }
         }
-
         private async void rtbSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -730,8 +721,8 @@ namespace POSA.Forms
                 var qry = $"""
                 WITH TABLO AS(SELECT TOP 200 PROD.ID,PROD.BARCODE,PROD.NAME,PROD.SALEPRICE AS SELLPRICE,PROD.SALEPRICE2 AS SELLPRICE2,
                 PROD.SALEPRICE3 AS SELLPRICE3,
-                PROD.CRITICALSTOCK,PROD.VATRATE,PROD.CURRENCY,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
-                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE, PROD.STOCKPLACE
+                PROD.CRITICALSTOCK,PROD.VATRATE,CAT.NAME AS CATEGORY,COL.NAME AS COLOR,
+                UN.NAME AS UNIT,MAT.NAME AS  MATERIAL,SUP.NAME AS SUPPLIER,S.NAME AS SIZE, PROD.B64IMAGE
                 FROM PRODUCTS AS PROD LEFT JOIN 
                 CATEGORIES AS CAT ON CAT.ID=PROD.CATEGORYID LEFT JOIN
                 COLORS AS COL ON COL.ID = PROD.COLORID LEFT JOIN 
@@ -751,6 +742,18 @@ namespace POSA.Forms
                 dgvMain.DataSource = dt;
                 dgvMain.ClearSelection();
             }
+        }
+        private void btnAddDetail_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Detay giriş");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var sp = new AddDetails();
+            sp.Name = "Detay giriş";
+            sp.Show();
         }
     }
 }

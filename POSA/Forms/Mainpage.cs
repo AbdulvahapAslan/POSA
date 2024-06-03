@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using POSA.Helpers.Settings;
 using System.Data.SqlClient;
 using POSA.Dto;
+using System.Globalization;
+using System.Xml;
 namespace POSA.Forms
 {
     public partial class Mainpage : Form
@@ -44,8 +46,18 @@ namespace POSA.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        public static decimal USD = 0;
+        public static decimal EURO = 0;
+        public void GetCurrencies()
+        {
+            XmlDocument xmlVerisi = new XmlDocument();
+            xmlVerisi.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
+            USD = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "USD")).InnerText, new CultureInfo("en-gb"));
+            EURO = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
+        }
         private async void Mainpage_Load(object sender, EventArgs e)
         {
+            GetCurrencies();
             var settings = Setting.Get();
             var sqlBuilder = new SqlBuilder();
             sqlBuilder.Where("USERS.USERNAME = @USERNAME",
@@ -141,6 +153,11 @@ namespace POSA.Forms
                     MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void trmCurrency_Tick(object sender, EventArgs e)
+        {
+            GetCurrencies();
         }
     }
 }

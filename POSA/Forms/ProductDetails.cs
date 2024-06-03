@@ -42,7 +42,7 @@ namespace POSA.Forms
             {
                 var settings = Setting.Get();
                 var sqlBuilder = new SqlBuilder();
-                sqlBuilder.Select($"NAME,STOCKPLACE,SALEPRICE{(priceType == "1" ? "" : priceType)} AS PRICE,STOCK,BUYPRICE");
+                sqlBuilder.Select($"NAME,STOCKPLACE,SALEPRICE{(priceType == "1" ? "" : priceType)} AS PRICE");
                 sqlBuilder.Where("BARCODE=@BARCODE");
                 var param = new
                 {
@@ -54,11 +54,26 @@ namespace POSA.Forms
                 var result = conn.QuerySingleOrDefaultAsync<Dto.ProductDetails>(builderTemp.RawSql, param).Result;
                 if (result is not null)
                 {
+                    var sB = new SqlBuilder();
+                    var bT = sB.AddTemplate(
+                        $"""
+                            SELECT ID,STOCK,BUYPRICE FROM STOCKS WHERE PRODID = (SELECT ID FROM PRODUCTS WHERE BARCODE = @BARCODE) AND STOCK>0 ORDER BY CREATEDATE
+                            """
+                        );
+                    var stockParam = new
+                    {
+                        BARCODE = tbSearch.Text
+                    };
+                    var stocks = conn.QueryAsync<ProdStocks>(bT.RawSql, stockParam).Result.ToList();
+                    if (stocks is not null)
+                    {
+
+                        lblStock.Text = stocks[0].STOCK.ToString();
+                        tbBuyPrice.Text = stocks[0].BUYPRICE.ToString();
+                    }
                     lblStockPlace.Text = result.STOCKPLACE;
                     lblName.Text = result.NAME;
                     lblPrice.Text = result.PRICE + "₺";
-                    lblStock.Text = result.STOCK.ToString();
-                    tbBuyPrice.Text = result.BUYPRICE.ToString();
                 }
             }
         }
