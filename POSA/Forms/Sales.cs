@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
-using Dapper;
-using POSA.CustomObjects;
+﻿using Dapper;
 using POSA.Dto;
 using POSA.Helpers.Settings;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing.Imaging;
+using System.Globalization;
 using static Dapper.SqlMapper;
 namespace POSA.Forms
 {
@@ -759,7 +749,6 @@ namespace POSA.Forms
                 CalculateAll();
             }
         }
-       
         private void btnClearTakenMoney_Click(object sender, EventArgs e)
         {
             tbTakenMoney.Text = "0";
@@ -996,6 +985,7 @@ namespace POSA.Forms
                     break;
                 }
             }
+            LastSelectedCustomerID = 0;
             btnRootCustomer.PerformClick();
         }
         public int LastSelectedCustomerID = 0;
@@ -1061,9 +1051,7 @@ namespace POSA.Forms
                     var quantity = Convert.ToDecimal(row.Cells["Quantity"].Value.ToString());
                     decimal totalStock = stocks.Sum(x => x.STOCK);
                     decimal totalProfit = 0;
-                    decimal sellPrice = Convert.ToDecimal(row.Cells["Price"].Value.ToString());
-                    if (ficheType == 2 || ficheType == 3)
-                        sellPrice = 0;
+                    decimal sellPrice = decimal.Round(Convert.ToDecimal(row.Cells["Total"].Value.ToString()) / quantity, 2, MidpointRounding.AwayFromZero);
                     int refundMarker = 1;
                     if (ficheType == 1)
                         refundMarker = -1;
@@ -1245,12 +1233,17 @@ namespace POSA.Forms
         private async void btnCash_Click(object sender, EventArgs e)
         {
             // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            if (ficheType == 2 && LastSelectedCustomerID == 0)
+            {
+                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             SqlTransaction trn = null;
             var settings = Setting.Get();
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
@@ -1279,12 +1272,17 @@ namespace POSA.Forms
         private async void btnCard_Click(object sender, EventArgs e)
         {
             // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            if (ficheType == 2 && LastSelectedCustomerID == 0)
+            {
+                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             SqlTransaction trn = null;
             var settings = Setting.Get();
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
@@ -1313,12 +1311,17 @@ namespace POSA.Forms
         private async void btnOther_Click(object sender, EventArgs e)
         {
             // 1-2-4     1:Refund   2:Free  3:Refund-Free  4:Sale 
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            if (ficheType == 2 && LastSelectedCustomerID == 0)
+            {
+                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             SqlTransaction trn = null;
             var settings = Setting.Get();
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             trn = conn.BeginTransaction();
-            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             CalculateAll();
             var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
@@ -1346,6 +1349,12 @@ namespace POSA.Forms
         }
         private async void btnMulti_Click(object sender, EventArgs e)
         {
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            if (ficheType == 2 && LastSelectedCustomerID == 0)
+            {
+                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             CalculateAll();
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
             using (var pm = new PayMulti(totalPrice))
@@ -1360,7 +1369,6 @@ namespace POSA.Forms
                     await using var conn = new SqlConnection(settings.Sql.ConnectionString());
                     conn.Open();
                     trn = conn.BeginTransaction();
-                    int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
                     var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
                     var headResCard = AddFicheHead("KART", ficheRef, ficheType, trn, conn, cardAmount).Result;
                     var headResCash = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, cashAmount).Result;
@@ -1387,8 +1395,14 @@ namespace POSA.Forms
                 }
             }
         }
-        private void btnParts_Click(object sender, EventArgs e)
+        private async void btnParts_Click(object sender, EventArgs e)
         {
+            int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
+            if (ficheType == 2 && LastSelectedCustomerID == 0)
+            {
+                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             CalculateAll();
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);
             var dt = new DataTable();
@@ -1405,9 +1419,99 @@ namespace POSA.Forms
                 var dr = pp.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    MessageBox.Show("kart:" + pp.cardAmount + "₺");
-                    MessageBox.Show("nakit:" + pp.cashAmount + "₺");
-                    MessageBox.Show("diğer:" + pp.otherAmount + "₺");
+                    SqlTransaction trn = null;
+                    var settings = Setting.Get();
+                    await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+                    conn.Open();
+                    trn = conn.BeginTransaction();
+                    var ficheRef = DateTime.Now.ToString("ddMMyyyyHHmmssfff");
+                    if (pp.cardAmount <= 0 && pp.cashAmount <= 0 && pp.otherAmount <= 0)
+                    {
+                        MessageBox.Show("Tüm değerler 0 olarak devam edilemez.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (pp.cardAmount > 0)
+                    {
+                        var tp = decimal.Round(pp.cardAmount, 2, MidpointRounding.AwayFromZero);
+                        var headRes = AddFicheHead("KART", ficheRef, ficheType, trn, conn, tp).Result;
+                        if (!headRes)
+                        {
+                            trn.Rollback();
+                            return;
+                        }
+                    }
+                    if (pp.cashAmount > 0)
+                    {
+                        var tp = decimal.Round(pp.cashAmount, 2, MidpointRounding.AwayFromZero);
+                        var headRes = AddFicheHead("NAKİT", ficheRef, ficheType, trn, conn, tp).Result;
+                        if (!headRes)
+                        {
+                            trn.Rollback();
+                            return;
+                        }
+                    }
+                    if (pp.otherAmount > 0)
+                    {
+                        var tp = decimal.Round(pp.otherAmount, 2, MidpointRounding.AwayFromZero);
+                        var headRes = AddFicheHead("DİĞER", ficheRef, ficheType, trn, conn, tp).Result;
+                        if (!headRes)
+                        {
+                            trn.Rollback();
+                            return;
+                        }
+                    }
+                    var lineRes = AddFicheLines(ficheType, ficheRef, trn, conn).Result;
+                    if (lineRes)
+                    {
+                        ClearAfterPayment();
+                        trn.Commit();
+                    }
+                    else
+                    {
+                        trn.Rollback();
+                        return;
+                    }
+                }
+            }
+        }
+        private void cbReturn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbReturn.CheckState == CheckState.Checked && cbFree.CheckState == CheckState.Checked)
+            {
+                cbFree.CheckState = CheckState.Unchecked;
+            }
+        }
+        private void cbFree_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbReturn.CheckState == CheckState.Checked && cbFree.CheckState == CheckState.Checked)
+            {
+                cbReturn.CheckState = CheckState.Unchecked;
+            }
+        }
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("BARCODE");
+            dt.Columns.Add("NAME");
+            dt.Columns.Add("PRICE");
+            foreach (DataGridViewRow row in dgvMain.Rows)
+            {
+                dt.Rows.Add(row.Cells["Barcode"].Value.ToString(), row.Cells["ProductName"].Value.ToString(), row.Cells["Total"].Value.ToString());
+            }
+            using (var sd = new SaleDiscount(dt))
+            {
+                var dr = sd.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    var snc = SaleDiscount.dtDiscountResult;
+                    foreach (DataRow row in snc.Rows)
+                    {
+                        var dgvMainRow = (from DataGridViewRow x in dgvMain.Rows where x.Cells["Barcode"].Value.ToString() == row["RBARCODE"].ToString() select x).First();
+                        if (dgvMainRow != null)
+                        {
+                            dgvMainRow.Cells["Total"].Value = row["RPRICE"].ToString();
+                        }
+                    }
                 }
             }
         }

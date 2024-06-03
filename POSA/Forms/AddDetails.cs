@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Dapper;
+using POSA.Helpers.Settings;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dapper;
-using POSA.Dto;
-using POSA.Helpers.Settings;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 namespace POSA.Forms
 {
     public partial class AddDetails : Form
@@ -118,10 +106,9 @@ namespace POSA.Forms
             tbProductor.Text = dgvMain.Rows[e.RowIndex].Cells["PRODUCTOR"].Value.ToString();
             cbCurrency.Text = dgvMain.Rows[e.RowIndex].Cells["CURRENCY"].Value.ToString();
         }
-
         private async void rtbSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 dgvMain.EndEdit();
                 var settings = Setting.Get();

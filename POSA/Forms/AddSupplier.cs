@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace POSA.Forms
+﻿namespace POSA.Forms
 {
     public partial class AddSupplier : Form
     {
@@ -32,12 +22,10 @@ namespace POSA.Forms
             scMain.Panel2.Controls.Add(cf);
             cf.Show();
         }
-
         private void AddSupplier_Load(object sender, EventArgs e)
         {
             btnAddSupplier.PerformClick();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -57,7 +45,6 @@ namespace POSA.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void AddSupplier_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -66,12 +53,11 @@ namespace POSA.Forms
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private void btnSupplierReport_Click(object sender, EventArgs e)
         {
             foreach (Form form in scMain.Panel2.Controls)
             {
-               form.Close();
+                form.Close();
             }
             var cf = new AddSupplierReportForm() { TopLevel = false, TopMost = true, Name = "SupRep" };
             scMain.Panel2.Controls.Add(cf);

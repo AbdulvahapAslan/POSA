@@ -1,17 +1,7 @@
 ﻿using Dapper;
 using POSA.Dto;
 using POSA.Helpers.Settings;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.DirectoryServices.ActiveDirectory;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static Dapper.SqlMapper;
 namespace POSA.Forms
 {
@@ -75,7 +65,6 @@ namespace POSA.Forms
         {
             this.Close();
         }
-
         private void UpdateUnit_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)

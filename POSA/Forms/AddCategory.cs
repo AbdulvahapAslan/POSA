@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Dapper;
+using POSA.Helpers.Settings;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dapper;
-using POSA.Dto;
-using POSA.Helpers.Settings;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 namespace POSA.Forms
 {
     public partial class AddCategory : Form
@@ -120,17 +108,14 @@ namespace POSA.Forms
                 RefreshDataGrid();
             }
         }
-
         private void rtbSearch__TextChanged(object sender, EventArgs e)
         {
             (dgvMain.DataSource as DataTable).DefaultView.RowFilter = $"NAME LIKE '{rtbSearch.Texts}%' OR DESCRIPTION LIKE '{rtbSearch.Texts}%'";
         }
-
         private void pbClearSearch_Click(object sender, EventArgs e)
         {
             rtbSearch.Texts = "";
         }
-
         private void AddCategory_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)

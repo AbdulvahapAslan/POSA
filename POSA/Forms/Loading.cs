@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using System.Data;
 namespace POSA.Forms
 {
     public partial class Loading : Form
     {
-        public Loading(string requestedPage,int interval)
+        public Loading(string requestedPage, int interval)
         {
             InitializeComponent();
             RequestedPage = requestedPage;
@@ -38,7 +29,6 @@ namespace POSA.Forms
                 default:
                     break;
             }
-           
         }
         int tick = 0;
         private void timer1_Tick(object sender, EventArgs e)

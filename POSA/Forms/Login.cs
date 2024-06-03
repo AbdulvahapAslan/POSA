@@ -2,12 +2,10 @@ using Dapper;
 using POSA.Forms;
 using POSA.Helpers;
 using System.Data.SqlClient;
-
 namespace POSA
 {
     public partial class Login : Form
     {
-
         public Login()
         {
             InitializeComponent();
@@ -79,7 +77,7 @@ namespace POSA
                 }
                 Helpers.Settings.Setting.Save(settings);
                 this.Hide();
-                var load = new Loading("Mainpage",1000);
+                var load = new Loading("Mainpage", 1000);
                 load.Show();
                 return;
             }
@@ -127,7 +125,6 @@ namespace POSA
                 Helpers.Settings.Setting.Save(settings);
             }
             return true;
-
         }
         private void Login_MouseDown(object sender, MouseEventArgs e)
         {
@@ -137,11 +134,10 @@ namespace POSA
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
         private void Login_Load(object sender, EventArgs e)
         {
             var settings = Helpers.Settings.Setting.Get();
-            if(settings is not null)
+            if (settings is not null)
             {
                 if (!string.IsNullOrWhiteSpace(settings.LastSuccesfullyLoggedUser))
                     tbUsername.Text = settings.LastSuccesfullyLoggedUser;

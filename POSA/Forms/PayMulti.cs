@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dapper;
-using POSA.Dto;
-using POSA.Helpers.Settings;
-namespace POSA.Forms
+﻿namespace POSA.Forms
 {
     public partial class PayMulti : Form
     {
@@ -50,7 +36,6 @@ namespace POSA.Forms
         {
             this.cashAmount = decimal.Round(Convert.ToDecimal(tbCash.Text), 2, MidpointRounding.AwayFromZero);
             this.cardAmount = decimal.Round(Convert.ToDecimal(tbCard.Text), 2, MidpointRounding.AwayFromZero);
-
         }
         private void tbCash_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -68,7 +53,7 @@ namespace POSA.Forms
         }
         private void tbCash_TextChanged(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbCash.Text))
+            if (string.IsNullOrWhiteSpace(tbCash.Text))
                 tbCash.Text = "0";
             if (!tbCash.Text.EndsWith('.'))
             {
@@ -86,7 +71,6 @@ namespace POSA.Forms
         {
             this.Close();
         }
-
         private void PayMulti_Load(object sender, EventArgs e)
         {
             lblTotalPrice.Text = totalPrice + "₺";

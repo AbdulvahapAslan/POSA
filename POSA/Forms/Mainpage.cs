@@ -1,16 +1,8 @@
 ﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using POSA.Helpers.Settings;
-using System.Data.SqlClient;
 using POSA.Dto;
+using POSA.Helpers.Settings;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Xml;
 namespace POSA.Forms
@@ -154,7 +146,6 @@ namespace POSA.Forms
                 }
             }
         }
-
         private void trmCurrency_Tick(object sender, EventArgs e)
         {
             GetCurrencies();

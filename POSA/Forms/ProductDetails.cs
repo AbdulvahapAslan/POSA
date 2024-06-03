@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dapper;
+﻿using Dapper;
 using POSA.Dto;
 using POSA.Helpers.Settings;
+using System.Data.SqlClient;
 namespace POSA.Forms
 {
     public partial class ProductDetails : Form
@@ -67,7 +57,6 @@ namespace POSA.Forms
                     var stocks = conn.QueryAsync<ProdStocks>(bT.RawSql, stockParam).Result.ToList();
                     if (stocks is not null)
                     {
-
                         lblStock.Text = stocks[0].STOCK.ToString();
                         tbBuyPrice.Text = stocks[0].BUYPRICE.ToString();
                     }

@@ -30,14 +30,14 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProduct));
-            DataGridViewCellStyle dataGridViewCellStyle41 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle44 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle42 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle43 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle45 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle48 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle46 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle47 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
@@ -235,6 +235,7 @@
             // scMainContainer.Panel1
             // 
             scMainContainer.Panel1.BackColor = Color.Transparent;
+            scMainContainer.Panel1.Controls.Add(btnSave);
             scMainContainer.Panel1.Controls.Add(btnCheckBarcode);
             scMainContainer.Panel1.Controls.Add(btnAddBranch);
             scMainContainer.Panel1.Controls.Add(btnAddSupplier);
@@ -306,7 +307,7 @@
             btnAddBranch.FlatAppearance.BorderSize = 0;
             btnAddBranch.FlatStyle = FlatStyle.Flat;
             btnAddBranch.Image = Properties.Resources._32pxAdd;
-            btnAddBranch.Location = new Point(391, 608);
+            btnAddBranch.Location = new Point(391, 571);
             btnAddBranch.Name = "btnAddBranch";
             btnAddBranch.Size = new Size(35, 35);
             btnAddBranch.TabIndex = 80;
@@ -319,7 +320,7 @@
             btnAddSupplier.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnAddSupplier.FlatStyle = FlatStyle.Flat;
             btnAddSupplier.Image = Properties.Resources._32pxAdd;
-            btnAddSupplier.Location = new Point(391, 571);
+            btnAddSupplier.Location = new Point(391, 534);
             btnAddSupplier.Name = "btnAddSupplier";
             btnAddSupplier.Size = new Size(35, 35);
             btnAddSupplier.TabIndex = 79;
@@ -421,7 +422,7 @@
             cbBranch.FlatStyle = FlatStyle.Flat;
             cbBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbBranch.FormattingEnabled = true;
-            cbBranch.Location = new Point(127, 610);
+            cbBranch.Location = new Point(127, 573);
             cbBranch.Name = "cbBranch";
             cbBranch.Size = new Size(260, 31);
             cbBranch.TabIndex = 70;
@@ -433,7 +434,7 @@
             cbSupplier.FlatStyle = FlatStyle.Flat;
             cbSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             cbSupplier.FormattingEnabled = true;
-            cbSupplier.Location = new Point(127, 573);
+            cbSupplier.Location = new Point(127, 536);
             cbSupplier.Name = "cbSupplier";
             cbSupplier.Size = new Size(260, 31);
             cbSupplier.TabIndex = 69;
@@ -510,7 +511,7 @@
             lblBranch.AutoSize = true;
             lblBranch.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblBranch.ForeColor = Color.White;
-            lblBranch.Location = new Point(3, 613);
+            lblBranch.Location = new Point(3, 576);
             lblBranch.Name = "lblBranch";
             lblBranch.Size = new Size(48, 23);
             lblBranch.TabIndex = 62;
@@ -594,7 +595,7 @@
             lblSupplier.AutoSize = true;
             lblSupplier.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             lblSupplier.ForeColor = Color.White;
-            lblSupplier.Location = new Point(4, 576);
+            lblSupplier.Location = new Point(4, 539);
             lblSupplier.Name = "lblSupplier";
             lblSupplier.Size = new Size(76, 23);
             lblSupplier.TabIndex = 54;
@@ -967,24 +968,24 @@
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle41.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle41.BackColor = Color.White;
-            dataGridViewCellStyle41.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle41.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle41.SelectionBackColor = Color.White;
-            dataGridViewCellStyle41.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle41.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, VATRATE, NAME, CATEGORY, UNIT, COLOR, SIZE, MATERIAL, BUYINGPRICE, SELLPRICE, SELLPRICE2, SELLPRICE3, CURRENCY, STOCK, CRITICALSTOCK, SUPPLIER, BRANCH, B64IMAGE, STOCKPLACE });
-            dataGridViewCellStyle44.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = Color.White;
-            dataGridViewCellStyle44.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle44.ForeColor = Color.Black;
-            dataGridViewCellStyle44.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle44.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle44.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(7, 7);
@@ -1042,8 +1043,8 @@
             // 
             UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UNIT.DataPropertyName = "UNIT";
-            dataGridViewCellStyle42.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            UNIT.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            UNIT.DefaultCellStyle = dataGridViewCellStyle2;
             UNIT.FillWeight = 40F;
             UNIT.HeaderText = "BİRİM";
             UNIT.Name = "UNIT";
@@ -1052,8 +1053,8 @@
             // 
             COLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             COLOR.DataPropertyName = "COLOR";
-            dataGridViewCellStyle43.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            COLOR.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            COLOR.DefaultCellStyle = dataGridViewCellStyle3;
             COLOR.FillWeight = 40F;
             COLOR.HeaderText = "RENK";
             COLOR.Name = "COLOR";
@@ -1179,24 +1180,24 @@
             dgvVariant.BorderStyle = BorderStyle.None;
             dgvVariant.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvVariant.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle45.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = Color.White;
-            dataGridViewCellStyle45.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle45.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle45.SelectionBackColor = Color.White;
-            dataGridViewCellStyle45.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle45.WrapMode = DataGridViewTriState.True;
-            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvVariant.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvVariant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVariant.Columns.AddRange(new DataGridViewColumn[] { VBARCODE, VNAME, VCATEGORY, VUNIT, VCOLOR, VSIZE, VMATERIAL, VBUYPRICE, VSELLPRICE, VSELLPRICE2, VSELLPRICE3, VVATRATE, VCURRENCY, VSTOCK, VCRITICALSTOCK, VSUPPLIER, VBRANCH });
-            dataGridViewCellStyle48.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = Color.White;
-            dataGridViewCellStyle48.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle48.ForeColor = Color.Black;
-            dataGridViewCellStyle48.SelectionBackColor = SystemColors.InactiveCaption;
-            dataGridViewCellStyle48.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle48.WrapMode = DataGridViewTriState.False;
-            dgvVariant.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.InactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvVariant.DefaultCellStyle = dataGridViewCellStyle8;
             dgvVariant.EnableHeadersVisualStyles = false;
             dgvVariant.GridColor = Color.White;
             dgvVariant.Location = new Point(7, 7);
@@ -1242,8 +1243,8 @@
             // VUNIT
             // 
             VUNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle46.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VUNIT.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VUNIT.DefaultCellStyle = dataGridViewCellStyle6;
             VUNIT.FillWeight = 33.9246368F;
             VUNIT.HeaderText = "BİRİM";
             VUNIT.Name = "VUNIT";
@@ -1251,8 +1252,8 @@
             // VCOLOR
             // 
             VCOLOR.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle47.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            VCOLOR.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            VCOLOR.DefaultCellStyle = dataGridViewCellStyle7;
             VCOLOR.FillWeight = 33.9246368F;
             VCOLOR.HeaderText = "RENK";
             VCOLOR.Name = "VCOLOR";
@@ -1352,7 +1353,7 @@
             btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             btnSave.ForeColor = Color.Black;
             btnSave.ImageAlign = ContentAlignment.TopCenter;
-            btnSave.Location = new Point(10, 726);
+            btnSave.Location = new Point(-2, 665);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(428, 38);
             btnSave.TabIndex = 73;
@@ -1374,7 +1375,6 @@
             BackgroundImage = Properties.Resources.BackgroundGeneral;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1360, 768);
-            Controls.Add(btnSave);
             Controls.Add(pnlMain);
             Controls.Add(lblPageHeader);
             Controls.Add(btnMinimize);

@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using POSA.CustomObjects;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dapper;
-using POSA.CustomObjects;
-using POSA.Dto;
-using POSA.Helpers.Settings;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace POSA.Forms
 {
     public partial class PayPartite : Form
@@ -140,7 +126,6 @@ namespace POSA.Forms
             var btn = sender as RoundButton;
             tbPrice.Text += string.IsNullOrWhiteSpace(btn.Text) ? "" : btn.Text;
         }
-
         //private void tbPrice_TextChanged(object sender, EventArgs e)
         //{
         //    var old = tbRemainingPrice.Text;
@@ -153,7 +138,6 @@ namespace POSA.Forms
         //        tbRemainingPrice.Text = old;
         //    }
         //}
-
         private void btnBackspace_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(tbPrice.Text))
@@ -161,7 +145,6 @@ namespace POSA.Forms
                 tbPrice.Text = tbPrice.Text.Substring(0, tbPrice.Text.Length - 1);
             }
         }
-
         private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvMain.Columns["MINUS"].Index && Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["QUANTITY"].Value.ToString()) >= 0)
@@ -180,7 +163,6 @@ namespace POSA.Forms
                 tbPrice.Text = (Convert.ToDecimal(tbPrice.Text) + Convert.ToDecimal(dgvMain.Rows[e.RowIndex].Cells["PRICE"].Value.ToString())).ToString();
             }
         }
-
         private void dgvMain_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvMain.Columns["MINUS"].Index || e.ColumnIndex == dgvMain.Columns["PLUS"].Index)
@@ -202,18 +184,15 @@ namespace POSA.Forms
                 dgvMain.Rows[e.RowIndex].Cells["QUANTITY"].Value = "0";
             }
         }
-
         private void tbPrice_Enter(object sender, EventArgs e)
         {
             tbPrice.Text = "";
         }
-
         private void tbPrice_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbPrice.Text))
                 tbPrice.Text = "0";
         }
-
         private void tbPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

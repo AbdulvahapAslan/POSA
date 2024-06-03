@@ -366,6 +366,7 @@ namespace POSA.Forms
             cbFree.TabIndex = 3;
             cbFree.Text = "ÜCRETSİZ";
             cbFree.UseVisualStyleBackColor = true;
+            cbFree.CheckedChanged += cbFree_CheckedChanged;
             // 
             // cbReturn
             // 
@@ -377,6 +378,7 @@ namespace POSA.Forms
             cbReturn.TabIndex = 2;
             cbReturn.Text = "İADE";
             cbReturn.UseVisualStyleBackColor = true;
+            cbReturn.CheckedChanged += cbReturn_CheckedChanged;
             // 
             // pnlAddCustomer
             // 
@@ -1111,6 +1113,7 @@ namespace POSA.Forms
             btnDiscount.Text = "İSKONTO";
             btnDiscount.TextAlign = ContentAlignment.BottomCenter;
             btnDiscount.UseVisualStyleBackColor = false;
+            btnDiscount.Click += btnDiscount_Click;
             // 
             // btnCustomer
             // 
