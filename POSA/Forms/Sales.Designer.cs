@@ -528,6 +528,7 @@ namespace POSA.Forms
             tbSearch.PlaceholderText = "Barkod okutunuz...";
             tbSearch.Size = new Size(228, 29);
             tbSearch.TabIndex = 91;
+            tbSearch.Enter += tbSearch_Enter;
             tbSearch.KeyDown += rtbSearch_KeyDown;
             // 
             // label8
@@ -1132,6 +1133,7 @@ namespace POSA.Forms
             btnCustomer.Text = "CARİ";
             btnCustomer.TextAlign = ContentAlignment.BottomCenter;
             btnCustomer.UseVisualStyleBackColor = false;
+            btnCustomer.Click += btnCustomer_Click;
             // 
             // btnScreenButtons
             // 
@@ -1149,6 +1151,7 @@ namespace POSA.Forms
             btnScreenButtons.TabIndex = 2;
             btnScreenButtons.TextAlign = ContentAlignment.BottomCenter;
             btnScreenButtons.UseVisualStyleBackColor = false;
+            btnScreenButtons.Click += btnScreenButtons_Click;
             // 
             // btnOffer
             // 

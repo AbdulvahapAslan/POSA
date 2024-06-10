@@ -1,6 +1,6 @@
 ﻿namespace POSA.Forms
 {
-    partial class AddSupplierReportForm
+    partial class AddCustomerReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -189,7 +189,7 @@
             // 
             NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             NAME.DataPropertyName = "NAME";
-            NAME.FillWeight = 25F;
+            NAME.FillWeight = 35F;
             NAME.HeaderText = "AD SOYAD";
             NAME.MaxInputLength = 100;
             NAME.Name = "NAME";
@@ -220,7 +220,7 @@
             cbShowAll.CheckState = CheckState.Checked;
             cbShowAll.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             cbShowAll.ForeColor = Color.White;
-            cbShowAll.Location = new Point(670, 30);
+            cbShowAll.Location = new Point(728, 30);
             cbShowAll.Name = "cbShowAll";
             cbShowAll.Size = new Size(170, 29);
             cbShowAll.TabIndex = 1;
@@ -233,11 +233,11 @@
             cbShowDepths.AutoSize = true;
             cbShowDepths.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             cbShowDepths.ForeColor = Color.White;
-            cbShowDepths.Location = new Point(846, 30);
+            cbShowDepths.Location = new Point(904, 30);
             cbShowDepths.Name = "cbShowDepths";
-            cbShowDepths.Size = new Size(251, 29);
+            cbShowDepths.Size = new Size(181, 29);
             cbShowDepths.TabIndex = 2;
-            cbShowDepths.Text = "Borçlu Olunanları Göster";
+            cbShowDepths.Text = "Borçluları Göster";
             cbShowDepths.UseVisualStyleBackColor = true;
             cbShowDepths.CheckedChanged += cbShowDepths_CheckedChanged;
             // 
@@ -286,7 +286,7 @@
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
             // 
-            // AddSupplierReportForm
+            // AddCustomerReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -301,7 +301,7 @@
             Controls.Add(cbShowAll);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "AddSupplierReportForm";
+            Name = "AddCustomerReportForm";
             Text = "AddSupplierReportForm";
             Load += AddCustomerReportForm_Load;
             panel1.ResumeLayout(false);
@@ -323,13 +323,13 @@
         private PictureBox pbClearSearch;
         private PictureBox pbMagGlass;
         private CustomObjects.RoundTextBox rtbSearch;
-        private Panel pnlDepthAmount;
-        private TextBox tbDepth;
-        private Button btnCancel;
-        private Button btnSave;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn NAME;
         private DataGridViewTextBoxColumn PHONE;
         private DataGridViewTextBoxColumn DEPTH;
+        private Panel pnlDepthAmount;
+        private TextBox tbDepth;
+        private Button btnCancel;
+        private Button btnSave;
     }
 }

@@ -3,6 +3,7 @@ using POSA.Dto;
 using POSA.Helpers.Settings;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Globalization;
 using static Dapper.SqlMapper;
@@ -21,6 +22,7 @@ namespace POSA.Forms
         private List<Product> Customers = new List<Product>();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+        public static TextBox FocusedTB;
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -1514,6 +1516,39 @@ namespace POSA.Forms
                     }
                 }
             }
+        }
+
+        public void btnCustomer_Click(object sender, EventArgs e)
+        {
+            using (var ssc = new SaleSelectCustomer())
+            {
+                var dr = ssc.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    LastSelectedCustomerID = SaleSelectCustomer.CustID;
+                }
+            }
+        }
+
+        private void btnScreenButtons_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Numpad");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                var nums = new CustomNumpad();
+                nums.Name = "Numpad";
+                nums.Show();
+            }
+        }
+
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            FocusedTB = (sender as TextBox);
         }
     }
 }

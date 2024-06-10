@@ -1,6 +1,6 @@
 ﻿namespace POSA.Forms
 {
-    partial class AddSupplierInnerForm
+    partial class AddCustomerInnerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSupplierInnerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCustomerInnerForm));
             panel1 = new Panel();
             btnSave = new Button();
             btnCancel = new Button();
             tbAddress = new TextBox();
-            label9 = new Label();
+            lblAddress = new Label();
             tbNote = new TextBox();
-            label7 = new Label();
-            tbSector = new TextBox();
-            label8 = new Label();
+            lblNote = new Label();
             tbTaxDept = new TextBox();
-            label5 = new Label();
+            lblTaxDept = new Label();
             tbTaxNo = new TextBox();
-            label6 = new Label();
+            lnlTaxnumber = new Label();
             tbPhone = new TextBox();
-            label3 = new Label();
-            tbExecutive = new TextBox();
-            label4 = new Label();
-            tbCompany = new TextBox();
-            label2 = new Label();
+            lblPhone = new Label();
+            tbEmail = new TextBox();
+            lblEmail = new Label();
             tbName = new TextBox();
-            label1 = new Label();
+            lblNameSurname = new Label();
             btnClose = new CustomObjects.RoundButton();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -60,23 +56,19 @@
             panel1.Controls.Add(btnSave);
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(tbAddress);
-            panel1.Controls.Add(label9);
+            panel1.Controls.Add(lblAddress);
             panel1.Controls.Add(tbNote);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(tbSector);
-            panel1.Controls.Add(label8);
+            panel1.Controls.Add(lblNote);
             panel1.Controls.Add(tbTaxDept);
-            panel1.Controls.Add(label5);
+            panel1.Controls.Add(lblTaxDept);
             panel1.Controls.Add(tbTaxNo);
-            panel1.Controls.Add(label6);
+            panel1.Controls.Add(lnlTaxnumber);
             panel1.Controls.Add(tbPhone);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(tbExecutive);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(tbCompany);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lblPhone);
+            panel1.Controls.Add(tbEmail);
+            panel1.Controls.Add(lblEmail);
             panel1.Controls.Add(tbName);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lblNameSurname);
             panel1.Location = new Point(219, 99);
             panel1.Name = "panel1";
             panel1.Size = new Size(680, 334);
@@ -121,191 +113,149 @@
             // 
             tbAddress.BorderStyle = BorderStyle.None;
             tbAddress.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbAddress.Location = new Point(100, 147);
+            tbAddress.Location = new Point(100, 131);
             tbAddress.Multiline = true;
             tbAddress.Name = "tbAddress";
             tbAddress.Size = new Size(554, 89);
             tbAddress.TabIndex = 17;
             // 
-            // label9
+            // lblAddress
             // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.FromArgb(143, 175, 219);
-            label9.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(15, 147);
-            label9.Name = "label9";
-            label9.Size = new Size(101, 23);
-            label9.TabIndex = 16;
-            label9.Text = "Adres         ";
+            lblAddress.AutoSize = true;
+            lblAddress.BackColor = Color.FromArgb(143, 175, 219);
+            lblAddress.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblAddress.ForeColor = Color.White;
+            lblAddress.Location = new Point(15, 131);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(101, 23);
+            lblAddress.TabIndex = 16;
+            lblAddress.Text = "Adres         ";
             // 
             // tbNote
             // 
             tbNote.BorderStyle = BorderStyle.None;
             tbNote.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbNote.Location = new Point(434, 118);
+            tbNote.Location = new Point(434, 102);
             tbNote.Name = "tbNote";
             tbNote.Size = new Size(220, 23);
             tbNote.TabIndex = 15;
             // 
-            // label7
+            // lblNote
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(143, 175, 219);
-            label7.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(323, 118);
-            label7.Name = "label7";
-            label7.Size = new Size(140, 23);
-            label7.TabIndex = 14;
-            label7.Text = "Not                    ";
-            // 
-            // tbSector
-            // 
-            tbSector.BorderStyle = BorderStyle.None;
-            tbSector.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbSector.Location = new Point(100, 118);
-            tbSector.Name = "tbSector";
-            tbSector.Size = new Size(220, 23);
-            tbSector.TabIndex = 13;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.FromArgb(143, 175, 219);
-            label8.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 118);
-            label8.Name = "label8";
-            label8.Size = new Size(98, 23);
-            label8.TabIndex = 12;
-            label8.Text = "Sektör       ";
+            lblNote.AutoSize = true;
+            lblNote.BackColor = Color.FromArgb(143, 175, 219);
+            lblNote.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblNote.ForeColor = Color.White;
+            lblNote.Location = new Point(323, 102);
+            lblNote.Name = "lblNote";
+            lblNote.Size = new Size(140, 23);
+            lblNote.TabIndex = 14;
+            lblNote.Text = "Not                    ";
             // 
             // tbTaxDept
             // 
             tbTaxDept.BorderStyle = BorderStyle.None;
             tbTaxDept.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbTaxDept.Location = new Point(434, 89);
+            tbTaxDept.Location = new Point(434, 73);
             tbTaxDept.Name = "tbTaxDept";
             tbTaxDept.Size = new Size(220, 23);
             tbTaxDept.TabIndex = 11;
             // 
-            // label5
+            // lblTaxDept
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.FromArgb(143, 175, 219);
-            label5.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(323, 89);
-            label5.Name = "label5";
-            label5.Size = new Size(112, 23);
-            label5.TabIndex = 10;
-            label5.Text = "Vergi Dairesi";
+            lblTaxDept.AutoSize = true;
+            lblTaxDept.BackColor = Color.FromArgb(143, 175, 219);
+            lblTaxDept.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblTaxDept.ForeColor = Color.White;
+            lblTaxDept.Location = new Point(323, 73);
+            lblTaxDept.Name = "lblTaxDept";
+            lblTaxDept.Size = new Size(112, 23);
+            lblTaxDept.TabIndex = 10;
+            lblTaxDept.Text = "Vergi Dairesi";
             // 
             // tbTaxNo
             // 
             tbTaxNo.BorderStyle = BorderStyle.None;
             tbTaxNo.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbTaxNo.Location = new Point(100, 89);
+            tbTaxNo.Location = new Point(100, 73);
             tbTaxNo.Name = "tbTaxNo";
             tbTaxNo.Size = new Size(220, 23);
             tbTaxNo.TabIndex = 9;
             // 
-            // label6
+            // lnlTaxnumber
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.FromArgb(143, 175, 219);
-            label6.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(15, 89);
-            label6.Name = "label6";
-            label6.Size = new Size(100, 23);
-            label6.TabIndex = 8;
-            label6.Text = "Vergi No    ";
+            lnlTaxnumber.AutoSize = true;
+            lnlTaxnumber.BackColor = Color.FromArgb(143, 175, 219);
+            lnlTaxnumber.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lnlTaxnumber.ForeColor = Color.White;
+            lnlTaxnumber.Location = new Point(15, 73);
+            lnlTaxnumber.Name = "lnlTaxnumber";
+            lnlTaxnumber.Size = new Size(100, 23);
+            lnlTaxnumber.TabIndex = 8;
+            lnlTaxnumber.Text = "Vergi No    ";
             // 
             // tbPhone
             // 
             tbPhone.BorderStyle = BorderStyle.None;
             tbPhone.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbPhone.Location = new Point(434, 60);
+            tbPhone.Location = new Point(100, 102);
             tbPhone.Name = "tbPhone";
             tbPhone.Size = new Size(220, 23);
             tbPhone.TabIndex = 7;
             // 
-            // label3
+            // lblPhone
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(143, 175, 219);
-            label3.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(323, 60);
-            label3.Name = "label3";
-            label3.Size = new Size(133, 23);
-            label3.TabIndex = 6;
-            label3.Text = "Telefon             ";
+            lblPhone.AutoSize = true;
+            lblPhone.BackColor = Color.FromArgb(143, 175, 219);
+            lblPhone.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblPhone.ForeColor = Color.White;
+            lblPhone.Location = new Point(15, 102);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(133, 23);
+            lblPhone.TabIndex = 6;
+            lblPhone.Text = "Telefon             ";
             // 
-            // tbExecutive
+            // tbEmail
             // 
-            tbExecutive.BorderStyle = BorderStyle.None;
-            tbExecutive.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbExecutive.Location = new Point(100, 60);
-            tbExecutive.Name = "tbExecutive";
-            tbExecutive.Size = new Size(220, 23);
-            tbExecutive.TabIndex = 5;
+            tbEmail.BorderStyle = BorderStyle.None;
+            tbEmail.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            tbEmail.Location = new Point(434, 44);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(220, 23);
+            tbEmail.TabIndex = 3;
             // 
-            // label4
+            // lblEmail
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(143, 175, 219);
-            label4.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(15, 60);
-            label4.Name = "label4";
-            label4.Size = new Size(99, 23);
-            label4.TabIndex = 4;
-            label4.Text = "Yetkili        ";
-            // 
-            // tbCompany
-            // 
-            tbCompany.BorderStyle = BorderStyle.None;
-            tbCompany.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbCompany.Location = new Point(434, 31);
-            tbCompany.Name = "tbCompany";
-            tbCompany.Size = new Size(220, 23);
-            tbCompany.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(143, 175, 219);
-            label2.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(323, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(141, 23);
-            label2.TabIndex = 2;
-            label2.Text = "Firma                 ";
+            lblEmail.AutoSize = true;
+            lblEmail.BackColor = Color.FromArgb(143, 175, 219);
+            lblEmail.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblEmail.ForeColor = Color.White;
+            lblEmail.Location = new Point(323, 44);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(155, 23);
+            lblEmail.TabIndex = 2;
+            lblEmail.Text = "E-posta                 ";
             // 
             // tbName
             // 
             tbName.BorderStyle = BorderStyle.None;
             tbName.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            tbName.Location = new Point(100, 31);
+            tbName.Location = new Point(100, 44);
             tbName.Name = "tbName";
             tbName.Size = new Size(220, 23);
             tbName.TabIndex = 1;
             // 
-            // label1
+            // lblNameSurname
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(143, 175, 219);
-            label1.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(15, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 23);
-            label1.TabIndex = 0;
-            label1.Text = "Ad Soyad";
+            lblNameSurname.AutoSize = true;
+            lblNameSurname.BackColor = Color.FromArgb(143, 175, 219);
+            lblNameSurname.Font = new Font("Segoe UI", 12.5F, FontStyle.Bold);
+            lblNameSurname.ForeColor = Color.White;
+            lblNameSurname.Location = new Point(15, 44);
+            lblNameSurname.Name = "lblNameSurname";
+            lblNameSurname.Size = new Size(87, 23);
+            lblNameSurname.TabIndex = 0;
+            lblNameSurname.Text = "Ad Soyad";
             // 
             // btnClose
             // 
@@ -323,25 +273,25 @@
             btnClose.Location = new Point(1078, 12);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(28, 28);
-            btnClose.TabIndex = 35;
+            btnClose.TabIndex = 37;
             btnClose.TextColor = Color.White;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Visible = false;
-            btnClose.Click += btnClose_Click;
             // 
-            // AddSupplierInnerForm
+            // AddCustomerInnerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(0, 74, 173);
             ClientSize = new Size(1118, 532);
             Controls.Add(btnClose);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "AddSupplierInnerForm";
+            Name = "AddCustomerInnerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddSuplierInnerForm";
-            Load += AddSupplierInnerForm_Load;
+            Load += AddCustomerInnerForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -351,23 +301,19 @@
 
         private Panel panel1;
         private TextBox tbName;
-        private Label label1;
+        private Label lblNameSurname;
         private TextBox tbAddress;
-        private Label label9;
+        private Label lblAddress;
         private TextBox tbNote;
-        private Label label7;
-        private TextBox tbSector;
-        private Label label8;
+        private Label lblNote;
         private TextBox tbTaxDept;
-        private Label label5;
+        private Label lblTaxDept;
         private TextBox tbTaxNo;
-        private Label label6;
+        private Label lnlTaxnumber;
         private TextBox tbPhone;
-        private Label label3;
-        private TextBox tbExecutive;
-        private Label label4;
-        private TextBox tbCompany;
-        private Label label2;
+        private Label lblPhone;
+        private TextBox tbEmail;
+        private Label lblEmail;
         private Button btnSave;
         private Button btnCancel;
         private CustomObjects.RoundButton btnClose;

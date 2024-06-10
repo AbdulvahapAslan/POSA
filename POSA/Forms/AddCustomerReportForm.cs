@@ -6,9 +6,9 @@ using System.Globalization;
 using static Dapper.SqlMapper;
 namespace POSA.Forms
 {
-    public partial class AddSupplierReportForm : Form
+    public partial class AddCustomerReportForm : Form
     {
-        public AddSupplierReportForm()
+        public AddCustomerReportForm()
         {
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en_GB");
@@ -37,14 +37,6 @@ namespace POSA.Forms
             });
             dgvMain.Columns.Insert(dgvMain.ColumnCount - 1, new DataGridViewImageColumn()
             {
-                Image = Properties.Resources._24pxBlueBuy1,
-                Name = "GET",
-                HeaderText = "ÜRÜN AL",
-                FillWeight = 5,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns.Insert(dgvMain.ColumnCount - 1, new DataGridViewImageColumn()
-            {
                 Image = Properties.Resources._24pxBlueChart,
                 Name = "REPORT",
                 HeaderText = "RAPOR",
@@ -63,27 +55,30 @@ namespace POSA.Forms
             {
                 Image = Properties.Resources._24pxBlueBox,
                 Name = "TAKE",
-                HeaderText = "BORÇ ÖDE",
+                HeaderText = "TAHSİLAT",
                 FillWeight = 5,
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
-            dgvMain.Columns.Insert(dgvMain.ColumnCount - 1, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxBlueRefund1,
-                Name = "REFUND",
-                HeaderText = "İADE",
-                FillWeight = 5,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns["GET"].FillWeight = 10;
             dgvMain.Columns["DELETE"].FillWeight = 5;
-            dgvMain.Columns["UPDATE"].FillWeight = 11;
-            dgvMain.Columns["REPORT"].FillWeight = 8;
-            dgvMain.Columns["ADD"].FillWeight = 15;
-            dgvMain.Columns["TAKE"].FillWeight = 14;
-            dgvMain.Columns["REFUND"].FillWeight = 10;
+            dgvMain.Columns["UPDATE"].FillWeight = 10;
+            dgvMain.Columns["REPORT"].FillWeight = 10;
+            dgvMain.Columns["ADD"].FillWeight = 20;
+            dgvMain.Columns["TAKE"].FillWeight = 15;
             dgvMain.EndEdit();
-            RefreshMainDataGrid();
+            var settings = Setting.Get();
+            var qry = $"""
+                WITH TABLO AS(SELECT TOP 200 CST.ID,CST.NAME,CST.PHONE FROM CUSTOMERS AS CST ORDER BY ID)
+                SELECT T.*,ISNULL((SELECT SUM(FL.TOTALPRICE) FROM FICHES AS F LEFT JOIN 
+                FICHELINES AS FL ON FL.FICHEREF = F.FICHEREF
+                WHERE F.FICHETYPE = 2 AND F.CUSTOMERID = T.ID),0) AS DEPTH 
+                FROM TABLO AS T ORDER BY T.ID
+                """;
+            await using var conn = new SqlConnection(settings.Sql.ConnectionString());
+            conn.Open();
+            var ar = new SqlDataAdapter(qry, conn);
+            var dt = new DataTable();
+            ar.Fill(dt);
+            dgvMain.DataSource = dt;
             dgvMain.ClearSelection();
         }
         private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -120,12 +115,8 @@ namespace POSA.Forms
             {
                 //TODO: SHOW REPORT 
             }
-            else if (e.ColumnIndex == dgvMain.Columns["REFUND"].Index)
-            {
-                //TODO: IT WILL BE ADDED AFTER DISCUSS ABOUT IT
-            }
         }
-        public int LastAddDepthRowIndex = 0;
+        public int LastAddDepthRowIndex = -1;
         public async Task<bool> AddFicheHead(string paymentType, string ficheRef, int ficheType, decimal totalPrice, int custId, SqlTransaction trn, SqlConnection conn)
         {
             try
@@ -136,15 +127,15 @@ namespace POSA.Forms
                 var sB = new SqlBuilder();//sB == sqlBuilder
                 var bT = sB.AddTemplate(
                     $"""
-                INSERT INTO FICHES(FICHEREF,FICHETYPE,SUPPLIERID,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CREATEDBY,CREATEDATE,ISCUSTORVEND,PAYMENTTYPE)
-                VALUES (@FICHEREF,@FICHETYPE,@SUPPLIERID,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CREATEDBY,GETDATE(),'SUPP',@PAYMENTTYPE)
+                INSERT INTO FICHES(FICHEREF,FICHETYPE,CUSTOMERID,TOTALPRICE,USDTOTALPRICE,EUROTOTALPRICE,CREATEDBY,CREATEDATE,ISCUSTORVEND,PAYMENTTYPE)
+                VALUES (@FICHEREF,@FICHETYPE,@CUSTOMERID,@TOTALPRICE,@USDTOTALPRICE,@EUROTOTALPRICE,@CREATEDBY,GETDATE(),'CUST',@PAYMENTTYPE)
                 """
                     );
                 var param = new
                 {
                     FICHEREF = ficheRef,
                     FICHETYPE = ficheType,
-                    SUPPLIERID = custId,
+                    CUSTOMERID = custId,
                     TOTALPRICE = totalPrice,
                     USDTOTALPRICE = totalPriceUSD,
                     EUROTOTALPRICE = totalPriceEURO,
@@ -183,10 +174,10 @@ namespace POSA.Forms
                 dgvMain.EndEdit();
                 var settings = Setting.Get();
                 var qry = $"""
-                WITH TABLO AS(SELECT TOP 200 SUP.ID,SUP.NAME,SUP.PHONE FROM SUPPLIERS AS SUP WHERE SUP.ID>1 ORDER BY ID)
+                WITH TABLO AS(SELECT TOP 200 CST.ID,CST.NAME,CST.PHONE FROM CUSTOMERS AS CST ORDER BY ID)
                 SELECT T.*,ISNULL((SELECT SUM(FL.TOTALPRICE) FROM FICHES AS F LEFT JOIN 
                 FICHELINES AS FL ON FL.FICHEREF = F.FICHEREF
-                WHERE F.FICHETYPE = 5 AND F.SUPPLIERID = T.ID),0) AS DEPTH 
+                WHERE F.FICHETYPE = 2 AND F.CUSTOMERID = T.ID),0) AS DEPTH 
                 FROM TABLO AS T ORDER BY T.ID
                 """; ;
                 await using var conn = new SqlConnection(settings.Sql.ConnectionString());
@@ -202,11 +193,11 @@ namespace POSA.Forms
                 dgvMain.EndEdit();
                 var settings = Setting.Get();
                 var qry = $"""
-                WITH TABLO AS(SELECT TOP 200 SUP.ID,SUP.NAME,SUP.PHONE,ISNULL((SELECT SUM(FL.TOTALPRICE) AS DEPTH FROM FICHES AS F LEFT JOIN 
+                WITH TABLO AS(SELECT TOP 200 CST.ID,CST.NAME,CST.PHONE,ISNULL((SELECT SUM(FL.TOTALPRICE) AS DEPTH FROM FICHES AS F LEFT JOIN 
                 FICHELINES AS FL ON FL.FICHEREF = F.FICHEREF
-                WHERE F.FICHETYPE = 5 AND F.SUPPLIERID = SUP.ID),0) AS DEPTH  FROM SUPPLIERS AS SUP WHERE SUP.ID>1 ORDER BY ID)
+                WHERE F.FICHETYPE = 2 AND F.CUSTOMERID = CST.ID),0) AS DEPTH  FROM CUSTOMERS AS CST ORDER BY ID)
                 SELECT T.*
-                FROM TABLO AS T GROUP BY T.DEPTH,T.ID,T.NAME,T.PHONE HAVING T.DEPTH>0 ORDER BY T.ID 
+                FROM TABLO AS T GROUP BY T.DEPTH,T.ID,T.NAME,T.PHONE HAVING T.DEPTH>0 ORDER BY T.ID  
                 """; ;
                 await using var conn = new SqlConnection(settings.Sql.ConnectionString());
                 conn.Open();
@@ -261,7 +252,7 @@ namespace POSA.Forms
                 SqlTransaction trn = null;
                 conn.Open();
                 trn = conn.BeginTransaction();
-                var headRes = await AddFicheHead("NAKİT", ficheRef, 5, -1 * decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), Convert.ToInt32(dgvMain.Rows[LastAddDepthRowIndex].Cells["ID"].Value.ToString()), trn, conn);
+                var headRes = await AddFicheHead("NAKİT", ficheRef, 2, -1 * decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), Convert.ToInt32(dgvMain.Rows[LastAddDepthRowIndex].Cells["ID"].Value.ToString()), trn, conn);
                 if (headRes)
                 {
                     var lineRes = await AddFicheLine(ficheRef, -1 * decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), trn, conn);
@@ -290,7 +281,7 @@ namespace POSA.Forms
                 SqlTransaction trn = null;
                 conn.Open();
                 trn = conn.BeginTransaction();
-                var headRes = await AddFicheHead("NAKİT", ficheRef, 5, decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), Convert.ToInt32(dgvMain.Rows[LastAddDepthRowIndex].Cells["ID"].Value.ToString()), trn, conn);
+                var headRes = await AddFicheHead("NAKİT", ficheRef, 2, decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), Convert.ToInt32(dgvMain.Rows[LastAddDepthRowIndex].Cells["ID"].Value.ToString()), trn, conn);
                 if (headRes)
                 {
                     var lineRes = await AddFicheLine(ficheRef, decimal.Round(Convert.ToDecimal(tbDepth.Text), 2, MidpointRounding.AwayFromZero), trn, conn);

@@ -42,10 +42,17 @@ namespace POSA.Forms
         public static decimal EURO = 0;
         public void GetCurrencies()
         {
-            XmlDocument xmlVerisi = new XmlDocument();
-            xmlVerisi.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
-            USD = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "USD")).InnerText, new CultureInfo("en-gb"));
-            EURO = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
+            try
+            {
+                XmlDocument xmlVerisi = new XmlDocument();
+                xmlVerisi.Load("https://www.tcmb.gov.tr/kurlar/today.xml");
+                USD = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "USD")).InnerText, new CultureInfo("en-gb"));
+                EURO = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText, new CultureInfo("en-gb"));
+            }
+            catch (Exception)
+            {
+            }
+            
         }
         private async void Mainpage_Load(object sender, EventArgs e)
         {
@@ -149,6 +156,29 @@ namespace POSA.Forms
         private void trmCurrency_Tick(object sender, EventArgs e)
         {
             GetCurrencies();
+        }
+
+        private void btnCustomers_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Müşteri Ekle");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var addC = new AddCustomer();
+                    addC.Name = "Müşteri Ekle";
+                    addC.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

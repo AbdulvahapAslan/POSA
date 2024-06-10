@@ -117,13 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnClose.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAF/SURBVEhLtZVN
+        TsMwEIXDOWiDygqp5R6AKsQ9Wsp5CmLDkjUVR+FHrEGwghZWgML7konkpo4TmvSTnuSOx29MGNtRiCRJ
+        dqSJdCs9SV8mxsROpdjS66NFXWkqfUtV/ErX0q4tD6PEI+ld+i8L6cRs/CjhTGJH68Laidkto4lD6Yes
+        hlDk2GwzFIilObMt8SF1zD4tcJmGV7mT+LZlsClyfJzn5rSir1tYuCX1pVcCBYgxR849gQJ4xhSgz32w
+        875tolgkNXfmyv7KMQkcmDJco4H9RgPH3C1cZEYSpzKEa0gRdxwyh0cSP7NxkDdpH2PQeE96YaKCRZMC
+        z0xUMCd545+o6p9cNPTFyrghiSvXB62XG4XalCJlbToigWvCd9A4PE0PWpdNUOQiDa3CwtBVwZzPHKap
+        OegHD0zbl9222WcocCC1dV0PzXYZTXAvbebByVECD886TyafOPxk5iixI9V99Mm5knq2vD5aRAuPpZn0
+        IHGtIMbERlLWil6i6A/9pgUOoR+0UwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="PHONE.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="DEPTH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="NAME.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
 </root>

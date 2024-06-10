@@ -117,13 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="PHONE.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="DEPTH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnMinimize.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABJSURBVEhLYxgF
+        o2AUDAfw//9/VyC+BMTvqIxBZrqALHgMxLQCj0AWPIKwaQIegixwAeKLQIzNm5RgkJlO0JgYBaNgFAxh
+        wMAAAPz1d9FCQtyjAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnMaximize.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADdSURBVEhL7ZVB
+        DoIwEEW74gJuvIx7iRfyBCi68G4sWSJyjfqn86PWUARsSUx8yU/a6Z/5JKRgrLUZVEIdFIsbdIQyCZBF
+        Kg4SEPPJ3+kkICnLBZjIcOwPBKC11gmOmuWoAWedoLAcNcC7RyzHCUDbSbvtBZKvQcUjL2APrVmfBPoq
+        qOTWA3WHLHZQ63bjuUI5Z/WiNg0Q8xwazuqFnuc7mANn9ULLggGsj4It/4AwbAn24GijDtt+HcBliOLV
+        sHLdHxCf2gcD5OIWkPvpJ7loD2DMoakhDbTliAGMuQPAldnYl7tSwAAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

@@ -93,6 +93,86 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueBox {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueBox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueBuy {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueBuy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueBuy1 {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueBuy1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueChart {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueChart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBluePlus {
+            get {
+                object obj = ResourceManager.GetObject("24pxBluePlus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueRefresh {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueRefresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueRefund {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueRefund", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxBlueRefund1 {
+            get {
+                object obj = ResourceManager.GetObject("24pxBlueRefund1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _24pxClose {
             get {
                 object obj = ResourceManager.GetObject("24pxClose", resourceCulture);
@@ -133,6 +213,16 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _24pxRedTrash {
+            get {
+                object obj = ResourceManager.GetObject("24pxRedTrash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _24pxUpdate {
             get {
                 object obj = ResourceManager.GetObject("24pxUpdate", resourceCulture);
@@ -166,6 +256,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _24pxWhiteRefresh {
             get {
                 object obj = ResourceManager.GetObject("24pxWhiteRefresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _24pxWhiteX {
+            get {
+                object obj = ResourceManager.GetObject("24pxWhiteX", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +456,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxDiscount {
             get {
                 object obj = ResourceManager.GetObject("64pxDiscount", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxEraserBlue {
+            get {
+                object obj = ResourceManager.GetObject("64pxEraserBlue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

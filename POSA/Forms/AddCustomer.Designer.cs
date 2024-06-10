@@ -1,6 +1,6 @@
 ﻿namespace POSA.Forms
 {
-    partial class AddSupplier
+    partial class AddCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSupplier));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCustomer));
             btnMinimize = new Button();
             btnMaximize = new Button();
             btnClose = new Button();
-            lblPageHeaderAddSupplier = new Label();
+            lblPageHeaderAddCustomer = new Label();
             scMain = new SplitContainer();
-            btnSupplierReport = new Button();
-            btnAddSupplier = new Button();
+            btnCustomerReport = new Button();
+            btnAddCustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)scMain).BeginInit();
             scMain.Panel1.SuspendLayout();
             scMain.SuspendLayout();
@@ -79,7 +79,7 @@
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClose.BackColor = Color.Transparent;
-            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImage = Properties.Resources._32pxWhiteX;
             btnClose.BackgroundImageLayout = ImageLayout.Center;
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatAppearance.MouseOverBackColor = Color.Red;
@@ -92,17 +92,17 @@
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
-            // lblPageHeaderAddSupplier
+            // lblPageHeaderAddCustomer
             // 
-            lblPageHeaderAddSupplier.AutoSize = true;
-            lblPageHeaderAddSupplier.BackColor = Color.Transparent;
-            lblPageHeaderAddSupplier.Font = new Font("Segoe UI Semibold", 17F, FontStyle.Bold);
-            lblPageHeaderAddSupplier.ForeColor = Color.White;
-            lblPageHeaderAddSupplier.Location = new Point(12, 9);
-            lblPageHeaderAddSupplier.Name = "lblPageHeaderAddSupplier";
-            lblPageHeaderAddSupplier.Size = new Size(181, 31);
-            lblPageHeaderAddSupplier.TabIndex = 9;
-            lblPageHeaderAddSupplier.Text = "TEDARİKÇİ EKLE";
+            lblPageHeaderAddCustomer.AutoSize = true;
+            lblPageHeaderAddCustomer.BackColor = Color.Transparent;
+            lblPageHeaderAddCustomer.Font = new Font("Segoe UI Semibold", 17F, FontStyle.Bold);
+            lblPageHeaderAddCustomer.ForeColor = Color.White;
+            lblPageHeaderAddCustomer.Location = new Point(12, 9);
+            lblPageHeaderAddCustomer.Name = "lblPageHeaderAddCustomer";
+            lblPageHeaderAddCustomer.Size = new Size(165, 31);
+            lblPageHeaderAddCustomer.TabIndex = 9;
+            lblPageHeaderAddCustomer.Text = "MÜŞTERİ EKLE";
             // 
             // scMain
             // 
@@ -116,53 +116,53 @@
             // scMain.Panel1
             // 
             scMain.Panel1.BackColor = Color.Transparent;
-            scMain.Panel1.Controls.Add(btnSupplierReport);
-            scMain.Panel1.Controls.Add(btnAddSupplier);
+            scMain.Panel1.Controls.Add(btnCustomerReport);
+            scMain.Panel1.Controls.Add(btnAddCustomer);
             // 
             // scMain.Panel2
             // 
-            scMain.Panel2.BackColor = Color.Transparent;
+            scMain.Panel2.BackColor = Color.FromArgb(0, 74, 173);
             scMain.Size = new Size(1109, 600);
             scMain.SplitterDistance = 73;
             scMain.TabIndex = 10;
             // 
-            // btnSupplierReport
+            // btnCustomerReport
             // 
-            btnSupplierReport.BackColor = Color.White;
-            btnSupplierReport.FlatAppearance.BorderSize = 0;
-            btnSupplierReport.FlatStyle = FlatStyle.Flat;
-            btnSupplierReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnSupplierReport.ForeColor = Color.FromArgb(47, 124, 213);
-            btnSupplierReport.Image = Properties.Resources._64pxBlueReport1;
-            btnSupplierReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSupplierReport.Location = new Point(219, 3);
-            btnSupplierReport.Name = "btnSupplierReport";
-            btnSupplierReport.Size = new Size(210, 67);
-            btnSupplierReport.TabIndex = 1;
-            btnSupplierReport.Text = "Tedarikçi Rapor";
-            btnSupplierReport.TextAlign = ContentAlignment.MiddleRight;
-            btnSupplierReport.UseVisualStyleBackColor = false;
-            btnSupplierReport.Click += btnSupplierReport_Click;
+            btnCustomerReport.BackColor = Color.White;
+            btnCustomerReport.FlatAppearance.BorderSize = 0;
+            btnCustomerReport.FlatStyle = FlatStyle.Flat;
+            btnCustomerReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnCustomerReport.ForeColor = Color.FromArgb(47, 124, 213);
+            btnCustomerReport.Image = Properties.Resources._64pxBlueReport1;
+            btnCustomerReport.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCustomerReport.Location = new Point(219, 3);
+            btnCustomerReport.Name = "btnCustomerReport";
+            btnCustomerReport.Size = new Size(210, 67);
+            btnCustomerReport.TabIndex = 1;
+            btnCustomerReport.Text = "Müşteri Rapor";
+            btnCustomerReport.TextAlign = ContentAlignment.MiddleRight;
+            btnCustomerReport.UseVisualStyleBackColor = false;
+            btnCustomerReport.Click += btnSupplierReport_Click;
             // 
-            // btnAddSupplier
+            // btnAddCustomer
             // 
-            btnAddSupplier.BackColor = Color.White;
-            btnAddSupplier.FlatAppearance.BorderSize = 0;
-            btnAddSupplier.FlatStyle = FlatStyle.Flat;
-            btnAddSupplier.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnAddSupplier.ForeColor = Color.FromArgb(47, 124, 213);
-            btnAddSupplier.Image = Properties.Resources._64pxBluePlus;
-            btnAddSupplier.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAddSupplier.Location = new Point(3, 3);
-            btnAddSupplier.Name = "btnAddSupplier";
-            btnAddSupplier.Size = new Size(210, 67);
-            btnAddSupplier.TabIndex = 0;
-            btnAddSupplier.Text = "Tedarikçi Ekle";
-            btnAddSupplier.TextAlign = ContentAlignment.MiddleRight;
-            btnAddSupplier.UseVisualStyleBackColor = false;
-            btnAddSupplier.Click += btnAddSupplier_Click;
+            btnAddCustomer.BackColor = Color.White;
+            btnAddCustomer.FlatAppearance.BorderSize = 0;
+            btnAddCustomer.FlatStyle = FlatStyle.Flat;
+            btnAddCustomer.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnAddCustomer.ForeColor = Color.FromArgb(47, 124, 213);
+            btnAddCustomer.Image = Properties.Resources._64pxBluePlus;
+            btnAddCustomer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAddCustomer.Location = new Point(3, 3);
+            btnAddCustomer.Name = "btnAddCustomer";
+            btnAddCustomer.Size = new Size(210, 67);
+            btnAddCustomer.TabIndex = 0;
+            btnAddCustomer.Text = "Müşteri Ekle";
+            btnAddCustomer.TextAlign = ContentAlignment.MiddleRight;
+            btnAddCustomer.UseVisualStyleBackColor = false;
+            btnAddCustomer.Click += btnAddCustomer_Click;
             // 
-            // AddSupplier
+            // AddCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -171,16 +171,16 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1360, 768);
             Controls.Add(scMain);
-            Controls.Add(lblPageHeaderAddSupplier);
+            Controls.Add(lblPageHeaderAddCustomer);
             Controls.Add(btnMinimize);
             Controls.Add(btnMaximize);
             Controls.Add(btnClose);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "AddSupplier";
+            Name = "AddCustomer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddSupplier";
-            Load += AddSupplier_Load;
+            Load += AddCustomer_Load;
             MouseDown += AddSupplier_MouseDown;
             scMain.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)scMain).EndInit();
@@ -194,9 +194,9 @@
         private Button btnMinimize;
         private Button btnMaximize;
         private Button btnClose;
-        private Label lblPageHeaderAddSupplier;
+        private Label lblPageHeaderAddCustomer;
         private SplitContainer scMain;
-        private Button btnSupplierReport;
-        private Button btnAddSupplier;
+        private Button btnAddCustomer;
+        public Button btnCustomerReport;
     }
 }

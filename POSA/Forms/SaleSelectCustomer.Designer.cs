@@ -1,0 +1,266 @@
+﻿namespace POSA.Forms
+{
+    partial class SaleSelectCustomer
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaleSelectCustomer));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            btnClose = new CustomObjects.RoundButton();
+            lblPageHeaderSaleSelectCustomer = new Label();
+            dgvMain = new DataGridView();
+            panel1 = new Panel();
+            pbClearSearch = new PictureBox();
+            pictureBox3 = new PictureBox();
+            rtbSearch = new CustomObjects.RoundTextBox();
+            ID = new DataGridViewTextBoxColumn();
+            NAME = new DataGridViewTextBoxColumn();
+            PHONE = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            SuspendLayout();
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.BackgroundColor = Color.Transparent;
+            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImageLayout = ImageLayout.Stretch;
+            btnClose.BorderColor = Color.PaleVioletRed;
+            btnClose.BorderRadius = 0;
+            btnClose.BorderSize = 0;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.ForeColor = Color.White;
+            btnClose.Location = new Point(639, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(28, 28);
+            btnClose.TabIndex = 34;
+            btnClose.TextColor = Color.White;
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
+            // 
+            // lblPageHeaderSaleSelectCustomer
+            // 
+            lblPageHeaderSaleSelectCustomer.AutoSize = true;
+            lblPageHeaderSaleSelectCustomer.BackColor = Color.Transparent;
+            lblPageHeaderSaleSelectCustomer.Font = new Font("Segoe UI Semibold", 17F, FontStyle.Bold);
+            lblPageHeaderSaleSelectCustomer.ForeColor = Color.White;
+            lblPageHeaderSaleSelectCustomer.Location = new Point(12, 9);
+            lblPageHeaderSaleSelectCustomer.Name = "lblPageHeaderSaleSelectCustomer";
+            lblPageHeaderSaleSelectCustomer.Size = new Size(155, 31);
+            lblPageHeaderSaleSelectCustomer.TabIndex = 43;
+            lblPageHeaderSaleSelectCustomer.Text = "MÜŞTERİ SEÇ";
+            // 
+            // dgvMain
+            // 
+            dgvMain.AllowUserToAddRows = false;
+            dgvMain.AllowUserToDeleteRows = false;
+            dgvMain.AllowUserToOrderColumns = true;
+            dgvMain.AllowUserToResizeColumns = false;
+            dgvMain.AllowUserToResizeRows = false;
+            dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMain.BackgroundColor = Color.White;
+            dgvMain.BorderStyle = BorderStyle.None;
+            dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvMain.ColumnHeadersHeight = 50;
+            dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { ID, NAME, PHONE });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvMain.EnableHeadersVisualStyles = false;
+            dgvMain.GridColor = Color.White;
+            dgvMain.Location = new Point(10, 56);
+            dgvMain.Margin = new Padding(10);
+            dgvMain.MultiSelect = false;
+            dgvMain.Name = "dgvMain";
+            dgvMain.ReadOnly = true;
+            dgvMain.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvMain.RowHeadersVisible = false;
+            dgvMain.RowHeadersWidth = 35;
+            dgvMain.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvMain.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
+            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvMain.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
+            dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvMain.RowTemplate.DividerHeight = 10;
+            dgvMain.RowTemplate.Height = 40;
+            dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMain.Size = new Size(630, 362);
+            dgvMain.TabIndex = 75;
+            dgvMain.CellDoubleClick += dgvMain_CellDoubleClick;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(pbClearSearch);
+            panel1.Controls.Add(dgvMain);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(rtbSearch);
+            panel1.Location = new Point(17, 54);
+            panel1.Margin = new Padding(8, 35, 8, 8);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(650, 428);
+            panel1.TabIndex = 76;
+            // 
+            // pbClearSearch
+            // 
+            pbClearSearch.BackColor = Color.White;
+            pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
+            pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
+            pbClearSearch.Location = new Point(259, 12);
+            pbClearSearch.Name = "pbClearSearch";
+            pbClearSearch.Size = new Size(26, 26);
+            pbClearSearch.TabIndex = 90;
+            pbClearSearch.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.White;
+            pictureBox3.BackgroundImage = Properties.Resources._16pxSearch;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox3.Location = new Point(15, 12);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(26, 26);
+            pictureBox3.TabIndex = 89;
+            pictureBox3.TabStop = false;
+            // 
+            // rtbSearch
+            // 
+            rtbSearch.BackColor = SystemColors.Window;
+            rtbSearch.BorderColor = Color.FromArgb(1, 39, 103);
+            rtbSearch.BorderFocusColor = Color.FromArgb(1, 39, 103);
+            rtbSearch.BorderRadius = 5;
+            rtbSearch.BorderSize = 2;
+            rtbSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbSearch.ForeColor = Color.FromArgb(64, 64, 64);
+            rtbSearch.Location = new Point(10, 8);
+            rtbSearch.Margin = new Padding(4);
+            rtbSearch.Multiline = false;
+            rtbSearch.Name = "rtbSearch";
+            rtbSearch.Padding = new Padding(35, 7, 30, 7);
+            rtbSearch.PasswordChar = false;
+            rtbSearch.PlaceholderColor = Color.DarkGray;
+            rtbSearch.PlaceholderText = "Ara...";
+            rtbSearch.Size = new Size(278, 34);
+            rtbSearch.TabIndex = 91;
+            rtbSearch.Texts = "";
+            rtbSearch.UnderlinedStyle = false;
+            rtbSearch._TextChanged += rtbSearch__TextChanged;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "ID";
+            dataGridViewCellStyle2.NullValue = "0";
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // NAME
+            // 
+            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NAME.DataPropertyName = "NAME";
+            NAME.FillWeight = 65F;
+            NAME.HeaderText = "AD SOYAD";
+            NAME.MaxInputLength = 50;
+            NAME.Name = "NAME";
+            NAME.ReadOnly = true;
+            // 
+            // PHONE
+            // 
+            PHONE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PHONE.DataPropertyName = "PHONE";
+            PHONE.FillWeight = 35F;
+            PHONE.HeaderText = "TELEFON";
+            PHONE.MaxInputLength = 100;
+            PHONE.Name = "PHONE";
+            PHONE.ReadOnly = true;
+            // 
+            // SaleSelectCustomer
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.BackgroundSmall1;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(684, 499);
+            Controls.Add(panel1);
+            Controls.Add(lblPageHeaderSaleSelectCustomer);
+            Controls.Add(btnClose);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "SaleSelectCustomer";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "AddCategory";
+            Load += SaleSelectCustomer_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private CustomObjects.RoundButton btnClose;
+        private Label lblPageHeaderSaleSelectCustomer;
+        private DataGridView dgvMain;
+        private Panel panel1;
+        private PictureBox pbClearSearch;
+        private PictureBox pictureBox3;
+        private CustomObjects.RoundTextBox rtbSearch;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn NAME;
+        private DataGridViewTextBoxColumn PHONE;
+    }
+}
