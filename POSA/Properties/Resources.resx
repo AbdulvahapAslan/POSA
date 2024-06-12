@@ -127,6 +127,9 @@
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="24pxBlueRefund1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxBlueRefund1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Loading1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Loading1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,9 +156,6 @@
   </data>
   <data name="shopping" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shopping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="24pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,6 +187,9 @@
   <data name="16pxSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\16pxSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BackgroundSmall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundSmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -204,6 +207,9 @@
   </data>
   <data name="24pxBlueBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxBlueBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxPerson" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxPerson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="99pxButtons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\99pxButtons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,9 +232,6 @@
   <data name="64pxKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxBlueBuy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxBlueBuy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BackgroundSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -241,9 +244,6 @@
   <data name="32pxTick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\32pxTick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="64pxGreenCheckSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxGreenCheckSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,14 +253,17 @@
   <data name="32pxAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\32pxAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="64pxColorfulCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxColorfulCard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="64pxContract" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxContract.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxPerson" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxPerson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="24pxBlueBuy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxBlueBuy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="24pxRedTrash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxRedTrash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,14 +328,17 @@
   <data name="64pxVariant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxVariant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="24pxBlueBuy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\24pxBlueBuy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="24pxEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="64pxBankNotes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxBankNotes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -361,10 +367,7 @@
   <data name="64pxPuzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxPuzzle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="24pxBlueRefund1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxBlueRefund1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="24pxBlueBuy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\24pxBlueBuy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="32pxBlueRightArrows" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxBlueRightArrows.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

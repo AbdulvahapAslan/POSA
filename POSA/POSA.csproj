@@ -19,6 +19,9 @@
     <Compile Update="Forms\AddBranch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\UpdatePrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\AddSupplierReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
