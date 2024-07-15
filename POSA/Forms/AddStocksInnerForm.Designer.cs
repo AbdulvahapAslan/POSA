@@ -38,39 +38,41 @@
             lblSellS = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            panel5 = new Panel();
+            panel4 = new Panel();
+            panel3 = new Panel();
+            panel2 = new Panel();
+            tlpDetails = new TableLayoutPanel();
             lblBuy = new Label();
             lblStock = new Label();
             lblSell = new Label();
             lblBarcode = new Label();
             lblProdName = new Label();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            panel4 = new Panel();
-            panel5 = new Panel();
             panel6 = new Panel();
             panel7 = new Panel();
             panel8 = new Panel();
             panel9 = new Panel();
-            textBox1 = new TextBox();
+            tbQuantity = new TextBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             lblBuying = new Label();
-            textBox2 = new TextBox();
+            tbBuy = new TextBox();
             lblSelling = new Label();
-            textBox3 = new TextBox();
+            tbSell = new TextBox();
             lblChooseSupp = new Label();
             btnCancel = new Button();
             btnSave = new Button();
             panel10 = new Panel();
             panel11 = new Panel();
-            fcPaymentType = new CustomObjects.FlatCombo();
+            fcSupplier = new CustomObjects.FlatCombo();
+            fcPriceType = new CustomObjects.FlatCombo();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMagGlass).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            tlpDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -80,7 +82,7 @@
             pbClearSearch.BackColor = Color.White;
             pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
             pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
-            pbClearSearch.Location = new Point(679, 17);
+            pbClearSearch.Location = new Point(469, 17);
             pbClearSearch.Name = "pbClearSearch";
             pbClearSearch.Size = new Size(26, 26);
             pbClearSearch.TabIndex = 84;
@@ -92,7 +94,7 @@
             pbMagGlass.BackColor = Color.White;
             pbMagGlass.BackgroundImage = Properties.Resources._16pxSearch;
             pbMagGlass.BackgroundImageLayout = ImageLayout.Center;
-            pbMagGlass.Location = new Point(414, 17);
+            pbMagGlass.Location = new Point(204, 17);
             pbMagGlass.Name = "pbMagGlass";
             pbMagGlass.Size = new Size(26, 26);
             pbMagGlass.TabIndex = 83;
@@ -107,7 +109,7 @@
             rtbSearch.BorderSize = 1;
             rtbSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rtbSearch.ForeColor = Color.FromArgb(64, 64, 64);
-            rtbSearch.Location = new Point(409, 13);
+            rtbSearch.Location = new Point(199, 13);
             rtbSearch.Margin = new Padding(4);
             rtbSearch.Multiline = false;
             rtbSearch.Name = "rtbSearch";
@@ -119,6 +121,7 @@
             rtbSearch.TabIndex = 85;
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
+            rtbSearch.KeyDown += rtbSearch_KeyDown;
             // 
             // lblBarcodeS
             // 
@@ -220,35 +223,67 @@
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(tableLayoutPanel2);
+            panel1.Controls.Add(tlpDetails);
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Location = new Point(12, 70);
             panel1.Name = "panel1";
             panel1.Size = new Size(1094, 160);
             panel1.TabIndex = 87;
             // 
-            // tableLayoutPanel2
+            // panel5
             // 
-            tableLayoutPanel2.BackColor = Color.FromArgb(78, 104, 133);
-            tableLayoutPanel2.ColumnCount = 5;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Controls.Add(lblBuy, 3, 0);
-            tableLayoutPanel2.Controls.Add(lblStock, 2, 0);
-            tableLayoutPanel2.Controls.Add(lblSell, 4, 0);
-            tableLayoutPanel2.Controls.Add(lblBarcode, 0, 0);
-            tableLayoutPanel2.Controls.Add(lblProdName, 1, 0);
-            tableLayoutPanel2.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
-            tableLayoutPanel2.Location = new Point(45, 83);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.Padding = new Padding(15);
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1004, 64);
-            tableLayoutPanel2.TabIndex = 87;
+            panel5.BackColor = Color.White;
+            panel5.Location = new Point(836, 30);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1, 30);
+            panel5.TabIndex = 91;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.White;
+            panel4.Location = new Point(642, 30);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1, 30);
+            panel4.TabIndex = 90;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.White;
+            panel3.Location = new Point(448, 30);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1, 30);
+            panel3.TabIndex = 89;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.Location = new Point(254, 30);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1, 30);
+            panel2.TabIndex = 88;
+            // 
+            // tlpDetails
+            // 
+            tlpDetails.BackColor = Color.FromArgb(78, 104, 133);
+            tlpDetails.ColumnCount = 5;
+            tlpDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlpDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlpDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlpDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlpDetails.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlpDetails.Controls.Add(lblBuy, 3, 0);
+            tlpDetails.Controls.Add(lblStock, 2, 0);
+            tlpDetails.Controls.Add(lblSell, 4, 0);
+            tlpDetails.Controls.Add(lblBarcode, 0, 0);
+            tlpDetails.Controls.Add(lblProdName, 1, 0);
+            tlpDetails.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
+            tlpDetails.Location = new Point(45, 83);
+            tlpDetails.Name = "tlpDetails";
+            tlpDetails.Padding = new Padding(15);
+            tlpDetails.RowCount = 1;
+            tlpDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpDetails.Size = new Size(1004, 64);
+            tlpDetails.TabIndex = 87;
             // 
             // lblBuy
             // 
@@ -315,38 +350,6 @@
             lblProdName.Size = new Size(0, 30);
             lblProdName.TabIndex = 1;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.White;
-            panel2.Location = new Point(254, 30);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1, 30);
-            panel2.TabIndex = 88;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.White;
-            panel3.Location = new Point(448, 30);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1, 30);
-            panel3.TabIndex = 89;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.White;
-            panel4.Location = new Point(642, 30);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(1, 30);
-            panel4.TabIndex = 90;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.White;
-            panel5.Location = new Point(836, 30);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1, 30);
-            panel5.TabIndex = 91;
-            // 
             // panel6
             // 
             panel6.BackColor = Color.White;
@@ -379,18 +382,19 @@
             panel9.Size = new Size(1, 30);
             panel9.TabIndex = 93;
             // 
-            // textBox1
+            // tbQuantity
             // 
-            textBox1.BackColor = Color.FromArgb(0, 74, 173);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(336, 271);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(152, 36);
-            textBox1.TabIndex = 97;
-            textBox1.Text = "0";
-            textBox1.TextAlign = HorizontalAlignment.Center;
+            tbQuantity.BackColor = Color.FromArgb(0, 74, 173);
+            tbQuantity.BorderStyle = BorderStyle.None;
+            tbQuantity.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
+            tbQuantity.ForeColor = Color.White;
+            tbQuantity.Location = new Point(336, 292);
+            tbQuantity.Name = "tbQuantity";
+            tbQuantity.Size = new Size(152, 36);
+            tbQuantity.TabIndex = 97;
+            tbQuantity.Text = "0";
+            tbQuantity.TextAlign = HorizontalAlignment.Center;
+            tbQuantity.KeyPress += tbQuantity_KeyPress;
             // 
             // label1
             // 
@@ -399,7 +403,7 @@
             label1.BackColor = Color.FromArgb(49, 121, 199);
             label1.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(199, 272);
+            label1.Location = new Point(199, 293);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Size(134, 37);
@@ -411,22 +415,24 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources._32pxWhitePlus;
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(452, 273);
+            pictureBox1.Location = new Point(452, 294);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(36, 36);
             pictureBox1.TabIndex = 99;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImage = Properties.Resources._32pxWhiteMinus;
             pictureBox2.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox2.Location = new Point(336, 273);
+            pictureBox2.Location = new Point(336, 294);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(36, 36);
             pictureBox2.TabIndex = 100;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // lblBuying
             // 
@@ -435,26 +441,27 @@
             lblBuying.BackColor = Color.FromArgb(49, 121, 199);
             lblBuying.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblBuying.ForeColor = Color.White;
-            lblBuying.Location = new Point(605, 271);
+            lblBuying.Location = new Point(605, 314);
             lblBuying.Margin = new Padding(0, 20, 0, 0);
             lblBuying.Name = "lblBuying";
             lblBuying.Size = new Size(158, 37);
             lblBuying.TabIndex = 102;
             lblBuying.Text = "Alış Rakamı";
             // 
-            // textBox2
+            // tbBuy
             // 
-            textBox2.BackColor = Color.FromArgb(49, 121, 199);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(792, 271);
-            textBox2.Margin = new Padding(15, 3, 3, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(152, 36);
-            textBox2.TabIndex = 101;
-            textBox2.Text = "0";
-            textBox2.TextAlign = HorizontalAlignment.Center;
+            tbBuy.BackColor = Color.FromArgb(49, 121, 199);
+            tbBuy.BorderStyle = BorderStyle.None;
+            tbBuy.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
+            tbBuy.ForeColor = Color.White;
+            tbBuy.Location = new Point(792, 314);
+            tbBuy.Margin = new Padding(15, 3, 3, 3);
+            tbBuy.Name = "tbBuy";
+            tbBuy.Size = new Size(152, 36);
+            tbBuy.TabIndex = 101;
+            tbBuy.Text = "0";
+            tbBuy.TextAlign = HorizontalAlignment.Center;
+            tbBuy.KeyPress += tbQuantity_KeyPress;
             // 
             // lblSelling
             // 
@@ -463,26 +470,27 @@
             lblSelling.BackColor = Color.FromArgb(49, 121, 199);
             lblSelling.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblSelling.ForeColor = Color.White;
-            lblSelling.Location = new Point(605, 328);
+            lblSelling.Location = new Point(605, 371);
             lblSelling.Margin = new Padding(0, 20, 0, 0);
             lblSelling.Name = "lblSelling";
             lblSelling.Size = new Size(172, 37);
             lblSelling.TabIndex = 104;
             lblSelling.Text = "Satış Rakamı";
             // 
-            // textBox3
+            // tbSell
             // 
-            textBox3.BackColor = Color.FromArgb(49, 121, 199);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
-            textBox3.ForeColor = Color.White;
-            textBox3.Location = new Point(792, 328);
-            textBox3.Margin = new Padding(15, 3, 3, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(152, 36);
-            textBox3.TabIndex = 103;
-            textBox3.Text = "0";
-            textBox3.TextAlign = HorizontalAlignment.Center;
+            tbSell.BackColor = Color.FromArgb(49, 121, 199);
+            tbSell.BorderStyle = BorderStyle.None;
+            tbSell.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
+            tbSell.ForeColor = Color.White;
+            tbSell.Location = new Point(792, 371);
+            tbSell.Margin = new Padding(15, 3, 3, 3);
+            tbSell.Name = "tbSell";
+            tbSell.Size = new Size(152, 36);
+            tbSell.TabIndex = 103;
+            tbSell.Text = "0";
+            tbSell.TextAlign = HorizontalAlignment.Center;
+            tbSell.KeyPress += tbQuantity_KeyPress;
             // 
             // lblChooseSupp
             // 
@@ -491,7 +499,7 @@
             lblChooseSupp.BackColor = Color.FromArgb(49, 121, 199);
             lblChooseSupp.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblChooseSupp.ForeColor = Color.White;
-            lblChooseSupp.Location = new Point(605, 385);
+            lblChooseSupp.Location = new Point(605, 428);
             lblChooseSupp.Margin = new Padding(0, 20, 0, 0);
             lblChooseSupp.Name = "lblChooseSupp";
             lblChooseSupp.Size = new Size(170, 37);
@@ -508,7 +516,7 @@
             btnCancel.ForeColor = Color.White;
             btnCancel.Image = Properties.Resources._64pxWhiteX50Scale1;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(199, 343);
+            btnCancel.Location = new Point(199, 364);
             btnCancel.Margin = new Padding(10);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(169, 79);
@@ -516,6 +524,7 @@
             btnCancel.Text = "  İPTAL      ";
             btnCancel.TextAlign = ContentAlignment.MiddleRight;
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -527,7 +536,7 @@
             btnSave.ForeColor = Color.White;
             btnSave.Image = Properties.Resources._64pxGreenCheck;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(388, 343);
+            btnSave.Location = new Point(388, 364);
             btnSave.Margin = new Padding(10);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(169, 79);
@@ -535,12 +544,12 @@
             btnSave.Text = "KAYDET  ";
             btnSave.TextAlign = ContentAlignment.MiddleRight;
             btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click_1;
+            btnSave.Click += btnSave_Click;
             // 
             // panel10
             // 
             panel10.BackColor = Color.FromArgb(49, 121, 199);
-            panel10.Location = new Point(605, 271);
+            panel10.Location = new Point(605, 314);
             panel10.Name = "panel10";
             panel10.Size = new Size(172, 37);
             panel10.TabIndex = 109;
@@ -548,28 +557,61 @@
             // panel11
             // 
             panel11.BackColor = Color.FromArgb(49, 121, 199);
-            panel11.Location = new Point(605, 385);
+            panel11.Location = new Point(605, 428);
             panel11.Name = "panel11";
             panel11.Size = new Size(172, 37);
             panel11.TabIndex = 110;
             // 
-            // fcPaymentType
+            // fcSupplier
             // 
-            fcPaymentType.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            fcPaymentType.BackColor = Color.FromArgb(49, 121, 199);
-            fcPaymentType.BorderColor = Color.FromArgb(49, 121, 199);
-            fcPaymentType.ButtonColor = Color.White;
-            fcPaymentType.DrawMode = DrawMode.OwnerDrawFixed;
-            fcPaymentType.DropDownStyle = ComboBoxStyle.DropDownList;
-            fcPaymentType.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
-            fcPaymentType.ForeColor = Color.White;
-            fcPaymentType.FormattingEnabled = true;
-            fcPaymentType.HighlightColor = Color.FromArgb(49, 121, 199);
-            fcPaymentType.Location = new Point(792, 385);
-            fcPaymentType.Margin = new Padding(1);
-            fcPaymentType.Name = "fcPaymentType";
-            fcPaymentType.Size = new Size(155, 37);
-            fcPaymentType.TabIndex = 111;
+            fcSupplier.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            fcSupplier.BackColor = Color.FromArgb(49, 121, 199);
+            fcSupplier.BorderColor = Color.FromArgb(49, 121, 199);
+            fcSupplier.ButtonColor = Color.White;
+            fcSupplier.DrawMode = DrawMode.OwnerDrawFixed;
+            fcSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
+            fcSupplier.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            fcSupplier.ForeColor = Color.White;
+            fcSupplier.FormattingEnabled = true;
+            fcSupplier.HighlightColor = Color.FromArgb(49, 121, 199);
+            fcSupplier.Location = new Point(792, 428);
+            fcSupplier.Margin = new Padding(1);
+            fcSupplier.Name = "fcSupplier";
+            fcSupplier.Size = new Size(155, 37);
+            fcSupplier.TabIndex = 111;
+            // 
+            // fcPriceType
+            // 
+            fcPriceType.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            fcPriceType.BackColor = Color.FromArgb(49, 121, 199);
+            fcPriceType.BorderColor = Color.FromArgb(49, 121, 199);
+            fcPriceType.ButtonColor = Color.White;
+            fcPriceType.DrawMode = DrawMode.OwnerDrawFixed;
+            fcPriceType.DropDownStyle = ComboBoxStyle.DropDownList;
+            fcPriceType.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            fcPriceType.ForeColor = Color.White;
+            fcPriceType.FormattingEnabled = true;
+            fcPriceType.HighlightColor = Color.FromArgb(49, 121, 199);
+            fcPriceType.Items.AddRange(new object[] { "1", "2", "3" });
+            fcPriceType.Location = new Point(697, 18);
+            fcPriceType.Margin = new Padding(1);
+            fcPriceType.Name = "fcPriceType";
+            fcPriceType.Size = new Size(90, 25);
+            fcPriceType.TabIndex = 114;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(49, 121, 199);
+            label2.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(605, 18);
+            label2.Margin = new Padding(0, 20, 0, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 25);
+            label2.TabIndex = 112;
+            label2.Text = "Fiyat Tipi";
             // 
             // AddStocksInnerForm
             // 
@@ -577,18 +619,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 74, 173);
             ClientSize = new Size(1118, 532);
-            Controls.Add(fcPaymentType);
+            Controls.Add(fcPriceType);
+            Controls.Add(label2);
+            Controls.Add(fcSupplier);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(lblChooseSupp);
             Controls.Add(lblSelling);
-            Controls.Add(textBox3);
+            Controls.Add(tbSell);
             Controls.Add(lblBuying);
-            Controls.Add(textBox2);
+            Controls.Add(tbBuy);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(tbQuantity);
             Controls.Add(panel6);
             Controls.Add(panel7);
             Controls.Add(panel8);
@@ -608,8 +652,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
+            tlpDetails.ResumeLayout(false);
+            tlpDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -627,7 +671,7 @@
         private Label lblSellS;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tlpDetails;
         private Label lblBuy;
         private Label lblStock;
         private Label lblSell;
@@ -641,19 +685,21 @@
         private Panel panel7;
         private Panel panel8;
         private Panel panel9;
-        private TextBox textBox1;
+        private TextBox tbQuantity;
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Label lblBuying;
-        private TextBox textBox2;
+        private TextBox tbBuy;
         private Label lblSelling;
-        private TextBox textBox3;
+        private TextBox tbSell;
         private Label lblChooseSupp;
         private Button btnCancel;
         private Button btnSave;
         private Panel panel10;
         private Panel panel11;
-        private CustomObjects.FlatCombo fcPaymentType;
+        private CustomObjects.FlatCombo fcSupplier;
+        private CustomObjects.FlatCombo fcPriceType;
+        private Label label2;
     }
 }

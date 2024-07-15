@@ -139,6 +139,9 @@
   <data name="24pxPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="32pxPaymentBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxPaymentBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="24pxMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +162,9 @@
   </data>
   <data name="shopping" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shopping.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="24pxWhiteX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxWhiteX.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +196,8 @@
   <data name="16pxSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\16pxSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxBlueManTie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxBlueManTie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BackgroundSmall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundSmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,6 +256,12 @@
   <data name="64pxBlueBoxes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxBlueBoxes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="64pxGrayExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxGrayExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="64pxGreenCheckSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxGreenCheckSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -258,9 +270,6 @@
   </data>
   <data name="32pxAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\32pxAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="64pxColorfulCard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxColorfulCard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -343,11 +352,11 @@
   <data name="24pxEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24pxEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cloud-sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cloud-sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="64pxDialPad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\64pxDialPad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="portfolio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\portfolio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="64pxBankNotes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\64pxBankNotes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -379,7 +388,7 @@
   <data name="32pxWhiteMinus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\32pxWhiteMinus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="64pxGrayExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\64pxGrayExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="32pxBlueSunbed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32pxBlueSunbed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

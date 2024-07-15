@@ -160,6 +160,8 @@ namespace POSA.Forms
                     listOfIndexs.Add(row.Index);
                 }
             }
+            listOfIndexs.Sort();
+            listOfIndexs.Reverse();
             foreach (var index in listOfIndexs)
             {
                 dgvMain.Rows.Remove(dgvMain.Rows[index]);
@@ -172,21 +174,53 @@ namespace POSA.Forms
             else
                 btnForAllProducts.BackColor = Color.White;
         }
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(tbPercentage.Text) < 1)
             {
                 MessageBox.Show($"Yüzde 0'dan büyük olmalıdır.", "HATA", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             }
+            var setting = Setting.Get();
             if (btnForAllProducts.BackColor == Color.LightGreen)
             {
                 var answer = MessageBox.Show($"Bütün ürünler için %{tbPercentage.Text} oranında 'FİYAT {cbType.Text}' işlemini onaylıyor musunuz?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (answer == DialogResult.No)
                     return;
-                
+                await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+                conn.Open();
+                var sqlBuilder = new SqlBuilder();
+                var builderTemp = sqlBuilder.AddTemplate(
+                        $"""
+                            UPDATE PRODUCTS SET SALEPRICE{((cbPriceType.Text ?? "1") == "1" ? "" : cbPriceType.Text)} = SALEPRICE{((cbPriceType.Text ?? "1") == "1" ? "" : cbPriceType.Text)} {(cbType.Text.StartsWith("AR") ? "+" : "-")} ((SALEPRICE{((cbPriceType.Text ?? "1") == "1" ? "" : cbPriceType.Text)}/100)*@PERCENTAGE)
+                        """);
+                var param = new
+                {
+                    PERCENTAGE = Convert.ToDecimal(tbPercentage.Text, new CultureInfo("en-GB"))
+                };
+                var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
+                conn.Close();
+                RefreshMainDataGrid();
             }
             else
             {
+                await using var conn = new SqlConnection(setting.Sql.ConnectionString());
+                conn.Open();
+                foreach (DataGridViewRow row in dgvSelects.Rows)
+                {
+                    var sqlBuilder = new SqlBuilder();
+                    var builderTemp = sqlBuilder.AddTemplate(
+                        $"""
+                            UPDATE PRODUCTS SET SALEPRICE{((cbPriceType.Text ?? "1") == "1" ? "" : cbPriceType.Text)} = @PRICE WHERE ID = (SELECT TOP 1 ID FROM PRODUCTS WITH (NOLOCK) WHERE BARCODE = @BARCODE)
+                        """);
+                    var param = new
+                    {
+                        BARCODE = row.Cells["SBARCODE"].Value.ToString(),
+                        PRICE = decimal.Parse(row.Cells["NEWPRICE"].Value.ToString(), new NumberFormatInfo() { NumberDecimalSeparator = "," }),
+                    };
+                    var result = await conn.ExecuteAsync(builderTemp.RawSql, param);
+                }
+                conn.Close();
+                RefreshMainDataGrid();
             }
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -215,6 +249,31 @@ namespace POSA.Forms
         private void cbPriceType_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshMainDataGrid();
+        }
+        private void tbPercentage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+                (sender as TextBox).Text += ".";
+                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
+                (sender as TextBox).SelectionLength = 0;
+            }
+            else
+            {
+                if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

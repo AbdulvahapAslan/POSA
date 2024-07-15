@@ -385,6 +385,7 @@
             tbPercentage.PlaceholderText = "%BELİRLE";
             tbPercentage.Size = new Size(218, 45);
             tbPercentage.TabIndex = 94;
+            tbPercentage.KeyPress += tbPercentage_KeyPress;
             // 
             // btnApply
             // 
@@ -431,6 +432,7 @@
             btn3.TabIndex = 97;
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = false;
+            btn3.Click += btnNumberGeneral_Click;
             // 
             // btn5
             // 
@@ -446,6 +448,7 @@
             btn5.TabIndex = 98;
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = false;
+            btn5.Click += btnNumberGeneral_Click;
             // 
             // btn10
             // 
@@ -461,6 +464,7 @@
             btn10.TabIndex = 100;
             btn10.Text = "10";
             btn10.UseVisualStyleBackColor = false;
+            btn10.Click += btnNumberGeneral_Click;
             // 
             // btn8
             // 
@@ -476,6 +480,7 @@
             btn8.TabIndex = 99;
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = false;
+            btn8.Click += btnNumberGeneral_Click;
             // 
             // btn12
             // 
@@ -491,6 +496,7 @@
             btn12.TabIndex = 101;
             btn12.Text = "12";
             btn12.UseVisualStyleBackColor = false;
+            btn12.Click += btnNumberGeneral_Click;
             // 
             // btn50
             // 
@@ -506,6 +512,7 @@
             btn50.TabIndex = 106;
             btn50.Text = "50";
             btn50.UseVisualStyleBackColor = false;
+            btn50.Click += btnNumberGeneral_Click;
             // 
             // btn35
             // 
@@ -521,6 +528,7 @@
             btn35.TabIndex = 105;
             btn35.Text = "35";
             btn35.UseVisualStyleBackColor = false;
+            btn35.Click += btnNumberGeneral_Click;
             // 
             // btn25
             // 
@@ -536,6 +544,7 @@
             btn25.TabIndex = 104;
             btn25.Text = "25";
             btn25.UseVisualStyleBackColor = false;
+            btn25.Click += btnNumberGeneral_Click;
             // 
             // btn20
             // 
@@ -551,6 +560,7 @@
             btn20.TabIndex = 103;
             btn20.Text = "20";
             btn20.UseVisualStyleBackColor = false;
+            btn20.Click += btnNumberGeneral_Click;
             // 
             // btn15
             // 
@@ -566,6 +576,7 @@
             btn15.TabIndex = 102;
             btn15.Text = "15";
             btn15.UseVisualStyleBackColor = false;
+            btn15.Click += btnNumberGeneral_Click;
             // 
             // label1
             // 
