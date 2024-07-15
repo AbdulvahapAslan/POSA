@@ -8,6 +8,7 @@ namespace POSA.Dto;
 
 public class ProductDetails
 {
+    public string BARCODE { get; set; }
     public string NAME { get; set; }
     public string STOCKPLACE { get; set; }
     public decimal PRICE { get; set; }

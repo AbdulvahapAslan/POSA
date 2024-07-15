@@ -7,9 +7,11 @@ namespace POSA.Forms
 {
     public partial class NewProduct : Form
     {
-        public NewProduct()
+        public int SupplierID = 0;
+        public NewProduct(int supplierID)
         {
             InitializeComponent();
+            SupplierID = supplierID;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -487,7 +489,7 @@ namespace POSA.Forms
             }
             else
             {
-                var addS = new AddSupplierInnerForm(true);
+                var addS = new AddSupplierInnerForm(true,0);
                 addS.Name = "AddSupp";
                 var dr = addS.ShowDialog();
                 FillSupplierComboBox();
@@ -555,9 +557,27 @@ namespace POSA.Forms
             var settings = Setting.Get();
             var sb = new SqlBuilder();
             sb.Select("ID,NAME");
-            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM SUPPLIERS");
+            SqlBuilder.Template builderTemp;
+            if (SupplierID>0)
+            {
+                sb.Where("ID=@ID");
+                builderTemp = sb.AddTemplate("SELECT /**select**/ FROM SUPPLIERS /**where**/");
+            }
+            else
+            {
+
+                builderTemp = sb.AddTemplate("SELECT /**select**/ FROM SUPPLIERS");
+            }
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
-            var result = await conn.QueryAsync(builderTemp.RawSql);
+            IEnumerable<dynamic>? result;
+            if (SupplierID>0)
+            {
+                result = await conn.QueryAsync(builderTemp.RawSql, new { ID = SupplierID });
+            }
+            else
+            {
+                result = await conn.QueryAsync(builderTemp.RawSql);
+            }
             if (result.Any())
             {
                 var categoryList = (from x in result select new { ID = x.ID, NAME = x.NAME }).ToList();

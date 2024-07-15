@@ -277,6 +277,7 @@
             btnClose.TextColor = Color.White;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Visible = false;
+            btnClose.Click += btnClose_Click_1;
             // 
             // AddCustomerInnerForm
             // 

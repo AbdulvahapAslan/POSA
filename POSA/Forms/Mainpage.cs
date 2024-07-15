@@ -52,7 +52,7 @@ namespace POSA.Forms
             catch (Exception)
             {
             }
-            
+
         }
         private async void Mainpage_Load(object sender, EventArgs e)
         {
@@ -112,6 +112,22 @@ namespace POSA.Forms
         }
         private void btnStocks_Click(object sender, EventArgs e)
         {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Stoklar");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (lblLicence.Text == "AKTİF")
+            {
+                var sp = new AddStock();
+                sp.Name = "Stoklar";
+                sp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnBuying_Click(object sender, EventArgs e)
         {
@@ -173,6 +189,29 @@ namespace POSA.Forms
                     var addC = new AddCustomer();
                     addC.Name = "Müşteri Ekle";
                     addC.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnPricing_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Fiyat Güncelle");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var up = new UpdatePrices();
+                    up.Name = "Fiyat Güncelle";
+                    up.Show();
                 }
                 else
                 {

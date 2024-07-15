@@ -1,8 +1,8 @@
 ﻿namespace POSA.Forms
 {
-    public partial class AddSupplier : Form
+    public partial class AddStock : Form
     {
-        public AddSupplier()
+        public AddStock()
         {
             InitializeComponent();
         }
@@ -12,19 +12,19 @@
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
-        private void btnAddSupplier_Click(object sender, EventArgs e)
+        private void btnAddStocks_Click(object sender, EventArgs e)
         {
             foreach (Form form in scMain.Panel2.Controls)
             {
                 form.Close();
             }
-            var cf = new AddSupplierInnerForm(false,0) { TopLevel = false, TopMost = true, Name = "AddSupp" };
+            var cf = new AddStocksInnerForm() { TopLevel = false, TopMost = true, Name = "AddStocks" };
             scMain.Panel2.Controls.Add(cf);
             cf.Show();
         }
         private void AddSupplier_Load(object sender, EventArgs e)
         {
-            btnAddSupplier.PerformClick();
+            btnAddStocks.PerformClick();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -53,13 +53,13 @@
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        private void btnSupplierReport_Click(object sender, EventArgs e)
+        private void btnShowStocks_Click(object sender, EventArgs e)
         {
             foreach (Form form in scMain.Panel2.Controls)
             {
                 form.Close();
             }
-            var cf = new AddSupplierReportForm() { TopLevel = false, TopMost = true, Name = "SupRep" };
+            var cf = new ShowStockInnerForm() { TopLevel = false, TopMost = true, Name = "ShowSt" };
             scMain.Panel2.Controls.Add(cf);
             cf.Show();
         }

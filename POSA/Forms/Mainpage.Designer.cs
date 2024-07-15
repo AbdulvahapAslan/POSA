@@ -244,6 +244,7 @@
             btnPricing.Text = "Fiyat Güncelle";
             btnPricing.TextAlign = ContentAlignment.BottomCenter;
             btnPricing.UseVisualStyleBackColor = false;
+            btnPricing.Click += btnPricing_Click;
             // 
             // btnBackup
             // 

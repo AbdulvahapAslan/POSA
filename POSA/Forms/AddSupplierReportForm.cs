@@ -110,7 +110,7 @@ namespace POSA.Forms
             }
             else if (e.ColumnIndex == dgvMain.Columns["UPDATE"].Index)
             {
-                var addC = new AddCustomerInnerForm(true,Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+                var addC = new AddSupplierInnerForm(true,Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
                 DialogResult dr = addC.ShowDialog();
                 if (dr == DialogResult.OK)
                     RefreshMainDataGrid();
@@ -123,6 +123,17 @@ namespace POSA.Forms
             else if (e.ColumnIndex == dgvMain.Columns["REFUND"].Index)
             {
                 //TODO: IT WILL BE ADDED AFTER DISCUSS ABOUT IT
+            }
+            else if (e.ColumnIndex == dgvMain.Columns["GET"].Index)
+            {
+                var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "TAKE");
+                if (forms.Any())
+                {
+                    MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                var load = new Loading("TAKE-"+ Convert.ToInt32(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString()), 750);
+                load.Show();
             }
         }
         public int LastAddDepthRowIndex = 0;

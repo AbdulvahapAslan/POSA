@@ -13,9 +13,7 @@ namespace POSA.Forms
             InitializeComponent();
             this.IsDialog = isDialog;
             this.CustomerID = _id;
-            
         }
-        
         private async void btnSave_Click(object sender, EventArgs e)
         {
             var setting = Setting.Get();
@@ -76,7 +74,6 @@ namespace POSA.Forms
                         MessageBox.Show("Kayıt gerçekleştirilemedi. Bağlantınızı kontrol ederek tekrar deneyiniz!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
-
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -88,7 +85,6 @@ namespace POSA.Forms
             tbTaxNo.Text = "";
             tbPhone.Text = "";
         }
-
         private async void AddCustomerInnerForm_Load(object sender, EventArgs e)
         {
             if (IsDialog)
@@ -123,15 +119,9 @@ namespace POSA.Forms
                 }
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void AddCustomerInnerForm_MouseDown(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

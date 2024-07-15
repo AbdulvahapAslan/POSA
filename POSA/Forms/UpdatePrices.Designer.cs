@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePrices));
             panel1 = new Panel();
             dgvMain = new DataGridView();
             CHECK = new DataGridViewCheckBoxColumn();
@@ -42,16 +43,15 @@
             pbMagGlass = new PictureBox();
             rtbSearch = new CustomObjects.RoundTextBox();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            dataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dgvSelects = new DataGridView();
+            SBARCODE = new DataGridViewTextBoxColumn();
+            SNAME = new DataGridViewTextBoxColumn();
+            OLDPRICE = new DataGridViewTextBoxColumn();
             NEWPRICE = new DataGridViewTextBoxColumn();
             label8 = new Label();
             cbPriceType = new ComboBox();
-            btnSearchProduct = new Button();
-            tbSearch = new TextBox();
+            btnGetSelects = new Button();
+            tbPercentage = new TextBox();
             btnApply = new Button();
             btnSave = new Button();
             btn3 = new Button();
@@ -64,22 +64,34 @@
             btn25 = new Button();
             btn20 = new Button();
             btn15 = new Button();
+            label1 = new Label();
+            cbType = new ComboBox();
+            btnForAllProducts = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
+            btnMinimize = new Button();
+            btnMaximize = new Button();
+            btnClose = new Button();
+            lblPageHeaderUpdatePrice = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMagGlass).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSelects).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(dgvMain);
-            panel1.Location = new Point(19, 65);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(10, 10);
             panel1.Margin = new Padding(10);
             panel1.Name = "panel1";
-            panel1.Size = new Size(451, 446);
+            panel1.Size = new Size(441, 445);
             panel1.TabIndex = 0;
             // 
             // dgvMain
@@ -93,25 +105,25 @@
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.SelectionBackColor = Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeight = 50;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvMain.Columns.AddRange(new DataGridViewColumn[] { CHECK, BARCODE, NAME, PRICE });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(10, 10);
@@ -133,9 +145,9 @@
             dgvMain.RowTemplate.DividerHeight = 10;
             dgvMain.RowTemplate.Height = 40;
             dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMain.Size = new Size(431, 426);
+            dgvMain.Size = new Size(421, 425);
             dgvMain.TabIndex = 76;
-            dgvMain.CellClick += dgvMain_CellClick;
+            dgvMain.CellDoubleClick += dgvMain_CellDoubleClick;
             // 
             // CHECK
             // 
@@ -179,7 +191,7 @@
             pbClearSearch.BackColor = Color.White;
             pbClearSearch.BackgroundImage = Properties.Resources._16pxCloseBlack;
             pbClearSearch.BackgroundImageLayout = ImageLayout.Center;
-            pbClearSearch.Location = new Point(254, 21);
+            pbClearSearch.Location = new Point(254, 67);
             pbClearSearch.Name = "pbClearSearch";
             pbClearSearch.Size = new Size(26, 26);
             pbClearSearch.TabIndex = 84;
@@ -191,7 +203,7 @@
             pbMagGlass.BackColor = Color.White;
             pbMagGlass.BackgroundImage = Properties.Resources._16pxSearch;
             pbMagGlass.BackgroundImageLayout = ImageLayout.Center;
-            pbMagGlass.Location = new Point(23, 21);
+            pbMagGlass.Location = new Point(23, 67);
             pbMagGlass.Name = "pbMagGlass";
             pbMagGlass.Size = new Size(26, 26);
             pbMagGlass.TabIndex = 83;
@@ -206,7 +218,7 @@
             rtbSearch.BorderSize = 1;
             rtbSearch.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rtbSearch.ForeColor = Color.FromArgb(64, 64, 64);
-            rtbSearch.Location = new Point(19, 17);
+            rtbSearch.Location = new Point(19, 63);
             rtbSearch.Margin = new Padding(4);
             rtbSearch.Multiline = false;
             rtbSearch.Name = "rtbSearch";
@@ -218,105 +230,101 @@
             rtbSearch.TabIndex = 85;
             rtbSearch.Texts = "";
             rtbSearch.UnderlinedStyle = false;
+            rtbSearch._TextChanged += rtbSearch__TextChanged;
+            rtbSearch.KeyDown += rtbSearch_KeyDown;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(dataGridView1);
-            panel2.Location = new Point(714, 65);
+            panel2.Controls.Add(dgvSelects);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(711, 10);
             panel2.Margin = new Padding(10);
             panel2.Name = "panel2";
-            panel2.Size = new Size(451, 446);
+            panel2.Size = new Size(441, 445);
             panel2.TabIndex = 77;
             // 
-            // dataGridView1
+            // dgvSelects
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle7.SelectionBackColor = Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridView1.ColumnHeadersHeight = 50;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewCheckBoxColumn1, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, NEWPRICE });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle8.SelectionBackColor = Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.White;
-            dataGridView1.Location = new Point(7, 10);
-            dataGridView1.Margin = new Padding(10);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 35;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView1.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
-            dataGridView1.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
-            dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
-            dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowTemplate.DividerHeight = 10;
-            dataGridView1.RowTemplate.Height = 40;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(434, 426);
-            dataGridView1.TabIndex = 76;
+            dgvSelects.AllowUserToAddRows = false;
+            dgvSelects.AllowUserToDeleteRows = false;
+            dgvSelects.AllowUserToResizeColumns = false;
+            dgvSelects.AllowUserToResizeRows = false;
+            dgvSelects.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSelects.BackgroundColor = Color.White;
+            dgvSelects.BorderStyle = BorderStyle.None;
+            dgvSelects.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvSelects.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvSelects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvSelects.ColumnHeadersHeight = 50;
+            dgvSelects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvSelects.Columns.AddRange(new DataGridViewColumn[] { SBARCODE, SNAME, OLDPRICE, NEWPRICE });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvSelects.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvSelects.EnableHeadersVisualStyles = false;
+            dgvSelects.GridColor = Color.White;
+            dgvSelects.Location = new Point(7, 10);
+            dgvSelects.Margin = new Padding(10);
+            dgvSelects.MultiSelect = false;
+            dgvSelects.Name = "dgvSelects";
+            dgvSelects.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvSelects.RowHeadersVisible = false;
+            dgvSelects.RowHeadersWidth = 35;
+            dgvSelects.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvSelects.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvSelects.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
+            dgvSelects.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvSelects.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
+            dgvSelects.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
+            dgvSelects.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvSelects.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvSelects.RowTemplate.DividerHeight = 10;
+            dgvSelects.RowTemplate.Height = 40;
+            dgvSelects.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSelects.Size = new Size(424, 425);
+            dgvSelects.TabIndex = 76;
             // 
-            // dataGridViewCheckBoxColumn1
+            // SBARCODE
             // 
-            dataGridViewCheckBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCheckBoxColumn1.FillWeight = 10F;
-            dataGridViewCheckBoxColumn1.HeaderText = "";
-            dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            SBARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SBARCODE.DataPropertyName = "BARCODE";
+            SBARCODE.FillWeight = 20F;
+            SBARCODE.HeaderText = "BARKOD";
+            SBARCODE.MaxInputLength = 100;
+            SBARCODE.Name = "SBARCODE";
+            SBARCODE.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // SNAME
             // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn1.DataPropertyName = "BARCODE";
-            dataGridViewTextBoxColumn1.FillWeight = 20F;
-            dataGridViewTextBoxColumn1.HeaderText = "BARKOD";
-            dataGridViewTextBoxColumn1.MaxInputLength = 100;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
+            SNAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SNAME.DataPropertyName = "NAME";
+            SNAME.FillWeight = 35F;
+            SNAME.HeaderText = "ÜRÜN ADI";
+            SNAME.MaxInputLength = 50;
+            SNAME.Name = "SNAME";
+            SNAME.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // OLDPRICE
             // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.DataPropertyName = "NAME";
-            dataGridViewTextBoxColumn2.FillWeight = 35F;
-            dataGridViewTextBoxColumn2.HeaderText = "ÜRÜN ADI";
-            dataGridViewTextBoxColumn2.MaxInputLength = 50;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.DataPropertyName = "PRICE";
-            dataGridViewTextBoxColumn3.FillWeight = 17F;
-            dataGridViewTextBoxColumn3.HeaderText = "FİYAT";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
+            OLDPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            OLDPRICE.DataPropertyName = "PRICE";
+            OLDPRICE.FillWeight = 17F;
+            OLDPRICE.HeaderText = "FİYAT";
+            OLDPRICE.Name = "OLDPRICE";
+            OLDPRICE.ReadOnly = true;
             // 
             // NEWPRICE
             // 
@@ -331,7 +339,7 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(305, 27);
+            label8.Location = new Point(305, 73);
             label8.Name = "label8";
             label8.Size = new Size(71, 20);
             label8.TabIndex = 92;
@@ -345,36 +353,38 @@
             cbPriceType.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             cbPriceType.FormattingEnabled = true;
             cbPriceType.Items.AddRange(new object[] { "1", "2", "3" });
-            cbPriceType.Location = new Point(382, 24);
+            cbPriceType.Location = new Point(382, 70);
             cbPriceType.Name = "cbPriceType";
             cbPriceType.Size = new Size(88, 28);
             cbPriceType.TabIndex = 91;
+            cbPriceType.SelectedIndexChanged += cbPriceType_SelectedIndexChanged;
             // 
-            // btnSearchProduct
+            // btnGetSelects
             // 
-            btnSearchProduct.BackColor = Color.White;
-            btnSearchProduct.FlatAppearance.BorderSize = 0;
-            btnSearchProduct.FlatStyle = FlatStyle.Flat;
-            btnSearchProduct.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnSearchProduct.ForeColor = Color.FromArgb(95, 95, 95);
-            btnSearchProduct.Image = Properties.Resources._32pxBlueRightArrows;
-            btnSearchProduct.Location = new Point(483, 127);
-            btnSearchProduct.Name = "btnSearchProduct";
-            btnSearchProduct.Size = new Size(63, 40);
-            btnSearchProduct.TabIndex = 93;
-            btnSearchProduct.TextAlign = ContentAlignment.MiddleRight;
-            btnSearchProduct.UseVisualStyleBackColor = false;
+            btnGetSelects.BackColor = Color.White;
+            btnGetSelects.FlatAppearance.BorderSize = 0;
+            btnGetSelects.FlatStyle = FlatStyle.Flat;
+            btnGetSelects.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnGetSelects.ForeColor = Color.FromArgb(95, 95, 95);
+            btnGetSelects.Image = Properties.Resources._32pxBlueRightArrows;
+            btnGetSelects.Location = new Point(9, 7);
+            btnGetSelects.Name = "btnGetSelects";
+            btnGetSelects.Size = new Size(63, 40);
+            btnGetSelects.TabIndex = 93;
+            btnGetSelects.TextAlign = ContentAlignment.MiddleRight;
+            btnGetSelects.UseVisualStyleBackColor = false;
+            btnGetSelects.Click += btnGetSelects_Click;
             // 
-            // tbSearch
+            // tbPercentage
             // 
-            tbSearch.BackColor = Color.White;
-            tbSearch.BorderStyle = BorderStyle.None;
-            tbSearch.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
-            tbSearch.Location = new Point(483, 173);
-            tbSearch.Name = "tbSearch";
-            tbSearch.PlaceholderText = "%BELİRLE";
-            tbSearch.Size = new Size(218, 45);
-            tbSearch.TabIndex = 94;
+            tbPercentage.BackColor = Color.White;
+            tbPercentage.BorderStyle = BorderStyle.None;
+            tbPercentage.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
+            tbPercentage.Location = new Point(9, 112);
+            tbPercentage.Name = "tbPercentage";
+            tbPercentage.PlaceholderText = "%BELİRLE";
+            tbPercentage.Size = new Size(218, 45);
+            tbPercentage.TabIndex = 94;
             // 
             // btnApply
             // 
@@ -383,13 +393,14 @@
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             btnApply.ForeColor = Color.FromArgb(77, 176, 52);
-            btnApply.Location = new Point(483, 319);
+            btnApply.Location = new Point(9, 258);
             btnApply.Margin = new Padding(3, 10, 3, 3);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(218, 40);
             btnApply.TabIndex = 95;
             btnApply.Text = "UYGULA";
             btnApply.UseVisualStyleBackColor = false;
+            btnApply.Click += btnApply_Click;
             // 
             // btnSave
             // 
@@ -398,12 +409,13 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             btnSave.ForeColor = Color.FromArgb(77, 176, 52);
-            btnSave.Location = new Point(483, 365);
+            btnSave.Location = new Point(9, 304);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(218, 40);
             btnSave.TabIndex = 96;
             btnSave.Text = "KAYDET";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btn3
             // 
@@ -412,7 +424,7 @@
             btn3.FlatStyle = FlatStyle.Flat;
             btn3.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn3.ForeColor = Color.FromArgb(77, 176, 52);
-            btn3.Location = new Point(483, 226);
+            btn3.Location = new Point(9, 161);
             btn3.Margin = new Padding(1);
             btn3.Name = "btn3";
             btn3.Size = new Size(42, 42);
@@ -427,7 +439,7 @@
             btn5.FlatStyle = FlatStyle.Flat;
             btn5.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn5.ForeColor = Color.FromArgb(77, 176, 52);
-            btn5.Location = new Point(527, 226);
+            btn5.Location = new Point(53, 161);
             btn5.Margin = new Padding(1);
             btn5.Name = "btn5";
             btn5.Size = new Size(42, 42);
@@ -442,7 +454,7 @@
             btn10.FlatStyle = FlatStyle.Flat;
             btn10.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn10.ForeColor = Color.FromArgb(77, 176, 52);
-            btn10.Location = new Point(615, 226);
+            btn10.Location = new Point(141, 161);
             btn10.Margin = new Padding(1);
             btn10.Name = "btn10";
             btn10.Size = new Size(42, 42);
@@ -457,7 +469,7 @@
             btn8.FlatStyle = FlatStyle.Flat;
             btn8.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn8.ForeColor = Color.FromArgb(77, 176, 52);
-            btn8.Location = new Point(571, 226);
+            btn8.Location = new Point(97, 161);
             btn8.Margin = new Padding(1);
             btn8.Name = "btn8";
             btn8.Size = new Size(42, 42);
@@ -472,7 +484,7 @@
             btn12.FlatStyle = FlatStyle.Flat;
             btn12.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn12.ForeColor = Color.FromArgb(77, 176, 52);
-            btn12.Location = new Point(659, 226);
+            btn12.Location = new Point(185, 161);
             btn12.Margin = new Padding(1);
             btn12.Name = "btn12";
             btn12.Size = new Size(42, 42);
@@ -487,7 +499,7 @@
             btn50.FlatStyle = FlatStyle.Flat;
             btn50.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn50.ForeColor = Color.FromArgb(77, 176, 52);
-            btn50.Location = new Point(659, 270);
+            btn50.Location = new Point(185, 205);
             btn50.Margin = new Padding(1);
             btn50.Name = "btn50";
             btn50.Size = new Size(42, 42);
@@ -502,7 +514,7 @@
             btn35.FlatStyle = FlatStyle.Flat;
             btn35.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn35.ForeColor = Color.FromArgb(77, 176, 52);
-            btn35.Location = new Point(615, 270);
+            btn35.Location = new Point(141, 205);
             btn35.Margin = new Padding(1);
             btn35.Name = "btn35";
             btn35.Size = new Size(42, 42);
@@ -517,7 +529,7 @@
             btn25.FlatStyle = FlatStyle.Flat;
             btn25.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn25.ForeColor = Color.FromArgb(77, 176, 52);
-            btn25.Location = new Point(571, 270);
+            btn25.Location = new Point(97, 205);
             btn25.Margin = new Padding(1);
             btn25.Name = "btn25";
             btn25.Size = new Size(42, 42);
@@ -532,7 +544,7 @@
             btn20.FlatStyle = FlatStyle.Flat;
             btn20.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn20.ForeColor = Color.FromArgb(77, 176, 52);
-            btn20.Location = new Point(527, 270);
+            btn20.Location = new Point(53, 205);
             btn20.Margin = new Padding(1);
             btn20.Name = "btn20";
             btn20.Size = new Size(42, 42);
@@ -547,7 +559,7 @@
             btn15.FlatStyle = FlatStyle.Flat;
             btn15.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             btn15.ForeColor = Color.FromArgb(77, 176, 52);
-            btn15.Location = new Point(483, 270);
+            btn15.Location = new Point(9, 205);
             btn15.Margin = new Padding(1);
             btn15.Name = "btn15";
             btn15.Size = new Size(42, 42);
@@ -555,48 +567,189 @@
             btn15.Text = "15";
             btn15.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 162);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(9, 50);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 25);
+            label1.TabIndex = 107;
+            label1.Text = "İŞLEM TİPİ";
+            // 
+            // cbType
+            // 
+            cbType.BackColor = Color.White;
+            cbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbType.FlatStyle = FlatStyle.Flat;
+            cbType.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            cbType.FormattingEnabled = true;
+            cbType.Items.AddRange(new object[] { "ARTTIR", "AZALT" });
+            cbType.Location = new Point(9, 78);
+            cbType.Name = "cbType";
+            cbType.Size = new Size(218, 28);
+            cbType.TabIndex = 108;
+            // 
+            // btnForAllProducts
+            // 
+            btnForAllProducts.BackColor = Color.White;
+            btnForAllProducts.FlatAppearance.BorderSize = 0;
+            btnForAllProducts.FlatStyle = FlatStyle.Flat;
+            btnForAllProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            btnForAllProducts.ForeColor = Color.Black;
+            btnForAllProducts.Location = new Point(78, 7);
+            btnForAllProducts.Name = "btnForAllProducts";
+            btnForAllProducts.Size = new Size(149, 40);
+            btnForAllProducts.TabIndex = 111;
+            btnForAllProducts.Text = "Tümüne Uygula";
+            btnForAllProducts.UseVisualStyleBackColor = false;
+            btnForAllProducts.Click += btnForAllProducts_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.BackColor = Color.Transparent;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 240F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(panel3, 1, 0);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 2, 0);
+            tableLayoutPanel1.Location = new Point(12, 99);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(1162, 465);
+            tableLayoutPanel1.TabIndex = 112;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Transparent;
+            panel3.Controls.Add(btnForAllProducts);
+            panel3.Controls.Add(btnGetSelects);
+            panel3.Controls.Add(btn50);
+            panel3.Controls.Add(tbPercentage);
+            panel3.Controls.Add(btn35);
+            panel3.Controls.Add(btn25);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(btn20);
+            panel3.Controls.Add(btn15);
+            panel3.Controls.Add(cbType);
+            panel3.Controls.Add(btn12);
+            panel3.Controls.Add(btn3);
+            panel3.Controls.Add(btn10);
+            panel3.Controls.Add(btnApply);
+            panel3.Controls.Add(btn8);
+            panel3.Controls.Add(btnSave);
+            panel3.Controls.Add(btn5);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(464, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(234, 459);
+            panel3.TabIndex = 113;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.BackColor = Color.Transparent;
+            btnMinimize.BackgroundImage = (Image)resources.GetObject("btnMinimize.BackgroundImage");
+            btnMinimize.BackgroundImageLayout = ImageLayout.Center;
+            btnMinimize.FlatAppearance.BorderSize = 0;
+            btnMinimize.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.ForeColor = Color.White;
+            btnMinimize.Location = new Point(962, 12);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(70, 35);
+            btnMinimize.TabIndex = 115;
+            btnMinimize.UseVisualStyleBackColor = false;
+            btnMinimize.Click += btnMinimize_Click;
+            // 
+            // btnMaximize
+            // 
+            btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.BackColor = Color.Transparent;
+            btnMaximize.BackgroundImage = (Image)resources.GetObject("btnMaximize.BackgroundImage");
+            btnMaximize.BackgroundImageLayout = ImageLayout.Center;
+            btnMaximize.FlatAppearance.BorderSize = 0;
+            btnMaximize.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnMaximize.FlatStyle = FlatStyle.Flat;
+            btnMaximize.ForeColor = Color.White;
+            btnMaximize.Location = new Point(1033, 12);
+            btnMaximize.Name = "btnMaximize";
+            btnMaximize.Size = new Size(70, 35);
+            btnMaximize.TabIndex = 114;
+            btnMaximize.UseVisualStyleBackColor = false;
+            btnMaximize.Click += btnMaximize_Click;
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImageLayout = ImageLayout.Center;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatAppearance.MouseDownBackColor = Color.Red;
+            btnClose.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.ForeColor = Color.White;
+            btnClose.Location = new Point(1104, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(70, 35);
+            btnClose.TabIndex = 113;
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
+            // 
+            // lblPageHeaderUpdatePrice
+            // 
+            lblPageHeaderUpdatePrice.AutoSize = true;
+            lblPageHeaderUpdatePrice.BackColor = Color.Transparent;
+            lblPageHeaderUpdatePrice.Font = new Font("Segoe UI Semibold", 17F, FontStyle.Bold);
+            lblPageHeaderUpdatePrice.ForeColor = Color.White;
+            lblPageHeaderUpdatePrice.Location = new Point(19, 12);
+            lblPageHeaderUpdatePrice.Name = "lblPageHeaderUpdatePrice";
+            lblPageHeaderUpdatePrice.Size = new Size(186, 31);
+            lblPageHeaderUpdatePrice.TabIndex = 116;
+            lblPageHeaderUpdatePrice.Text = "FİYAT GÜNCELLE";
+            // 
             // UpdatePrices
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(0, 74, 173);
-            BackgroundImage = Properties.Resources.BackgroundSmall1;
+            BackgroundImage = Properties.Resources.BackgroundGeneral;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1186, 530);
-            Controls.Add(btn50);
-            Controls.Add(btn35);
-            Controls.Add(btn25);
-            Controls.Add(btn20);
-            Controls.Add(btn15);
-            Controls.Add(btn12);
-            Controls.Add(btn10);
-            Controls.Add(btn8);
-            Controls.Add(btn5);
-            Controls.Add(btn3);
-            Controls.Add(btnSave);
-            Controls.Add(btnApply);
-            Controls.Add(tbSearch);
-            Controls.Add(btnSearchProduct);
+            ClientSize = new Size(1186, 578);
+            Controls.Add(lblPageHeaderUpdatePrice);
+            Controls.Add(btnMinimize);
+            Controls.Add(btnMaximize);
+            Controls.Add(btnClose);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(label8);
             Controls.Add(cbPriceType);
-            Controls.Add(panel2);
             Controls.Add(pbClearSearch);
             Controls.Add(pbMagGlass);
             Controls.Add(rtbSearch);
-            Controls.Add(panel1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "UpdatePrices";
-            Text = "AddSupplierReportForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "UpdatePrices";
+            WindowState = FormWindowState.Maximized;
             Load += AddCustomerReportForm_Load;
+            MouseDown += UpdatePrices_MouseDown;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMain).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbClearSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbMagGlass).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSelects).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -609,20 +762,15 @@
         private PictureBox pbMagGlass;
         private CustomObjects.RoundTextBox rtbSearch;
         private Panel panel2;
-        private DataGridView dataGridView1;
-        private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn NEWPRICE;
+        private DataGridView dgvSelects;
         private DataGridViewCheckBoxColumn CHECK;
         private DataGridViewTextBoxColumn BARCODE;
         private DataGridViewTextBoxColumn NAME;
         private DataGridViewTextBoxColumn PRICE;
         private Label label8;
         private ComboBox cbPriceType;
-        private Button btnSearchProduct;
-        private TextBox tbSearch;
+        private Button btnGetSelects;
+        private TextBox tbPercentage;
         private Button btnApply;
         private Button btnSave;
         private Button btn3;
@@ -635,5 +783,18 @@
         private Button btn25;
         private Button btn20;
         private Button btn15;
+        private Label label1;
+        private ComboBox cbType;
+        private DataGridViewTextBoxColumn SBARCODE;
+        private DataGridViewTextBoxColumn SNAME;
+        private DataGridViewTextBoxColumn OLDPRICE;
+        private DataGridViewTextBoxColumn NEWPRICE;
+        private Button btnForAllProducts;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
+        private Button btnMinimize;
+        private Button btnMaximize;
+        private Button btnClose;
+        private Label lblPageHeaderUpdatePrice;
     }
 }

@@ -363,6 +363,26 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _32pxWhiteMinus {
+            get {
+                object obj = ResourceManager.GetObject("32pxWhiteMinus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _32pxWhitePlus {
+            get {
+                object obj = ResourceManager.GetObject("32pxWhitePlus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _32pxWhiteX {
             get {
                 object obj = ResourceManager.GetObject("32pxWhiteX", resourceCulture);
@@ -376,6 +396,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxBankNotes {
             get {
                 object obj = ResourceManager.GetObject("64pxBankNotes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxBlueBoxes {
+            get {
+                object obj = ResourceManager.GetObject("64pxBlueBoxes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -476,6 +506,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxEraserBlue {
             get {
                 object obj = ResourceManager.GetObject("64pxEraserBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxGrayExcel {
+            get {
+                object obj = ResourceManager.GetObject("64pxGrayExcel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
