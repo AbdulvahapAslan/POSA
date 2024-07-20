@@ -254,7 +254,7 @@
             btnBackup.FlatStyle = FlatStyle.Flat;
             btnBackup.Font = new Font("Segoe UI", 16F);
             btnBackup.ForeColor = Color.White;
-            btnBackup.Location = new Point(556, 261);
+            btnBackup.Location = new Point(372, 261);
             btnBackup.Name = "btnBackup";
             btnBackup.Size = new Size(178, 123);
             btnBackup.TabIndex = 33;
@@ -286,7 +286,7 @@
             btnCustomers.FlatStyle = FlatStyle.Flat;
             btnCustomers.Font = new Font("Segoe UI", 16F);
             btnCustomers.ForeColor = Color.White;
-            btnCustomers.Location = new Point(372, 261);
+            btnCustomers.Location = new Point(188, 261);
             btnCustomers.Name = "btnCustomers";
             btnCustomers.Size = new Size(178, 123);
             btnCustomers.TabIndex = 32;
@@ -310,6 +310,7 @@
             btnEmployees.Text = "Personel İşleri";
             btnEmployees.TextAlign = ContentAlignment.BottomCenter;
             btnEmployees.UseVisualStyleBackColor = false;
+            btnEmployees.Click += btnEmployees_Click;
             // 
             // btnBusiness
             // 
@@ -319,7 +320,7 @@
             btnBusiness.FlatStyle = FlatStyle.Flat;
             btnBusiness.Font = new Font("Segoe UI", 16F);
             btnBusiness.ForeColor = Color.White;
-            btnBusiness.Location = new Point(188, 261);
+            btnBusiness.Location = new Point(556, 261);
             btnBusiness.Name = "btnBusiness";
             btnBusiness.Size = new Size(178, 123);
             btnBusiness.TabIndex = 31;

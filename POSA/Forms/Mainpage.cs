@@ -219,5 +219,28 @@ namespace POSA.Forms
                 }
             }
         }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Personeller");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var wr = new Workers();
+                    wr.Name = "Personeller";
+                    wr.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
