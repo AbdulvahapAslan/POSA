@@ -473,6 +473,16 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _64pxBranchesblue {
+            get {
+                object obj = ResourceManager.GetObject("64pxBranchesblue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _64pxColorfulCard {
             get {
                 object obj = ResourceManager.GetObject("64pxColorfulCard", resourceCulture);
@@ -536,6 +546,16 @@ namespace POSA.Properties {
         internal static System.Drawing.Bitmap _64pxEraserBlue {
             get {
                 object obj = ResourceManager.GetObject("64pxEraserBlue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _64pxExpenses {
+            get {
+                object obj = ResourceManager.GetObject("64pxExpenses", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

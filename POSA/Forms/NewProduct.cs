@@ -489,7 +489,7 @@ namespace POSA.Forms
             }
             else
             {
-                var addS = new AddSupplierInnerForm(true,0);
+                var addS = new AddSupplierInnerForm(true, 0);
                 addS.Name = "AddSupp";
                 var dr = addS.ShowDialog();
                 FillSupplierComboBox();
@@ -558,7 +558,7 @@ namespace POSA.Forms
             var sb = new SqlBuilder();
             sb.Select("ID,NAME");
             SqlBuilder.Template builderTemp;
-            if (SupplierID>0)
+            if (SupplierID > 0)
             {
                 sb.Where("ID=@ID");
                 builderTemp = sb.AddTemplate("SELECT /**select**/ FROM SUPPLIERS /**where**/");
@@ -570,7 +570,7 @@ namespace POSA.Forms
             }
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             IEnumerable<dynamic>? result;
-            if (SupplierID>0)
+            if (SupplierID > 0)
             {
                 result = await conn.QueryAsync(builderTemp.RawSql, new { ID = SupplierID });
             }
@@ -610,7 +610,7 @@ namespace POSA.Forms
         }
         private void btnAddBranch_Click(object sender, EventArgs e)
         {
-            var ab = new AddBranch();
+            var ab = new AddBranch(true);
             DialogResult dr = ab.ShowDialog();
             FillBranchComboBox();
         }

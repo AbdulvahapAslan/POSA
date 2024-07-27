@@ -2,13 +2,18 @@
 using POSA.Helpers.Settings;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace POSA.Forms
 {
     public partial class AddBranch : Form
     {
-        public AddBranch()
+        public bool isInnerForm;
+        public AddBranch(bool showHeader)
         {
             InitializeComponent();
+            lblPageHeaderAddBranch.Visible = showHeader;
+            btnClose.Visible = showHeader;
+            isInnerForm = showHeader;
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -22,24 +27,8 @@ namespace POSA.Forms
         }
         private async void AddCategory_Load(object sender, EventArgs e)
         {
-            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxUpdate,
-                Name = "UPDATE",
-                HeaderText = "",
-                FillWeight = 7,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns.Insert(dgvMain.Columns.Count, new DataGridViewImageColumn()
-            {
-                Image = Properties.Resources._24pxClose,
-                Name = "DELETE",
-                HeaderText = "",
-                FillWeight = 7,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            });
-            dgvMain.Columns["DELETE"].FillWeight = 7;
-            dgvMain.Columns["UPDATE"].FillWeight = 7;
+
+
             RefreshDataGrid();
         }
         public async void RefreshDataGrid()
@@ -47,15 +36,20 @@ namespace POSA.Forms
             dgvMain.EndEdit();
             var settings = Setting.Get();
             var sb = new SqlBuilder();
-            sb.Select("ID,NAME,DESCRIPTION");
-            var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM BRANCHES WHERE ID>1");
+            sb.Select("ID,NAME,DESCRIPTION,ADDRESS");
+            var builderTemp = sb.AddTemplate($"SELECT /**select**/ FROM BRANCHES{(isInnerForm ? " WHERE ID>1" : "")}");
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             var ar = new SqlDataAdapter(builderTemp.RawSql, conn);
             var dt = new DataTable();
             ar.Fill(dt);
-            dgvMain.DataSource = dt;
+            dgvMain.Rows.Clear();
+            foreach (DataRow row in dt.Rows)
+            {
+                dgvMain.Rows.Add(row["ID"].ToString(), row["NAME"].ToString(), row["ADDRESS"].ToString(), row["DESCRIPTION"].ToString());
+            }
             dgvMain.ClearSelection();
+           
         }
         public async void DeleteFromDB(string id)
         {
@@ -72,11 +66,12 @@ namespace POSA.Forms
         {
             var settings = Setting.Get();
             var sb = new SqlBuilder();
-            var builderTemp = sb.AddTemplate("INSERT INTO BRANCHES(NAME,DESCRIPTION,CREATEDBY,CREATEDATE) VALUES(@NAME,@DESCRIPTION,@CREATEDBY,GETDATE())");
+            var builderTemp = sb.AddTemplate("INSERT INTO BRANCHES(NAME,ADDRESS,DESCRIPTION,CREATEDBY,CREATEDATE) VALUES(@NAME,@ADDRESS,@DESCRIPTION,@CREATEDBY,GETDATE())");
             var param = new
             {
                 NAME = tbBranch.Text,
                 DESCRIPTION = tbDescription.Text,
+                ADDRESS = tbAddress.Text,
                 CREATEDBY = settings.LastSuccesfullyLoggedUser
             };
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
@@ -99,7 +94,7 @@ namespace POSA.Forms
             }
             if (e.ColumnIndex == dgvMain.Columns["UPDATE"].Index)
             {
-                var uc = new UpdateCategory(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString());
+                var uc = new UpdateBranch(dgvMain.Rows[e.RowIndex].Cells["ID"].Value.ToString());
                 DialogResult dr = uc.ShowDialog();
                 if (dr == DialogResult.OK)
                     MessageBox.Show("Güncellendi.", "BİLGİLENDİRME", MessageBoxButtons.OK, MessageBoxIcon.Information);

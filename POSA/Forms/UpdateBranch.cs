@@ -23,7 +23,7 @@ namespace POSA.Forms
         {
             var settings = Setting.Get();
             var sb = new SqlBuilder();
-            sb.Select("ID,NAME,DESCRIPTION");
+            sb.Select("ID,NAME,DESCRIPTION,ADDRESS");
             sb.Where("ID=@ID");
             var param = new { ID = ID };
             var builderTemp = sb.AddTemplate("SELECT /**select**/ FROM BRANCHES /**where**/");
@@ -35,6 +35,7 @@ namespace POSA.Forms
                 var category = result.First();
                 tbBranch.Text = category.NAME;
                 tbDescription.Text = category.DESCRIPTION;
+                tbAddress.Text = category.ADDRESS;
             }
         }
         public async Task<bool> Update(string id)
@@ -43,7 +44,7 @@ namespace POSA.Forms
             var sb = new SqlBuilder();
             sb.Where("ID=@ID");
             var param = new { ID = ID };
-            var builderTemp = sb.AddTemplate($"UPDATE BRANCHES  SET NAME='{tbBranch.Text ?? ""}',DESCRIPTION='{tbDescription.Text ?? ""}',CHANGEDBY='{settings.LastSuccesfullyLoggedUser}',CHANGEDATE=GETDATE() /**where**/");
+            var builderTemp = sb.AddTemplate($"UPDATE BRANCHES  SET NAME='{tbBranch.Text ?? ""}',DESCRIPTION='{tbDescription.Text ?? ""}',CHANGEDBY='{settings.LastSuccesfullyLoggedUser}',ADDRESS = '{tbAddress.Text}',CHANGEDATE=GETDATE() /**where**/");
             await using var conn = new SqlConnection(settings.Sql.ConnectionString());
             conn.Open();
             var result = await conn.ExecuteAsync(builderTemp.RawSql, param);

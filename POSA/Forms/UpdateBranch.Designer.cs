@@ -36,13 +36,15 @@
             btnSave = new Button();
             btnClose = new CustomObjects.RoundButton();
             lblPageHeaderUpdateBranch = new Label();
+            tbAddress = new TextBox();
+            lblAddress = new Label();
             SuspendLayout();
             // 
             // tbDescription
             // 
             tbDescription.BorderStyle = BorderStyle.None;
             tbDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
-            tbDescription.Location = new Point(136, 89);
+            tbDescription.Location = new Point(136, 263);
             tbDescription.Multiline = true;
             tbDescription.Name = "tbDescription";
             tbDescription.Size = new Size(260, 168);
@@ -54,7 +56,7 @@
             lblUCDescription.BackColor = Color.Transparent;
             lblUCDescription.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             lblUCDescription.ForeColor = Color.White;
-            lblUCDescription.Location = new Point(12, 87);
+            lblUCDescription.Location = new Point(12, 261);
             lblUCDescription.Name = "lblUCDescription";
             lblUCDescription.Size = new Size(93, 28);
             lblUCDescription.TabIndex = 85;
@@ -90,7 +92,7 @@
             btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             btnSave.ForeColor = Color.Black;
             btnSave.ImageAlign = ContentAlignment.TopCenter;
-            btnSave.Location = new Point(136, 263);
+            btnSave.Location = new Point(136, 437);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(260, 33);
             btnSave.TabIndex = 82;
@@ -131,13 +133,37 @@
             lblPageHeaderUpdateBranch.TabIndex = 87;
             lblPageHeaderUpdateBranch.Text = "ŞUBE GÜNCELLE";
             // 
+            // tbAddress
+            // 
+            tbAddress.BorderStyle = BorderStyle.None;
+            tbAddress.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            tbAddress.Location = new Point(136, 89);
+            tbAddress.Multiline = true;
+            tbAddress.Name = "tbAddress";
+            tbAddress.Size = new Size(260, 168);
+            tbAddress.TabIndex = 89;
+            // 
+            // lblAddress
+            // 
+            lblAddress.AutoSize = true;
+            lblAddress.BackColor = Color.Transparent;
+            lblAddress.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblAddress.ForeColor = Color.White;
+            lblAddress.Location = new Point(12, 89);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(64, 28);
+            lblAddress.TabIndex = 88;
+            lblAddress.Text = "Adres";
+            // 
             // UpdateBranch
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.BackgroundSmall1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(411, 313);
+            ClientSize = new Size(411, 486);
+            Controls.Add(tbAddress);
+            Controls.Add(lblAddress);
             Controls.Add(lblPageHeaderUpdateBranch);
             Controls.Add(tbDescription);
             Controls.Add(lblUCDescription);
@@ -165,5 +191,7 @@
         private Button btnSave;
         private CustomObjects.RoundButton btnClose;
         private Label lblPageHeaderUpdateBranch;
+        private TextBox tbAddress;
+        private Label lblAddress;
     }
 }

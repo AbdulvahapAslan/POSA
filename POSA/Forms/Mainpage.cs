@@ -242,5 +242,51 @@ namespace POSA.Forms
                 }
             }
         }
+
+        private void btnBusiness_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "İşletme");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var wp = new Workplace();
+                    wp.Name = "İşletme";
+                    wp.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            var forms = Application.OpenForms.Cast<Form>().Where(x => x.Name == "Raporlar");
+            if (forms.Any())
+            {
+                MessageBox.Show("Bu pencere zaten açık!", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                if (lblLicence.Text == "AKTİF")
+                {
+                    var rp = new Reports();
+                    rp.Name = "Raporlar";
+                    rp.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lisansiniz pasif durumdadır. Lütfen lisans yenileme işlemi yapınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

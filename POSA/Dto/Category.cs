@@ -9,4 +9,5 @@ public class Category
     public int ID { get; set; }
     public string NAME { get; set; }
     public string DESCRIPTION { get; set; }
+    public string ADDRESS { get; set; }
 }

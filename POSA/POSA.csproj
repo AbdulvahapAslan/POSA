@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\SaleReportInnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\AddBranch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\UpdateUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Reports.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

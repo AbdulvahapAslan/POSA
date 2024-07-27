@@ -277,6 +277,7 @@
             btnReports.Text = "Raporlar";
             btnReports.TextAlign = ContentAlignment.BottomCenter;
             btnReports.UseVisualStyleBackColor = false;
+            btnReports.Click += btnReports_Click;
             // 
             // btnCustomers
             // 
@@ -327,6 +328,7 @@
             btnBusiness.Text = "İşletme";
             btnBusiness.TextAlign = ContentAlignment.BottomCenter;
             btnBusiness.UseVisualStyleBackColor = false;
+            btnBusiness.Click += btnBusiness_Click;
             // 
             // btnSales
             // 

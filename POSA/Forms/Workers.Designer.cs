@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Workers));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             lblPageHeaderUpdatePrice = new Label();
             btnMinimize = new Button();
             btnMaximize = new Button();
@@ -1154,38 +1154,39 @@
             dgvVacation.BorderStyle = BorderStyle.None;
             dgvVacation.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvVacation.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvVacation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle7.SelectionBackColor = Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvVacation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvVacation.ColumnHeadersHeight = 50;
             dgvVacation.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvVacation.Columns.AddRange(new DataGridViewColumn[] { VID, VSTART, VEND, VNOTES });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvVacation.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvVacation.DefaultCellStyle = dataGridViewCellStyle9;
             dgvVacation.EnableHeadersVisualStyles = false;
             dgvVacation.GridColor = Color.White;
             dgvVacation.Location = new Point(10, 10);
             dgvVacation.Margin = new Padding(10);
             dgvVacation.MultiSelect = false;
             dgvVacation.Name = "dgvVacation";
+            dgvVacation.ReadOnly = true;
             dgvVacation.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvVacation.RowHeadersVisible = false;
             dgvVacation.RowHeadersWidth = 35;
             dgvVacation.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvVacation.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvVacation.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(238, 245, 255);
-            dgvVacation.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvVacation.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             dgvVacation.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
             dgvVacation.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
             dgvVacation.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
@@ -1199,8 +1200,8 @@
             // VID
             // 
             VID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.NullValue = "0";
-            VID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.NullValue = "0";
+            VID.DefaultCellStyle = dataGridViewCellStyle8;
             VID.HeaderText = "ID";
             VID.Name = "VID";
             VID.ReadOnly = true;
@@ -1214,6 +1215,7 @@
             VSTART.HeaderText = "İZİN BAŞLANGIÇ";
             VSTART.MaxInputLength = 50;
             VSTART.Name = "VSTART";
+            VSTART.ReadOnly = true;
             // 
             // VEND
             // 
@@ -1223,6 +1225,7 @@
             VEND.HeaderText = "İZİN BİTİŞ";
             VEND.MaxInputLength = 100;
             VEND.Name = "VEND";
+            VEND.ReadOnly = true;
             // 
             // VNOTES
             // 
@@ -1230,6 +1233,7 @@
             VNOTES.FillWeight = 50F;
             VNOTES.HeaderText = "NOTLAR";
             VNOTES.Name = "VNOTES";
+            VNOTES.ReadOnly = true;
             // 
             // dgvPayment
             // 
@@ -1242,38 +1246,39 @@
             dgvPayment.BorderStyle = BorderStyle.None;
             dgvPayment.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvPayment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvPayment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.White;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle10.SelectionBackColor = Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvPayment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvPayment.ColumnHeadersHeight = 50;
             dgvPayment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvPayment.Columns.AddRange(new DataGridViewColumn[] { ID, PAYMENTDATE, PAYMENT, PNOTES });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvPayment.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.White;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            dataGridViewCellStyle12.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle12.SelectionBackColor = Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dgvPayment.DefaultCellStyle = dataGridViewCellStyle12;
             dgvPayment.EnableHeadersVisualStyles = false;
             dgvPayment.GridColor = Color.White;
             dgvPayment.Location = new Point(10, 10);
             dgvPayment.Margin = new Padding(10);
             dgvPayment.MultiSelect = false;
             dgvPayment.Name = "dgvPayment";
+            dgvPayment.ReadOnly = true;
             dgvPayment.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvPayment.RowHeadersVisible = false;
             dgvPayment.RowHeadersWidth = 35;
             dgvPayment.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvPayment.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPayment.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(238, 245, 255);
-            dgvPayment.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dgvPayment.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             dgvPayment.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
             dgvPayment.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
             dgvPayment.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
@@ -1287,8 +1292,8 @@
             // ID
             // 
             ID.DataPropertyName = "ID";
-            dataGridViewCellStyle5.NullValue = "0";
-            ID.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.NullValue = "0";
+            ID.DefaultCellStyle = dataGridViewCellStyle11;
             ID.HeaderText = "ID";
             ID.Name = "ID";
             ID.ReadOnly = true;
@@ -1302,6 +1307,7 @@
             PAYMENTDATE.HeaderText = "ÖDEME TARİHİ";
             PAYMENTDATE.MaxInputLength = 50;
             PAYMENTDATE.Name = "PAYMENTDATE";
+            PAYMENTDATE.ReadOnly = true;
             // 
             // PAYMENT
             // 
@@ -1311,6 +1317,7 @@
             PAYMENT.HeaderText = "ÖDEME TUTARI";
             PAYMENT.MaxInputLength = 100;
             PAYMENT.Name = "PAYMENT";
+            PAYMENT.ReadOnly = true;
             // 
             // PNOTES
             // 
@@ -1318,6 +1325,7 @@
             PNOTES.FillWeight = 50F;
             PNOTES.HeaderText = "NOTLAR";
             PNOTES.Name = "PNOTES";
+            PNOTES.ReadOnly = true;
             // 
             // btnShowVacation
             // 

@@ -337,7 +337,7 @@ namespace POSA.Forms
         }
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-            this.MinimizeBox = true;
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
