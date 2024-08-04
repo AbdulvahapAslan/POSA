@@ -66,7 +66,7 @@ namespace POSA.Forms
 
         private void Reports_Load(object sender, EventArgs e)
         {
-
+            btnSaleReport.PerformClick();
         }
 
         private void btnSaleReport_Click(object sender, EventArgs e)
@@ -76,6 +76,22 @@ namespace POSA.Forms
                 form.Close();
             }
             var srif = new SaleReportInnerForm() { TopLevel = false, TopMost = true, Name = "Satış Raporu" };
+            scMain.Panel2.Controls.Add(srif);
+            srif.Show();
+        }
+
+        private void btnExpenses_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStockReport_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in scMain.Panel2.Controls)
+            {
+                form.Close();
+            }
+            var srif = new StockReportInnerForm() { TopLevel = false, TopMost = true, Name = "Stok Raporu" };
             scMain.Panel2.Controls.Add(srif);
             srif.Show();
         }

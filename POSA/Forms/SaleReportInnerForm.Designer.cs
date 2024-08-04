@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblMovement = new Label();
             panel1 = new Panel();
-            radioButton4 = new RadioButton();
-            radioButton5 = new RadioButton();
+            rbGift = new RadioButton();
+            rbPayLater = new RadioButton();
             rbRefund = new RadioButton();
             rbBuy = new RadioButton();
             rbSell = new RadioButton();
@@ -47,49 +47,58 @@
             fcPaymentType = new CustomObjects.FlatCombo();
             lblPaymentType = new Label();
             panel4 = new Panel();
-            fcCategory = new CustomObjects.FlatCombo();
+            cbCategory = new ComboBox();
             lblProductCategory = new Label();
             panel5 = new Panel();
-            textBox1 = new TextBox();
+            tbProduct = new TextBox();
             label2 = new Label();
             btnExcel = new Button();
-            button1 = new Button();
+            btnZReport = new Button();
             panel6 = new Panel();
             dgvMain = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            BARCODE = new DataGridViewTextBoxColumn();
-            NAME = new DataGridViewTextBoxColumn();
-            VATRATE = new DataGridViewTextBoxColumn();
-            BUYPRICE = new DataGridViewTextBoxColumn();
-            SALEPRICE = new DataGridViewTextBoxColumn();
-            STOCK = new DataGridViewTextBoxColumn();
-            UNIT = new DataGridViewTextBoxColumn();
             btnCancel = new Button();
             btnBring = new Button();
             panel7 = new Panel();
-            textBox2 = new TextBox();
+            btnShowBuyingPrice = new Button();
+            label11 = new Label();
+            tbTotalProfit = new TextBox();
+            tbTotalSales = new TextBox();
             lblTotal = new Label();
             panel8 = new Panel();
-            textBox7 = new TextBox();
+            tbOtherSale = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
+            tbCardSale = new TextBox();
             label5 = new Label();
-            textBox3 = new TextBox();
+            tbCashSale = new TextBox();
             label1 = new Label();
             panel9 = new Panel();
-            textBox4 = new TextBox();
-            textBox8 = new TextBox();
+            tbFree = new TextBox();
+            tbPayLater = new TextBox();
             label3 = new Label();
             label7 = new Label();
-            textBox5 = new TextBox();
+            tbCashAndCard = new TextBox();
             label4 = new Label();
             panel10 = new Panel();
-            textBox9 = new TextBox();
-            textBox11 = new TextBox();
+            tbRefundTotal = new TextBox();
+            tbRefundCash = new TextBox();
             label8 = new Label();
             label10 = new Label();
-            textBox10 = new TextBox();
+            tbRefundCard = new TextBox();
             label9 = new Label();
+            fcFilter = new CustomObjects.FlatCombo();
+            BARCODE = new DataGridViewTextBoxColumn();
+            PRODUCT = new DataGridViewTextBoxColumn();
+            DATE = new DataGridViewTextBoxColumn();
+            QUANTITY = new DataGridViewTextBoxColumn();
+            BUYPRICE = new DataGridViewTextBoxColumn();
+            SALEPRICE = new DataGridViewTextBoxColumn();
+            TOTALPRICE = new DataGridViewTextBoxColumn();
+            PROFIT = new DataGridViewTextBoxColumn();
+            PAYMENTTYPE = new DataGridViewTextBoxColumn();
+            CUSTOMER = new DataGridViewTextBoxColumn();
+            WORKER = new DataGridViewTextBoxColumn();
+            FICHETYPE = new DataGridViewTextBoxColumn();
+            TOTALSALEQ = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -117,43 +126,43 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(84, 116, 173);
-            panel1.Controls.Add(radioButton4);
-            panel1.Controls.Add(radioButton5);
+            panel1.Controls.Add(rbGift);
+            panel1.Controls.Add(rbPayLater);
             panel1.Controls.Add(rbRefund);
             panel1.Controls.Add(rbBuy);
             panel1.Controls.Add(rbSell);
             panel1.Controls.Add(rbAll);
             panel1.Controls.Add(lblMovement);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(12, 13);
             panel1.Name = "panel1";
             panel1.Size = new Size(158, 193);
             panel1.TabIndex = 1;
             // 
-            // radioButton4
+            // rbGift
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            radioButton4.ForeColor = Color.White;
-            radioButton4.Location = new Point(9, 160);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(62, 23);
-            radioButton4.TabIndex = 6;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Tümü";
-            radioButton4.UseVisualStyleBackColor = true;
+            rbGift.AutoSize = true;
+            rbGift.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            rbGift.ForeColor = Color.White;
+            rbGift.Location = new Point(9, 137);
+            rbGift.Name = "rbGift";
+            rbGift.Size = new Size(62, 23);
+            rbGift.TabIndex = 7;
+            rbGift.TabStop = true;
+            rbGift.Text = "İkram";
+            rbGift.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbPayLater
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            radioButton5.ForeColor = Color.White;
-            radioButton5.Location = new Point(9, 134);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(55, 23);
-            radioButton5.TabIndex = 5;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "İptal";
-            radioButton5.UseVisualStyleBackColor = true;
+            rbPayLater.AutoSize = true;
+            rbPayLater.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            rbPayLater.ForeColor = Color.White;
+            rbPayLater.Location = new Point(9, 166);
+            rbPayLater.Name = "rbPayLater";
+            rbPayLater.Size = new Size(78, 23);
+            rbPayLater.TabIndex = 6;
+            rbPayLater.TabStop = true;
+            rbPayLater.Text = "Veresiye";
+            rbPayLater.UseVisualStyleBackColor = true;
             // 
             // rbRefund
             // 
@@ -197,6 +206,7 @@
             // rbAll
             // 
             rbAll.AutoSize = true;
+            rbAll.Checked = true;
             rbAll.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             rbAll.ForeColor = Color.White;
             rbAll.Location = new Point(9, 30);
@@ -271,6 +281,7 @@
             fcPaymentType.ButtonColor = Color.Black;
             fcPaymentType.DrawMode = DrawMode.OwnerDrawFixed;
             fcPaymentType.FormattingEnabled = true;
+            fcPaymentType.Items.AddRange(new object[] { "", "NAKİT", "KART", "DİĞER" });
             fcPaymentType.Location = new Point(3, 24);
             fcPaymentType.Name = "fcPaymentType";
             fcPaymentType.Size = new Size(186, 24);
@@ -290,23 +301,24 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(84, 116, 173);
-            panel4.Controls.Add(fcCategory);
+            panel4.Controls.Add(cbCategory);
             panel4.Controls.Add(lblProductCategory);
-            panel4.Location = new Point(648, 14);
+            panel4.Location = new Point(648, 13);
             panel4.Name = "panel4";
             panel4.Size = new Size(192, 52);
             panel4.TabIndex = 5;
             // 
-            // fcCategory
+            // cbCategory
             // 
-            fcCategory.BorderColor = Color.White;
-            fcCategory.ButtonColor = Color.Black;
-            fcCategory.DrawMode = DrawMode.OwnerDrawFixed;
-            fcCategory.FormattingEnabled = true;
-            fcCategory.Location = new Point(3, 24);
-            fcCategory.Name = "fcCategory";
-            fcCategory.Size = new Size(186, 24);
-            fcCategory.TabIndex = 1;
+            cbCategory.BackColor = Color.White;
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCategory.FlatStyle = FlatStyle.Flat;
+            cbCategory.Font = new Font("Segoe UI", 10F);
+            cbCategory.FormattingEnabled = true;
+            cbCategory.Location = new Point(3, 23);
+            cbCategory.Name = "cbCategory";
+            cbCategory.Size = new Size(186, 25);
+            cbCategory.TabIndex = 65;
             // 
             // lblProductCategory
             // 
@@ -322,21 +334,21 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(84, 116, 173);
-            panel5.Controls.Add(textBox1);
+            panel5.Controls.Add(tbProduct);
             panel5.Controls.Add(label2);
-            panel5.Location = new Point(846, 15);
+            panel5.Location = new Point(846, 14);
             panel5.Name = "panel5";
             panel5.Size = new Size(192, 52);
             panel5.TabIndex = 5;
             // 
-            // textBox1
+            // tbProduct
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            textBox1.Location = new Point(3, 24);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(186, 22);
-            textBox1.TabIndex = 1;
+            tbProduct.BorderStyle = BorderStyle.None;
+            tbProduct.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            tbProduct.Location = new Point(3, 24);
+            tbProduct.Name = "tbProduct";
+            tbProduct.Size = new Size(186, 22);
+            tbProduct.TabIndex = 1;
             // 
             // label2
             // 
@@ -353,39 +365,41 @@
             // 
             btnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnExcel.BackColor = Color.Transparent;
+            btnExcel.BackgroundImage = Properties.Resources._64pxGrayExcel;
+            btnExcel.BackgroundImageLayout = ImageLayout.Stretch;
             btnExcel.FlatAppearance.BorderSize = 0;
             btnExcel.FlatStyle = FlatStyle.Flat;
             btnExcel.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold);
             btnExcel.ForeColor = Color.White;
-            btnExcel.Image = Properties.Resources._64pxGrayExcel;
-            btnExcel.Location = new Point(1116, 14);
+            btnExcel.Location = new Point(1064, 14);
             btnExcel.Margin = new Padding(10);
             btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(52, 52);
+            btnExcel.Size = new Size(75, 76);
             btnExcel.TabIndex = 115;
             btnExcel.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnZReport
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.Transparent;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold);
-            button1.ForeColor = Color.White;
-            button1.Image = Properties.Resources._64pxGrayExcel;
-            button1.Location = new Point(1176, 15);
-            button1.Margin = new Padding(10);
-            button1.Name = "button1";
-            button1.Size = new Size(52, 52);
-            button1.TabIndex = 116;
-            button1.UseVisualStyleBackColor = false;
+            btnZReport.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnZReport.BackColor = Color.Transparent;
+            btnZReport.BackgroundImage = Properties.Resources._64pxWhiteZReport;
+            btnZReport.BackgroundImageLayout = ImageLayout.Stretch;
+            btnZReport.FlatAppearance.BorderSize = 0;
+            btnZReport.FlatStyle = FlatStyle.Flat;
+            btnZReport.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold);
+            btnZReport.ForeColor = Color.White;
+            btnZReport.Location = new Point(1145, 24);
+            btnZReport.Margin = new Padding(10);
+            btnZReport.Name = "btnZReport";
+            btnZReport.Size = new Size(55, 55);
+            btnZReport.TabIndex = 116;
+            btnZReport.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
             panel6.BackColor = Color.White;
             panel6.Controls.Add(dgvMain);
-            panel6.Location = new Point(12, 211);
+            panel6.Location = new Point(12, 254);
             panel6.Margin = new Padding(3, 3, 12, 12);
             panel6.Name = "panel6";
             panel6.Size = new Size(1226, 334);
@@ -398,118 +412,53 @@
             dgvMain.AllowUserToResizeColumns = false;
             dgvMain.AllowUserToResizeRows = false;
             dgvMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMain.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvMain.BackgroundColor = Color.White;
             dgvMain.BorderStyle = BorderStyle.None;
             dgvMain.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMain.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMain.ColumnHeadersHeight = 50;
             dgvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvMain.Columns.AddRange(new DataGridViewColumn[] { ID, BARCODE, NAME, VATRATE, BUYPRICE, SALEPRICE, STOCK, UNIT });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(1, 39, 103);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvMain.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvMain.Columns.AddRange(new DataGridViewColumn[] { BARCODE, PRODUCT, DATE, QUANTITY, BUYPRICE, SALEPRICE, TOTALPRICE, PROFIT, PAYMENTTYPE, CUSTOMER, WORKER, FICHETYPE, TOTALSALEQ });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(1, 39, 103);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvMain.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMain.EnableHeadersVisualStyles = false;
             dgvMain.GridColor = Color.White;
             dgvMain.Location = new Point(10, 10);
             dgvMain.Margin = new Padding(10);
             dgvMain.MultiSelect = false;
             dgvMain.Name = "dgvMain";
+            dgvMain.ReadOnly = true;
             dgvMain.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvMain.RowHeadersVisible = false;
             dgvMain.RowHeadersWidth = 35;
             dgvMain.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvMain.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMain.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(210, 226, 252);
-            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvMain.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dgvMain.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(1, 39, 103);
             dgvMain.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 134, 176);
             dgvMain.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvMain.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvMain.RowTemplate.DividerHeight = 10;
-            dgvMain.RowTemplate.Height = 40;
+            dgvMain.RowTemplate.Height = 60;
             dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMain.Size = new Size(1206, 314);
             dgvMain.TabIndex = 76;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "ID";
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            ID.Visible = false;
-            // 
-            // BARCODE
-            // 
-            BARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BARCODE.DataPropertyName = "BARCODE";
-            BARCODE.FillWeight = 20F;
-            BARCODE.HeaderText = "BARKOD";
-            BARCODE.MaxInputLength = 100;
-            BARCODE.Name = "BARCODE";
-            BARCODE.ReadOnly = true;
-            // 
-            // NAME
-            // 
-            NAME.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NAME.DataPropertyName = "NAME";
-            NAME.FillWeight = 23F;
-            NAME.HeaderText = "ÜRÜN ADI";
-            NAME.MaxInputLength = 50;
-            NAME.Name = "NAME";
-            NAME.ReadOnly = true;
-            // 
-            // VATRATE
-            // 
-            VATRATE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VATRATE.DataPropertyName = "VATRATE";
-            VATRATE.FillWeight = 7F;
-            VATRATE.HeaderText = "KDV ORANI";
-            VATRATE.Name = "VATRATE";
-            // 
-            // BUYPRICE
-            // 
-            BUYPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BUYPRICE.DataPropertyName = "BUYPRICE";
-            BUYPRICE.FillWeight = 10F;
-            BUYPRICE.HeaderText = "ALIŞ";
-            BUYPRICE.Name = "BUYPRICE";
-            // 
-            // SALEPRICE
-            // 
-            SALEPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SALEPRICE.DataPropertyName = "SALEPRICE";
-            SALEPRICE.FillWeight = 10F;
-            SALEPRICE.HeaderText = "SATIŞ";
-            SALEPRICE.Name = "SALEPRICE";
-            // 
-            // STOCK
-            // 
-            STOCK.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            STOCK.DataPropertyName = "STOCK";
-            STOCK.FillWeight = 15F;
-            STOCK.HeaderText = "STOK";
-            STOCK.Name = "STOCK";
-            // 
-            // UNIT
-            // 
-            UNIT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UNIT.DataPropertyName = "UNIT";
-            UNIT.FillWeight = 15F;
-            UNIT.HeaderText = "BİRİM";
-            UNIT.Name = "UNIT";
             // 
             // btnCancel
             // 
@@ -518,11 +467,12 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Image = Properties.Resources._64pxWhiteX50Scale1;
-            btnCancel.Location = new Point(1183, 151);
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(1048, 92);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(54, 54);
+            btnCancel.Size = new Size(180, 54);
             btnCancel.TabIndex = 118;
+            btnCancel.Text = "İPTAL";
             btnCancel.UseVisualStyleBackColor = false;
             // 
             // btnBring
@@ -534,69 +484,109 @@
             btnBring.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             btnBring.ForeColor = Color.White;
             btnBring.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBring.Location = new Point(1048, 151);
+            btnBring.Location = new Point(1048, 150);
             btnBring.Name = "btnBring";
-            btnBring.Size = new Size(129, 54);
+            btnBring.Size = new Size(180, 54);
             btnBring.TabIndex = 77;
-            btnBring.Text = "Getir";
+            btnBring.Text = "GETİR";
             btnBring.UseVisualStyleBackColor = false;
+            btnBring.Click += btnBring_Click;
             // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(54, 54, 54);
-            panel7.Controls.Add(textBox2);
+            panel7.Controls.Add(btnShowBuyingPrice);
+            panel7.Controls.Add(label11);
+            panel7.Controls.Add(tbTotalProfit);
+            panel7.Controls.Add(tbTotalSales);
             panel7.Controls.Add(lblTotal);
-            panel7.Location = new Point(1048, 71);
+            panel7.Location = new Point(176, 210);
             panel7.Name = "panel7";
-            panel7.Size = new Size(189, 73);
+            panel7.Size = new Size(782, 38);
             panel7.TabIndex = 6;
             // 
-            // textBox2
+            // btnShowBuyingPrice
             // 
-            textBox2.BackColor = Color.FromArgb(0, 140, 71);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(0, 41);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(189, 32);
-            textBox2.TabIndex = 1;
+            btnShowBuyingPrice.FlatAppearance.BorderSize = 0;
+            btnShowBuyingPrice.FlatStyle = FlatStyle.Flat;
+            btnShowBuyingPrice.Image = Properties.Resources._24pxWhiteEye;
+            btnShowBuyingPrice.Location = new Point(747, 5);
+            btnShowBuyingPrice.Name = "btnShowBuyingPrice";
+            btnShowBuyingPrice.Size = new Size(27, 27);
+            btnShowBuyingPrice.TabIndex = 53;
+            btnShowBuyingPrice.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(379, 3);
+            label11.Name = "label11";
+            label11.Size = new Size(162, 32);
+            label11.TabIndex = 3;
+            label11.Text = "TOPLAM KAR";
+            // 
+            // tbTotalProfit
+            // 
+            tbTotalProfit.BackColor = Color.FromArgb(0, 140, 71);
+            tbTotalProfit.BorderStyle = BorderStyle.None;
+            tbTotalProfit.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbTotalProfit.ForeColor = Color.White;
+            tbTotalProfit.Location = new Point(556, 3);
+            tbTotalProfit.Name = "tbTotalProfit";
+            tbTotalProfit.ReadOnly = true;
+            tbTotalProfit.Size = new Size(189, 32);
+            tbTotalProfit.TabIndex = 2;
+            // 
+            // tbTotalSales
+            // 
+            tbTotalSales.BackColor = Color.FromArgb(0, 140, 71);
+            tbTotalSales.BorderStyle = BorderStyle.None;
+            tbTotalSales.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbTotalSales.ForeColor = Color.White;
+            tbTotalSales.Location = new Point(184, 3);
+            tbTotalSales.Name = "tbTotalSales";
+            tbTotalSales.ReadOnly = true;
+            tbTotalSales.Size = new Size(189, 32);
+            tbTotalSales.TabIndex = 1;
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
             lblTotal.ForeColor = Color.White;
-            lblTotal.Location = new Point(42, 1);
+            lblTotal.Location = new Point(3, 3);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(109, 32);
+            lblTotal.Size = new Size(171, 32);
             lblTotal.TabIndex = 0;
-            lblTotal.Text = "TOPLAM";
+            lblTotal.Text = "TOPLAM CİRO";
             // 
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(54, 54, 54);
-            panel8.Controls.Add(textBox7);
+            panel8.Controls.Add(tbOtherSale);
             panel8.Controls.Add(label6);
-            panel8.Controls.Add(textBox6);
+            panel8.Controls.Add(tbCardSale);
             panel8.Controls.Add(label5);
-            panel8.Controls.Add(textBox3);
+            panel8.Controls.Add(tbCashSale);
             panel8.Controls.Add(label1);
             panel8.Location = new Point(176, 71);
             panel8.Name = "panel8";
             panel8.Size = new Size(282, 133);
             panel8.TabIndex = 119;
             // 
-            // textBox7
+            // tbOtherSale
             // 
-            textBox7.BackColor = Color.White;
-            textBox7.BorderStyle = BorderStyle.None;
-            textBox7.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox7.ForeColor = Color.Black;
-            textBox7.Location = new Point(112, 88);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(164, 32);
-            textBox7.TabIndex = 5;
+            tbOtherSale.BackColor = Color.White;
+            tbOtherSale.BorderStyle = BorderStyle.None;
+            tbOtherSale.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbOtherSale.ForeColor = Color.Black;
+            tbOtherSale.Location = new Point(112, 88);
+            tbOtherSale.Name = "tbOtherSale";
+            tbOtherSale.ReadOnly = true;
+            tbOtherSale.Size = new Size(164, 32);
+            tbOtherSale.TabIndex = 5;
             // 
             // label6
             // 
@@ -609,16 +599,17 @@
             label6.TabIndex = 4;
             label6.Text = "Diğer Satış";
             // 
-            // textBox6
+            // tbCardSale
             // 
-            textBox6.BackColor = Color.White;
-            textBox6.BorderStyle = BorderStyle.None;
-            textBox6.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox6.ForeColor = Color.Black;
-            textBox6.Location = new Point(112, 50);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(164, 32);
-            textBox6.TabIndex = 3;
+            tbCardSale.BackColor = Color.White;
+            tbCardSale.BorderStyle = BorderStyle.None;
+            tbCardSale.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbCardSale.ForeColor = Color.Black;
+            tbCardSale.Location = new Point(112, 50);
+            tbCardSale.Name = "tbCardSale";
+            tbCardSale.ReadOnly = true;
+            tbCardSale.Size = new Size(164, 32);
+            tbCardSale.TabIndex = 3;
             // 
             // label5
             // 
@@ -631,16 +622,17 @@
             label5.TabIndex = 2;
             label5.Text = "K.Kart Satış";
             // 
-            // textBox3
+            // tbCashSale
             // 
-            textBox3.BackColor = Color.White;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox3.ForeColor = Color.Black;
-            textBox3.Location = new Point(112, 12);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(164, 32);
-            textBox3.TabIndex = 1;
+            tbCashSale.BackColor = Color.White;
+            tbCashSale.BorderStyle = BorderStyle.None;
+            tbCashSale.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbCashSale.ForeColor = Color.Black;
+            tbCashSale.Location = new Point(112, 12);
+            tbCashSale.Name = "tbCashSale";
+            tbCashSale.ReadOnly = true;
+            tbCashSale.Size = new Size(164, 32);
+            tbCashSale.TabIndex = 1;
             // 
             // label1
             // 
@@ -656,38 +648,40 @@
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(54, 54, 54);
-            panel9.Controls.Add(textBox4);
-            panel9.Controls.Add(textBox8);
+            panel9.Controls.Add(tbFree);
+            panel9.Controls.Add(tbPayLater);
             panel9.Controls.Add(label3);
             panel9.Controls.Add(label7);
-            panel9.Controls.Add(textBox5);
+            panel9.Controls.Add(tbCashAndCard);
             panel9.Controls.Add(label4);
             panel9.Location = new Point(464, 71);
             panel9.Name = "panel9";
             panel9.Size = new Size(282, 133);
             panel9.TabIndex = 120;
             // 
-            // textBox4
+            // tbFree
             // 
-            textBox4.BackColor = Color.White;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox4.ForeColor = Color.Black;
-            textBox4.Location = new Point(112, 88);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(164, 32);
-            textBox4.TabIndex = 11;
+            tbFree.BackColor = Color.White;
+            tbFree.BorderStyle = BorderStyle.None;
+            tbFree.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbFree.ForeColor = Color.Black;
+            tbFree.Location = new Point(112, 88);
+            tbFree.Name = "tbFree";
+            tbFree.ReadOnly = true;
+            tbFree.Size = new Size(164, 32);
+            tbFree.TabIndex = 11;
             // 
-            // textBox8
+            // tbPayLater
             // 
-            textBox8.BackColor = Color.White;
-            textBox8.BorderStyle = BorderStyle.None;
-            textBox8.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox8.ForeColor = Color.Black;
-            textBox8.Location = new Point(112, 12);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(164, 32);
-            textBox8.TabIndex = 7;
+            tbPayLater.BackColor = Color.White;
+            tbPayLater.BorderStyle = BorderStyle.None;
+            tbPayLater.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbPayLater.ForeColor = Color.Black;
+            tbPayLater.Location = new Point(112, 12);
+            tbPayLater.Name = "tbPayLater";
+            tbPayLater.ReadOnly = true;
+            tbPayLater.Size = new Size(164, 32);
+            tbPayLater.TabIndex = 7;
             // 
             // label3
             // 
@@ -711,16 +705,17 @@
             label7.TabIndex = 6;
             label7.Text = "Veresiye S.";
             // 
-            // textBox5
+            // tbCashAndCard
             // 
-            textBox5.BackColor = Color.White;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox5.ForeColor = Color.Black;
-            textBox5.Location = new Point(112, 50);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(164, 32);
-            textBox5.TabIndex = 9;
+            tbCashAndCard.BackColor = Color.White;
+            tbCashAndCard.BorderStyle = BorderStyle.None;
+            tbCashAndCard.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbCashAndCard.ForeColor = Color.Black;
+            tbCashAndCard.Location = new Point(112, 50);
+            tbCashAndCard.Name = "tbCashAndCard";
+            tbCashAndCard.ReadOnly = true;
+            tbCashAndCard.Size = new Size(164, 32);
+            tbCashAndCard.TabIndex = 9;
             // 
             // label4
             // 
@@ -736,38 +731,40 @@
             // panel10
             // 
             panel10.BackColor = Color.FromArgb(54, 54, 54);
-            panel10.Controls.Add(textBox9);
-            panel10.Controls.Add(textBox11);
+            panel10.Controls.Add(tbRefundTotal);
+            panel10.Controls.Add(tbRefundCash);
             panel10.Controls.Add(label8);
             panel10.Controls.Add(label10);
-            panel10.Controls.Add(textBox10);
+            panel10.Controls.Add(tbRefundCard);
             panel10.Controls.Add(label9);
             panel10.Location = new Point(752, 71);
             panel10.Name = "panel10";
             panel10.Size = new Size(286, 133);
             panel10.TabIndex = 120;
             // 
-            // textBox9
+            // tbRefundTotal
             // 
-            textBox9.BackColor = Color.White;
-            textBox9.BorderStyle = BorderStyle.None;
-            textBox9.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox9.ForeColor = Color.Black;
-            textBox9.Location = new Point(112, 88);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(164, 32);
-            textBox9.TabIndex = 17;
+            tbRefundTotal.BackColor = Color.White;
+            tbRefundTotal.BorderStyle = BorderStyle.None;
+            tbRefundTotal.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbRefundTotal.ForeColor = Color.Black;
+            tbRefundTotal.Location = new Point(112, 88);
+            tbRefundTotal.Name = "tbRefundTotal";
+            tbRefundTotal.ReadOnly = true;
+            tbRefundTotal.Size = new Size(164, 32);
+            tbRefundTotal.TabIndex = 17;
             // 
-            // textBox11
+            // tbRefundCash
             // 
-            textBox11.BackColor = Color.White;
-            textBox11.BorderStyle = BorderStyle.None;
-            textBox11.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox11.ForeColor = Color.Black;
-            textBox11.Location = new Point(112, 12);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(164, 32);
-            textBox11.TabIndex = 13;
+            tbRefundCash.BackColor = Color.White;
+            tbRefundCash.BorderStyle = BorderStyle.None;
+            tbRefundCash.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbRefundCash.ForeColor = Color.Black;
+            tbRefundCash.Location = new Point(112, 12);
+            tbRefundCash.Name = "tbRefundCash";
+            tbRefundCash.ReadOnly = true;
+            tbRefundCash.Size = new Size(164, 32);
+            tbRefundCash.TabIndex = 13;
             // 
             // label8
             // 
@@ -791,16 +788,17 @@
             label10.TabIndex = 12;
             label10.Text = "İade Nakit";
             // 
-            // textBox10
+            // tbRefundCard
             // 
-            textBox10.BackColor = Color.White;
-            textBox10.BorderStyle = BorderStyle.None;
-            textBox10.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
-            textBox10.ForeColor = Color.Black;
-            textBox10.Location = new Point(112, 50);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(164, 32);
-            textBox10.TabIndex = 15;
+            tbRefundCard.BackColor = Color.White;
+            tbRefundCard.BorderStyle = BorderStyle.None;
+            tbRefundCard.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            tbRefundCard.ForeColor = Color.Black;
+            tbRefundCard.Location = new Point(112, 50);
+            tbRefundCard.Name = "tbRefundCard";
+            tbRefundCard.ReadOnly = true;
+            tbRefundCard.Size = new Size(164, 32);
+            tbRefundCard.TabIndex = 15;
             // 
             // label9
             // 
@@ -813,13 +811,143 @@
             label9.TabIndex = 14;
             label9.Text = "İade Kart";
             // 
+            // fcFilter
+            // 
+            fcFilter.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            fcFilter.BackColor = Color.FromArgb(49, 121, 199);
+            fcFilter.BorderColor = Color.White;
+            fcFilter.ButtonColor = Color.FromArgb(49, 121, 199);
+            fcFilter.DrawMode = DrawMode.OwnerDrawFixed;
+            fcFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            fcFilter.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            fcFilter.ForeColor = Color.White;
+            fcFilter.FormattingEnabled = true;
+            fcFilter.HighlightColor = Color.FromArgb(49, 121, 199);
+            fcFilter.Items.AddRange(new object[] { "YOK", "ÇOK SATANLAR", "ÇOK BULUNAN", "FİYAT (ARTAN)", "FİYAT (AZALAN)", "BARKOD (ARTAN)", "BARKOD (AZALAN)", "İSİM (A - Z)", "İSİM (Z - A)" });
+            fcFilter.Location = new Point(997, 213);
+            fcFilter.Margin = new Padding(1);
+            fcFilter.Name = "fcFilter";
+            fcFilter.Size = new Size(240, 32);
+            fcFilter.TabIndex = 121;
+            fcFilter.SelectedIndexChanged += fcFilter_SelectedIndexChanged;
+            // 
+            // BARCODE
+            // 
+            BARCODE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BARCODE.DataPropertyName = "BARCODE";
+            BARCODE.FillWeight = 10F;
+            BARCODE.HeaderText = "BARKOD";
+            BARCODE.MaxInputLength = 100;
+            BARCODE.Name = "BARCODE";
+            BARCODE.ReadOnly = true;
+            // 
+            // PRODUCT
+            // 
+            PRODUCT.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PRODUCT.DataPropertyName = "PRODUCT";
+            PRODUCT.FillWeight = 25F;
+            PRODUCT.HeaderText = "ÜRÜN ADI";
+            PRODUCT.MaxInputLength = 50;
+            PRODUCT.Name = "PRODUCT";
+            PRODUCT.ReadOnly = true;
+            // 
+            // DATE
+            // 
+            DATE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DATE.DataPropertyName = "DATE";
+            DATE.FillWeight = 10F;
+            DATE.HeaderText = "TARİH";
+            DATE.Name = "DATE";
+            DATE.ReadOnly = true;
+            // 
+            // QUANTITY
+            // 
+            QUANTITY.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            QUANTITY.DataPropertyName = "QUANTITY";
+            QUANTITY.FillWeight = 5F;
+            QUANTITY.HeaderText = "ADET";
+            QUANTITY.Name = "QUANTITY";
+            QUANTITY.ReadOnly = true;
+            // 
+            // BUYPRICE
+            // 
+            BUYPRICE.DataPropertyName = "BUYPRICE";
+            BUYPRICE.HeaderText = "ALIŞ FİYAT";
+            BUYPRICE.Name = "BUYPRICE";
+            BUYPRICE.ReadOnly = true;
+            // 
+            // SALEPRICE
+            // 
+            SALEPRICE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SALEPRICE.DataPropertyName = "SALEPRICE";
+            SALEPRICE.FillWeight = 10F;
+            SALEPRICE.HeaderText = "SATIŞ FİYAT";
+            SALEPRICE.Name = "SALEPRICE";
+            SALEPRICE.ReadOnly = true;
+            // 
+            // TOTALPRICE
+            // 
+            TOTALPRICE.DataPropertyName = "TOTALPRICE";
+            TOTALPRICE.HeaderText = "TOPLAM TUTAR";
+            TOTALPRICE.Name = "TOTALPRICE";
+            TOTALPRICE.ReadOnly = true;
+            // 
+            // PROFIT
+            // 
+            PROFIT.DataPropertyName = "PROFIT";
+            PROFIT.HeaderText = "KAR";
+            PROFIT.Name = "PROFIT";
+            PROFIT.ReadOnly = true;
+            // 
+            // PAYMENTTYPE
+            // 
+            PAYMENTTYPE.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PAYMENTTYPE.DataPropertyName = "PAYMENTTYPE";
+            PAYMENTTYPE.FillWeight = 15F;
+            PAYMENTTYPE.HeaderText = "ÖDEME";
+            PAYMENTTYPE.Name = "PAYMENTTYPE";
+            PAYMENTTYPE.ReadOnly = true;
+            // 
+            // CUSTOMER
+            // 
+            CUSTOMER.DataPropertyName = "CUSTOMER";
+            CUSTOMER.HeaderText = "MÜŞTERİ";
+            CUSTOMER.Name = "CUSTOMER";
+            CUSTOMER.ReadOnly = true;
+            // 
+            // WORKER
+            // 
+            WORKER.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            WORKER.DataPropertyName = "WORKER";
+            WORKER.FillWeight = 15F;
+            WORKER.HeaderText = "PERSONEL";
+            WORKER.Name = "WORKER";
+            WORKER.ReadOnly = true;
+            // 
+            // FICHETYPE
+            // 
+            FICHETYPE.DataPropertyName = "FICHETYPE";
+            FICHETYPE.HeaderText = "FICHETYPE";
+            FICHETYPE.Name = "FICHETYPE";
+            FICHETYPE.ReadOnly = true;
+            FICHETYPE.Visible = false;
+            // 
+            // TOTALSALEQ
+            // 
+            TOTALSALEQ.DataPropertyName = "TOTALSALEQ";
+            TOTALSALEQ.HeaderText = "TOTALSALEQ";
+            TOTALSALEQ.Name = "TOTALSALEQ";
+            TOTALSALEQ.ReadOnly = true;
+            TOTALSALEQ.Visible = false;
+            // 
             // SaleReportInnerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 74, 173);
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1249, 553);
+            ClientSize = new Size(1249, 600);
+            Controls.Add(fcFilter);
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(panel8);
@@ -827,7 +955,7 @@
             Controls.Add(btnBring);
             Controls.Add(btnCancel);
             Controls.Add(panel6);
-            Controls.Add(button1);
+            Controls.Add(btnZReport);
             Controls.Add(btnExcel);
             Controls.Add(panel5);
             Controls.Add(panel4);
@@ -838,6 +966,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "SaleReportInnerForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += SaleReportInnerForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -870,7 +999,7 @@
         private RadioButton rbBuy;
         private RadioButton rbSell;
         private RadioButton rbAll;
-        private RadioButton radioButton4;
+        private RadioButton rbPayLater;
         private Panel panel2;
         private Label lblDates;
         private DateTimePicker dtpEnd;
@@ -880,48 +1009,58 @@
         private Label lblPaymentType;
         private CustomObjects.FlatCombo fcPaymentType;
         private Panel panel4;
-        private CustomObjects.FlatCombo fcCategory;
         private Label lblProductCategory;
         private Panel panel5;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox tbProduct;
         private Button btnExcel;
-        private Button button1;
+        private Button btnZReport;
         private Panel panel6;
         private DataGridView dgvMain;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn BARCODE;
-        private DataGridViewTextBoxColumn NAME;
-        private DataGridViewTextBoxColumn VATRATE;
-        private DataGridViewTextBoxColumn BUYPRICE;
-        private DataGridViewTextBoxColumn SALEPRICE;
-        private DataGridViewTextBoxColumn STOCK;
-        private DataGridViewTextBoxColumn UNIT;
         private Button btnCancel;
         private Button btnBring;
         private Panel panel7;
-        private TextBox textBox2;
+        private TextBox tbTotalSales;
         private Label lblTotal;
         private Panel panel8;
-        private TextBox textBox3;
+        private TextBox tbCashSale;
         private Label label1;
         private Panel panel9;
         private Panel panel10;
-        private TextBox textBox7;
+        private TextBox tbOtherSale;
         private Label label6;
-        private TextBox textBox6;
+        private TextBox tbCardSale;
         private Label label5;
-        private TextBox textBox4;
-        private TextBox textBox8;
+        private TextBox tbFree;
+        private TextBox tbPayLater;
         private Label label3;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox tbCashAndCard;
         private Label label4;
-        private TextBox textBox9;
-        private TextBox textBox11;
+        private TextBox tbRefundTotal;
+        private TextBox tbRefundCash;
         private Label label8;
         private Label label10;
-        private TextBox textBox10;
+        private TextBox tbRefundCard;
         private Label label9;
+        private Label label11;
+        private TextBox tbTotalProfit;
+        private Button btnShowBuyingPrice;
+        private CustomObjects.FlatCombo fcFilter;
+        private ComboBox cbCategory;
+        private RadioButton rbGift;
+        private DataGridViewTextBoxColumn BARCODE;
+        private DataGridViewTextBoxColumn PRODUCT;
+        private DataGridViewTextBoxColumn DATE;
+        private DataGridViewTextBoxColumn QUANTITY;
+        private DataGridViewTextBoxColumn BUYPRICE;
+        private DataGridViewTextBoxColumn SALEPRICE;
+        private DataGridViewTextBoxColumn TOTALPRICE;
+        private DataGridViewTextBoxColumn PROFIT;
+        private DataGridViewTextBoxColumn PAYMENTTYPE;
+        private DataGridViewTextBoxColumn CUSTOMER;
+        private DataGridViewTextBoxColumn WORKER;
+        private DataGridViewTextBoxColumn FICHETYPE;
+        private DataGridViewTextBoxColumn TOTALSALEQ;
     }
 }

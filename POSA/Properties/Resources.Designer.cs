@@ -783,6 +783,16 @@ namespace POSA.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _64pxWhiteZReport {
+            get {
+                object obj = ResourceManager.GetObject("64pxWhiteZReport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _99pxButtons {
             get {
                 object obj = ResourceManager.GetObject("99pxButtons", resourceCulture);

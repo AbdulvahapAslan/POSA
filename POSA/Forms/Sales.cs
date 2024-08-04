@@ -1238,8 +1238,11 @@ namespace POSA.Forms
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             if (ficheType == 2 && LastSelectedCustomerID == 0)
             {
-                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                var dr = MessageBox.Show("Cari seçilmediğinden dolayı ikram olarak devam edilsin mi?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == DialogResult.No)
+                    return;
+                else
+                    ficheType = 6;
             }
             SqlTransaction trn = null;
             var settings = Setting.Get();
@@ -1277,8 +1280,11 @@ namespace POSA.Forms
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             if (ficheType == 2 && LastSelectedCustomerID == 0)
             {
-                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                var dr = MessageBox.Show("Cari seçilmediğinden dolayı ikram olarak devam edilsin mi?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == DialogResult.No)
+                    return;
+                else
+                    ficheType = 6;
             }
             SqlTransaction trn = null;
             var settings = Setting.Get();
@@ -1316,8 +1322,11 @@ namespace POSA.Forms
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             if (ficheType == 2 && LastSelectedCustomerID == 0)
             {
-                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                var dr = MessageBox.Show("Cari seçilmediğinden dolayı ikram olarak devam edilsin mi?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == DialogResult.No)
+                    return;
+                else
+                    ficheType = 6;
             }
             SqlTransaction trn = null;
             var settings = Setting.Get();
@@ -1354,8 +1363,11 @@ namespace POSA.Forms
             int ficheType = cbReturn.Checked ? (cbFree.Checked ? 3 : 1) : cbFree.Checked ? 2 : 4;
             if (ficheType == 2 && LastSelectedCustomerID == 0)
             {
-                MessageBox.Show("Veresiye giriş yapabilmek için cari seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                var dr = MessageBox.Show("Cari seçilmediğinden dolayı ikram olarak devam edilsin mi?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == DialogResult.No)
+                    return;
+                else
+                    ficheType = 6;
             }
             CalculateAll();
             var totalPrice = decimal.Round(Convert.ToDecimal(btnTotalPrice.Text.Replace("₺", "")), 2, MidpointRounding.AwayFromZero);

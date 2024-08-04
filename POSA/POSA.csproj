@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\StockReportInnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\SaleReportInnerForm.cs">
       <SubType>Form</SubType>
     </Compile>

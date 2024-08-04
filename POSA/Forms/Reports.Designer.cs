@@ -36,7 +36,7 @@
             scMain = new SplitContainer();
             btnStockCheckReport = new Button();
             btnWorkerReport = new Button();
-            btnExpenses = new Button();
+            btnStockReport = new Button();
             btnCustomerReport = new Button();
             btnSaleReport = new Button();
             ((System.ComponentModel.ISupportInitialize)scMain).BeginInit();
@@ -52,9 +52,9 @@
             lblPageHeaderUpdatePrice.ForeColor = Color.White;
             lblPageHeaderUpdatePrice.Location = new Point(28, 12);
             lblPageHeaderUpdatePrice.Name = "lblPageHeaderUpdatePrice";
-            lblPageHeaderUpdatePrice.Size = new Size(103, 31);
+            lblPageHeaderUpdatePrice.Size = new Size(128, 31);
             lblPageHeaderUpdatePrice.TabIndex = 124;
-            lblPageHeaderUpdatePrice.Text = "İŞLETME";
+            lblPageHeaderUpdatePrice.Text = "RAPORLAR";
             // 
             // btnMinimize
             // 
@@ -113,7 +113,7 @@
             scMain.Anchor = AnchorStyles.None;
             scMain.BackColor = Color.Transparent;
             scMain.FixedPanel = FixedPanel.Panel1;
-            scMain.Location = new Point(59, 79);
+            scMain.Location = new Point(59, 56);
             scMain.Margin = new Padding(50);
             scMain.Name = "scMain";
             scMain.Orientation = Orientation.Horizontal;
@@ -123,14 +123,14 @@
             scMain.Panel1.BackColor = Color.Transparent;
             scMain.Panel1.Controls.Add(btnStockCheckReport);
             scMain.Panel1.Controls.Add(btnWorkerReport);
-            scMain.Panel1.Controls.Add(btnExpenses);
+            scMain.Panel1.Controls.Add(btnStockReport);
             scMain.Panel1.Controls.Add(btnCustomerReport);
             scMain.Panel1.Controls.Add(btnSaleReport);
             // 
             // scMain.Panel2
             // 
-            scMain.Panel2.BackColor = Color.Red;
-            scMain.Size = new Size(1248, 630);
+            scMain.Panel2.BackColor = Color.FromArgb(0, 74, 173);
+            scMain.Size = new Size(1248, 677);
             scMain.SplitterDistance = 73;
             scMain.TabIndex = 125;
             // 
@@ -141,14 +141,12 @@
             btnStockCheckReport.FlatStyle = FlatStyle.Flat;
             btnStockCheckReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnStockCheckReport.ForeColor = Color.FromArgb(47, 124, 213);
-            btnStockCheckReport.Image = Properties.Resources._64pxBranchesblue;
             btnStockCheckReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStockCheckReport.Location = new Point(815, 3);
+            btnStockCheckReport.Location = new Point(643, 3);
             btnStockCheckReport.Name = "btnStockCheckReport";
-            btnStockCheckReport.Size = new Size(197, 67);
+            btnStockCheckReport.Size = new Size(149, 67);
             btnStockCheckReport.TabIndex = 128;
             btnStockCheckReport.Text = "Sayım Raporu";
-            btnStockCheckReport.TextAlign = ContentAlignment.MiddleRight;
             btnStockCheckReport.UseVisualStyleBackColor = false;
             // 
             // btnWorkerReport
@@ -158,32 +156,29 @@
             btnWorkerReport.FlatStyle = FlatStyle.Flat;
             btnWorkerReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnWorkerReport.ForeColor = Color.FromArgb(47, 124, 213);
-            btnWorkerReport.Image = Properties.Resources._64pxExpenses;
             btnWorkerReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnWorkerReport.Location = new Point(585, 3);
+            btnWorkerReport.Location = new Point(466, 3);
             btnWorkerReport.Name = "btnWorkerReport";
-            btnWorkerReport.Size = new Size(224, 67);
+            btnWorkerReport.Size = new Size(171, 67);
             btnWorkerReport.TabIndex = 127;
             btnWorkerReport.Text = "Personel Raporu";
-            btnWorkerReport.TextAlign = ContentAlignment.MiddleRight;
             btnWorkerReport.UseVisualStyleBackColor = false;
             // 
-            // btnExpenses
+            // btnStockReport
             // 
-            btnExpenses.BackColor = Color.White;
-            btnExpenses.FlatAppearance.BorderSize = 0;
-            btnExpenses.FlatStyle = FlatStyle.Flat;
-            btnExpenses.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnExpenses.ForeColor = Color.FromArgb(47, 124, 213);
-            btnExpenses.Image = Properties.Resources._64pxExpenses;
-            btnExpenses.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExpenses.Location = new Point(199, 3);
-            btnExpenses.Name = "btnExpenses";
-            btnExpenses.Size = new Size(191, 67);
-            btnExpenses.TabIndex = 1;
-            btnExpenses.Text = "         Stok Raporu";
-            btnExpenses.TextAlign = ContentAlignment.MiddleRight;
-            btnExpenses.UseVisualStyleBackColor = false;
+            btnStockReport.BackColor = Color.White;
+            btnStockReport.FlatAppearance.BorderSize = 0;
+            btnStockReport.FlatStyle = FlatStyle.Flat;
+            btnStockReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnStockReport.ForeColor = Color.FromArgb(47, 124, 213);
+            btnStockReport.ImageAlign = ContentAlignment.MiddleLeft;
+            btnStockReport.Location = new Point(159, 3);
+            btnStockReport.Name = "btnStockReport";
+            btnStockReport.Size = new Size(153, 67);
+            btnStockReport.TabIndex = 1;
+            btnStockReport.Text = "Stok Raporu";
+            btnStockReport.UseVisualStyleBackColor = false;
+            btnStockReport.Click += btnStockReport_Click;
             // 
             // btnCustomerReport
             // 
@@ -192,14 +187,12 @@
             btnCustomerReport.FlatStyle = FlatStyle.Flat;
             btnCustomerReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnCustomerReport.ForeColor = Color.FromArgb(47, 124, 213);
-            btnCustomerReport.Image = Properties.Resources._64pxBranchesblue;
             btnCustomerReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCustomerReport.Location = new Point(396, 3);
+            btnCustomerReport.Location = new Point(318, 3);
             btnCustomerReport.Name = "btnCustomerReport";
-            btnCustomerReport.Size = new Size(183, 67);
+            btnCustomerReport.Size = new Size(142, 67);
             btnCustomerReport.TabIndex = 126;
             btnCustomerReport.Text = "Cari Raporu";
-            btnCustomerReport.TextAlign = ContentAlignment.MiddleRight;
             btnCustomerReport.UseVisualStyleBackColor = false;
             // 
             // btnSaleReport
@@ -209,14 +202,12 @@
             btnSaleReport.FlatStyle = FlatStyle.Flat;
             btnSaleReport.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnSaleReport.ForeColor = Color.FromArgb(47, 124, 213);
-            btnSaleReport.Image = Properties.Resources._64pxBranchesblue;
             btnSaleReport.ImageAlign = ContentAlignment.MiddleLeft;
             btnSaleReport.Location = new Point(3, 3);
             btnSaleReport.Name = "btnSaleReport";
-            btnSaleReport.Size = new Size(190, 67);
+            btnSaleReport.Size = new Size(150, 67);
             btnSaleReport.TabIndex = 0;
             btnSaleReport.Text = "Satış Raporu";
-            btnSaleReport.TextAlign = ContentAlignment.MiddleRight;
             btnSaleReport.UseVisualStyleBackColor = false;
             btnSaleReport.Click += btnSaleReport_Click;
             // 
@@ -237,6 +228,7 @@
             Name = "Reports";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Workplace";
+            WindowState = FormWindowState.Maximized;
             Load += Reports_Load;
             MouseDown += Workplace_MouseDown;
             scMain.Panel1.ResumeLayout(false);
@@ -253,7 +245,7 @@
         private Button btnMaximize;
         private Button btnClose;
         private SplitContainer scMain;
-        public Button btnExpenses;
+        public Button btnStockReport;
         private Button btnSaleReport;
         public Button btnWorkerReport;
         private Button btnCustomerReport;

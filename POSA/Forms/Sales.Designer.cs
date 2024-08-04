@@ -362,9 +362,9 @@ namespace POSA.Forms
             cbFree.Font = new Font("Segoe UI", 15F);
             cbFree.Location = new Point(3, 34);
             cbFree.Name = "cbFree";
-            cbFree.Size = new Size(116, 32);
+            cbFree.Size = new Size(112, 32);
             cbFree.TabIndex = 3;
-            cbFree.Text = "ÜCRETSİZ";
+            cbFree.Text = "VERESİYE";
             cbFree.UseVisualStyleBackColor = true;
             cbFree.CheckedChanged += cbFree_CheckedChanged;
             // 
